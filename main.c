@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
     char *input = NULL, *duel = NULL, *output = NULL, *methode = NULL;
     int option;
 
-    if (argc < 2) {
+    if (argc < 3) {
         fprintf(stderr, "Usage : %s -i fichier_csv -d fichier_csv -o fichier_txt_log -m methode\n"
                         "Pour plus d'informations quant à l'usage des options, référez-vous à la documentation.\n", argv[0]);
         exit(EXIT_FAILURE);
