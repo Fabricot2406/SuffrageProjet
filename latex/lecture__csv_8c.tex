@@ -1,0 +1,124 @@
+\hypertarget{lecture__csv_8c}{}\doxysection{Référence du fichier lecture\+\_\+csv.\+c}
+\label{lecture__csv_8c}\index{lecture\_csv.c@{lecture\_csv.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lecture\+\_\+csv.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de lecture\+\_\+csv.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{lecture__csv_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__matriceVote}{s\+\_\+matrice\+Vote}}
+\begin{DoxyCompactList}\small\item\em Structure pour allocation matrice dynamique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ \mbox{\hyperlink{lecture__csv_8c_a45833389ad962dfb8e8f2ae01ca57596}{creer\+Matrice}} ()
+\begin{DoxyCompactList}\small\item\em Fonction pour initialiser la matrice. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lecture__csv_8c_a1d28fd32499311db8b038ac5865e4906}{est\+Mauvaise\+Extension}} (char $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Fonction qui confirme si le fichier est un \char`\"{}.\+csv\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ \mbox{\hyperlink{lecture__csv_8c_aff6d97cd1b33aeb43700a6487ae6ed5d}{remplir\+Matrice}} (\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice, char $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Fonction pour remplir la matrice avec les données du fichier CSV. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lecture__csv_8c_ab3870986f2a02b47472673a60a546034}{afficher\+Matrice}} (\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Fonction qui affiche la matrice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lecture__csv_8c_a8488b5df5e924c935d2d72ceb3fa43a5}{liberer\+Matrice}} (\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Fonction pour libérer la matrice. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lecture__csv_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{lecture__csv_8c_ab3870986f2a02b47472673a60a546034}\label{lecture__csv_8c_ab3870986f2a02b47472673a60a546034}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!afficherMatrice@{afficherMatrice}}
+\index{afficherMatrice@{afficherMatrice}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{afficherMatrice()}{afficherMatrice()}}
+{\footnotesize\ttfamily void afficher\+Matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Fonction qui affiche la matrice. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice} & Pointeur vers la matrice à afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lecture__csv_8c_a45833389ad962dfb8e8f2ae01ca57596}\label{lecture__csv_8c_a45833389ad962dfb8e8f2ae01ca57596}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!creerMatrice@{creerMatrice}}
+\index{creerMatrice@{creerMatrice}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{creerMatrice()}{creerMatrice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ creer\+Matrice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction pour initialiser la matrice. 
+
+\begin{DoxyReturn}{Renvoie}
+Pointeur vers la matrice créée. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lecture__csv_8c_a1d28fd32499311db8b038ac5865e4906}\label{lecture__csv_8c_a1d28fd32499311db8b038ac5865e4906}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!estMauvaiseExtension@{estMauvaiseExtension}}
+\index{estMauvaiseExtension@{estMauvaiseExtension}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{estMauvaiseExtension()}{estMauvaiseExtension()}}
+{\footnotesize\ttfamily int est\+Mauvaise\+Extension (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Fonction qui confirme si le fichier est un \char`\"{}.\+csv\char`\"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fichier} & Le nom du fichier à vérifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si le fichier n\textquotesingle{}est pas un \char`\"{}.\+csv\char`\"{}, 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lecture__csv_8c_a8488b5df5e924c935d2d72ceb3fa43a5}\label{lecture__csv_8c_a8488b5df5e924c935d2d72ceb3fa43a5}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!libererMatrice@{libererMatrice}}
+\index{libererMatrice@{libererMatrice}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{libererMatrice()}{libererMatrice()}}
+{\footnotesize\ttfamily void liberer\+Matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Fonction pour libérer la matrice. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice} & Pointeur vers la matrice à libérer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lecture__csv_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{lecture__csv_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!main@{main}}
+\index{main@{main}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{lecture__csv_8c_aff6d97cd1b33aeb43700a6487ae6ed5d}\label{lecture__csv_8c_aff6d97cd1b33aeb43700a6487ae6ed5d}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!remplirMatrice@{remplirMatrice}}
+\index{remplirMatrice@{remplirMatrice}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{remplirMatrice()}{remplirMatrice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ remplir\+Matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lecture__csv_8h_a3fa79b2e2838e960ee62268fad5cc1f8}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice,  }\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Fonction pour remplir la matrice avec les données du fichier CSV. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice} & Pointeur vers la matrice à remplir. \\
+\hline
+{\em fichier} & Le nom du fichier CSV. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur vers la matrice remplie. 
+\end{DoxyReturn}
