@@ -53,7 +53,7 @@ t_mat_char_star_dyn *creerMatrice (char *fichier){
     }
 
     //lecture du fichier caractère par caractère
-    char c=fgetc(f);;
+    char c=fgetc(f);
     
     while (c!=EOF){
         if (c==','){
