@@ -10,23 +10,41 @@ struct s_matriceVote{
     char ***tab;
 };
 
-int mauvaiseExtension(char *fichier){
-    //pointe sur la derniere occurence du "." dans le nom de fichier
-    char *extension = strrchr(fichier,'.');
-    //retourne 0 si l'extension est ".csv"
-    return strcmp(extension,".csv");
-}
-
-t_mat_char_star_dyn *creerMatrice (char *fichier){
-
+t_mat_char_star_dyn *creerMatrice (){
     //initialisation de la structure
     t_mat_char_star_dyn *matrice;
     if ((matrice=malloc(sizeof(t_mat_char_star_dyn)))==NULL){
         fprintf(stderr,"Erreur lors de l'allocation de la strcture.\n");
         return NULL;
     }
+    matrice->nbLignes=0;
+    matrice->nbColonnes=0;
+    //initialisation de la matrice
+    if ((matrice->tab=malloc(sizeof(char**)))==NULL){
+        fprintf(stderr,"Erreur lors de l'allocation du tableau de lignes.\n");
+        return NULL;
+    }
+    if ((matrice->tab[0]=malloc(sizeof(char*)))==NULL){
+        fprintf(stderr,"Erreur lors de l'allocation du tableau de colonnes.\n");
+        return NULL;
+    }
+    if ((matrice->tab[0][0]=malloc(TAILLE_MAX*sizeof(char)))==NULL){
+        fprintf(stderr,"Erreur lors de l'allocation des cellules.\n");
+        return NULL;
+    }
+    return matrice;   
+}
+
+int estMauvaiseExtension(char *fichier){
+    //pointe sur la derniere occurence du "." dans le nom de fichier
+    char *extension = strrchr(fichier,'.');
+    //retourne 0 si l'extension est ".csv"
+    return strcmp(extension,".csv");
+}
+
+t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice,char *fichier){
     //si mauvaise extension on retourne matrice vide
-    if (mauvaiseExtension(fichier)){
+    if (estMauvaiseExtension(fichier)){
         fprintf(stderr,"Erreur mauvaise extension de fichier.\n");
         return NULL;
     }
@@ -37,20 +55,7 @@ t_mat_char_star_dyn *creerMatrice (char *fichier){
         return NULL;
     }
 
-    //initialisation de la matrice
     int ligne=0,colonne=0,cellule=0;
-    if ((matrice->tab=malloc(sizeof(char**)))==NULL){
-        fprintf(stderr,"Erreur lors de l'allocation du tableau de lignes.\n");
-        return NULL;
-    }
-    if ((matrice->tab[ligne]=malloc(sizeof(char*)))==NULL){
-        fprintf(stderr,"Erreur lors de l'allocation du tableau de colonnes.\n");
-        return NULL;
-    }
-    if ((matrice->tab[ligne][colonne]=malloc(TAILLE_MAX*sizeof(char)))==NULL){
-        fprintf(stderr,"Erreur lors de l'allocation des cellules.\n");
-        return NULL;
-    }
 
     //lecture du fichier caractère par caractère
     char c=fgetc(f);
@@ -109,6 +114,7 @@ t_mat_char_star_dyn *creerMatrice (char *fichier){
     //On determine le nombre total de lignes a la fin après avoir enlevé l'espace de tableau en trop dans la matrice avant de là retourner
     matrice->nbLignes=ligne;
     return matrice;
+
 }
 
 void afficherMatrice(t_mat_char_star_dyn *matrice){
@@ -147,8 +153,18 @@ void libererMatrice(t_mat_char_star_dyn *matrice){
     return ; 
 }
 
+/*for (int i=0;i<matrice->nbLignes;i++){
+        for (int j=0;j<matrice->nbColonnes;j++){
+            //On libère chaque cellule de la matrice
+            free(matrice->tab[i][j]);
+        }
+        //On libère chaque ligne de la matrice
+        free(matrice->tab[i]);
+}*/
+
 int main(int argc, char **argv){
-    t_mat_char_star_dyn *matrice=creerMatrice("/root/ProjetA/SuffrageProjet/fich_tests/vote10.csv");
+    t_mat_char_star_dyn *matrice=creerMatrice();
+    matrice=remplirMatrice(matrice,"/root/ProjetA/SuffrageProjet/fich_tests/vote100.csv");
     afficherMatrice(matrice);
     libererMatrice(matrice);
     afficherMatrice(matrice);
