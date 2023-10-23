@@ -39,10 +39,10 @@ int estMauvaiseExtension(char *fichier){
     //pointe sur la derniere occurence du "." dans le nom de fichier
     char *extension = strrchr(fichier,'.');
     //retourne 0 si l'extension est ".csv"
-    return strcmp(extension,".csv");
+    return extension!=NULL && strcmp(extension,".csv");
 }
 
-t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice,char *fichier){
+t_mat_char_star_dyn *remplirMatrice(char *fichier){
     //si mauvaise extension on retourne matrice vide
     if (estMauvaiseExtension(fichier)){
         fprintf(stderr,"Erreur mauvaise extension de fichier.\n");
@@ -51,9 +51,11 @@ t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice,char *fichier){
     FILE *f = fopen(fichier,"r");
     //si probleme d'ouverture on retourne matrice vide
     if (f==NULL){
-        fprintf(stderr,"Erreur lors de l'ouverture du fichier.\n");
+        fprintf(stderr,"Erreur lors de l'ouverture du fichier, verifiez le chemin ou le nom du fichier.\n");
         return NULL;
     }
+    t_mat_char_star_dyn *matrice = creerMatrice();
+
 
     int ligne=0,colonne=0,cellule=0;
 
@@ -74,8 +76,6 @@ t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice,char *fichier){
             matrice->tab[ligne][colonne][cellule]='\0';
             //On rajoute le nombre de colonnes total a la structure
             matrice->nbColonnes=colonne+1;
-            //On rétablit l'indice de colonne à 0
-            colonne=0;
             //On incrémente l'indice de ligne
             ligne++;
             //On alloue de l'espace pour une ligne supplémentaire
@@ -83,6 +83,10 @@ t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice,char *fichier){
                 fprintf(stderr,"Erreur lors de la reallocation du tableau de lignes.\n");
                 return NULL;
             }
+            //On initialise la nouvelle ligne a NULL
+            matrice->tab[ligne]=NULL;
+            //On rétablit l'indice de colonne à 0
+            colonne=0;
 
         }
         if (c==',' || c=='\n'){
@@ -114,7 +118,6 @@ t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice,char *fichier){
     //On determine le nombre total de lignes a la fin après avoir enlevé l'espace de tableau en trop dans la matrice avant de là retourner
     matrice->nbLignes=ligne;
     return matrice;
-
 }
 
 void afficherMatrice(t_mat_char_star_dyn *matrice){
@@ -133,7 +136,44 @@ void afficherMatrice(t_mat_char_star_dyn *matrice){
     }
 }
 
+void afficherLigne(t_mat_char_star_dyn *matrice, int ligne){
+    //Si la matrice est nulle on renvoie une erreur
+    if (matrice==NULL){
+        fprintf(stderr,"Matice non valide.\n");
+        return;
+    }
+    //On affiche chaque cellule de la ligne
+    for (int j=0;j<matrice->nbColonnes;j++){
+        printf("%s:\t %s\n",matrice->tab[0][j],matrice->tab[ligne][j]);
+    }
+}
+
+int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne){
+    //Si la matrice est nulle on renvoie une erreur
+    if (matrice==NULL){
+        fprintf(stderr,"Matrice non valide.\n");
+        return 0;
+    }
+    //On initialise les indices de ligne et de colonne à -1
+    *ligne=-1;
+    *colonne=-1;
+    //On parcourt la matrice
+    for (int i=0;i<matrice->nbLignes;i++){
+        for (int j=0;j<matrice->nbColonnes;j++){
+            //On compare chaque cellule à l'element recherché
+            if (!strcmp(elem,matrice->tab[i][j])){
+                //Si on trouve l'element on met à jour les indices de ligne et de colonne
+                *ligne=i;
+                *colonne=j;
+            }
+        }
+        //On passe à la ligne suivante
+    }
+    return *ligne!=1 && *colonne!=-1;
+}
+
 void libererMatrice(t_mat_char_star_dyn *matrice){
+    //Si la matrice est nulle on renvoie une erreur
     if (matrice==NULL){
         return;
     }
@@ -150,23 +190,15 @@ void libererMatrice(t_mat_char_star_dyn *matrice){
     //On réinitialise la structure
     matrice->nbLignes=0;
     matrice->nbColonnes=0;
+    //On libère la structure
+    free(matrice);
     return ; 
 }
 
-/*for (int i=0;i<matrice->nbLignes;i++){
-        for (int j=0;j<matrice->nbColonnes;j++){
-            //On libère chaque cellule de la matrice
-            free(matrice->tab[i][j]);
-        }
-        //On libère chaque ligne de la matrice
-        free(matrice->tab[i]);
-}*/
-
-int main(int argc, char **argv){
-    t_mat_char_star_dyn *matrice=creerMatrice();
-    matrice=remplirMatrice(matrice,"/root/ProjetA/SuffrageProjet/fich_tests/vote100.csv");
+/*int main(int argc, char **argv){
+    t_mat_char_star_dyn *matrice = remplirMatrice("/root/ProjetA/SuffrageProjet/fich_tests/voteCondorcet.csv");
     afficherMatrice(matrice);
     libererMatrice(matrice);
-    afficherMatrice(matrice);
     return 0;
 }
+*/

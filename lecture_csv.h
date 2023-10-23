@@ -30,13 +30,12 @@ int estMauvaiseExtension(char *fichier);
 t_mat_char_star_dyn *creerMatrice();
 
 /**
- * @fn t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice, char *fichier)
+ * @fn t_mat_char_star_dyn *remplirMatrice(char *fichier)
  * @brief Fonction pour remplir la matrice avec les données du fichier CSV.
- * @param matrice Pointeur vers la matrice à remplir.
  * @param fichier Le nom du fichier CSV.
  * @return Pointeur vers la matrice remplie.
  */
-t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice, char *fichier);
+t_mat_char_star_dyn *remplirMatrice(char *fichier);
 
 /**
  * @fn void afficherMatrice(t_mat_char_star_dyn *matrice)
@@ -44,6 +43,25 @@ t_mat_char_star_dyn *remplirMatrice(t_mat_char_star_dyn *matrice, char *fichier)
  * @param matrice Pointeur vers la matrice à afficher.
  */
 void afficherMatrice(t_mat_char_star_dyn *matrice);
+
+/**
+ * @fn void affichierLigne(t_mat_char_star_dyn *matrice,int ligne)
+ * @brief Fonction qui affiche une ligne du fichier CSV.
+ * @param matrice Pointeur vers la matrice à afficher.
+ * @param ligne Ligne à afficher.
+ */
+void afficherLigne(t_mat_char_star_dyn *matrice, int ligne);
+
+/**
+ * @fn int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne)
+ * @brief Fonction qui trouve la ligne et la colonne d'un element dans un fichier CSV.
+ * @param matrice Pointeur vers la matrice à afficher.
+ * @param elem Chaine de caractère à trouver.
+ * @param ligne Ligne où se trouve l'element.
+ * @param colonne Colonne où se trouve l'element.
+ * @return 1 si element trouvé, 0 sinon.
+*/
+int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne);
 
 /**
  * @fn void libererMatrice(t_mat_char_star_dyn *matrice)
