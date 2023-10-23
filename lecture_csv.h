@@ -70,4 +70,4 @@ int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colon
  */
 void libererMatrice(t_mat_char_star_dyn *matrice);
 
-#endif
+#endif // LECTURE_CSV_H
