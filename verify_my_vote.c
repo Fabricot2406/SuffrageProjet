@@ -66,7 +66,7 @@ int main(){
     char nomFichier[TAILLE_NOM_FICHIER_MAX];
     printf("Veuillez entrer votre nom complet (NOM DE FAMILLE Prenom) : ");
     scanf("%49[^\n]",nomComplet);
-    printf("Veuillez entrer le nom du fichier de vote (avec extension) : ");
+    printf("Veuillez entrer le chemin du fichier de vote (avec extension) : ");
     scanf("%59s",nomFichier);
     printf("Veuillez entrer la cle : ");
     scanf("%16s",cle);
