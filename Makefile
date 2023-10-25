@@ -1,18 +1,47 @@
+# Nom de l'exécutable
+TARGET = Suffrage
+
+# Répertoires source
+SRCDIR = src
+UTILSDIR = $(SRCDIR)/utils
+METHODSDIR = $(SRCDIR)/methods
+VERIFYDIR = $(SRCDIR)/verify
+
+# Répertoire de documentation
+DOCDIR = documentation
+
+# Compilateur et options
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
-EXECUTABLE = Suffrage
+CFLAGS = -Wall -Wextra -g -Wno-unused-variable -Wno-unused-parameter
+LDFLAGS = -lm
 
-all: $(EXECUTABLE)
+# Liste de fichiers source
+SOURCES = $(wildcard $(SRCDIR)/*.c) $(wildcard $(UTILSDIR)/*.c) $(wildcard $(VERIFYDIR)/*.c) $(wildcard $(METHODSDIR)/*.c)
+OBJECTS = $(SOURCES:.c=.o)
 
-$(EXECUTABLE): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(EXECUTABLE)
+# Commandes pour générer la documentation
+DOXYGEN = doxygen
+DOXYFILE = Doxyfile
+
+# Commande pour Valgrind
+VALGRIND = valgrind
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+doc:
+	$(DOXYGEN) $(DOXYFILE)
+
+valgrind:
+	$(VALGRIND) ./$(TARGET)
 
 clean:
-	rm -f $(OBJ) $(EXECUTABLE)
+	rm -f $(TARGET) $(OBJECTS)
+	rm -rf $(DOCDIR)
 
-.PHONY: all clean
+.PHONY: all clean doc valgrind
