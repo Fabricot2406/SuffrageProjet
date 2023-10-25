@@ -196,9 +196,9 @@ void libererMatrice(t_mat_char_star_dyn *matrice){
 }
 
 /*int main(int argc, char **argv){
-    t_mat_char_star_dyn *matrice = remplirMatrice("/root/ProjetA/SuffrageProjet/fich_tests/voteCondorcet.csv");
+    t_mat_char_star_dyn *matrice = remplirMatrice("/root/ProjetA/SuffrageProjet/FichiersTestLinux/voteCondorcet.csv");
     afficherMatrice(matrice);
     libererMatrice(matrice);
     return 0;
-}
-*/
+}*/
+

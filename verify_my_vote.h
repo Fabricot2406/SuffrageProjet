@@ -15,7 +15,7 @@
 
 #define TAILLE_NOM_MAX 50 ///< Taille maximale du nom.
 #define TAILLE_CLE_MAX 17 ///< Taille maximale de la clé.
-#define TAILLE_NOM_FICHIER_MAX 60 ///< Taille maximale du nom de fichier.
+#define TAILLE_NOM_FICHIER_MAX 100 ///< Taille maximale du nom de fichier.
 
 /**
  * @brief Convertit une clé hexadécimale en octets.

@@ -67,7 +67,7 @@ int main(){
     printf("Veuillez entrer votre nom complet (NOM DE FAMILLE Prenom) : ");
     scanf("%49[^\n]",nomComplet);
     printf("Veuillez entrer le chemin du fichier de vote (avec extension) : ");
-    scanf("%59s",nomFichier);
+    scanf("%99s",nomFichier);
     printf("Veuillez entrer la cle : ");
     scanf("%16s",cle);
     //on hash le nom et la cle
