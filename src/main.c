@@ -77,9 +77,11 @@ void verifierVote(char * fichier) {
     //on demande à l'utilisateur d'entrer ses informations
 
     printf("Veuillez entrer votre nom complet (NOM Prenom) : ");
-    scanf("%49s[^\n]",nomComplet);
+    while (getchar() != '\n');
+    scanf("%49[^\n]",nomComplet);
     printf("Veuillez entrer la cle : ");
-    scanf("%16s[^\n]",cle);
+    while (getchar() != '\n');
+    scanf("%16s",cle);
     
     //on hash le nom et la cle
     char *hash=hasherChaines(nomComplet,cle);
