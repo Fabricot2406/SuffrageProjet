@@ -22,6 +22,7 @@ OBJECTS = $(SOURCES:.c=.o)
 # Commandes pour générer la documentation
 DOXYGEN = doxygen
 DOXYFILE = Doxyfile
+DOCDIR = documentation
 
 # Commande pour Valgrind
 VALGRIND = valgrind
@@ -35,7 +36,7 @@ $(TARGET): $(OBJECTS)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 doc:
-	$(DOXYGEN) $(DOXYFILE)
+	$(DOXYGEN) ./$(DOCDIR)/$(DOXYFILE)
 
 valgrind:
 	$(VALGRIND) ./$(TARGET)

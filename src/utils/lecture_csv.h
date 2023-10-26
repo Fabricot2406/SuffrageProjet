@@ -1,3 +1,8 @@
+/**
+ * @file lecture_csv.h
+ * @brief Fichier de déclaration pour la lecture d'un fichier CSV.
+ */
+
 /** \\file */
 #ifndef LECTURE_CSV_H
 #define LECTURE_CSV_H
