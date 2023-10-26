@@ -24,9 +24,6 @@ DOXYGEN = doxygen
 DOXYFILE = Doxyfile
 DOCDIR = documentation
 
-# Commande pour Valgrind
-VALGRIND = valgrind
-
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
@@ -37,9 +34,6 @@ $(TARGET): $(OBJECTS)
 
 doc:
 	$(DOXYGEN) ./$(DOCDIR)/$(DOXYFILE)
-
-valgrind:
-	$(VALGRIND) ./$(TARGET)
 
 clean:
 	rm -f $(TARGET) $(OBJECTS)
