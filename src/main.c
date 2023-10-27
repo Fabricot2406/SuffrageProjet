@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
+#include <ctype.h>
 #include <string.h>
 #include "./utils/lecture_csv.h"
 #include "./verify/verify_my_vote.h"
@@ -69,6 +70,85 @@ void calculerVote(char *fichier, char *output, char *methode) {
     }
 }
 
+int estAlphabetique(const char *chaine) {
+    for (int i = 0; chaine[i] != '\0'; i++) {
+        if (!isalpha(chaine[i])) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int controlPrenom(char *prenom){
+    char *token = strtok(prenom, "-");
+
+    while (token != NULL) {
+        if (islower(token[0])) {
+            token[0] = toupper(token[0]);
+        }
+
+        if (!estAlphabetique(token)) {
+            printf("Le prénom ne doit contenir que des caractères alphabétiques : %s\n", token);
+            return -1;
+        }
+
+        token = strtok(NULL, "-");  // Passage au token suivant
+    }
+    return 0;
+}
+
+int controlNom(char *nom) {
+
+    char *token = strtok(nom, " ");
+    while (token != NULL) {
+        if (!estAlphabetique(token)) {
+            printf("Le nom de famille ne doit contenir que des caractères alphabétiques.\n");
+            printf("Format attendu : 'DUPONT' ou 'DUPONT AIGNAN\n");
+            return 1;
+        }
+
+        int estEnMajuscules = 1;
+
+        for (int i = 0; token[i] != '\0'; i++) {
+            if (!isupper(token[i])) {
+                estEnMajuscules = 0;
+                break;
+            }
+        }
+
+        if (!estEnMajuscules) {
+            for (int i = 0; token[i] != '\0'; i++) {
+                token[i] = toupper(token[i]);
+            }
+        }
+
+        token = strtok(NULL, " ");
+    }
+    return 0;
+}
+
+void presentationIdentifiant(void){
+    char nomComplet[TAILLE_NOM_MAX];
+    char cle[TAILLE_CLE_MAX];
+    char nom[TAILLE_NOM_MAX];
+    do
+    {
+        printf("Veuillez entrer votre nom de famille: ");
+        scanf("%s", nom);
+    } while (controlNom(&nom));
+
+    do
+    {
+        printf("Veuillez entrer votre prénom: ");
+        scanf("%s", nom);
+    } while (controlPrenom(&nom));
+    
+    fprintf()
+    printf("Veuillez entrer la cle : ");
+    while (getchar() != '\n');
+    scanf("%16s",cle);
+}
+
 // Fonction lançant la vérification du vote.
 void verifierVote(char * fichier) {
     char nomComplet[TAILLE_NOM_MAX];
@@ -92,16 +172,17 @@ void verifierVote(char * fichier) {
 }
 
 // Fonction s'occupant de la gestion du menu.
-void choisirMenu(char * fichier, char *output, char *methode) {
+void presentationMenu(char *fichier, char *output, char *methode) {
     int choix;
 
     do {
-        printf("Choississez une action à effectuer :\n");
+        printf("Choisissez une action à effectuer :\n");
         printf("1. Calculer les résultats de vote.\n");
         printf("2. Consulter ses votes.\n");
+        printf("Votre choix : ");
         scanf("%d", &choix);
 
-        switch(choix) {
+        switch (choix) {
             case 1:
                 calculerVote(fichier, output, methode);
                 break;
@@ -109,11 +190,12 @@ void choisirMenu(char * fichier, char *output, char *methode) {
                 verifierVote(fichier);
                 break;
             default:
-                printf("Veuillez choisir une action valide !\n");
+                printf("Veuillez choisir une action valide (1 ou 2) !\n");
                 break;
         }
-    } while (choix < 1 || choix > 2);
+    } while (choix != 1 && choix != 2);
 }
+
 
 // Début du programme principal.
 int main(int argc, char* argv[]) {
@@ -173,7 +255,7 @@ int main(int argc, char* argv[]) {
     }
 
     // PROGRAMME PRINCIPAL
-    choisirMenu(fichier, output, methode);
+    presentationMenu(fichier, output, methode);
 
     return 0;
 }
