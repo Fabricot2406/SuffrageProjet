@@ -33,7 +33,7 @@ $(TARGET): $(OBJECTS)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 doc:
-	$(DOXYGEN) ./$(DOCDIR)/$(DOXYFILE)
+	$(DOXYGEN) $(DOXYFILE)
 
 clean:
 	rm -f $(TARGET) $(OBJECTS)

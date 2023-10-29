@@ -5,8 +5,7 @@
 #include <string.h>
 #include "./utils/lecture_csv.h"
 #include "./verify/verify_my_vote.h"
-
-char errorMsg[] = "\tErreur : Chaîne non valide\n";
+#include "./utils/utils_main.h"
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -53,36 +52,6 @@ Methode liste_methodes[] = {
     {"all", methode_all},
 };
 
-/**
- * Vérifie l'existence d'un fichier en utilisant un chemin complet.
- *
- * @param nomFichier Le nom du fichier que l'on souhaite vérifier.
- * @param repertoire Le répertoire dans lequel le fichier est censé se trouver.
- * @param extension L'extension du fichier à chercher
- * @return 1 si le fichier existe, 0 s'il n'existe pas ou en cas d'erreur d'ouverture.
- */
-int fichierExiste(const char *nomFichier, const char *repertoire, const char *extension) {
-    // Créez un tableau pour le chemin complet (suffisamment grand pour le résultat)
-    char cheminComplet[1024];
-
-    // Copiez le répertoire dans le chemin complet
-    strcpy(cheminComplet, repertoire);
-
-    // Concaténez le nom du fichier au chemin complet
-    strcat(cheminComplet, "/");
-    strcat(cheminComplet, nomFichier);
-    strcat(cheminComplet, extension);
-
-    FILE *fichier = fopen(cheminComplet, "r");
-
-    if (fichier != NULL) {
-        fclose(fichier);
-        return 1; // Le fichier existe
-    } else {
-        return 0; // Le fichier n'existe pas
-    }
-}
-
 
 /**
  * Lance le calcul du vote en utilisant la méthode spécifiée par l'utilisateur.
@@ -107,77 +76,6 @@ void calculerVote(char *fichier, char *output, char *methode) {
         fprintf(stderr, "Liste des paramètres de l'option m : uni1, uni2, cm, cp, cs, jm, all.\n");
         exit(EXIT_FAILURE);
     }
-}
-
-/**
- * Vérifie si la chaîne de caractères 'cle' est constituée uniquement de caractères alphanumériques.
- * Si la chaîne contient d'autres caractères, affiche un message d'erreur et renvoie 1.
- *
- * @param cle La chaîne de caractères à vérifier.
- * @return 0 si 'cle' est valide, 1 en cas d'erreur.
- */
-int controlCle(char *cle){
-    for (int i = 0; cle[i] != '\0'; i++) {
-        if (!isalnum(cle[i]))
-        {
-            fprintf(stderr, "%s",errorMsg);
-            return 1;
-        }
-    }
-    return 0;
-}
-
-
-/**
- * Vérifie la validité d'une chaîne de caractères représentant un nom ou un prénom.
- * La fonction contrôle que la chaîne passée en paramètre est valide
- *
- * @param chaine La chaîne de caractères à vérifier.
- * @param prenom 1 si la chaine saisie est un prénom. 0 si c'est un nom de famille
- * @return 0 si 'chaine' est valide, 1 en cas d'erreur.
- */
-
-int controlNomPrenom(char *chaine, int prenom){
-    int nbSeparateurConsecutif = 0;
-
-    // Le premier caractère doit être une lettre.
-    if (!isalpha(chaine[0])) {
-        fprintf(stderr, "%s",errorMsg);
-        return 1;
-    }
-
-    for (int i = 0; chaine[i] != '\0'; i++) {
-        char caractCourant = chaine[i];
-        int isAlpha = isalpha(caractCourant);
-        if (caractCourant == ' ' || caractCourant == '-')
-        {
-            nbSeparateurConsecutif++;
-            // Il ne peut pas y avoir plus d'un espace ou d'un tiret consécutif
-            // Il ne peut pas y avoir un ' ' ou '-' à la fin de la chaîne
-            if (nbSeparateurConsecutif>1 || chaine[i+1]=='\0')
-            {
-                fprintf(stderr, "%s",errorMsg);
-                return 1;
-            }
-            
-        }else if (isAlpha)
-        {   
-            // Si la chaîne saisie est un prénom, la première lettre de chaque mot est convertie en majuscules.
-            // Si la chaîne est un nom, toutes les lettres sont converties en majuscules.
-            if (prenom)
-            {
-                if (!isalnum(chaine[i-1]))
-                    chaine[i] = toupper(chaine[i]);
-            }else   chaine[i] = toupper(chaine[i]);
-            nbSeparateurConsecutif = 0;
-        // Si la chaîne contient un caractère incorret : Erreur
-        }else
-        {
-            fprintf(stderr, "%s",errorMsg);
-            return 1;
-        }
-    }
-    return 0;
 }
 
 /**
@@ -310,20 +208,18 @@ int main(int argc, char* argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    char *fichier;
+    //char *fichier;
 
     // Récupération des paramètres des options.
     while ((option = getopt(argc, argv, "i:d:o:m:")) != -1) {
         switch (option) {
             case 'i':
                 input = optarg;
-                fichier = optarg;
                 break;
             case 'd':
                 duel = optarg;
-                fichier = optarg;
                 break;
-            case 'o':
+            case 'o': // Fichier de sortie pas encore implémenté
                 output = optarg;
                 // Ici on vérifiera si le fichier txt existe déjà, ou si il faut le créer.
                 break;
@@ -356,23 +252,17 @@ int main(int argc, char* argv[]) {
     }
     // Vérification de l'existance des fichiers
     char const *fichierCSV = argv[2];
-    char const repertoire[] = "tests/";
+    char const repertoire[] = "./tests/";
     char const extension_csv[] = ".csv";
-    if (!fichierExiste(fichierCSV,repertoire,extension_csv))
+    char cheminComplet[1024];
+    if (!fichierExiste(fichierCSV,repertoire,extension_csv,cheminComplet))
     {
         fprintf(stderr, "Le fichier CSV spécifié n'existe pas.\n");
         exit(EXIT_FAILURE);
     }
-    char const *fichierTXT = argv[4];
-    char const extension_txt[] = ".txt";
-    if (!fichierExiste(fichierTXT,repertoire,extension_txt))
-    {
-        fprintf(stderr, "Le fichier TXT spécifié n'existe pas.\n");
-        exit(EXIT_FAILURE);
-    }
     
     // Lancement du menu contextuel
-    presentationMenu(fichier, output, methode);
+    presentationMenu(cheminComplet, output, methode);
 
     return 0;
 }
