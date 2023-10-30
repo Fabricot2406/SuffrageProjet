@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remplirmatrice_29',['remplirMatrice',['../lecture__csv_8h.html#a6c9b1734238f1bae298c92a74fddd6ce',1,'lecture_csv.c']]]
+  ['liberermatrice_35',['libererMatrice',['../lecture__csv_8h.html#a8488b5df5e924c935d2d72ceb3fa43a5',1,'lecture_csv.c']]]
 ];

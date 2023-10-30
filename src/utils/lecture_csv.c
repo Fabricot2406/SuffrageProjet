@@ -144,7 +144,11 @@ void afficherLigne(t_mat_char_star_dyn *matrice, int ligne){
     }
     //On affiche chaque cellule de la ligne
     for (int j=0;j<matrice->nbColonnes;j++){
-        printf("%s:\t %s\n",matrice->tab[0][j],matrice->tab[ligne][j]);
+
+        int longueurChaine = strlen(matrice->tab[0][j]);
+        int largeurChamp = 40 - longueurChaine;
+
+        printf("%s: %*s \n",matrice->tab[0][j], largeurChamp, matrice->tab[ligne][j]);
     }
 }
 
@@ -194,11 +198,4 @@ void libererMatrice(t_mat_char_star_dyn *matrice){
     free(matrice);
     return ; 
 }
-
-/*int main(int argc, char **argv){
-    t_mat_char_star_dyn *matrice = remplirMatrice("/root/ProjetA/SuffrageProjet/FichiersTestLinux/voteCondorcet.csv");
-    afficherMatrice(matrice);
-    libererMatrice(matrice);
-    return 0;
-}*/
 

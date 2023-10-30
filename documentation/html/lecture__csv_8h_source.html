@@ -70,38 +70,39 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="lecture__csv_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef LECTURE_CSV_H</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define LECTURE_CSV_H</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="lecture__csv_8h.html#ae6ad0540d5109a0200f0dde5dc5b4bf6">   14</a></span>&#160;<span class="preprocessor">#define TAILLE_MAX 65</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__matriceVote.html">s_matriceVote</a> <a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a>; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lecture__csv_8h.html#a1d28fd32499311db8b038ac5865e4906">estMauvaiseExtension</a>(<span class="keywordtype">char</span> *fichier);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *<a class="code" href="lecture__csv_8h.html#a7f9fc98e71e04dbd3b5e7235f6a16593">creerMatrice</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *<a class="code" href="lecture__csv_8h.html#a6c9b1734238f1bae298c92a74fddd6ce">remplirMatrice</a>(<span class="keywordtype">char</span> *fichier);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lecture__csv_8h.html#ab3870986f2a02b47472673a60a546034">afficherMatrice</a>(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> afficherLigne(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice, <span class="keywordtype">int</span> ligne);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lecture__csv_8h.html#ad02000de4994f1db33d83778272d9d49">trouverElem</a>(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice, <span class="keywordtype">char</span> *elem, <span class="keywordtype">int</span> *ligne, <span class="keywordtype">int</span> *colonne);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lecture__csv_8h.html#a8488b5df5e924c935d2d72ceb3fa43a5">libererMatrice</a>(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LECTURE_CSV_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef LECTURE_CSV_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define LECTURE_CSV_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define TAILLE_MAX 65</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__matriceVote.html">s_matriceVote</a> <a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a>; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lecture__csv_8h.html#a1d28fd32499311db8b038ac5865e4906">estMauvaiseExtension</a>(<span class="keywordtype">char</span> *fichier);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *<a class="code" href="lecture__csv_8h.html#a7f9fc98e71e04dbd3b5e7235f6a16593">creerMatrice</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *<a class="code" href="lecture__csv_8h.html#a6c9b1734238f1bae298c92a74fddd6ce">remplirMatrice</a>(<span class="keywordtype">char</span> *fichier);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lecture__csv_8h.html#ab3870986f2a02b47472673a60a546034">afficherMatrice</a>(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lecture__csv_8h.html#aea07fe2ec3e8f5d7c71c80495aa3c61b">afficherLigne</a>(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice, <span class="keywordtype">int</span> ligne);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lecture__csv_8h.html#ad02000de4994f1db33d83778272d9d49">trouverElem</a>(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice, <span class="keywordtype">char</span> *elem, <span class="keywordtype">int</span> *ligne, <span class="keywordtype">int</span> *colonne);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lecture__csv_8h.html#a8488b5df5e924c935d2d72ceb3fa43a5">libererMatrice</a>(<a class="code" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LECTURE_CSV_H</span></div>
 <div class="ttc" id="alecture__csv_8h_html_a1d28fd32499311db8b038ac5865e4906"><div class="ttname"><a href="lecture__csv_8h.html#a1d28fd32499311db8b038ac5865e4906">estMauvaiseExtension</a></div><div class="ttdeci">int estMauvaiseExtension(char *fichier)</div><div class="ttdoc">Fonction qui confirme si le fichier est un &quot;.csv&quot;.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:38</div></div>
 <div class="ttc" id="alecture__csv_8h_html_a6c9b1734238f1bae298c92a74fddd6ce"><div class="ttname"><a href="lecture__csv_8h.html#a6c9b1734238f1bae298c92a74fddd6ce">remplirMatrice</a></div><div class="ttdeci">t_mat_char_star_dyn * remplirMatrice(char *fichier)</div><div class="ttdoc">Fonction pour remplir la matrice avec les données du fichier CSV.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:45</div></div>
 <div class="ttc" id="alecture__csv_8h_html_a7f9fc98e71e04dbd3b5e7235f6a16593"><div class="ttname"><a href="lecture__csv_8h.html#a7f9fc98e71e04dbd3b5e7235f6a16593">creerMatrice</a></div><div class="ttdeci">t_mat_char_star_dyn * creerMatrice()</div><div class="ttdoc">Fonction pour initialiser la matrice.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:13</div></div>
-<div class="ttc" id="alecture__csv_8h_html_a8488b5df5e924c935d2d72ceb3fa43a5"><div class="ttname"><a href="lecture__csv_8h.html#a8488b5df5e924c935d2d72ceb3fa43a5">libererMatrice</a></div><div class="ttdeci">void libererMatrice(t_mat_char_star_dyn *matrice)</div><div class="ttdoc">Fonction pour libérer la matrice.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:175</div></div>
+<div class="ttc" id="alecture__csv_8h_html_a8488b5df5e924c935d2d72ceb3fa43a5"><div class="ttname"><a href="lecture__csv_8h.html#a8488b5df5e924c935d2d72ceb3fa43a5">libererMatrice</a></div><div class="ttdeci">void libererMatrice(t_mat_char_star_dyn *matrice)</div><div class="ttdoc">Fonction pour libérer la matrice.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:179</div></div>
 <div class="ttc" id="alecture__csv_8h_html_ab3870986f2a02b47472673a60a546034"><div class="ttname"><a href="lecture__csv_8h.html#ab3870986f2a02b47472673a60a546034">afficherMatrice</a></div><div class="ttdeci">void afficherMatrice(t_mat_char_star_dyn *matrice)</div><div class="ttdoc">Fonction qui affiche la matrice.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:123</div></div>
-<div class="ttc" id="alecture__csv_8h_html_ad02000de4994f1db33d83778272d9d49"><div class="ttname"><a href="lecture__csv_8h.html#ad02000de4994f1db33d83778272d9d49">trouverElem</a></div><div class="ttdeci">int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne)</div><div class="ttdoc">Fonction qui trouve la ligne et la colonne d'un element dans un fichier CSV.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:151</div></div>
+<div class="ttc" id="alecture__csv_8h_html_ad02000de4994f1db33d83778272d9d49"><div class="ttname"><a href="lecture__csv_8h.html#ad02000de4994f1db33d83778272d9d49">trouverElem</a></div><div class="ttdeci">int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne)</div><div class="ttdoc">Fonction qui trouve la ligne et la colonne d'un element dans un fichier CSV.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:155</div></div>
+<div class="ttc" id="alecture__csv_8h_html_aea07fe2ec3e8f5d7c71c80495aa3c61b"><div class="ttname"><a href="lecture__csv_8h.html#aea07fe2ec3e8f5d7c71c80495aa3c61b">afficherLigne</a></div><div class="ttdeci">void afficherLigne(t_mat_char_star_dyn *matrice, int ligne)</div><div class="ttdoc">Fonction qui affiche une ligne du fichier CSV.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:139</div></div>
 <div class="ttc" id="astructs__matriceVote_html"><div class="ttname"><a href="structs__matriceVote.html">s_matriceVote</a></div><div class="ttdoc">Structure pour allocation matrice dynamique.</div><div class="ttdef"><b>Definition:</b> lecture_csv.c:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

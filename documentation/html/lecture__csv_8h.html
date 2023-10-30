@@ -83,28 +83,19 @@ $(function() {
 Include dependency graph for lecture_csv.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="lecture__csv_8h__incl.png" border="0" usemap="#asrc_2utils_2lecture__csv_8h" alt=""/></div>
-<map name="asrc_2utils_2lecture__csv_8h" id="asrc_2utils_2lecture__csv_8h">
-<area shape="rect" title="Fichier de déclaration pour la lecture d&#39;un fichier CSV." alt="" coords="51,5,213,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,72,107"/>
-<area shape="rect" title=" " alt="" coords="97,80,167,107"/>
-<area shape="rect" title=" " alt="" coords="191,80,262,107"/>
-</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="lecture__csv_8h__dep__incl.png" border="0" usemap="#asrc_2utils_2lecture__csv_8hdep" alt=""/></div>
-<map name="asrc_2utils_2lecture__csv_8hdep" id="asrc_2utils_2lecture__csv_8hdep">
-<area shape="rect" title="Fichier de déclaration pour la lecture d&#39;un fichier CSV." alt="" coords="5,5,168,32"/>
-<area shape="rect" href="verify__my__vote_8h.html" title="Fichier d&#39;en&#45;tête pour la vérification des votes." alt="" coords="11,80,162,121"/>
-</map>
 </div>
 </div>
 <p><a href="lecture__csv_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ae6ad0540d5109a0200f0dde5dc5b4bf6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lecture__csv_8h.html#ae6ad0540d5109a0200f0dde5dc5b4bf6">TAILLE_MAX</a>&#160;&#160;&#160;65</td></tr>
+<tr class="memitem:ae6ad0540d5109a0200f0dde5dc5b4bf6"><td class="memItemLeft" align="right" valign="top"><a id="ae6ad0540d5109a0200f0dde5dc5b4bf6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_MAX</b>&#160;&#160;&#160;65</td></tr>
 <tr class="separator:ae6ad0540d5109a0200f0dde5dc5b4bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -127,8 +118,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ab3870986f2a02b47472673a60a546034"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lecture__csv_8h.html#ab3870986f2a02b47472673a60a546034">afficherMatrice</a> (<a class="el" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice)</td></tr>
 <tr class="memdesc:ab3870986f2a02b47472673a60a546034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui affiche la matrice.  <a href="lecture__csv_8h.html#ab3870986f2a02b47472673a60a546034">More...</a><br /></td></tr>
 <tr class="separator:ab3870986f2a02b47472673a60a546034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea07fe2ec3e8f5d7c71c80495aa3c61b"><td class="memItemLeft" align="right" valign="top"><a id="aea07fe2ec3e8f5d7c71c80495aa3c61b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>afficherLigne</b> (<a class="el" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice, int ligne)</td></tr>
+<tr class="memitem:aea07fe2ec3e8f5d7c71c80495aa3c61b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lecture__csv_8h.html#aea07fe2ec3e8f5d7c71c80495aa3c61b">afficherLigne</a> (<a class="el" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice, int ligne)</td></tr>
+<tr class="memdesc:aea07fe2ec3e8f5d7c71c80495aa3c61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui affiche une ligne du fichier CSV.  <a href="lecture__csv_8h.html#aea07fe2ec3e8f5d7c71c80495aa3c61b">More...</a><br /></td></tr>
 <tr class="separator:aea07fe2ec3e8f5d7c71c80495aa3c61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad02000de4994f1db33d83778272d9d49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lecture__csv_8h.html#ad02000de4994f1db33d83778272d9d49">trouverElem</a> (<a class="el" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *matrice, char *elem, int *ligne, int *colonne)</td></tr>
 <tr class="memdesc:ad02000de4994f1db33d83778272d9d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui trouve la ligne et la colonne d'un element dans un fichier CSV.  <a href="lecture__csv_8h.html#ad02000de4994f1db33d83778272d9d49">More...</a><br /></td></tr>
@@ -139,23 +130,44 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>afficherLigne</b> (<a
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Fichier de déclaration pour la lecture d'un fichier CSV. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ae6ad0540d5109a0200f0dde5dc5b4bf6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6ad0540d5109a0200f0dde5dc5b4bf6">&#9670;&nbsp;</a></span>TAILLE_MAX</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aea07fe2ec3e8f5d7c71c80495aa3c61b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea07fe2ec3e8f5d7c71c80495aa3c61b">&#9670;&nbsp;</a></span>afficherLigne()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TAILLE_MAX&#160;&#160;&#160;65</td>
+          <td class="memname">void afficherLigne </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs__matriceVote.html">t_mat_char_star_dyn</a> *&#160;</td>
+          <td class="paramname"><em>matrice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ligne</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>\file </p>
+
+<p>Fonction qui affiche une ligne du fichier CSV. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrice</td><td>Pointeur vers la matrice à afficher. </td></tr>
+    <tr><td class="paramname">ligne</td><td>Ligne à afficher. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
 <a id="ab3870986f2a02b47472673a60a546034"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3870986f2a02b47472673a60a546034">&#9670;&nbsp;</a></span>afficherMatrice()</h2>
 

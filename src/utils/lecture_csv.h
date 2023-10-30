@@ -3,7 +3,6 @@
  * @brief Fichier de déclaration pour la lecture d'un fichier CSV.
  */
 
-/** \\file */
 #ifndef LECTURE_CSV_H
 #define LECTURE_CSV_H
 
@@ -50,7 +49,7 @@ t_mat_char_star_dyn *remplirMatrice(char *fichier);
 void afficherMatrice(t_mat_char_star_dyn *matrice);
 
 /**
- * @fn void affichierLigne(t_mat_char_star_dyn *matrice,int ligne)
+ * @fn void afficherLigne(t_mat_char_star_dyn *matrice,int ligne)
  * @brief Fonction qui affiche une ligne du fichier CSV.
  * @param matrice Pointeur vers la matrice à afficher.
  * @param ligne Ligne à afficher.

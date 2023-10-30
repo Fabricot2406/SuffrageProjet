@@ -18,14 +18,6 @@
 #define TAILLE_NOM_FICHIER_MAX 100 ///< Taille maximale du nom de fichier.
 
 /**
- * @brief Convertit une clé hexadécimale en octets.
- * 
- * @param cle La clé hexadécimale à convertir.
- * @return Un pointeur vers le tableau d'octets résultant.
- */
-unsigned char *hexaToByte(char *cle);
-
-/**
  * @brief Hash deux chaînes de caractères ensemble.
  * 
  * @param nom Le nom à hacher.
