@@ -3,6 +3,7 @@ TARGET = Suffrage
 
 # Répertoires source
 SRCDIR = src
+OBJDIR = obj
 UTILSDIR = $(SRCDIR)/utils
 METHODSDIR = $(SRCDIR)/methods
 VERIFYDIR = $(SRCDIR)/verify
@@ -17,7 +18,7 @@ LDFLAGS = -lm
 
 # Liste de fichiers source
 SOURCES = $(wildcard $(SRCDIR)/*.c) $(wildcard $(UTILSDIR)/*.c) $(wildcard $(VERIFYDIR)/*.c) $(wildcard $(METHODSDIR)/*.c)
-OBJECTS = $(SOURCES:.c=.o)
+OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES))
 
 # Commandes pour générer la documentation
 DOXYGEN = doxygen
@@ -29,14 +30,16 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
 
-%.o: %.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(dir $@)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 doc:
 	$(DOXYGEN) $(DOXYFILE)
 
 clean:
-	rm -f $(TARGET) $(OBJECTS)
+	rm -f $(TARGET)
 	rm -rf $(DOCDIR)
+	rm -rf $(OBJDIR)
 
 .PHONY: all clean doc valgrind
