@@ -30,13 +30,6 @@ typedef struct t_mat_int_dyn{
  */
 t_mat_int_dyn* creer_matrice(int rows, int col);
 
-/**
- * @brief Incrémente la valeur d'une cellule spécifiée dans la matrice.
- * @param matrice Un pointeur vers la matrice dynamique.
- * @param i L'indice de la ligne de la cellule à incrémenter.
- * @param j L'indice de la colonne de la cellule à incrémenter.
- */
-void incrementer_matrice(t_mat_int_dyn* matrice, int i, int j);
 
 /**
  * @brief Détruit une matrice dynamique d'entiers, libérant la mémoire allouée.

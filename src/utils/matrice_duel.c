@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <stdbool.h>
 #include <string.h>
 #include "matrice_duel.h"
+
+//******************* MATRICE *********************//
 
 typedef struct t_mat_int_dyn{
     int** mat;
@@ -39,10 +43,10 @@ t_mat_int_dyn *creer_matrice(int rows,int col){
     return matrice;
 }
 
-void incrementer_matrice(t_mat_int_dyn *matrice, int i, int j){
-    assert(i >= 0 && i < matrice->rows && j >= 0 && j < matrice->cols);
-    assert(i != j);
-    matrice->mat[i][j]++;
+// Fonction pour positionner un entier à une position donnée
+void setPosition(t_mat_int_dyn* matrix, int value, int col, int row) {
+    assert(col >= 0 && col < matrix->cols && row >= 0 && row < matrix->rows);
+    matrix->mat[row][col] = value;
 }
 
 void detruire_matrice(t_mat_int_dyn *matrice){
@@ -52,6 +56,82 @@ void detruire_matrice(t_mat_int_dyn *matrice){
     free(matrice->mat);
     free(matrice);
 }
+
+//******************* ITERATEUR *********************//
+
+// Direction de l'itérateur
+typedef enum {
+    FORWARD,
+    BACKWARD
+} IteratorDirection;
+
+// Type de parcours (LIGNE ou COLONNE)
+typedef enum {
+    ROW,
+    COLUMN,
+    DIAGONAL
+} TraverseType;
+
+// Votre structure d'itérateur
+typedef struct {
+    t_mat_int_dyn* matrix;
+    int current_row;
+    int current_col;
+    IteratorDirection direction;
+    TraverseType traverse_type;
+} MatrixIterator;
+
+// Fonction pour initialiser un itérateur
+MatrixIterator *createMatrixIterator(t_mat_int_dyn* matrix, IteratorDirection direction, TraverseType traverse_type) {
+    MatrixIterator *iterator = malloc(sizeof(MatrixIterator));
+    iterator->matrix = matrix;
+    iterator->direction = direction;
+    iterator->traverse_type = traverse_type;
+
+    if (direction == FORWARD) {
+        iterator->current_row = 0;
+        iterator->current_col = 0;
+    } else {
+        iterator->current_row = matrix->rows - 1;
+        iterator->current_col = matrix->cols - 1;
+    }
+
+    return iterator;
+}
+
+// Fonction pour vérifier si l'itérateur a encore des éléments
+bool hasMoreElements(const MatrixIterator* iterator) {
+    if (iterator->direction == FORWARD) {
+        return iterator->current_row < iterator->matrix->rows;
+    } else {
+        return iterator->current_row >= 0;
+    }
+}
+
+// Fonction pour obtenir la valeur courante de la matrice
+int getCurrentValue(const MatrixIterator* iterator) {
+    return iterator->matrix->mat[iterator->current_row][iterator->current_col];
+}
+
+// Fonction pour déplacer l'itérateur vers l'élément suivant
+void moveToNextElement(MatrixIterator* iterator) {
+    if (iterator->direction == FORWARD) {
+        iterator->current_col++;
+        if (iterator->current_col >= iterator->matrix->cols) {
+            iterator->current_col = 0;
+            iterator->current_row++;
+        }
+    } else {
+        iterator->current_col--;
+        if (iterator->current_col < 0) {
+            iterator->current_col = iterator->matrix->cols - 1;
+            iterator->current_row--;
+        }
+    }
+}
+
+
+//******************* UTILS *********************//
 
 void map_matrice(t_mat_int_dyn *matrice, void (*f)(int)){
     for(int i = 0; i < matrice->rows; i++){
