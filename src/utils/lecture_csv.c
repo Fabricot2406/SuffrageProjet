@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "lecture_csv.h"
 
 //contiendra infos fichier CSV
-struct s_matriceVote{
+typedef struct s_matriceVote{
     int nbLignes;
     int nbColonnes;
     char ***tab;
-};
+}t_mat_char_star_dyn;
 
 t_mat_char_star_dyn *creerMatrice (){
     //initialisation de la structure
@@ -33,13 +34,6 @@ t_mat_char_star_dyn *creerMatrice (){
         return NULL;
     }
     return matrice;   
-}
-
-int estMauvaiseExtension(char *fichier){
-    //pointe sur la derniere occurence du "." dans le nom de fichier
-    char *extension = strrchr(fichier,'.');
-    //retourne 0 si l'extension est ".csv"
-    return extension!=NULL && strcmp(extension,".csv");
 }
 
 t_mat_char_star_dyn *remplirMatrice(char *fichier){
@@ -120,38 +114,6 @@ t_mat_char_star_dyn *remplirMatrice(char *fichier){
     return matrice;
 }
 
-void afficherMatrice(t_mat_char_star_dyn *matrice){
-    //Si la matrice est nulle on renvoie une erreur
-    if (matrice==NULL){
-        fprintf(stderr,"Matice non valide.\n");
-        return;
-    }
-    for (int i=0;i<matrice->nbLignes;i++){
-        for (int j=0;j<matrice->nbColonnes;j++){
-            //On affiche chaque cellule de la matrice
-            printf("%s\t",matrice->tab[i][j]);
-        }
-        //On passe à la ligne suivante
-        printf("\n");
-    }
-}
-
-void afficherLigne(t_mat_char_star_dyn *matrice, int ligne){
-    //Si la matrice est nulle on renvoie une erreur
-    if (matrice==NULL){
-        fprintf(stderr,"Matice non valide.\n");
-        return;
-    }
-    //On affiche chaque cellule de la ligne
-    for (int j=0;j<matrice->nbColonnes;j++){
-
-        int longueurChaine = strlen(matrice->tab[0][j]);
-        int largeurChamp = 40 - longueurChaine;
-
-        printf("%s: %*s \n",matrice->tab[0][j], largeurChamp, matrice->tab[ligne][j]);
-    }
-}
-
 int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne){
     //Si la matrice est nulle on renvoie une erreur
     if (matrice==NULL){
@@ -199,3 +161,160 @@ void libererMatrice(t_mat_char_star_dyn *matrice){
     return ; 
 }
 
+/******************* ITERATEUR *********************/
+
+typedef enum {
+    ROW,
+    COLUMN
+} TraverseType;
+
+typedef enum {
+    FORWARD,
+    BACKWARD
+} IteratorDirection;
+
+typedef struct {
+    t_mat_char_star_dyn *matrix;
+    int current_row;
+    int current_col;
+    TraverseType traverse_type;
+    IteratorDirection direction;
+} MatrixIterator;
+
+// Fonction pour créer un itérateur
+MatrixIterator createMatrixIterator(t_mat_char_star_dyn *matrix, TraverseType traverse_type, IteratorDirection direction) {
+    MatrixIterator iterator;
+    iterator.matrix = matrix;
+    iterator.traverse_type = traverse_type;
+    iterator.direction = direction;
+    iterator.current_row = 0;
+    iterator.current_col = 0;
+    return iterator;
+}
+
+// Fonction pour récupérer la valeur courante de l'itérateur
+char *getCurrentValue(const MatrixIterator *iterator) {
+    return iterator->matrix->tab[iterator->current_row][iterator->current_col];
+}
+
+// Fonction pour savoir si l'itérateur a encore des éléments à parcourir
+bool hasMoreElements(const MatrixIterator *iterator) {
+    if (iterator->traverse_type == ROW) {
+        if (iterator->direction == FORWARD) {
+            return iterator->current_row < iterator->matrix->nbLignes;
+        } else { // direction == BACKWARD
+            return iterator->current_row < iterator->matrix->nbLignes - 1 || iterator->current_col > 0;
+        }
+    } else { // traverse_type == COLUMN
+        if (iterator->direction == FORWARD) {
+            return iterator->current_col < iterator->matrix->nbColonnes;
+        } else { // direction == BACKWARD
+            return iterator->current_col < iterator->matrix->nbColonnes - 1 || iterator->current_row > 0;
+        }
+    }
+}
+
+// Fonction pour passer à l'élément suivant
+void moveToNextElement(MatrixIterator *iterator) {
+    switch (iterator->traverse_type) {
+        case ROW:
+            switch (iterator->direction) {
+                case FORWARD:
+                    iterator->current_col++;
+                    if (iterator->current_col >= iterator->matrix->nbColonnes) {
+                        iterator->current_col = 0;
+                        iterator->current_row++;
+                    }break;
+                case BACKWARD:
+                    iterator->current_col--;
+                    if (iterator->current_col < 0) {
+                        iterator->current_col = iterator->matrix->nbColonnes - 1;
+                        iterator->current_row++;
+                    }break;
+            }break;
+        case COLUMN:
+            switch (iterator->direction) {
+                case FORWARD:
+                    iterator->current_row++;
+                    if (iterator->current_row >= iterator->matrix->nbLignes) {
+                        iterator->current_row = 0;
+                        iterator->current_col++;
+                    }break;
+                case BACKWARD:
+                    iterator->current_row--;
+                    if (iterator->current_row < 0) {
+                        iterator->current_row = iterator->matrix->nbLignes - 1;
+                        iterator->current_col++;
+                    }break;
+            }break;
+    }
+}
+
+
+// Fonction pour initialiser un itérateur à une position donnée
+void setPosition(MatrixIterator *iterator, int position, int default_value) {
+    switch (iterator->traverse_type) {
+        case ROW:
+            assert(position >= 0 && position < iterator->matrix->nbLignes);
+            iterator->current_row = position;
+            if (iterator->direction == BACKWARD) {
+                iterator->current_col = iterator->matrix->nbColonnes - 1;
+            } else {
+                assert(default_value >= 0 && default_value < iterator->matrix->nbColonnes);
+                iterator->current_col = default_value;
+            }
+            break;
+        case COLUMN:
+            assert(position >= 0 && position < iterator->matrix->nbColonnes);
+            iterator->current_col = position;
+            if (iterator->direction == BACKWARD) {
+                iterator->current_row = iterator->matrix->nbLignes - 1;
+            } else {
+                assert(default_value >= 0 && default_value < iterator->matrix->nbLignes);
+                iterator->current_row = default_value;
+            }
+            break;
+    }
+}
+
+
+/******************* UTILS *********************/
+
+void afficherMatrice(t_mat_char_star_dyn *matrice){
+    //Si la matrice est nulle on renvoie une erreur
+    if (matrice==NULL){
+        fprintf(stderr,"Matice non valide.\n");
+        return;
+    }
+    for (int i=0;i<matrice->nbLignes;i++){
+        for (int j=0;j<matrice->nbColonnes;j++){
+            //On affiche chaque cellule de la matrice
+            printf("%s\t",matrice->tab[i][j]);
+        }
+        //On passe à la ligne suivante
+        printf("\n");
+    }
+}
+
+void afficherLigne(t_mat_char_star_dyn *matrice, int ligne){
+    //Si la matrice est nulle on renvoie une erreur
+    if (matrice==NULL){
+        fprintf(stderr,"Matice non valide.\n");
+        return;
+    }
+    //On affiche chaque cellule de la ligne
+    for (int j=0;j<matrice->nbColonnes;j++){
+
+        int longueurChaine = strlen(matrice->tab[0][j]);
+        int largeurChamp = 40 - longueurChaine;
+
+        printf("%s: %*s \n",matrice->tab[0][j], largeurChamp, matrice->tab[ligne][j]);
+    }
+}
+
+int estMauvaiseExtension(char *fichier){
+    //pointe sur la derniere occurence du "." dans le nom de fichier
+    char *extension = strrchr(fichier,'.');
+    //retourne 0 si l'extension est ".csv"
+    return extension!=NULL && strcmp(extension,".csv");
+}
