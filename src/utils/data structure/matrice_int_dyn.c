@@ -3,9 +3,9 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <string.h>
-#include "matrice_duel.h"
+#include "matrice_int_dyn.h"
 
-//******************* MATRICE *********************//
+/******************* MATRICE *********************/
 
 typedef struct t_mat_int_dyn{
     int** mat;
@@ -29,21 +29,11 @@ t_mat_int_dyn *creer_matrice(int rows,int col){
             exit(EXIT_FAILURE);
         }
     }
-
-    // Initialisation de la diagonale à 0
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < col; j++){
-            if(i == j){
-                matrice->mat[i][j] = 0;
-            }
-        }
-    }
     matrice->rows = rows;
     matrice->cols = col;
     return matrice;
 }
 
-// Fonction pour positionner un entier à une position donnée
 void setPosition(t_mat_int_dyn* matrix, int value, int col, int row) {
     assert(col >= 0 && col < matrix->cols && row >= 0 && row < matrix->rows);
     matrix->mat[row][col] = value;
@@ -57,31 +47,28 @@ void detruire_matrice(t_mat_int_dyn *matrice){
     free(matrice);
 }
 
-//******************* ITERATEUR *********************//
+/******************* ITERATEUR *********************/
 
-// Direction de l'itérateur
 typedef enum {
     FORWARD,
     BACKWARD
 } IteratorDirection;
 
-// Type de parcours (LIGNE ou COLONNE)
 typedef enum {
     ROW,
     COLUMN,
     DIAGONAL
 } TraverseType;
 
-// Votre structure d'itérateur
 typedef struct {
-    t_mat_int_dyn* matrix;
-    int current_row;
-    int current_col;
-    IteratorDirection direction;
-    TraverseType traverse_type;
+    t_mat_int_dyn* matrix; // Pointeur vers la matrice
+    int current_row; // Ligne courante
+    int current_col; // Colonne courante
+    IteratorDirection direction; // Direction de l'itérateur
+    TraverseType traverse_type; // Type de parcours
 } MatrixIterator;
 
-// Fonction pour initialiser un itérateur
+
 MatrixIterator *createMatrixIterator(t_mat_int_dyn* matrix, IteratorDirection direction, TraverseType traverse_type) {
     MatrixIterator *iterator = malloc(sizeof(MatrixIterator));
     iterator->matrix = matrix;

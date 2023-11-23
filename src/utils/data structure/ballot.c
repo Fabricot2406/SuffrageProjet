@@ -1,11 +1,4 @@
 /*
-    Fichier contenant les fonctions permettant de gérer les bulletins de vote
-*/
-
-
-
-
-/*
 Structure list_char définie en amont
 
 Struct ballot {

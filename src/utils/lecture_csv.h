@@ -1,6 +1,7 @@
 /**
  * @file lecture_csv.h
  * @brief Fichier de déclaration pour la lecture d'un fichier CSV.
+ * @version 1.0
  */
 
 #ifndef LECTURE_CSV_H
@@ -9,7 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../data structure/s_matriceVote.h"
+#include <stdbool.h>
+#include "../data structure/matrice_string_dyn.h"
 
 #define TAILLE_MAX 65
 

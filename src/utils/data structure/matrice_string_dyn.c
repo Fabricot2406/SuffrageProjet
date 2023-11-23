@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <assert.h>
 #include <stdbool.h>
-#include "s_matriceVote.h"
+#include <string.h>
+#include "matrice_string_dyn.h"
 
-//contiendra infos fichier CSV
+#define TAILLE_MAX 65
+
 typedef struct s_matriceVote{
     int nbLignes;
     int nbColonnes;
@@ -96,11 +98,11 @@ typedef enum {
 } IteratorDirection;
 
 typedef struct {
-    t_mat_char_star_dyn *matrix;
-    int current_row;
-    int current_col;
-    TraverseType traverse_type;
-    IteratorDirection direction;
+    t_mat_char_star_dyn *matrix; // Matrice sur laquelle on itère
+    int current_row; // Ligne courante
+    int current_col; // Colonne courante
+    TraverseType traverse_type; // Type de parcours
+    IteratorDirection direction; // Direction de l'itérateur
 } MatrixIterator;
 
 
@@ -140,10 +142,11 @@ bool hasMoreElements(const MatrixIterator *iterator) {
 
 void moveToNextElement(MatrixIterator *iterator) {
     switch (iterator->traverse_type) {
+        // CAS DU PARCOURS EN LIGNE
         case ROW:
             switch (iterator->direction) {
+                // CAS DU PARCOURS EN LIGNE VERS L'AVANT
                 case FORWARD:
-                    // On incrémente la colonne courante
                     iterator->current_col++;
                     // Si on est à la dernière colonne, on passe à la ligne suivante
                     if (iterator->current_col >= iterator->matrix->nbColonnes) {
@@ -152,8 +155,8 @@ void moveToNextElement(MatrixIterator *iterator) {
                             iterator->current_row++;
                         }
                     }break;
+                // CAS DU PARCOURS EN LIGNE VERS L'ARRIERE
                 case BACKWARD:
-                    // On décrémente la colonne courante
                     iterator->current_col--;
                     // Si on est à la première colonne, on passe à la ligne précédente
                     if (iterator->current_col < 0) {
@@ -162,10 +165,11 @@ void moveToNextElement(MatrixIterator *iterator) {
                             iterator->current_row--;
                     }break;
             }break;
+        // CAS DU PARCOURS EN COLONNE
         case COLUMN:
             switch (iterator->direction) {
+                // CAS DU PARCOURS EN COLONNE VERS L'AVANT
                 case FORWARD:
-                    // On incrémente la ligne courante
                     iterator->current_row++;
                     // Si on est à la dernière ligne, on passe à la colonne suivante
                     if (iterator->current_row >= iterator->matrix->nbLignes) {
@@ -173,8 +177,8 @@ void moveToNextElement(MatrixIterator *iterator) {
                         if (iterator->current_col < iterator->matrix->nbColonnes - 1)
                             iterator->current_col++;
                     }break;
+                // CAS DU PARCOURS EN COLONNE VERS L'ARRIERE
                 case BACKWARD:
-                    // On décrémente la ligne courante
                     iterator->current_row--;
                     // Si on est à la première ligne, on passe à la colonne précédente
                     if (iterator->current_row < 0) {
@@ -186,14 +190,14 @@ void moveToNextElement(MatrixIterator *iterator) {
     }
 }
 
-
-// Fonction pour initialiser un itérateur à une position donnée
 void setPosition(MatrixIterator *iterator, int position) {
     switch (iterator->traverse_type) {
+        // CAS DU PARCOURS EN LIGNE
         case ROW:
             assert(position >= 0 && position < iterator->matrix->nbLignes);
             iterator->current_row = position;
             break;
+        // CAS DU PARCOURS EN COLONNE
         case COLUMN:
             assert(position >= 0 && position < iterator->matrix->nbColonnes);
             iterator->current_col = position;

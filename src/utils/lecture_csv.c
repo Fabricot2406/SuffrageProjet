@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../data structure/s_matriceVote.h"
+#include "../data structure/matrice_string_dyn.h"
+#include "lecture_csv.h"
 
 t_mat_char_star_dyn *remplirMatrice(char *fichier){
     //si mauvaise extension on retourne matrice vide

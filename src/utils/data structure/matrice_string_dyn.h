@@ -1,17 +1,19 @@
 /**
  * @file s_matriceVote.h
  * @author Marco, Anthony
- * @brief Fichier de déclaration pour la lecture d'un fichier CSV.
+ * @brief Structure de donnée correspondant à la matrice des votes issue d'un fichier CSV.
+ * @version 1.0
+ * @date 2021-11-23
  */
 
-#ifndef S_MATRICE_VOTE_H
-#define S_MATRICE_VOTE_H
+#ifndef __MATRICE_STRING_DYN_H__
+#define __MATRICE_STRING_DYN_H__
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <stdbool.h>
 #include <string.h>
-
-#define TAILLE_MAX 65
 
 /**
  * @struct s_matriceVote
@@ -158,4 +160,4 @@ void afficherMatrice(t_mat_char_star_dyn *matrice);
  */
 void afficherLigne(t_mat_char_star_dyn *matrice, int ligne);
 
-#endif // LECTURE_CSV_H
+#endif // __MATRICE_STRING_DYN_H__
