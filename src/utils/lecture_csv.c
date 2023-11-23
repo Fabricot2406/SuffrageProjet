@@ -183,17 +183,17 @@ typedef struct {
 
 // Fonction pour créer un itérateur
 MatrixIterator createMatrixIterator(t_mat_char_star_dyn *matrix, TraverseType traverse_type, IteratorDirection direction) {
-    MatrixIterator iterator;
-    iterator.matrix = matrix;
-    iterator.traverse_type = traverse_type;
-    iterator.direction = direction;
-    iterator.current_row = 0;
-    iterator.current_col = 0;
-    return iterator;
+    MatrixIterator *iterator = malloc(sizeof(iterator));
+    iterator->matrix = matrix;
+    iterator->traverse_type = traverse_type;
+    iterator->direction = direction;
+    iterator->current_row = 0;
+    iterator->current_col = 0;
+    return *iterator;
 }
 
 // Fonction pour récupérer la valeur courante de l'itérateur
-char *getCurrentValue(const MatrixIterator *iterator) {
+char *currentValue(const MatrixIterator *iterator) {
     return iterator->matrix->tab[iterator->current_row][iterator->current_col];
 }
 
@@ -201,15 +201,15 @@ char *getCurrentValue(const MatrixIterator *iterator) {
 bool hasMoreElements(const MatrixIterator *iterator) {
     if (iterator->traverse_type == ROW) {
         if (iterator->direction == FORWARD) {
-            return iterator->current_row < iterator->matrix->nbLignes;
+            return iterator->current_row < iterator->matrix->nbLignes - 1;
         } else { // direction == BACKWARD
-            return iterator->current_row < iterator->matrix->nbLignes - 1 || iterator->current_col > 0;
+            return iterator->current_row >= 1;
         }
     } else { // traverse_type == COLUMN
         if (iterator->direction == FORWARD) {
-            return iterator->current_col < iterator->matrix->nbColonnes;
+            return iterator->current_col < iterator->matrix->nbColonnes - 1;
         } else { // direction == BACKWARD
-            return iterator->current_col < iterator->matrix->nbColonnes - 1 || iterator->current_row > 0;
+            return iterator->current_col >= 1;
         }
     }
 }
@@ -229,7 +229,7 @@ void moveToNextElement(MatrixIterator *iterator) {
                     iterator->current_col--;
                     if (iterator->current_col < 0) {
                         iterator->current_col = iterator->matrix->nbColonnes - 1;
-                        iterator->current_row++;
+                        iterator->current_row--;
                     }break;
             }break;
         case COLUMN:
@@ -244,7 +244,7 @@ void moveToNextElement(MatrixIterator *iterator) {
                     iterator->current_row--;
                     if (iterator->current_row < 0) {
                         iterator->current_row = iterator->matrix->nbLignes - 1;
-                        iterator->current_col++;
+                        iterator->current_col--;
                     }break;
             }break;
     }
@@ -275,6 +275,10 @@ void setPosition(MatrixIterator *iterator, int position, int default_value) {
             }
             break;
     }
+}
+
+void libererIterateur(MatrixIterator *iterator) {
+    free(iterator);
 }
 
 
