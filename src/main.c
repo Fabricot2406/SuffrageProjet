@@ -197,14 +197,13 @@ int main(void) {
     char *fichier = "./tests/voteCondorcet.csv";
     t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
     ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
-    remplir_liste_candidats(b, matrice);
-    remplir_classement(b, matrice);
+    remplir_ballot(b, matrice);
     afficher_matrice(b->classement,-1);
     printf("\n");
     for (int i = 0; i < b->nb_votants; i++){
         printf("%s\n", b->candidats_nom[fav_candidat(b,i)]);
     }
+
     detruire_ballot(b);
-    libererMatrice(matrice);
     return 0;
 }

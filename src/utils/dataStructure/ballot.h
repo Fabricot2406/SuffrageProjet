@@ -51,9 +51,9 @@ typedef struct ballot_s{
 } ballot;
 
 /**
- * @brief Crée un nouveau ballot vide.
- * @param nb_candidats Nombre de candidats.
- * @param nb_votants Nombre de votants.
+ * @brief Crée un nouveau ballot vide. Attention, être cohérent avec les paramètres.
+ * @param nb_candidats Nombre de candidats : nombre de colonnes CSV - 4
+ * @param nb_votants Nombre de votants : nombre de lignes CSV - 1
  * @return Pointeur vers le nouveau ballot.
  */
 ballot *creer_ballot(int nb_candidats, int nb_votants);
@@ -71,22 +71,6 @@ ballot *creer_ballot(int nb_candidats, int nb_votants);
  */
 ballot *remplir_ballot(ballot *b, t_mat_char_star_dyn *classement_csv);
 
-/**
- * @brief Remplit la liste des noms de candidats à partir du fichier csv
- * @param b Le ballot à remplir
- * @param classement_csv La matrice de classement à partir du fichier csv
- * @return ballot* Le ballot rempli
- */
-ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv);
-
-/**
- * @brief Remplit la matrice de classement à partir du fichier csv
- * @param b Le ballot à remplir
- * @param classement_csv La matrice de classement à partir du fichier csv
- * @return ballot* Le ballot rempli
- */
-ballot *remplir_classement(ballot *b, t_mat_char_star_dyn *classement_csv);
-
 
 /**
  * @brief Détruit un ballot, libérant la mémoire allouée.
@@ -100,8 +84,8 @@ void detruire_ballot(ballot *b);
  * @brief Affiche le premier candidat favori d'un votant.
  * 
  * @param b 
- * @param votant correspond à l'indice du votant dans la matrice de classement : numéro de ligne -1
- * @return int l'indice du candidat favori dans la liste des candidats
+ * @param votant correspond à l'indice du votant dans la matrice de classement : (numéro de ligne - 1)
+ * @return int l'indice du candidat favori dans la liste des noms des candidats
  */
 int fav_candidat(ballot *b,int num_votant);
 
