@@ -43,7 +43,12 @@
  * @brief Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur.
  * @details Utilisation d'une matrice dynamique contenant des entiens non signés
  */
-typedef struct ballot_s ballot;
+typedef struct ballot_s{
+    char **candidats_nom; // Liste des noms des candidats
+    int nb_candidats; // Nombre de candidats
+    int nb_votants; // Nombre de votants
+    t_mat_int_dyn *classement; // Matrice contenant le classement de chaque votant
+} ballot;
 
 /**
  * @brief Crée un nouveau ballot vide.
