@@ -14,12 +14,17 @@
  *       alors classement[4] = 4 -> E
  *       alors classement[5] = 0 -> A
  * 
- *  -> Structure de données pas adaptée pour Condorcet et Majo.
+ *  -> Structure de données non adaptée pour Condorcet et Majo.
  *  -> Non prise en compte des préférences égales.
  * 
+ *  -> Remplacement à terme par une liste d'ensembles de candidats :
+ *      Exemple : {{C, F} , {B, D, E, A} , {F}}
+ *                -> {C, F} préféré à {B, D, E, A} préféré à {F} 
+ *                -> (C = F) > (B = D = E = A) > F
+ * 
  * @details Utilisation d'une matrice dynamique contenant des entiens non signés
- * @version 1.0
- * @date 2021-11-23
+ * @version beta
+ * @date 2021-11-24
  */
 
 #ifndef __BALLOT_H__
