@@ -97,7 +97,7 @@ typedef enum {
     BACKWARD
 } IteratorDirection;
 
-typedef struct {
+typedef struct MatrixIterator{
     t_mat_char_star_dyn *matrix; // Matrice sur laquelle on itère
     int current_row; // Ligne courante
     int current_col; // Colonne courante
@@ -195,12 +195,12 @@ void setPosition(MatrixIterator *iterator, int position) {
         // CAS DU PARCOURS EN LIGNE
         case ROW:
             assert(position >= 0 && position < iterator->matrix->nbLignes);
-            iterator->current_row = position;
+            iterator->current_col = position;
             break;
         // CAS DU PARCOURS EN COLONNE
         case COLUMN:
             assert(position >= 0 && position < iterator->matrix->nbColonnes);
-            iterator->current_col = position;
+            iterator->current_row = position;
             break;
     }
 }

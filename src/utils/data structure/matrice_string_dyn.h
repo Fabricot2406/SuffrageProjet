@@ -80,19 +80,13 @@ typedef enum {
  * @param traverse_type Type de parcours (ligne ou colonne).
  * @param direction Direction du parcours (avant ou arrière).
 */
-typedef struct {
+typedef struct MatrixIterator{
     t_mat_char_star_dyn *matrix;
     int current_row;
     int current_col;
     TraverseType traverse_type;
     IteratorDirection direction;
 } MatrixIterator;
-
-/**
- * @struct s_iterateur
- * @brief Structure pour l'itérateur.
- */
-typedef struct s_iterateur t_iterateur;
 
 /**
  * @fn MatrixIterator createMatrixIterator(t_mat_char_star_dyn *matrix, TraverseType traverse_type, IteratorDirection direction)
@@ -128,12 +122,12 @@ bool hasMoreElements(const MatrixIterator *iterator);
 void moveToNextElement(MatrixIterator *iterator);
 
 /**
- * @fn void setPosition(MatrixIterator *iterator, int position, int default_value)
+ * @fn void setPosition(MatrixIterator *iterator, int position)
  * @brief Fonction pour se positionner à une position donnée.
  * @param iterator Pointeur vers l'itérateur.
  * @param position Position à laquelle se positionner.
 */
-void setPosition(MatrixIterator *iterator, int position);
+void setPosition(MatrixIterator *iterator, int col_position);
 
 /**
  * @fn void libererIterateur(MatrixIterator *iterator)

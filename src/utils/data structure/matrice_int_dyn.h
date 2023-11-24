@@ -15,7 +15,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-
 /**
  * @struct t_mat_int_dyn
  * @brief Structure représentant une matrice dynamique d'entiers.
