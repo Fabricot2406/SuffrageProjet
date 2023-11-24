@@ -6,7 +6,10 @@
 #include "./utils/lecture_csv.h"
 #include "./verify/verify_my_vote.h"
 #include "./utils/utils_main.h"
-#include "./utils/candidat.h"
+#include "./utils/dataStructure/arc.h"
+#include "./utils/dataStructure/ballot.h"
+#include "./utils/dataStructure/matrice_int_dyn.h"
+#include "./utils/dataStructure/matrice_string_dyn.h"
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -189,13 +192,19 @@ void presentationMenu(char *fichier, char *output, char *methode) {
     } while (choix != 1 && choix != 2);
 }
 
-
+// Main de test
 int main(void) {
-
-    candidat *candidat_sujet = creer_candidat("TOTO");
-    candidat *candidat_adverse = creer_candidat("issou");
-    ajouter_association_duel(candidat_sujet,candidat_adverse);
-    supprimer_candidat(candidat_sujet);
-    supprimer_candidat(candidat_adverse);
+    char *fichier = "./tests/voteCondorcet.csv";
+    t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
+    ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
+    remplir_liste_candidats(b, matrice);
+    remplir_classement(b, matrice);
+    afficher_matrice(b->classement,-1);
+    printf("\n");
+    for (int i = 0; i < b->nb_votants; i++){
+        printf("%s\n", b->candidats_nom[fav_candidat(b,i)]);
+    }
+    detruire_ballot(b);
+    libererMatrice(matrice);
     return 0;
 }

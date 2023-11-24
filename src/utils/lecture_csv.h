@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../data structure/matrice_string_dyn.h"
+#include "./dataStructure/matrice_string_dyn.h"
 
 #define TAILLE_MAX 65
 
