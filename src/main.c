@@ -10,6 +10,7 @@
 #include "./utils/dataStructure/ballot.h"
 #include "./utils/dataStructure/matrice_int_dyn.h"
 #include "./utils/dataStructure/matrice_string_dyn.h"
+#include "./utils/dataStructure/listegen.h"
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -194,16 +195,22 @@ void presentationMenu(char *fichier, char *output, char *methode) {
 
 // Main de test
 int main(void) {
-    char *fichier = "./tests/voteCondorcet.csv";
-    t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
-    ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
-    remplir_ballot(b, matrice);
-    afficher_matrice(b->classement,-1);
-    printf("\n");
-    for (int i = 0; i < b->nb_votants; i++){
-        printf("%s\n", b->candidats_nom[fav_candidat(b,i)]);
-    }
+    // char *fichier = "./tests/voteCondorcet.csv";
+    // t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
+    // ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
+    // remplir_ballot(b, matrice);
+    // afficher_matrice(b->classement,-1);
+    // printf("\n");
+    // for (int i = 0; i < b->nb_votants; i++){
+    //     printf("%s\n", b->candidats_nom[fav_candidat(b,i)]);
+    // }
+    // detruire_ballot(b);
 
-    detruire_ballot(b);
+    List *liste = list_create();
+
+    int *entier = malloc(sizeof(int));
+    *entier = 3;
+    liste = list_push_front(liste,entier,sizeof(int));
+    printf("%d\n",*(int *)list_front(liste));
     return 0;
 }
