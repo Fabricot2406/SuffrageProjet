@@ -202,8 +202,7 @@ void afficher_tutoriel(char *nom_executable){
                 "-m est la méthode de calcul des résultats. Mettre uninominal.\n"
                 "Exemple : ./Suffrage -i voteCondorcet test tes -m uninominal\n"
                 "Pour plus d'informations, veuillez consulter la documentation.\n";
-    fprintf(stderr, "Usage : %s (-i fichier_csv ou -d fichier_csv) -o fichier_log_txt -m methode\n%s", nom_executable,tuto);
-                
+    fprintf(stderr, "Usage : %s (-i fichier_csv ou -d fichier_csv) -o fichier_log_txt -m methode\n%s", nom_executable,tuto);           
 }
 
 /*------------------------ PROGRAMME PRINCIPAL ------------------------*/

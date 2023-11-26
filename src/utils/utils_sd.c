@@ -23,7 +23,8 @@ uni_data *creer_uni_data(int *vainqueurUn, int *vainqueurDeux, int *votes){
 int uni_reduce(void *elem, void *data){
     uni_data *d = (uni_data *)data;
     Pref *pref = (Pref *)elem;
-    int candidat = pref->values;
+    List *liste_candidat = pref->list;
+    int candidat = *(int *)list_at(liste_candidat, 0);
     if (candidat == *(d->vainqueurUn)) {
         d->votes[*(d->vainqueurUn)] ++;
         return 1;
