@@ -1,8 +1,10 @@
 /**
  * @file verify_my_vote.h
- * @brief Fichier d'en-tête pour la vérification des votes.
+ * @author Marco
+ * @brief Fichier de déclaration pour la vérification du vote de l'utilisateur.
+ * @version 0.1
+ * @date 2023-11-26
  */
-
 #ifndef VERIFY_MY_VOTE_H
 #define VERIFY_MY_VOTE_H
 

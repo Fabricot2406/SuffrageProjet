@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "matrice_string_dyn.h": "c",
+        "utils_main.h": "c",
+        "arc.h": "c",
+        "ballot.h": "c",
+        "matrice_int_dyn.h": "c",
+        "iterator.h": "c",
+        "listegen.h": "c",
+        "stdio.h": "c",
+        "system_error": "c",
+        "array": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "uninominale.h": "c",
+        "stdlib.h": "c"
+    }
+}

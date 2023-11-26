@@ -6,6 +6,13 @@
 #include "./utils/lecture_csv.h"
 #include "./verify/verify_my_vote.h"
 #include "./utils/utils_main.h"
+#include "./utils/dataStructure/matrice_int_dyn.h"
+#include "./utils/dataStructure/matrice_string_dyn.h"
+#include "./utils/dataStructure/listegen.h"
+#include "./utils/dataStructure/ballot.h"
+#include "./utils/dataStructure/duel.h"
+#include "./utils/dataStructure/arc.h"
+#include "./methods/uninominale.h"
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -14,14 +21,7 @@ typedef struct {
 } Methode;
 
 // Définition des fonctions correspondant à chaque méthode.
-void methode_uni1() {
-    printf("Méthode uni1 sélectionnée.\n");
-}
-
-void methode_uni2() {
-    printf("Méthode uni2 sélectionnée.\n");
-}
-
+// A refactoriser en utilisant des pointeurs de fonction.
 void methode_cm() {
     printf("Méthode cm sélectionnée.\n");
 }
@@ -43,8 +43,8 @@ void methode_all() {
 }
 
 Methode liste_methodes[] = {
-    {"uni1", methode_uni1},
-    {"uni2", methode_uni2},
+    {"uni1", calculerUninominaleUnTour},
+    {"uni2", calculerUninominaleDeuxTours},
     {"cm", methode_cm},
     {"cp", methode_cp},
     {"cs", methode_cs},
@@ -62,11 +62,13 @@ Methode liste_methodes[] = {
  */
 void calculerVote(char *fichier, char *output, char *methode) {
     int methode_trouvee = 0;
-
+    t_mat_char_star_dyn *matrice_csv = remplirMatrice(fichier);
+    ballot *matrice_ballot = creer_ballot(matrice_csv -> nbColonnes - 4, matrice_csv -> nbLignes - 1);
+    remplir_ballot(matrice_ballot, matrice_csv);
     // Cherche la méthode choisie.
     for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
         if (strcmp(methode, liste_methodes[i].nom) == 0) {
-            liste_methodes[i].fonction(); // Appelle la fonction associée à la méthode trouvée
+            liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
             methode_trouvee = 1;
             break;
         }
@@ -76,6 +78,7 @@ void calculerVote(char *fichier, char *output, char *methode) {
         fprintf(stderr, "Liste des paramètres de l'option m : uni1, uni2, cm, cp, cs, jm, all.\n");
         exit(EXIT_FAILURE);
     }
+    detruire_ballot(matrice_ballot);
 }
 
 /**
@@ -168,6 +171,7 @@ void presentationMenu(char *fichier, char *output, char *methode) {
         printf("Choisissez une action à effectuer :\n");
         printf("1. Calculer les résultats de vote.\n");
         printf("2. Consulter ses votes.\n");
+        printf("3. Construire et afficher le ballot.\n");
         printf("Votre choix : ");
         scanf("%d", &choix);
         // On vide le tampon d'entrée (buffer) après la saisie.
@@ -181,11 +185,24 @@ void presentationMenu(char *fichier, char *output, char *methode) {
             case 2:
                 verifierVote(fichier);
                 break;
+            case 3:
+                construire_afficher_ballot(fichier);
+                break;
             default:
                 printf("Veuillez choisir une action valide (1 ou 2) !\n");
                 break;
         }
-    } while (choix != 1 && choix != 2);
+    } while (choix != 1 && choix != 2 && choix != 3);
+}
+
+
+void afficher_tutoriel(char *nom_executable){
+    char *tuto = "-i et d sont incompatibles.\n-i signifie que le fichier est un fichier d'entrée.\n"
+                 "-d signifie que le fichier est un fichier de duel (à utiliser pour condorcet).\n-o est le fichier de sortie des résultats. Pas encore implémenté\n"
+                "-m est la méthode de calcul des résultats. Mettre uninominal.\n"
+                "Exemple : ./Suffrage -i voteCondorcet test tes -m uninominal\n"
+                "Pour plus d'informations, veuillez consulter la documentation.\n";
+    fprintf(stderr, "Usage : %s (-i fichier_csv ou -d fichier_csv) -o fichier_log_txt -m methode\n%s", nom_executable,tuto);           
 }
 
 /*------------------------ PROGRAMME PRINCIPAL ------------------------*/
@@ -203,12 +220,9 @@ int main(int argc, char* argv[]) {
 
     // Vérification du nombre d'options (au minimum 5).
     if (argc < 5) {
-        fprintf(stderr, "Usage : %s -i fichier_csv -d fichier_csv -o fichier_txt_log -m methode\n"
-                        "Pour plus d'informations quant à l'usage des options, référez-vous à la documentation.\n", argv[0]);
+        afficher_tutoriel(argv[0]);
         exit(EXIT_FAILURE);
     }
-
-    //char *fichier;
 
     // Récupération des paramètres des options.
     while ((option = getopt(argc, argv, "i:d:o:m:")) != -1) {
@@ -227,8 +241,7 @@ int main(int argc, char* argv[]) {
                 methode = optarg;
                 break;
             default:
-                fprintf(stderr, "Usage : %s -i fichier_csv -d fichier_csv -o fichier_log_txt -m methode\n"
-                        "Pour plus d'informations quant à l'usage des options, référez-vous à la documentation.\n", argv[0]);
+                afficher_tutoriel(argv[0]);
                 exit(EXIT_FAILURE);
         }
     }
@@ -257,7 +270,10 @@ int main(int argc, char* argv[]) {
     char cheminComplet[1024];
     if (!fichierExiste(fichierCSV,repertoire,extension_csv,cheminComplet))
     {
-        fprintf(stderr, "Le fichier CSV spécifié n'existe pas.\n");
+        fprintf(stderr, "Le fichier CSV spécifié n'existe pas.\n"
+                    "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
+                    "Celui-ci doit se trouver dans le répertoire tests.\n\n"
+                    "Exemple : ./Suffrage -i voteCondorcet -m uni1\n");
         exit(EXIT_FAILURE);
     }
     
