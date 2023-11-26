@@ -1,17 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <assert.h>
-#include "matrice_string_dyn.h"
-#include "matrice_int_dyn.h"
-#include "listegen.h"
-#include "ballotgen.h"
-
-typedef struct s_ensemble_preference{
-    int values; // Rang de préférence
-    List *list; // List d'indice de candidat
-} Pref;
+#include "ballot.h"
 
 ballot *creer_ballot(int nb_candidats, int nb_votants){
     ballot *b = malloc(sizeof(ballot));
@@ -20,6 +7,18 @@ ballot *creer_ballot(int nb_candidats, int nb_votants){
     b->candidats_nom = malloc(sizeof(char*) * nb_candidats);
     b->classement = list_create();
     return b;
+}
+
+/**
+ * @brief Crée un ensemble de préférence
+ * @param rang Le rang de préférence
+ * @return Pref* L'ensemble de préférence créé
+ */
+Pref *creer_ensemble_preference(int rang){
+    Pref *pref = malloc(sizeof(Pref));
+    pref->values = rang;
+    pref->list = list_create();
+    return pref;
 }
 
 /**
@@ -40,15 +39,53 @@ ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv){
     return b;
 }
 
+/**
+ * @brief Comparer un élément d'une liste avec une valeur, utilisée pour la fonction contient
+ * @param elem element de la liste
+ * @param value element à comparer
+ * @return int 1 si les deux éléments sont égaux, 0 sinon
+ */
 int elem_egaux(void *elem, int value){
     Pref *elem_pref = (Pref *)elem;
     return elem_pref->values == value;
 }
 
+/**
+ * @brief Comparer un élément d'une liste avec une valeur, Utilisée pour la fonction trouver_indice
+ * @param elem element de la liste
+ * @param value element à comparer
+ * @return int 1 si l'élément est plus grand que la valeur, 0 sinon
+ */
 int elem_plus_grand(void *elem, int value){
     Pref *elem_pref = (Pref *)elem;
     return elem_pref->values > value;
 } 
+
+/**
+ * @brief Ajoute un ensemble de préférence à la liste d'ensemble de préférence
+ * @param liste_preferences La liste d'ensemble de préférence
+ * @param candidat_ptr Le pointeur vers le candidat à ajouter
+ * @param rang_preference Le rang de préférence du candidat
+ */
+void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int rang_preference){
+    // CAS 1 : Aucun ensemble de candidat n'existe pour le rang trouvé
+    if(contient(liste_preferences, elem_egaux, rang_preference) == false){
+        // Création d'un ensemble de préférence
+        Pref *new_ens_pref = creer_ensemble_preference(rang_preference);
+        list_push_back(new_ens_pref->list, candidat_ptr);
+        // Cas particulier : liste vide
+        if(list_is_empty(liste_preferences)){
+            list_push_back(liste_preferences, (void *)new_ens_pref);
+        }else{ // Cas général : liste non vide
+            int indice_insert = trouver_indice(liste_preferences,elem_plus_grand,rang_preference);
+            list_insert_at(liste_preferences, indice_insert, new_ens_pref);
+        }
+    }else{ // CAS 2 : Un ensemble de candidat existe pour le rang trouvé
+        int indice = trouver_indice(liste_preferences, elem_egaux, rang_preference);
+        Pref *ens_pref_existant = (Pref *)list_at(liste_preferences, indice);
+        list_push_back(ens_pref_existant->list, candidat_ptr);
+    }
+}
 
 /**
  * @brief Remplit la matrice de classement à partir du fichier csv
@@ -60,42 +97,16 @@ ballot *remplir_classement(ballot *b, t_mat_char_star_dyn *classement_csv){
     char ***matrice_csv = classement_csv->tab;
     int nb_candidats = b->nb_candidats;
     int nb_votants = b->nb_votants;
-
     for(int votant = 0; votant < nb_votants; votant++){
         // Création d'une liste d'ensemble de préférence pour un votant
         List *liste_preferences = list_create();
-
         for(int candidat = 0; candidat < nb_candidats; candidat++){
             // 4 colonnes et 1 ligne de plus pour ne pas prendre en compte les infos de l'élection
             int rang_preference = atoi(matrice_csv[votant + 1][candidat + 4]);
             if (rang_preference == -1) rang_preference = nb_candidats + 1;
-            
             int *candidat_ptr = malloc(sizeof(int));
             *candidat_ptr = candidat;
-
-            // CAS 1 : Aucun ensemble de candidat n'existe pour le rang trouvé
-            if(contient(liste_preferences, elem_egaux, rang_preference) == false){
-                // Création d'un ensemble de préférence
-                Pref *new_ens_pref = malloc(sizeof(Pref));
-                new_ens_pref->values = rang_preference;
-                new_ens_pref->list = list_create();
-                list_push_back(new_ens_pref->list, candidat_ptr);
-                
-                // Si le rang de préférence est -1 (considéré comme pire) ou si la liste est vide
-                if(list_is_empty(liste_preferences)){
-                    // Ajout de l'ensemble de candidat en fin de liste
-                    list_push_back(liste_preferences, (void *)new_ens_pref);
-                }else{ // Ajout dans l'ordre croissant
-                    int indice_insert = trouver_indice(liste_preferences,elem_plus_grand,rang_preference);
-                    list_insert_at(liste_preferences, indice_insert, new_ens_pref);
-                }
-            }
-            // CAS 2 : Un ensemble de candidat existe pour le rang trouvé
-            else{
-                int indice = trouver_indice(liste_preferences, elem_egaux, rang_preference);
-                Pref *ens_pref_existant = (Pref *)list_at(liste_preferences, indice);
-                list_push_back(ens_pref_existant->list, candidat_ptr);
-            }
+            ajout_ensemble_preference(liste_preferences, candidat_ptr, rang_preference);
         }
         // Ajout de la liste d'ensemble de préférence à la liste de votant
         list_push_back(b->classement, liste_preferences);
@@ -112,14 +123,20 @@ ballot *remplir_ballot(ballot *b, t_mat_char_star_dyn *classement_csv){
     return b;
 }
 
-/******************* DESTRUCTEURS *********************/
-
+/**
+ * @brief Détruit un ensemble de préférence
+ * @param elem Pointeur vers l'ensemble de préférence à détruire
+ */
 void detruire_ensemble_preference(void *elem){
     Pref *pref = (Pref *)elem;
     list_delete((ptrList *)pref->list,free);
     free(pref);
 }
 
+/**
+ * @brief Détruit une liste d'ensemble de préférence
+ * @param elem Pointeur vers la liste d'ensemble de préférence à détruire
+ */
 void detruire_liste_ensemble_preference(void *elem){
     List *list = (List *)elem;
     list_delete((ptrList *)list,detruire_ensemble_preference);
@@ -133,7 +150,6 @@ void detruire_ballot(ballot *b){
     list_delete((ptrList *)b->classement,detruire_liste_ensemble_preference);
     free(b);
 }
-
 
 /******************* UTILS *********************/
 
@@ -165,41 +181,4 @@ void afficher_ballot(ballot *b) {
     printf("\n");
     printf("Classement : \n");
     list_map(b->classement, afficher_liste_votant);
-}
-
-void creer_duels(t_mat_int_dyn *matrice_duel,Pref *pref_sujet,Pref *pref_adverse){
-    List *liste_sujet = pref_sujet->list;
-    List *liste_adverse = pref_adverse->list;
-    for (int i_sujet = 0; i_sujet < list_size(liste_sujet); i_sujet++)
-    {
-        int indice_sujet = *(int *)list_at(liste_sujet, i_sujet);
-        for (int i_adverse = 0; i_adverse < list_size(liste_adverse); i_adverse++)
-        {
-            int indice_adverse = *(int *)list_at(liste_adverse, i_adverse);
-            matrice_duel->mat[indice_sujet][indice_adverse] += 1;
-        }
-    }
-}
-
-t_mat_int_dyn *creer_matrice_duel(ballot *b){
-    printf("\nCréation de la matrice de duel\n\n");
-    int nb_candidats = b->nb_candidats;
-    int nb_votants = b->nb_votants;
-    t_mat_int_dyn *matrice_duel = creer_matrice(nb_candidats, nb_candidats);
-    // Initialisation de la matrice à 0
-    for(int i = 0; i < nb_candidats; i++){
-        for(int j = 0; j < nb_candidats; j++){
-            matrice_duel->mat[i][j] = 0;
-        }
-    }
-    for(int votant = 0; votant < nb_votants; votant++){
-        List *liste_preferences = (List *)list_at(b->classement, votant);
-        for (int i = 0; i < list_size(liste_preferences) - 1; i++)
-        {
-            Pref *pref_sujet = (Pref *)list_at(liste_preferences, i);
-            Pref *pref_adverse = (Pref *)list_at(liste_preferences, i+1);
-            creer_duels(matrice_duel,pref_sujet,pref_adverse);
-        }
-    }
-    return matrice_duel;
 }

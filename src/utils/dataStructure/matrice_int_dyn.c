@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <stdbool.h>
-#include <string.h>
 #include "matrice_int_dyn.h"
 
 /******************* MATRICE *********************/

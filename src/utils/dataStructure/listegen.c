@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <assert.h>
 #include "listegen.h"
 
 typedef struct s_LinkedElement {
@@ -55,11 +50,6 @@ List* list_push_front(List* list, void *data, size_t date_size) {
         exit(EXIT_FAILURE);
     }
 	LinkedElement *sentinel = list->sentinel;
-	// element->value = malloc(date_size);
-    // if (element->value == NULL) {
-    //     fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
-    //     exit(EXIT_FAILURE);
-    // }
     element->value = data;
 	element->previous = sentinel;
 	element->next = sentinel->next;

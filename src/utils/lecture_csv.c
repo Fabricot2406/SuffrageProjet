@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include "./dataStructure/matrice_string_dyn.h"
 #include "lecture_csv.h"
 
 t_mat_char_star_dyn *remplirMatrice(char *fichier){

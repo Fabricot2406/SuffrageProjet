@@ -1,5 +1,6 @@
 /**
  * @file utils_main.h
+ * @authors Marco, Anthony, Fabio
  * @brief Fichier de fonctions utilitaires nécessaires au main.c
  */
 
@@ -12,7 +13,6 @@
 #include <getopt.h>
 #include <ctype.h>
 #include <string.h>
-
 /**
  * Vérifie l'existence d'un fichier en utilisant un chemin complet.
  *

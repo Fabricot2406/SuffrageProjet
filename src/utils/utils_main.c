@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <getopt.h>
-#include <ctype.h>
-#include <string.h>
+#include "utils_main.h"
 
 char errorMsg[] = "\tErreur : Chaîne non valide\n";
 

@@ -1,10 +1,9 @@
-//
-//  sha256_utils.h
-//  
-//
-//  Created by Vincent Dugat on 08/01/2018.
-//
-
+/**
+ * @file sha256_utils.h
+ * @brief Fichier de déclaration pour la fonction de hashage sha256ofString.
+ * @author Vincent Dugat
+ * @date 08/01/2018
+ */
 #ifndef sha256_utils_h
 #define sha256_utils_h
 #include "sha256.h"

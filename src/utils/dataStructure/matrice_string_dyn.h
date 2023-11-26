@@ -2,7 +2,7 @@
  * @file s_matriceVote.h
  * @author Marco, Anthony
  * @brief Structure de donnée correspondant à la matrice des votes issue d'un fichier CSV.
- * @version 1.0
+ * @version finale
  * @date 2021-11-23
  */
 
@@ -20,9 +20,9 @@
  * @brief Structure pour allocation matrice dynamique.
  */
 typedef struct s_matriceVote{
-    int nbLignes;
-    int nbColonnes;
-    char ***tab;
+    int nbLignes; // Nombre de lignes de la matrice
+    int nbColonnes; // Nombre de colonnes de la matrice
+    char ***tab; // Tableau de pointeurs de pointeurs de caractères
 }t_mat_char_star_dyn;
 
 /**

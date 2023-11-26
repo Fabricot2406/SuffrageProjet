@@ -2,7 +2,7 @@
  * @file matrice_int_dyn.c
  * @author Anthony
  * @brief Structure de donnée correspondant à une matrice dynamique contenant des entiers.
- * @version 1.0
+ * @version finale
  * @date 2021-11-23
  */
 
@@ -21,9 +21,9 @@
  *        Contient un tableau bidimensionnel, le nombre de lignes et le nombre de colonnes.
  */
 typedef struct t_mat_int_dyn{
-    int** mat; /**< Tableau bidimensionnel représentant la matrice */
-    int rows; /**< Nombre de lignes de la matrice */
-    int cols; /**< Nombre de colonnes de la matrice */
+    int** mat; // Tableau bidimensionnel représentant la matrice
+    int rows; // Nombre de lignes de la matrice
+    int cols; // Nombre de colonnes de la matrice
 } t_mat_int_dyn;
 
 /**

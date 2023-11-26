@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <stdbool.h>
-#include <string.h>
 #include "matrice_string_dyn.h"
 
 #define TAILLE_MAX 65

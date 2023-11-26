@@ -6,12 +6,13 @@
 #include "./utils/lecture_csv.h"
 #include "./verify/verify_my_vote.h"
 #include "./utils/utils_main.h"
-#include "./utils/dataStructure/arc.h"
-//#include "./utils/dataStructure/ballot.h"
 #include "./utils/dataStructure/matrice_int_dyn.h"
 #include "./utils/dataStructure/matrice_string_dyn.h"
 #include "./utils/dataStructure/listegen.h"
-#include "./utils/dataStructure/ballotgen.h"
+#include "./utils/dataStructure/ballot.h"
+#include "./utils/dataStructure/duel.h"
+#include "./utils/dataStructure/arc.h"
+#include "./methods/uninominale.h"
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -196,7 +197,7 @@ void presentationMenu(char *fichier, char *output, char *methode) {
 
 // Main de test
 int main(void) {
-    char *fichier = "./tests/vote10.csv";
+    char *fichier = "./tests/voteCondorcet.csv";
     t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
     ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
     remplir_ballot(b, matrice);
