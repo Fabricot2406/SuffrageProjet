@@ -198,7 +198,7 @@ void presentationMenu(char *fichier, char *output, char *methode) {
 
 void afficher_tutoriel(char *nom_executable){
     char *tuto = "-i et d sont incompatibles.\n-i signifie que le fichier est un fichier d'entrée.\n"
-                 "-d signifie que le fichier est un fichier de duel.\n-o est le fichier de sortie des résultats. Pas encore implémenté\n"
+                 "-d signifie que le fichier est un fichier de duel (à utiliser pour condorcet).\n-o est le fichier de sortie des résultats. Pas encore implémenté\n"
                 "-m est la méthode de calcul des résultats. Mettre uninominal.\n"
                 "Exemple : ./Suffrage -i voteCondorcet test tes -m uninominal\n"
                 "Pour plus d'informations, veuillez consulter la documentation.\n";

@@ -1,0 +1,6 @@
+ID buletin,Date,Id scrutin,Id �lecteur,Astérix,Obélix,Panoramix,Assurancetourix,Abraracourcix,Agecanonix,Idéfix
+1,Sun Nov 19 17:04:55 2023,Vote Test,Hash,1,5,2,1,4,7,3
+2,Sun Nov 19 17:04:55 2023,Vote Test,Hash,7,6,9,9,9,9,9
+3,Sun Nov 19 17:04:55 2023,Vote Test,Hash,1,7,9,9,9,9,9
+4,Sun Nov 19 17:04:55 2023,Vote Test,Hash,1,8,9,9,9,9,9
+5,Sun Nov 19 17:04:55 2023,Vote Test,Hash,1,9,7,6,3,5,1

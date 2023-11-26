@@ -8,10 +8,8 @@ UTILSDIR = $(SRCDIR)/utils
 DATADIR = $(UTILSDIR)/dataStructure
 METHODSDIR = $(SRCDIR)/methods
 VERIFYDIR = $(SRCDIR)/verify
-
 # Répertoire de documentation
 DOCDIR = documentation
-
 # Compilateur et options
 CC = gcc
 CFLAGS = -Wall -Wextra -g -Wno-unused-variable -Wno-unused-parameter
