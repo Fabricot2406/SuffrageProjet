@@ -113,6 +113,18 @@ List* list_map(List* l, SimpleFunctor f) {
 	return l;
 }
 
+List* list_reduce(List* l, Functor f, void *userData) {
+	LinkedElement * sentinel = l->sentinel;
+	for (LinkedElement * element = sentinel->next; element!=sentinel; element=element->next)
+	{
+		if (f(element->value, userData)) break;
+	}
+	return l;
+}
+
+
+// Factoriser les deux fonctions suivantes
+
 bool contient(List* l, ReduceFunctor f, int userData) {
 	int elem;
 	int i = 0;

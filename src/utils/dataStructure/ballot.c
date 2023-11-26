@@ -153,6 +153,25 @@ void detruire_ballot(ballot *b){
 
 /******************* UTILS *********************/
 
+char *nom_candidat(ballot *b, int indice_candidat){
+    return b->candidats_nom[indice_candidat];
+}
+
+List *acces_liste_preference(ballot *b, int num_votant){
+    assert(num_votant < b->nb_votants && num_votant >= 0);
+    List *list = b->classement;
+    List *classement_courant = (List *)list_at(list,num_votant);
+    return classement_courant;
+}
+
+int fav_candidat(ballot *b,int num_votant){
+    List *list = b->classement;
+    List *classement_courant = (List *)list_at(list,num_votant);
+    Pref *pref_courant = (Pref *)list_at(classement_courant,0);
+    int *indice_candidat = (int *)list_at(pref_courant->list,0);
+    return *indice_candidat;
+}
+
 void afficher_liste_candidat(void *data) {
     printf(" %d ", *(int *)data);
 }

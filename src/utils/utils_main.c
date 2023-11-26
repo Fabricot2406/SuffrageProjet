@@ -3,8 +3,6 @@
 char errorMsg[] = "\tErreur : Chaîne non valide\n";
 
 int fichierExiste(const char *nomFichier, const char *repertoire, const char *extension, char *cheminComplet) {
-
-    
     // Copiez le répertoire dans le chemin complet
     strcpy(cheminComplet, repertoire);
 
@@ -79,4 +77,16 @@ int controlNomPrenom(char *chaine, int prenom){
         }
     }
     return 0;
+}
+
+void construire_afficher_ballot(char *fichier) {
+    t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
+    ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
+    remplir_ballot(b, matrice);
+    afficher_ballot(b);
+    t_mat_int_dyn *matrice_duel = creer_matrice_duel(b);
+    afficher_matrice(matrice_duel, 0);
+    detruire_matrice(matrice_duel);
+    detruire_ballot(b);
+    
 }

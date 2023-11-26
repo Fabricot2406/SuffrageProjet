@@ -18,6 +18,8 @@ typedef void(*SimpleFunctor)(void *);
 
 typedef int (*ReduceFunctor)(void *, int);
 
+typedef int (*Functor)(void *, void *);
+
 /**
  * @brief Structure de donnée correspondant à une liste générique.
  * Définition opaque du type List.
@@ -126,6 +128,16 @@ bool contient(List* l, ReduceFunctor f, int userData);
  * @return List* La liste modifiée
  */
 List* list_map(List* l, SimpleFunctor f);
+
+/**
+ * @brief Fonction permettant de réduire une liste à un seul élément.
+ * 
+ * @param l Liste à réduire
+ * @param f Fonction permettant de réduire la liste
+ * @param userData L'élément à comparer, sous forme d'entier
+ * @return List* La liste réduite
+ */
+List* list_reduce(List* l, Functor f, void *userData);
 
 /**
  * @brief Fonction permettant de trouver l'indice d'un élément dans une liste.

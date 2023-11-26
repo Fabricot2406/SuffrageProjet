@@ -65,6 +65,22 @@ void detruire_ballot(ballot *b);
 /******************* UTILS *********************/
 
 /**
+ * @brief Fonction permettant d'accéder au nom d'un candidat.
+ * @param b Pointeur vers le ballot.
+ * @param indice_candidat correspond à l'indice du candidat dans la liste des noms des candidats : (numéro de colonne - 1)
+ * @return Pointeur vers le nom du candidat.
+ */
+char *nom_candidat(ballot *b, int indice_candidat);
+
+/**
+ * @brief Fonction permettant d'accéder à la liste de préférence d'un votant.
+ * @param b Pointeur vers le ballot.
+ * @param num_votant correspond à l'indice du votant dans la matrice de classement : (numéro de ligne - 1)
+ * @return Pointeur vers la liste de préférence du votant.
+ */
+List *acces_liste_preference(ballot *b, int num_votant);
+
+/**
  * @brief Affiche le premier candidat favori d'un votant.
  * 
  * @param b Pointeur vers le ballot.

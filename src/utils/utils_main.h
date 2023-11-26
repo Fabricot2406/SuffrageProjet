@@ -13,6 +13,12 @@
 #include <getopt.h>
 #include <ctype.h>
 #include <string.h>
+#include "lecture_csv.h"
+#include "./dataStructure/ballot.h"
+#include "./dataStructure/duel.h"
+#include "./dataStructure/matrice_int_dyn.h"
+#include "./dataStructure/matrice_string_dyn.h"
+
 /**
  * Vérifie l'existence d'un fichier en utilisant un chemin complet.
  *
@@ -42,5 +48,12 @@ int controlCle(char *cle);
  * @return 0 si 'chaine' est valide, 1 en cas d'erreur.
  */
 int controlNomPrenom(char *chaine, int prenom);
+
+
+/**
+ * @brief Fonction permettant de construire et d'afficher un bulletin de vote.
+ * @param fichier Le nom du fichier contenant les candidats.
+ */
+void construire_afficher_ballot(char *fichier);
 
 #endif
