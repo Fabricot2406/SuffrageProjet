@@ -32,19 +32,14 @@ List* list_create() {
 	return l;
 }
 
-List* list_push_back(List* list, void *data, size_t date_size) {
+List* list_push_back(List* list, void *data) {
 	LinkedElement* element = malloc(sizeof(LinkedElement));
     if (element == NULL) {
         fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
         exit(EXIT_FAILURE);
     }
 	LinkedElement* sentinel = list->sentinel;
-	element->value = malloc(date_size);
-    if (element->value == NULL) {
-        fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
-        exit(EXIT_FAILURE);
-    }
-    memcpy(element->value, data, date_size);
+	element->value = data;
 	element->next = sentinel;
 	element->previous = sentinel->previous;
 	element->previous->next = element;
@@ -60,12 +55,12 @@ List* list_push_front(List* list, void *data, size_t date_size) {
         exit(EXIT_FAILURE);
     }
 	LinkedElement *sentinel = list->sentinel;
-	element->value = malloc(date_size);
-    if (element->value == NULL) {
-        fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
-        exit(EXIT_FAILURE);
-    }
-    memcpy(element->value, data, date_size);
+	// element->value = malloc(date_size);
+    // if (element->value == NULL) {
+    //     fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
+    //     exit(EXIT_FAILURE);
+    // }
+    element->value = data;
 	element->previous = sentinel;
 	element->next = sentinel->next;
 	sentinel->next->previous = element;
@@ -74,14 +69,21 @@ List* list_push_front(List* list, void *data, size_t date_size) {
 	return list;
 }
 
-void list_delete(ptrList *l) {
-	struct s_List *list = *l;
-	struct s_LinkedElement *sentinel = list->sentinel; 
-	free(sentinel);
-    if (list->size == 0) {
-        free(list);
-        return;
+void list_delete(ptrList *l, SimpleFunctor f) {
+	List *list = (List *)l;
+	struct s_LinkedElement *current = list->sentinel->next;
+	struct s_LinkedElement *next;
+	while (current != list->sentinel) {
+        next = current->next;
+		if (f != NULL)
+		{
+			f(current->value);
+		}
+        free(current);
+        current = next;
     }
+	free(list->sentinel);
+    free(list);
 }
 
 void *list_front(const List* l) {
@@ -100,4 +102,67 @@ bool list_is_empty(const List* l) {
 
 int list_size(const List* l) {
 	return l->size;
+}
+
+void *list_at(const List* l, int p) {
+	assert((p>=0) && (p<l->size));
+	LinkedElement *element = l->sentinel->next;
+	for (int i = 0; i < p; i++)
+	{
+		element = element->next;
+	}
+	return element->value;
+}
+
+List* list_map(List* l, SimpleFunctor f) {
+	LinkedElement * sentinel = l->sentinel;
+	for (LinkedElement * element = sentinel->next; element!=sentinel; element=element->next)
+	{
+		f(element->value);
+	}
+	return l;
+}
+
+bool contient(List* l, ReduceFunctor f, int userData) {
+	int elem;
+	int i = 0;
+	LinkedElement *sentinel = l->sentinel;
+	LinkedElement *element = sentinel->next;
+	while (element!=sentinel)
+	{
+		if(f(element->value, userData)) return true;
+		element=element->next;
+		i++;
+	}
+	return false;
+}
+
+int trouver_indice(List* l, ReduceFunctor f, int userData) {
+	int elem;
+	int i = 0;
+	LinkedElement *sentinel = l->sentinel;
+	LinkedElement *element = sentinel->next;
+	while (element!=sentinel)
+	{
+		if(f(element->value, userData)) return i;
+		element=element->next;
+		i++;
+	}
+	return i;
+}
+
+
+List* list_insert_at(List* l, int p, void *v) {
+	assert((p <= l->size) && (p >= 0));
+	LinkedElement *element = malloc(sizeof(LinkedElement));
+	element->value = v;
+	LinkedElement *curseur = l->sentinel->next;
+	while (p--) curseur = curseur->next;
+	LinkedElement *curseurBefore = curseur->previous;
+	element->next = curseur;
+	element->previous = curseurBefore;
+	curseurBefore->next = element;
+	curseur->previous = element;
+	(l->size)++;
+	return l;
 }

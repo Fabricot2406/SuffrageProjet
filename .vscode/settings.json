@@ -5,6 +5,14 @@
         "arc.h": "c",
         "ballot.h": "c",
         "matrice_int_dyn.h": "c",
-        "iterator.h": "c"
+        "iterator.h": "c",
+        "listegen.h": "c",
+        "stdio.h": "c",
+        "system_error": "c",
+        "array": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c"
     }
 }
