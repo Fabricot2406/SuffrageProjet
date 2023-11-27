@@ -107,6 +107,17 @@ void *list_at(const List* l, int p);
  */
 List* list_insert_at(List* l, int p, void *v);
 
+/**
+ * @brief Insère un nouvel élément dans une liste triée.
+ * @param list La liste dans laquelle insérer l'élément.
+ * @param newElement Un pointeur vers la nouvelle valeur à insérer.
+ * @param compare La fonction de comparaison pour déterminer l'ordre des éléments.
+ * Cette fonction doit retourner un entier négatif si le premier élément est inférieur au deuxième, 
+ * 0 s'ils sont égaux, 
+ * et un entier positif si le premier élément est supérieur au deuxième.
+ */
+void insert_sorted(List *list, void *newElement, int (*compare)(const void *, const void *));
+
 /******************* UTILS *********************/
 
 /**
@@ -177,6 +188,11 @@ void iterator_next(Iterator* it);
 */
 void set_position(Iterator* it, int p);
 
-int iterator_index(Iterator *it);
+/**
+ * @brief Fonction permettant de récupérer la position courrante de l'itérateur
+ * @param it L'itérateur utilisé
+ * @return La position courrante
+*/
+int iterator_index(const Iterator *it);
  
 #endif // __LISTE_GEN_H__

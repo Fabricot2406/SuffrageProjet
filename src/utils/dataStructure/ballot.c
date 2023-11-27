@@ -39,49 +39,43 @@ ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv){
     return b;
 }
 
-bool contient_rang(List *list,int rang_preference){
+/**
+ * @brief Recherche le rang de préférence dans une liste.
+ *
+ * Cette fonction permet de rechercher le rang de préférence spécifié
+ * dans une liste de préférences. Elle peut être utilisée pour vérifier
+ * la présence du rang de préférence ou pour obtenir l'indice du premier
+ * élément correspondant.
+ *
+ * @param list La liste dans laquelle effectuer la recherche.
+ * @param rang_preference Le rang de préférence à rechercher.
+ * @param find_index Si vrai, retourne l'indice du premier élément correspondant.
+ *                   Si faux, retourne simplement vrai si le rang est présent.
+ * @return Si find_index est vrai, retourne l'indice du premier élément correspondant,
+ *         sinon, retourne vrai si le rang de préférence est présent, sinon faux.
+ */
+int rechercher_preference(List *list, int rang_preference, bool find_index) {
     Iterator *it = iterator_create(list);
-    while (iterator_has_next(it))
-    {
+    int indice = 0;
+
+    while (iterator_has_next(it)) {
         Pref *current = (Pref *)iterator_current(it);
-        if (current->values == rang_preference){
+
+        if (current->values == rang_preference) {
+            int result = (find_index) ? indice : 1;
             iterator_delete(it);
-            return true;
+            return result;
         }
+        indice++;
         iterator_next(it);
     }
     iterator_delete(it);
-    return false;
+    return (find_index) ? -1 : 0;
 }
 
-int search_indice(List *list,int rang_preference){
-    Iterator *it = iterator_create(list);
-    while (iterator_has_next(it))
-    {
-        Pref *current = (Pref *)iterator_current(it);
-        if (current->values == rang_preference){
-            iterator_delete(it);
-            return iterator_index(it);
-        }
-        iterator_next(it);
-    }
-    iterator_delete(it);
-    return 0;
-}
-
-void insert_preference(List *list,Pref *preference,int rang_preference){
-    int indice_insert = 0;
-    Iterator *it = iterator_create(list);
-    while (iterator_has_next(it))
-    {
-        indice_insert = iterator_index(it);
-        Pref *current = (Pref *)iterator_current(it);
-        if(current->values>rang_preference) break;
-        iterator_next(it);
-    }
-    printf("Indice insert = %d\n",indice_insert);
-    list_insert_at(list, indice_insert, preference);
-    iterator_delete(it);
+// Fonction de comparaison pour les préférences
+int compare_pref(const void *a, const void *b) {
+    return ((Pref *)a)->values - ((Pref *)b)->values;
 }
 
 /**
@@ -92,7 +86,7 @@ void insert_preference(List *list,Pref *preference,int rang_preference){
  */
 void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int rang_preference){
     // CAS 1 : Aucun ensemble de candidat n'existe pour le rang trouvé
-    if(contient_rang(liste_preferences,rang_preference) == false){
+    if(rechercher_preference(liste_preferences,rang_preference,false) == false){
         // Création d'un ensemble de préférence
         Pref *new_ens_pref = creer_ensemble_preference(rang_preference);
         list_push_back(new_ens_pref->list, candidat_ptr);
@@ -100,20 +94,27 @@ void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int 
         if(list_is_empty(liste_preferences)){
             list_push_back(liste_preferences, (void *)new_ens_pref);
         }else{ // Cas général : liste non vide
-            insert_preference(liste_preferences,new_ens_pref,rang_preference);
+            insert_sorted(liste_preferences, new_ens_pref, compare_pref);
         }
     }else{ // CAS 2 : Un ensemble de candidat existe pour le rang trouvé
-        int indice = search_indice(liste_preferences,rang_preference);
+        int indice = rechercher_preference(liste_preferences,rang_preference,true);
         Pref *ens_pref_existant = (Pref *)list_at(liste_preferences, indice);
         list_push_back(ens_pref_existant->list, candidat_ptr);
     }
 }
 
 /**
- * @brief Remplit la matrice de classement à partir du fichier csv
- * @param b Le ballot à remplir
- * @param classement_csv La matrice de classement à partir du fichier csv
- * @return ballot* Le ballot rempli
+ * @brief Remplit la structure de données de classement avec les données du fichier CSV.
+ *
+ * Cette fonction prend une structure de données de type ballot et remplit sa liste
+ * de classement avec les informations provenant d'une matrice CSV représentant les
+ * préférences des votants. Chaque ligne de la matrice CSV représente les préférences
+ * d'un votant, et chaque colonne à partir de la 5ème contient le rang de préférence
+ * d'un candidat pour ce votant.
+ *
+ * @param b La structure de données de type ballot à remplir.
+ * @param classement_csv La matrice CSV contenant les préférences des votants.
+ * @return Un pointeur vers la structure de données ballot remplie.
  */
 ballot *remplir_classement(ballot *b, t_mat_char_star_dyn *classement_csv){
     char ***matrice_csv = classement_csv->tab;

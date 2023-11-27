@@ -134,6 +134,24 @@ List* list_insert_at(List* l, int p, void *v) {
 	return l;
 }
 
+void insert_sorted(List *list, void *newElement, int (*compare)(const void *, const void *)) {
+    int indice_insert = 0;
+    Iterator *it = iterator_create(list);
+    
+    while (iterator_has_next(it)) {
+        void *current = iterator_current(it);
+        if (compare(current, newElement) > 0) {
+            break;
+        }
+        
+        iterator_next(it);
+        indice_insert = iterator_index(it);
+    }
+    
+    list_insert_at(list, indice_insert, newElement);
+    iterator_delete(it);
+}
+
 /******************* ITERATOR *********************/
 
 typedef struct s_Iterator {
@@ -166,8 +184,7 @@ void *iterator_current(const Iterator* it) {
 	return it->current->value;
 }
 
-int iterator_index(Iterator *it){
-	printf("Index : %d\n",it->index);
+int iterator_index(const Iterator *it){
 	return it->index;
 }
 

@@ -20,7 +20,7 @@
 typedef struct t_arc_p{
     int candidat_gagnant;
     int candidat_perdant;
-    int nb_votes;
+    float score;
 }arc;
 
 typedef struct s_arc{
@@ -32,10 +32,10 @@ typedef struct s_arc{
  * @brief Constructeur de la structure de donnée arc.
  * @param candidat_gagnant
  * @param candidat_perdant 
- * @param nb_votes
+ * @param score
  * @return arc* l'arc créé
  */
-arc* arc_create(int candidat_gagnant, int candidat_perdant, int nb_votes);
+arc* arc_create(int candidat_gagnant, int candidat_perdant, float score);
 
 /**
  * @brief Fonction qui permet d'initialiser et de completer la liste des arcs à partir de la matrice de duel.
