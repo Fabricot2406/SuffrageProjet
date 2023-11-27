@@ -65,10 +65,7 @@ void list_delete(ptrList *l, SimpleFunctor f) {
 	struct s_LinkedElement *next;
 	while (current != list->sentinel) {
         next = current->next;
-		if (f != NULL)
-		{
-			f(current->value);
-		}
+		f(current->value);
         free(current);
         current = next;
     }

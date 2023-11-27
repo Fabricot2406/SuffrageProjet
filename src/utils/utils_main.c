@@ -79,14 +79,15 @@ int controlNomPrenom(char *chaine, int prenom){
     return 0;
 }
 
-void construire_afficher_ballot(char *fichier) {
+void construire_afficher_TAD(char *fichier) {
     t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
     ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
     remplir_ballot(b, matrice);
     afficher_ballot(b);
     t_mat_int_dyn *matrice_duel = creer_matrice_duel(b);
-    afficher_matrice(matrice_duel, 0);
+    afficher_matrice_duels(matrice_duel);
+    larc *list_arc = larc_init(matrice_duel);
+    afficher_larc(list_arc);
     detruire_matrice(matrice_duel);
     detruire_ballot(b);
-    
 }

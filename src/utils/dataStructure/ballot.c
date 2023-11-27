@@ -198,6 +198,6 @@ void afficher_ballot(ballot *b) {
         printf("[%d] : %s\n",i,b->candidats_nom[i]);
     }
     printf("\n");
-    printf("Classement : \n");
+    printf("Classement : \n\n");
     list_map(b->classement, afficher_liste_votant);
 }

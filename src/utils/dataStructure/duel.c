@@ -22,7 +22,6 @@ void creer_duels(t_mat_int_dyn *matrice_duel,Pref *pref_sujet,Pref *pref_adverse
 }
 
 t_mat_int_dyn *creer_matrice_duel(ballot *b){
-    printf("\nCréation de la matrice de duel\n\n");
     int nb_candidats = b->nb_candidats;
     int nb_votants = b->nb_votants;
     t_mat_int_dyn *matrice_duel = creer_matrice(nb_candidats, nb_candidats);
@@ -42,4 +41,12 @@ t_mat_int_dyn *creer_matrice_duel(ballot *b){
         }
     }
     return matrice_duel;
+}
+
+/******************* UTILS *********************/
+
+void afficher_matrice_duels(t_mat_int_dyn *matrice_duel){
+    printf("\nAffichage de la matrice de duel\n\n");
+    afficher_matrice(matrice_duel, 0);
+    printf("\n");
 }

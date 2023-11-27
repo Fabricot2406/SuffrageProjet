@@ -186,7 +186,7 @@ void presentationMenu(char *fichier, char *output, char *methode) {
                 verifierVote(fichier);
                 break;
             case 3:
-                construire_afficher_ballot(fichier);
+                construire_afficher_TAD(fichier);
                 break;
             default:
                 printf("Veuillez choisir une action valide (1 ou 2) !\n");

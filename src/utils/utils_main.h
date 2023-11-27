@@ -18,6 +18,8 @@
 #include "./dataStructure/duel.h"
 #include "./dataStructure/matrice_int_dyn.h"
 #include "./dataStructure/matrice_string_dyn.h"
+#include "./dataStructure/listegen.h"
+#include "./dataStructure/arc.h"
 
 /**
  * Vérifie l'existence d'un fichier en utilisant un chemin complet.
@@ -51,9 +53,10 @@ int controlNomPrenom(char *chaine, int prenom);
 
 
 /**
- * @brief Fonction permettant de construire et d'afficher un bulletin de vote.
+ * @brief Fonction permettant de construire et d'afficher les structures de données à partir des fichiers csv.
+ * Les TAD affichés sont les suivants : ballot, matrice de duel, liste des arcs
  * @param fichier Le nom du fichier contenant les candidats.
  */
-void construire_afficher_ballot(char *fichier);
+void construire_afficher_TAD(char *fichier);
 
 #endif

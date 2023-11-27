@@ -26,4 +26,12 @@
  */
 t_mat_int_dyn *creer_matrice_duel(ballot *b);
 
+/******************* UTILS *********************/
+
+/**
+ * @brief Affiche la matrice de duel.
+ * @param matrice_duel La matrice de duel à afficher.
+ */
+void afficher_matrice_duels(t_mat_int_dyn *matrice_duel);
+
 #endif // __DUEL_H__
