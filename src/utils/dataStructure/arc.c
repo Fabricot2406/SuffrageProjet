@@ -28,9 +28,9 @@ int compare_arc(const void *a, const void *b) {
 }
 
 /**
- * @brief Fonction qui permet de completer la liste des arcs à partir de la matrice de duel.
- * @param tab_arc La liste des arcs à compléter
- * @param matrice_duel La matrice de duel
+ * @brief Complète une liste d'arcs avec des pourcentages de victoire entre les candidats.
+ * @param tab_arc Un tableau d'arcs à compléter.
+ * @param matrice_duel Une matrice représentant les résultats des duels entre candidats.
  */
 void larc_complete(larc *tab_arc, t_mat_int_dyn *matrice_duel){
     List *list = tab_arc->larc;
