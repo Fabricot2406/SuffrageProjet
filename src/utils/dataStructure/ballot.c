@@ -39,27 +39,50 @@ ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv){
     return b;
 }
 
-/**
- * @brief Comparer un élément d'une liste avec une valeur, utilisée pour la fonction contient
- * @param elem element de la liste
- * @param value element à comparer
- * @return int 1 si les deux éléments sont égaux, 0 sinon
- */
-int elem_egaux(void *elem, int value){
-    Pref *elem_pref = (Pref *)elem;
-    return elem_pref->values == value;
+bool contient_rang(List *list,int rang_preference){
+    Iterator *it = iterator_create(list);
+    while (iterator_has_next(it))
+    {
+        Pref *current = (Pref *)iterator_current(it);
+        if (current->values == rang_preference){
+            iterator_delete(it);
+            return true;
+        }
+        iterator_next(it);
+    }
+    iterator_delete(it);
+    return false;
 }
 
-/**
- * @brief Comparer un élément d'une liste avec une valeur, Utilisée pour la fonction trouver_indice
- * @param elem element de la liste
- * @param value element à comparer
- * @return int 1 si l'élément est plus grand que la valeur, 0 sinon
- */
-int elem_plus_grand(void *elem, int value){
-    Pref *elem_pref = (Pref *)elem;
-    return elem_pref->values > value;
-} 
+int search_indice(List *list,int rang_preference){
+    Iterator *it = iterator_create(list);
+    while (iterator_has_next(it))
+    {
+        Pref *current = (Pref *)iterator_current(it);
+        if (current->values == rang_preference){
+            iterator_delete(it);
+            return iterator_index(it);
+        }
+        iterator_next(it);
+    }
+    iterator_delete(it);
+    return 0;
+}
+
+void insert_preference(List *list,Pref *preference,int rang_preference){
+    int indice_insert = 0;
+    Iterator *it = iterator_create(list);
+    while (iterator_has_next(it))
+    {
+        indice_insert = iterator_index(it);
+        Pref *current = (Pref *)iterator_current(it);
+        if(current->values>rang_preference) break;
+        iterator_next(it);
+    }
+    printf("Indice insert = %d\n",indice_insert);
+    list_insert_at(list, indice_insert, preference);
+    iterator_delete(it);
+}
 
 /**
  * @brief Ajoute un ensemble de préférence à la liste d'ensemble de préférence
@@ -69,7 +92,7 @@ int elem_plus_grand(void *elem, int value){
  */
 void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int rang_preference){
     // CAS 1 : Aucun ensemble de candidat n'existe pour le rang trouvé
-    if(contient(liste_preferences, elem_egaux, rang_preference) == false){
+    if(contient_rang(liste_preferences,rang_preference) == false){
         // Création d'un ensemble de préférence
         Pref *new_ens_pref = creer_ensemble_preference(rang_preference);
         list_push_back(new_ens_pref->list, candidat_ptr);
@@ -77,11 +100,10 @@ void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int 
         if(list_is_empty(liste_preferences)){
             list_push_back(liste_preferences, (void *)new_ens_pref);
         }else{ // Cas général : liste non vide
-            int indice_insert = trouver_indice(liste_preferences,elem_plus_grand,rang_preference);
-            list_insert_at(liste_preferences, indice_insert, new_ens_pref);
+            insert_preference(liste_preferences,new_ens_pref,rang_preference);
         }
     }else{ // CAS 2 : Un ensemble de candidat existe pour le rang trouvé
-        int indice = trouver_indice(liste_preferences, elem_egaux, rang_preference);
+        int indice = search_indice(liste_preferences,rang_preference);
         Pref *ens_pref_existant = (Pref *)list_at(liste_preferences, indice);
         list_push_back(ens_pref_existant->list, candidat_ptr);
     }

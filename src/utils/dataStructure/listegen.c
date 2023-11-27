@@ -119,38 +119,6 @@ List* list_reduce(List* l, Functor f, void *userData) {
 	return l;
 }
 
-
-// Factoriser les deux fonctions suivantes
-
-bool contient(List* l, ReduceFunctor f, int userData) {
-	int elem;
-	int i = 0;
-	LinkedElement *sentinel = l->sentinel;
-	LinkedElement *element = sentinel->next;
-	while (element!=sentinel)
-	{
-		if(f(element->value, userData)) return true;
-		element=element->next;
-		i++;
-	}
-	return false;
-}
-
-int trouver_indice(List* l, ReduceFunctor f, int userData) {
-	int elem;
-	int i = 0;
-	LinkedElement *sentinel = l->sentinel;
-	LinkedElement *element = sentinel->next;
-	while (element!=sentinel)
-	{
-		if(f(element->value, userData)) return i;
-		element=element->next;
-		i++;
-	}
-	return i;
-}
-
-
 List* list_insert_at(List* l, int p, void *v) {
 	assert((p <= l->size) && (p >= 0));
 	LinkedElement *element = malloc(sizeof(LinkedElement));
@@ -164,4 +132,53 @@ List* list_insert_at(List* l, int p, void *v) {
 	curseur->previous = element;
 	(l->size)++;
 	return l;
+}
+
+/******************* ITERATOR *********************/
+
+typedef struct s_Iterator {
+	int index;
+	LinkedElement *current;
+	LinkedElement *sentinel;
+}Iterator;
+
+Iterator* iterator_create(const List* l) {
+	Iterator *it = malloc(sizeof(Iterator));
+	if (it == NULL) {
+		fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
+		exit(EXIT_FAILURE);
+	}
+	it->index = 0;
+	it->current = l->sentinel->next;
+	it->sentinel = l->sentinel;
+	return it;
+}
+
+void iterator_delete(Iterator* it) {
+	free(it);
+}
+
+bool iterator_has_next(const Iterator* it) {
+	return it->current != it->sentinel;
+}
+
+void *iterator_current(const Iterator* it) {
+	return it->current->value;
+}
+
+int iterator_index(Iterator *it){
+	printf("Index : %d\n",it->index);
+	return it->index;
+}
+
+void iterator_next(Iterator* it) {
+	it->current = it->current->next;
+	it->index = it->index+1;
+}
+
+void set_position(Iterator* it, int p) {
+	assert((p >= 0) && (p < it->index));
+	it->current = it->sentinel->next;
+	while (p--) it->current = it->current->next;
+	it->index = p;
 }

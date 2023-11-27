@@ -110,17 +110,6 @@ List* list_insert_at(List* l, int p, void *v);
 /******************* UTILS *********************/
 
 /**
- * @brief Fonction permettant de savoir si une liste contient un élément donné.
- * 
- * @param l Liste dans laquelle on veut chercher l'élément
- * @param f Fonction permettant de comparer l'élément avec un autre
- * @param userData L'élément à comparer, sous forme d'entier
- * @return true si la liste contient l'élément
- * @return false si la liste ne contient pas l'élément
- */
-bool contient(List* l, ReduceFunctor f, int userData);
-
-/**
  * @brief Fonction permettant d'appliquer une fonction sur tous les éléments d'une liste.
  * 
  * @param l Liste sur laquelle on veut appliquer la fonction
@@ -139,14 +128,55 @@ List* list_map(List* l, SimpleFunctor f);
  */
 List* list_reduce(List* l, Functor f, void *userData);
 
-/**
- * @brief Fonction permettant de trouver l'indice d'un élément dans une liste.
- * 
- * @param l Liste dans laquelle on veut chercher l'élément
- * @param f Fonction permettant de comparer l'élément avec un autre
- * @param userData L'élément à comparer, sous forme d'entier
- * @return int L'indice de l'élément dans la liste
- */
-int trouver_indice(List* l, ReduceFunctor f, int userData);
+/******************* ITERATOR *********************/
 
+/**
+ * @brief Structure de l'iterateur utilisée pour la liste générique
+ * Définition opaque de la structure
+*/
+typedef struct s_Iterator Iterator;
+
+/**
+ * @brief Fonction permettant de construire un iterateur
+ * 
+ * @param l Liste que l'on souhaite parcourir
+ * @return Iterator* pointeur vers l'iterateur créé
+ */
+Iterator* iterator_create(const List* l);
+
+/**
+ * @brief Fonction permettant de supprimer un iterateur
+ * @param it Iterateur que l'on souhaite supprimer
+*/
+void iterator_delete(Iterator* it);
+
+/**
+ * @brief Fonction indiquant la fin du liste à la prochaine itération
+ * @param it L'itérateur utilisé
+ * @return true si il y a encore des éléments à parcourir et false sinon
+*/
+bool iterator_has_next(const Iterator* it);
+
+/**
+ * @brief Fonction renvoyant la valeur courrante pointée par l'itérateur
+ * @param it L'itérateur utilisé
+ * @return La valeur courrante
+*/
+void *iterator_current(const Iterator* it);
+
+/**
+ * @brief Fonction permettant de passer à l'élément suivant
+ * @param it L'itérateur utilisé
+*/
+void iterator_next(Iterator* it);
+
+/**
+ * @brief Fonction permettant de mettre l'itérateur à position donnée
+ * @param it L'itérateur utilisé
+ * @param p La position souhaitée
+*/
+void set_position(Iterator* it, int p);
+
+int iterator_index(Iterator *it);
+ 
 #endif // __LISTE_GEN_H__
