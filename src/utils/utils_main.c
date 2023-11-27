@@ -88,6 +88,7 @@ void construire_afficher_TAD(char *fichier) {
     afficher_matrice_duels(matrice_duel);
     larc *list_arc = larc_init(matrice_duel);
     afficher_larc(list_arc);
+    detruire_larc(list_arc);
     detruire_matrice(matrice_duel);
     detruire_ballot(b);
 }

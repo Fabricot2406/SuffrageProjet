@@ -47,6 +47,12 @@ larc* larc_init(t_mat_int_dyn *matrice_duel);
 
 
 /**
+ * @brief Libérer la mémoire allouée à une liste d'arcs.
+ * @param tab_arc Liste des arcs à détruire
+ */
+void detruire_larc(larc *tab_arc);
+
+/**
  * @brief Afficher la liste des arcs.
  * @param tab_arc Liste des arcs à afficher
  */

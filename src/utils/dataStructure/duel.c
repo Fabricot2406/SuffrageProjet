@@ -46,7 +46,7 @@ t_mat_int_dyn *creer_matrice_duel(ballot *b){
 /******************* UTILS *********************/
 
 void afficher_matrice_duels(t_mat_int_dyn *matrice_duel){
-    printf("\nAffichage de la matrice de duel\n\n");
+    printf("\nMatrice de duel :\n\n");
     afficher_matrice(matrice_duel, 0);
     printf("\n");
 }

@@ -64,6 +64,17 @@ larc* larc_init(t_mat_int_dyn *matrice_duel){
     return l_arc;
 }
 
+void detruire_arc(void *elem){
+    arc *a = (arc *)elem;
+    free(a);
+}
+
+void detruire_larc(larc *tab_arc){
+    List *list = tab_arc->larc;
+    list_delete((ptrList *)list,detruire_arc);
+    free(tab_arc);
+}
+
 /******************* UTILS *********************/
 
 /**

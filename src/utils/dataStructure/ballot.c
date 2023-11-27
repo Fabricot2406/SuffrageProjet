@@ -191,13 +191,13 @@ void afficher_liste_votant(void *data) {
 }
 
 void afficher_ballot(ballot *b) {
-    printf("Nombre de candidats : %d\n", b->nb_candidats);
-    printf("Nombre de votants : %d\n", b->nb_votants);
+    printf("\nNombre de candidats : %d\n", b->nb_candidats);
+    printf("Nombre de votants : %d\n\n", b->nb_votants);
     printf("Liste des candidats : \n");
     for (int i = 0; i < b->nb_candidats; i++) {
         printf("[%d] : %s\n",i,b->candidats_nom[i]);
     }
     printf("\n");
-    printf("Classement : \n\n");
+    printf("Liste des ballots : \n\n");
     list_map(b->classement, afficher_liste_votant);
 }
