@@ -1,16 +1,5 @@
 #include "arc.h"
 
-typedef struct t_arc_p{
-    int candidat_gagnant;
-    int candidat_perdant;
-    int nb_votes;
-}arc;
-
-typedef struct s_arc{
-    List *larc; // liste des arcs
-    int nb_candidats;
-}larc;
-
 arc* arc_create(int candidat_gagnant, int candidat_perdant, int nb_votes){
     arc *a = malloc(sizeof(arc));
     if (a == NULL) {

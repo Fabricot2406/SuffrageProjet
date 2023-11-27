@@ -17,17 +17,16 @@
 #include "listegen.h"
 #include "matrice_int_dyn.h"
 
-/**
- * @brief Structure de donnée correspondant à un arc.
- * Définition opaque du type arc.
- */
-typedef struct t_arc_p arc;
+typedef struct t_arc_p{
+    int candidat_gagnant;
+    int candidat_perdant;
+    int nb_votes;
+}arc;
 
-/**
- * @brief Structure de donnée correspondant à une liste d'arcs.
- * Définition opaque du type larc.
- */
-typedef struct s_arc larc;
+typedef struct s_arc{
+    List *larc; // liste des arcs
+    int nb_candidats;
+}larc;
 
 /**
  * @brief Constructeur de la structure de donnée arc.

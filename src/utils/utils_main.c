@@ -88,6 +88,13 @@ void construire_afficher_TAD(char *fichier) {
     afficher_matrice_duels(matrice_duel);
     larc *list_arc = larc_init(matrice_duel);
     afficher_larc(list_arc);
+    int vainqueur = 0;
+    if (vainqueur_condorcet(list_arc, &vainqueur)){
+        printf("Le vainqueur de Condorcet est le candidat %d\n\n", vainqueur);
+    }else{
+        printf("Il n'y a pas de vainqueur de Condorcet dans cette election.\n\n");
+    }
+    
     detruire_larc(list_arc);
     detruire_matrice(matrice_duel);
     detruire_ballot(b);

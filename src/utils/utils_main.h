@@ -14,6 +14,7 @@
 #include <ctype.h>
 #include <string.h>
 #include "lecture_csv.h"
+#include "utils_sd.h"
 #include "./dataStructure/ballot.h"
 #include "./dataStructure/duel.h"
 #include "./dataStructure/matrice_int_dyn.h"
@@ -54,7 +55,8 @@ int controlNomPrenom(char *chaine, int prenom);
 
 /**
  * @brief Fonction permettant de construire et d'afficher les structures de données à partir des fichiers csv.
- * Les TAD affichés sont les suivants : ballot, matrice de duel, liste des arcs
+ * Les TAD affichés sont les suivants : ballot, matrice de duel, liste des arcs.
+ * Le vainqueur de Condorcet est également affiché si il existe.
  * @param fichier Le nom du fichier contenant les candidats.
  */
 void construire_afficher_TAD(char *fichier);

@@ -14,6 +14,9 @@
 #include <string.h>
 #include <stdbool.h>
 #include <assert.h>
+#include "./dataStructure/ballot.h"
+#include "./dataStructure/arc.h"
+#include "./dataStructure/listegen.h"
 
 typedef struct uni_data_s{
     int *vainqueurUn;
@@ -55,5 +58,12 @@ int uni_reduce(void *elem, void *data);
  * @return double Le score du candidat
  */
 double calculerScore(int nbVotants, int nbVotes);
+
+/**
+ * @brief Fonction permettant de déterminer si il y a un vainqueur de Condorcet
+ * @param list_arc La liste des arcs représentant les paires de duel
+ * @param vainqueur Pointeur vers le vainqueur de Condorcet, s'il existe il sera modifié
+ */
+bool vainqueur_condorcet(larc *list_arc, int *vainqueur);
 
 #endif
