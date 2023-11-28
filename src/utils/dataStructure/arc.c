@@ -1,6 +1,6 @@
 #include "arc.h"
 
-arc* arc_create(int candidat_gagnant, int candidat_perdant, float score){
+arc* arc_create(int candidat_gagnant, int candidat_perdant, int score){
     arc *a = malloc(sizeof(arc));
     if (a == NULL) {
         fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
@@ -43,7 +43,7 @@ void larc_complete(larc *tab_arc, t_mat_int_dyn *matrice_duel){
             int nb_votes_a = matrice_duel->mat[candidat_1][candidat_2];
             int nb_votes_b = matrice_duel->mat[candidat_2][candidat_1];
             
-            float nb_votes = (nb_votes_a >= nb_votes_b) ? calculerPourcentage(nb_votes_a,nb_votes_b) : calculerPourcentage(nb_votes_b,nb_votes_a);
+            int nb_votes = (nb_votes_a >= nb_votes_b) ? nb_votes_a - nb_votes_b : nb_votes_b - nb_votes_a;
             int cand_a = (nb_votes_a >= nb_votes_b) ? candidat_1 : candidat_2;
             int cand_b = (nb_votes_a >= nb_votes_b) ? candidat_2 : candidat_1;
             if (nb_votes != 0) {
@@ -86,7 +86,7 @@ void detruire_larc(larc *tab_arc){
  */
 void afficher_arc(void* input){
     arc *a = (arc *)input;
-    printf("(%d > %d: %.1f %%)\n",a->candidat_gagnant, a->candidat_perdant, a->score);
+    printf("(%d > %d: %d)\n",a->candidat_gagnant, a->candidat_perdant, a->score);
 }
 
 void afficher_larc(larc *tab_arc){
