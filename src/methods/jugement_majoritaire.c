@@ -1,11 +1,20 @@
 #include "jugement_majoritaire.h"
 
+typedef struct s_candidat{
+    char *nom;
+    List *votesCandidat;
+    int *mention;
+}Candidat;
+
+// Implémenter dans le utils :
+
 void afficherElem(void* elem){
     //On cast elem au type int et on l'affiche
     int *value = elem;
     printf("%d  ",*value);
 }
 
+// LT -> int à implémenter dans listgen.c
 bool trierVotes(void *i, void *j){
     //On cast i et j au type int et on les compare
     int *elem1 = i;
@@ -24,8 +33,6 @@ int calculerIndiceMention(int nbVotes){
 char *attribuerMention(int mention){
     char *mentionCandidat = malloc(sizeof(int)*3);
     //On attribue une mention en fonction de la note donnée en paramètre
-    //On initialise la mention à AF au cas ou la mention est égale à -1
-    strcpy(mentionCandidat,"AF");
     //On utilise un tableau de chaînes pour stocker les mentions
     char *mentions[] = {"TB", "B", "B", "AB", "AB", "P", "P", "M", "M", "AF"};
     //On vérifie que la mention est entre 1 et 10
@@ -165,6 +172,8 @@ void determinerVainqueurJugement(t_mat_char_star_dyn *matrice){
     List *tabCandidat = initTableauCandidat(matrice);
     calculerVainqueurJugement(tabCandidat);
     Candidat *vainqueur = list_at(tabCandidat,0);
-    afficherVainqueur("Jugement majoritaire",matrice->nbColonnes-INCREMENT_COLONNE,matrice->nbLignes-1,vainqueur->nom,0);
+    int nb_candidat = matrice->nbColonnes-INCREMENT_COLONNE;
+    int nb_votant = matrice->nbLignes-1;
+    afficherVainqueur("Jugement majoritaire",nb_candidat,nb_votant,vainqueur->nom,0);
     libererListeCandidat(tabCandidat);
 }

@@ -1,17 +1,5 @@
 #include "graphe.h"
 
-typedef struct s_sommet {
-	int indice; // Indice globale du candidat
-	List *successeur; // Liste de pointeur de sommet (ensemble des arcs)
-}sommet;
-
-typedef struct s_graphe {
-    sommet **graphe; // Tableau de pointeur de sommet
-    int *status; // Tableau d'état pour chaque candidat
-    int nb_candidat; // Nombre de candidat dans le graphe
-}graphe;
-
-
 graphe *creation_graphe(int nb_candidat){
     graphe *g = malloc(sizeof(graphe));
     if (g == NULL) {
@@ -57,7 +45,7 @@ void delete_succession(sommet *s_current){
 
 void detruire_sommet(void *elem){
     sommet *s = (sommet *)elem;
-    list_delete(s->successeur, NULL);
+    list_delete(s->successeur, free);
     free(s);
 }
 
@@ -94,7 +82,7 @@ bool circuits(graphe *G,sommet *s_current){
         sommet *successor = (sommet *)iterator_current(it);
         if (G->status[successor->indice] == -1) {
             G->status[successor->indice] = 0;
-            r = circuits(G->status, successor);
+            r = circuits(G, successor);
             if (r == 1) {
                 iterator_delete(it);
                 return true;

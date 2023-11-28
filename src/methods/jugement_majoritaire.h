@@ -21,11 +21,7 @@
 /**
  * @brief Structure représentant un candidat dans le scrutin du jugement majoritaire.
  */
-typedef struct s_candidat{
-    char *nom;
-    List *votesCandidat;
-    int *mention;
-}Candidat;
+typedef struct s_candidat Candidat;
 
 /**
  * @brief Affiche un élément.

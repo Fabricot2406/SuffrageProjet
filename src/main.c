@@ -14,6 +14,8 @@
 #include "./utils/dataStructure/arc.h"
 #include "./methods/uninominale.h"
 #include "./methods/jugement_majoritaire.h"
+#include "./methods/methode_paire.h"
+// Ajouter global.h
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -21,22 +23,13 @@ typedef struct {
     void (*fonction)();
 } Methode;
 
-// Définition des fonctions correspondant à chaque méthode.
-// A refactoriser en utilisant des pointeurs de fonction.
+
 void methode_cm() {
     printf("Méthode cm sélectionnée.\n");
 }
 
-void methode_cp() {
-    printf("Méthode cp sélectionnée.\n");
-}
-
 void methode_cs() {
     printf("Méthode cs sélectionnée.\n");
-}
-
-void methode_jm() {
-    printf("Méthode jm sélectionnée.\n");
 }
 
 void methode_all() {
@@ -47,7 +40,7 @@ Methode liste_methodes[] = {
     {"uni1", calculerUninominaleUnTour},
     {"uni2", calculerUninominaleDeuxTours},
     {"cm", methode_cm},
-    {"cp", methode_cp},
+    {"cp", condorcet_paires},
     {"cs", methode_cs},
     {"jm", determinerVainqueurJugement},
     {"all", methode_all},
@@ -74,7 +67,6 @@ void calculerVote(char *fichier, char *output, char *methode) {
                 methode_trouvee = 1;
                 break;
             }
-            
             liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
             methode_trouvee = 1;
             break;
