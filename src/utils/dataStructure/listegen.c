@@ -63,6 +63,17 @@ void list_delete(List *l, SimpleFunctor f) {
     free(list);
 }
 
+void list_pop_back(List* list, SimpleFunctor f) {
+	assert(!list_is_empty(list));
+	LinkedElement *sentinel = list->sentinel;
+	LinkedElement *element = sentinel->previous;
+	element->previous->next = sentinel;
+	sentinel->previous = element->previous;
+	f(element->value);
+	free(element);
+	(list->size)--;
+}
+
 void *list_front(const List* l) {
 	assert(!list_is_empty(l));
 	return l->sentinel->next->value;

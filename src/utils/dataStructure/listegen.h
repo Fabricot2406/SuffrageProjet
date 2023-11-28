@@ -101,6 +101,8 @@ int list_size(const List* l);
  */
 List* list_remove_at(List* l, int p,SimpleFunctor f);
 
+void list_pop_back(List* list, SimpleFunctor f);
+
 /**
  * @brief Fonction permettant d'accéder à l'élément à une position donnée.
  * @param l La liste dans laquelle on veut accéder à l'élément
