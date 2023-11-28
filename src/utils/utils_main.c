@@ -97,5 +97,6 @@ void construire_afficher_TAD(char *fichier) {
     
     detruire_larc(list_arc);
     detruire_matrice(matrice_duel);
+    libererMatrice(matrice);
     detruire_ballot(b);
 }

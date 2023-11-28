@@ -13,6 +13,7 @@
 #include "./utils/dataStructure/duel.h"
 #include "./utils/dataStructure/arc.h"
 #include "./methods/uninominale.h"
+#include "./methods/jugement_majoritaire.h"
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -48,7 +49,7 @@ Methode liste_methodes[] = {
     {"cm", methode_cm},
     {"cp", methode_cp},
     {"cs", methode_cs},
-    {"jm", methode_jm},
+    {"jm", determinerVainqueurJugement},
     {"all", methode_all},
 };
 
@@ -68,6 +69,12 @@ void calculerVote(char *fichier, char *output, char *methode) {
     // Cherche la méthode choisie.
     for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
         if (strcmp(methode, liste_methodes[i].nom) == 0) {
+            if (strcmp(methode, "jm") == 0) {
+                liste_methodes[i].fonction(matrice_csv);
+                methode_trouvee = 1;
+                break;
+            }
+            
             liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
             methode_trouvee = 1;
             break;
@@ -78,6 +85,7 @@ void calculerVote(char *fichier, char *output, char *methode) {
         fprintf(stderr, "Liste des paramètres de l'option m : uni1, uni2, cm, cp, cs, jm, all.\n");
         exit(EXIT_FAILURE);
     }
+    libererMatrice(matrice_csv);
     detruire_ballot(matrice_ballot);
 }
 

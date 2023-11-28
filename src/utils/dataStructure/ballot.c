@@ -142,7 +142,6 @@ ballot *remplir_ballot(ballot *b, t_mat_char_star_dyn *classement_csv){
     b = remplir_liste_candidats(b, classement_csv);
     // Remplissage de la matrice de classement
     b = remplir_classement(b, classement_csv);
-    libererMatrice(classement_csv);
     return b;
 }
 
@@ -152,7 +151,7 @@ ballot *remplir_ballot(ballot *b, t_mat_char_star_dyn *classement_csv){
  */
 void detruire_ensemble_preference(void *elem){
     Pref *pref = (Pref *)elem;
-    list_delete((ptrList *)pref->list,free);
+    list_delete(pref->list,free);
     free(pref);
 }
 
@@ -162,7 +161,7 @@ void detruire_ensemble_preference(void *elem){
  */
 void detruire_liste_ensemble_preference(void *elem){
     List *list = (List *)elem;
-    list_delete((ptrList *)list,detruire_ensemble_preference);
+    list_delete(list,detruire_ensemble_preference);
 }
 
 void detruire_ballot(ballot *b){
@@ -170,7 +169,7 @@ void detruire_ballot(ballot *b){
         free(b->candidats_nom[i]);
     }
     free(b->candidats_nom);
-    list_delete((ptrList *)b->classement,detruire_liste_ensemble_preference);
+    list_delete(b->classement,detruire_liste_ensemble_preference);
     free(b);
 }
 

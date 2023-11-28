@@ -74,7 +74,7 @@ void detruire_arc(void *elem){
 
 void detruire_larc(larc *tab_arc){
     List *list = tab_arc->larc;
-    list_delete((ptrList *)list,detruire_arc);
+    list_delete(list,detruire_arc);
     free(tab_arc);
 }
 

@@ -20,16 +20,18 @@ typedef int (*ReduceFunctor)(void *, int);
 
 typedef int (*Functor)(void *, void *);
 
-/**
- * @brief Structure de donnée correspondant à une liste générique.
- * Définition opaque du type List.
- */
-typedef struct s_List List;
+typedef bool(*OrderFunctor)(void *, void *);
 
-/**
- * @brief Définition du type ptrList : pointeur vers une liste générique.
- */
-typedef List* ptrList;
+typedef struct s_LinkedElement {
+	void *value;
+	struct s_LinkedElement* previous;
+	struct s_LinkedElement* next;
+} LinkedElement;
+
+typedef struct s_List {
+	LinkedElement* sentinel;
+	int size;
+}List;
 
 /**
  * @brief Constructeur de la structure de donnée List.
@@ -55,11 +57,11 @@ List* list_push_back(List* list, void *data);
 List* list_push_front(List* list, void *data, size_t date_size);
 
 /**
- * @brief Libaire la mémoire allouée pour la liste.
+ * @brief Libère la mémoire allouée pour la liste.
  * @param l : pointeur vers la liste à libérer.
  * @param f : fonction permettant de libérer la mémoire allouée pour les données de la liste.
  **/
-void list_delete(ptrList *l, SimpleFunctor f);
+void list_delete(List *l, SimpleFunctor f);
 
 /**
  * @brief Accède à l'élément en tête de liste.
@@ -89,6 +91,15 @@ bool list_is_empty(const List* l);
  * @return int : taille de la liste.
  */
 int list_size(const List* l);
+
+/**
+ * @brief Supprime l'élément à la position spécifiée dans la liste.
+ * @param l : La liste dont on veut supprimer un élément.
+ * @param p : La position de l'élément à supprimer.
+ * @param f : Une fonction pour libérer la mémoire allouée pour la valeur de l'élément.
+ * @return List* : La liste modifiée sans l'élément supprimé.
+ */
+List* list_remove_at(List* l, int p,SimpleFunctor f);
 
 /**
  * @brief Fonction permettant d'accéder à l'élément à une position donnée.
@@ -138,6 +149,13 @@ List* list_map(List* l, SimpleFunctor f);
  * @return List* La liste réduite
  */
 List* list_reduce(List* l, Functor f, void *userData);
+/**
+ * @brief Trie les éléments de la liste dans l'ordre croissant.
+ * @param l : La liste à trier.
+ * @param comp : Une fonction de comparaison qui renvoie vrai si le premier argument doit venir avant le second dans la liste triée.
+ * @return List* : La liste triée selon la fonction de comparaison f.
+ */
+List* list_sort(List* l, OrderFunctor f);
 
 /******************* ITERATOR *********************/
 
