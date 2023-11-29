@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file matrice_int_dyn.c
+ * @author Anthony
+ * @date 2023-11-28
+ */
 #include "matrice_int_dyn.h"
 
 /******************* MATRICE *********************/

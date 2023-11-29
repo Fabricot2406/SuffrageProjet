@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file lecture_csv.c
+ * @author Marco
+ * @date 2023-11-28
+ */
 #include "lecture_csv.h"
 
 t_mat_char_star_dyn *remplirMatrice(char *fichier){

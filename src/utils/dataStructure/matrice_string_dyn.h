@@ -1,6 +1,7 @@
+/** \\file */
 /**
- * @file s_matriceVote.h
- * @author Marco, Anthony
+ * @file matrice_string_dyn.h
+ * @authors Marco, Anthony
  * @brief Structure de donnée correspondant à la matrice des votes issue d'un fichier CSV.
  * @version finale
  * @date 2021-11-23
@@ -15,6 +16,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+/******************* STRUCTURE *********************/
+
 /**
  * @struct s_matriceVote
  * @brief Structure pour allocation matrice dynamique.
@@ -25,12 +28,16 @@ typedef struct s_matriceVote{
     char ***tab; // Tableau de pointeurs de pointeurs de caractères
 }t_mat_char_star_dyn;
 
+/******************* CONSTRUCTEUR *********************/
+
 /**
  * @fn t_mat_char_star_dyn *creerMatrice()
  * @brief Fonction pour initialiser la matrice.
  * @return Pointeur vers la matrice créée.
  */
 t_mat_char_star_dyn *creerMatrice();
+
+/******************* OPERATEUR *********************/
 
 /**
  * @fn int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne)

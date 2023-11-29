@@ -1,10 +1,10 @@
+/** \\file */
 /**
  * @file utils_main.h
- * @authors Marco, Anthony, Fabio
+ * @authors Marco, Anthony et Fabio
  * @brief Fichier de fonctions utilitaires nécessaires au main.c
  */
 
-/** \\file */
 #ifndef UTILS_MAIN_H
 #define UTILS_MAIN_H
 

@@ -1,9 +1,9 @@
+/** \\file */
 /**
  * @file duel.h
  * @author Anthony
  * @brief Création de la matrice de duel, qui contient les duels entre les candidats. 
  * La diagonale est remplie de 0, car un candidat ne peut pas se battre contre lui-même.
- * @version beta
  * @date 2023-11-26
  */
 

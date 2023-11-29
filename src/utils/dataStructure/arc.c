@@ -1,6 +1,12 @@
+/** \\file */
+/**
+ * @file arc.c
+ * @author Anthony
+ * @date 2023-11-28
+ */
 #include "arc.h"
 
-arc* arc_create(int candidat_gagnant, int candidat_perdant, int nb_votes){
+arc* arc_create(int candidat_gagnant, int candidat_perdant, int score){
     arc *a = malloc(sizeof(arc));
     if (a == NULL) {
         fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
@@ -8,15 +14,29 @@ arc* arc_create(int candidat_gagnant, int candidat_perdant, int nb_votes){
     }
     a->candidat_gagnant = candidat_gagnant;
     a->candidat_perdant = candidat_perdant;
-    a->nb_votes = nb_votes;
+    a->score = score;
     return a;
 }
 
 
+double calculerPourcentage(int score1, int score2) {
+    int totalScores = score1 + score2;
+    if (totalScores == 0) {
+        // Éviter une division par zéro
+        return 0.0;
+    }
+    double pourcentage = ((double)score1 / totalScores) * 100.0;
+    return pourcentage;
+}
+
+int compare_arc(const void *a, const void *b) {
+    return ((arc *)b)->score - ((arc *)a)->score;
+}
+
 /**
- * @brief Fonction qui permet de completer la liste des arcs à partir de la matrice de duel.
- * @param tab_arc La liste des arcs à compléter
- * @param matrice_duel La matrice de duel
+ * @brief Complète une liste d'arcs avec des pourcentages de victoire entre les candidats.
+ * @param tab_arc Un tableau d'arcs à compléter.
+ * @param matrice_duel Une matrice représentant les résultats des duels entre candidats.
  */
 void larc_complete(larc *tab_arc, t_mat_int_dyn *matrice_duel){
     List *list = tab_arc->larc;
@@ -29,12 +49,12 @@ void larc_complete(larc *tab_arc, t_mat_int_dyn *matrice_duel){
             int nb_votes_a = matrice_duel->mat[candidat_1][candidat_2];
             int nb_votes_b = matrice_duel->mat[candidat_2][candidat_1];
             
-            int nb_votes = (nb_votes_a >= nb_votes_b) ? nb_votes_a : nb_votes_b;
+            int nb_votes = (nb_votes_a >= nb_votes_b) ? nb_votes_a - nb_votes_b : nb_votes_b - nb_votes_a;
             int cand_a = (nb_votes_a >= nb_votes_b) ? candidat_1 : candidat_2;
             int cand_b = (nb_votes_a >= nb_votes_b) ? candidat_2 : candidat_1;
             if (nb_votes != 0) {
                 arc *a = arc_create(cand_a, cand_b, nb_votes);
-                list_push_back(list, (void *)a);
+                insert_sorted(list, a, compare_arc);
             }
         }
     }
@@ -60,7 +80,7 @@ void detruire_arc(void *elem){
 
 void detruire_larc(larc *tab_arc){
     List *list = tab_arc->larc;
-    list_delete((ptrList *)list,detruire_arc);
+    list_delete(list,detruire_arc);
     free(tab_arc);
 }
 
@@ -72,7 +92,7 @@ void detruire_larc(larc *tab_arc){
  */
 void afficher_arc(void* input){
     arc *a = (arc *)input;
-    printf("(%d > %d: %d)\n",a->candidat_gagnant, a->candidat_perdant, a->nb_votes);
+    printf("(%d > %d: %d)\n",a->candidat_gagnant, a->candidat_perdant, a->score);
 }
 
 void afficher_larc(larc *tab_arc){

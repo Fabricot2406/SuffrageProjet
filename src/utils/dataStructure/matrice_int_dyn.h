@@ -1,8 +1,8 @@
+/** \\file */
 /**
- * @file matrice_int_dyn.c
+ * @file matrice_int_dyn.h
  * @author Anthony
  * @brief Structure de donnée correspondant à une matrice dynamique contenant des entiers.
- * @version finale
  * @date 2021-11-23
  */
 
@@ -15,6 +15,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+/******************* STRUCTURE *********************/
+
 /**
  * @struct t_mat_int_dyn
  * @brief Structure représentant une matrice dynamique d'entiers.
@@ -25,6 +27,8 @@ typedef struct t_mat_int_dyn{
     int rows; // Nombre de lignes de la matrice
     int cols; // Nombre de colonnes de la matrice
 } t_mat_int_dyn;
+
+/******************* CONSTRUCTEUR *********************/
 
 /**
  * @brief Crée une nouvelle matrice dynamique d'entiers.

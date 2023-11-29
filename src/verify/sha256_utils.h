@@ -1,3 +1,4 @@
+/** \\file */
 /**
  * @file sha256_utils.h
  * @brief Fichier de déclaration pour la fonction de hashage sha256ofString.

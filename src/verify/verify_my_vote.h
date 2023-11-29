@@ -1,8 +1,8 @@
+/** \\file */
 /**
  * @file verify_my_vote.h
  * @author Marco
  * @brief Fichier de déclaration pour la vérification du vote de l'utilisateur.
- * @version 0.1
  * @date 2023-11-26
  */
 #ifndef VERIFY_MY_VOTE_H

@@ -1,3 +1,10 @@
+/** \\file */
+/**
+ * @file uninominale.c
+ * @author Fabio
+ * @date 2023-11-28
+ * 
+ */
 #include "uninominale.h"
 
 int nbCandidats, nbVotants;

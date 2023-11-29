@@ -1,18 +1,18 @@
+/** \\file */
+/**
+ * @file main.c
+ * @authors Fabio, Anthony et Marco
+ * @brief
+ * @date 2023-11-28
+ * 
+ * @copyright Copyright (c) 2023
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
 #include <ctype.h>
 #include <string.h>
-#include "./utils/lecture_csv.h"
-#include "./verify/verify_my_vote.h"
-#include "./utils/utils_main.h"
-#include "./utils/dataStructure/matrice_int_dyn.h"
-#include "./utils/dataStructure/matrice_string_dyn.h"
-#include "./utils/dataStructure/listegen.h"
-#include "./utils/dataStructure/ballot.h"
-#include "./utils/dataStructure/duel.h"
-#include "./utils/dataStructure/arc.h"
-#include "./methods/uninominale.h"
+#include "./utils/global.h"
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
@@ -20,22 +20,13 @@ typedef struct {
     void (*fonction)();
 } Methode;
 
-// Définition des fonctions correspondant à chaque méthode.
-// A refactoriser en utilisant des pointeurs de fonction.
+
 void methode_cm() {
     printf("Méthode cm sélectionnée.\n");
 }
 
-void methode_cp() {
-    printf("Méthode cp sélectionnée.\n");
-}
-
 void methode_cs() {
     printf("Méthode cs sélectionnée.\n");
-}
-
-void methode_jm() {
-    printf("Méthode jm sélectionnée.\n");
 }
 
 void methode_all() {
@@ -46,9 +37,9 @@ Methode liste_methodes[] = {
     {"uni1", calculerUninominaleUnTour},
     {"uni2", calculerUninominaleDeuxTours},
     {"cm", methode_cm},
-    {"cp", methode_cp},
+    {"cp", condorcet_paires},
     {"cs", methode_cs},
-    {"jm", methode_jm},
+    {"jm", determinerVainqueurJugement},
     {"all", methode_all},
 };
 
@@ -63,11 +54,16 @@ Methode liste_methodes[] = {
 void calculerVote(char *fichier, char *output, char *methode) {
     int methode_trouvee = 0;
     t_mat_char_star_dyn *matrice_csv = remplirMatrice(fichier);
-    ballot *matrice_ballot = creer_ballot(matrice_csv -> nbColonnes - 4, matrice_csv -> nbLignes - 1);
+    ballot *matrice_ballot = creer_ballot(matrice_csv -> nbColonnes, matrice_csv -> nbLignes);
     remplir_ballot(matrice_ballot, matrice_csv);
     // Cherche la méthode choisie.
     for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
         if (strcmp(methode, liste_methodes[i].nom) == 0) {
+            if (strcmp(methode, "jm") == 0) {
+                liste_methodes[i].fonction(matrice_csv);
+                methode_trouvee = 1;
+                break;
+            }
             liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
             methode_trouvee = 1;
             break;
@@ -78,6 +74,7 @@ void calculerVote(char *fichier, char *output, char *methode) {
         fprintf(stderr, "Liste des paramètres de l'option m : uni1, uni2, cm, cp, cs, jm, all.\n");
         exit(EXIT_FAILURE);
     }
+    libererMatrice(matrice_csv);
     detruire_ballot(matrice_ballot);
 }
 

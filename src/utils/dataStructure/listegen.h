@@ -1,3 +1,4 @@
+/** \\file */
 /**
  * @file listegen.h
  * @author Anthony
@@ -14,22 +15,30 @@
 #include <stdbool.h>
 #include <assert.h>
 
+/******************* TYPE FONCTION *********************/
+
 typedef void(*SimpleFunctor)(void *);
 
 typedef int (*ReduceFunctor)(void *, int);
 
 typedef int (*Functor)(void *, void *);
 
-/**
- * @brief Structure de donnée correspondant à une liste générique.
- * Définition opaque du type List.
- */
-typedef struct s_List List;
+typedef bool(*OrderFunctor)(void *, void *);
 
-/**
- * @brief Définition du type ptrList : pointeur vers une liste générique.
- */
-typedef List* ptrList;
+/******************* STRUCTURE *********************/
+
+typedef struct s_LinkedElement {
+	void *value;
+	struct s_LinkedElement* previous;
+	struct s_LinkedElement* next;
+} LinkedElement;
+
+typedef struct s_List {
+	LinkedElement* sentinel;
+	int size;
+}List;
+
+/******************* CONSTRUCTEURS *********************/
 
 /**
  * @brief Constructeur de la structure de donnée List.
@@ -55,11 +64,26 @@ List* list_push_back(List* list, void *data);
 List* list_push_front(List* list, void *data, size_t date_size);
 
 /**
- * @brief Libaire la mémoire allouée pour la liste.
- * @param l : pointeur vers la liste à libérer.
- * @param f : fonction permettant de libérer la mémoire allouée pour les données de la liste.
- **/
-void list_delete(ptrList *l, SimpleFunctor f);
+ * @brief Fonction permettant d'inserer un élément à une position donnée.
+ * @param l La liste dans laquelle on veut insérer l'élément
+ * @param p La position à laquelle on veut insérer l'élément
+ * @param v Le pointeur vers les données de l'élément à insérer
+ * @return List* La liste modifiée
+ */
+List* list_insert_at(List* l, int p, void *v);
+
+/**
+ * @brief Insère un nouvel élément dans une liste triée.
+ * @param list La liste dans laquelle insérer l'élément.
+ * @param newElement Un pointeur vers la nouvelle valeur à insérer.
+ * @param compare La fonction de comparaison pour déterminer l'ordre des éléments.
+ * Cette fonction doit retourner un entier négatif si le premier élément est inférieur au deuxième, 
+ * 0 s'ils sont égaux, 
+ * et un entier positif si le premier élément est supérieur au deuxième.
+ */
+void insert_sorted(List *list, void *newElement, int (*compare)(const void *, const void *));
+
+/******************* OPERATEURS *********************/
 
 /**
  * @brief Accède à l'élément en tête de liste.
@@ -74,6 +98,14 @@ void *list_front(const List* l);
  * @return void* : pointeur vers les données de l'élément en fin de liste.
  */
 void *list_back(const List* l);
+
+/**
+ * @brief Fonction permettant d'accéder à l'élément à une position donnée.
+ * @param l La liste dans laquelle on veut accéder à l'élément
+ * @param p La position à laquelle on veut accéder à l'élément
+ * @return void* Le pointeur vers les données de l'élément à la position p
+ */
+void *list_at(const List* l, int p);
 
 /**
  * @brief Fonction indiquant si la liste est vide ou non.
@@ -91,34 +123,31 @@ bool list_is_empty(const List* l);
 int list_size(const List* l);
 
 /**
- * @brief Fonction permettant d'accéder à l'élément à une position donnée.
- * @param l La liste dans laquelle on veut accéder à l'élément
- * @param p La position à laquelle on veut accéder à l'élément
- * @return void* Le pointeur vers les données de l'élément à la position p
- */
-void *list_at(const List* l, int p);
+ * @brief Libère la mémoire allouée pour la liste.
+ * @param l : pointeur vers la liste à libérer.
+ * @param f : fonction permettant de libérer la mémoire allouée pour les données de la liste.
+ **/
+void list_delete(List *l, SimpleFunctor f);
 
 /**
- * @brief Fonction permettant d'inserer un élément à une position donnée.
- * @param l La liste dans laquelle on veut insérer l'élément
- * @param p La position à laquelle on veut insérer l'élément
- * @param v Le pointeur vers les données de l'élément à insérer
- * @return List* La liste modifiée
+ * @brief Supprime l'élément à la position spécifiée dans la liste.
+ * @param l : La liste dont on veut supprimer un élément.
+ * @param p : La position de l'élément à supprimer.
+ * @param f : Une fonction pour libérer la mémoire allouée pour la valeur de l'élément.
+ * @return List* : La liste modifiée sans l'élément supprimé.
  */
-List* list_insert_at(List* l, int p, void *v);
+List* list_remove_at(List* l, int p,SimpleFunctor f);
+
+/**
+ * @brief Supprime le dernier élément de la liste et libère la mémoire associée.
+ * @param list La liste à modifier.
+ * @param f Foncteur simple pour libérer la mémoire du contenu de l'élément.
+ * Si NULL, la fonction se contente de libérer l'élément sans libérer son contenu.
+ * @pre La liste ne doit pas être vide.
+ */
+void list_pop_back(List* list, SimpleFunctor f);
 
 /******************* UTILS *********************/
-
-/**
- * @brief Fonction permettant de savoir si une liste contient un élément donné.
- * 
- * @param l Liste dans laquelle on veut chercher l'élément
- * @param f Fonction permettant de comparer l'élément avec un autre
- * @param userData L'élément à comparer, sous forme d'entier
- * @return true si la liste contient l'élément
- * @return false si la liste ne contient pas l'élément
- */
-bool contient(List* l, ReduceFunctor f, int userData);
 
 /**
  * @brief Fonction permettant d'appliquer une fonction sur tous les éléments d'une liste.
@@ -138,15 +167,68 @@ List* list_map(List* l, SimpleFunctor f);
  * @return List* La liste réduite
  */
 List* list_reduce(List* l, Functor f, void *userData);
+/**
+ * @brief Trie les éléments de la liste dans l'ordre croissant.
+ * @param l : La liste à trier.
+ * @param comp : Une fonction de comparaison qui renvoie vrai si le premier argument doit venir avant le second dans la liste triée.
+ * @return List* : La liste triée selon la fonction de comparaison f.
+ */
+List* list_sort(List* l, OrderFunctor f);
+
+/******************* ITERATOR *********************/
 
 /**
- * @brief Fonction permettant de trouver l'indice d'un élément dans une liste.
- * 
- * @param l Liste dans laquelle on veut chercher l'élément
- * @param f Fonction permettant de comparer l'élément avec un autre
- * @param userData L'élément à comparer, sous forme d'entier
- * @return int L'indice de l'élément dans la liste
- */
-int trouver_indice(List* l, ReduceFunctor f, int userData);
+ * @brief Structure de l'iterateur utilisée pour la liste générique
+ * Définition opaque de la structure
+*/
+typedef struct s_Iterator Iterator;
 
+/**
+ * @brief Fonction permettant de construire un iterateur
+ * 
+ * @param l Liste que l'on souhaite parcourir
+ * @return Iterator* pointeur vers l'iterateur créé
+ */
+Iterator* iterator_create(const List* l);
+
+/**
+ * @brief Fonction permettant de supprimer un iterateur
+ * @param it Iterateur que l'on souhaite supprimer
+*/
+void iterator_delete(Iterator* it);
+
+/**
+ * @brief Fonction indiquant la fin du liste à la prochaine itération
+ * @param it L'itérateur utilisé
+ * @return true si il y a encore des éléments à parcourir et false sinon
+*/
+bool iterator_has_next(const Iterator* it);
+
+/**
+ * @brief Fonction renvoyant la valeur courrante pointée par l'itérateur
+ * @param it L'itérateur utilisé
+ * @return La valeur courrante
+*/
+void *iterator_current(const Iterator* it);
+
+/**
+ * @brief Fonction permettant de passer à l'élément suivant
+ * @param it L'itérateur utilisé
+*/
+void iterator_next(Iterator* it);
+
+/**
+ * @brief Fonction permettant de mettre l'itérateur à position donnée
+ * @param it L'itérateur utilisé
+ * @param p La position souhaitée
+*/
+void set_position(Iterator* it, int p);
+
+/**
+ * @brief Fonction permettant de récupérer la position courrante de l'itérateur
+ * @param it L'itérateur utilisé
+ * @return La position courrante
+*/
+int iterator_index(const Iterator *it);
+ 
 #endif // __LISTE_GEN_H__
