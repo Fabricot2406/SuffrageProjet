@@ -1,6 +1,14 @@
+/** \\file */
+/**
+ * @file ballot.c
+ * @author Anthony
+ * @date 2023-11-28
+ */
 #include "ballot.h"
 
 ballot *creer_ballot(int nb_candidats, int nb_votants){
+    nb_candidats -= INCREMENT_COLONNE;
+    nb_votants -= INCREMENT_LIGNE;
     ballot *b = malloc(sizeof(ballot));
     b->nb_candidats = nb_candidats;
     b->nb_votants = nb_votants;
@@ -32,8 +40,8 @@ ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv){
     char ***matrice_csv = classement_csv->tab;
     // Remplissage de la liste de candidats
     for (int i = 0; i < b->nb_candidats; i++){
-        char *nom = malloc(sizeof(char) * strlen(matrice_csv[0][i + 4]) + 1);
-        strcpy(nom, matrice_csv[0][i + 4]);
+        char *nom = malloc(sizeof(char) * strlen(matrice_csv[0][i + INCREMENT_COLONNE]) + INCREMENT_LIGNE);
+        strcpy(nom, matrice_csv[0][i + INCREMENT_COLONNE]);
         b->candidats_nom[i] = nom;
     }
     return b;
@@ -124,8 +132,7 @@ ballot *remplir_classement(ballot *b, t_mat_char_star_dyn *classement_csv){
         // Création d'une liste d'ensemble de préférence pour un votant
         List *liste_preferences = list_create();
         for(int candidat = 0; candidat < nb_candidats; candidat++){
-            // 4 colonnes et 1 ligne de plus pour ne pas prendre en compte les infos de l'élection
-            int rang_preference = atoi(matrice_csv[votant + 1][candidat + 4]);
+            int rang_preference = atoi(matrice_csv[votant + INCREMENT_LIGNE][candidat + INCREMENT_COLONNE]);
             if (rang_preference == -1) rang_preference = nb_candidats + 1;
             int *candidat_ptr = malloc(sizeof(int));
             *candidat_ptr = candidat;

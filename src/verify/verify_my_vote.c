@@ -1,3 +1,10 @@
+/** \\file */
+/**
+ * @file verify_my_vote.c
+ * @author Marco  
+ * @brief Fichier qui contient les fonctions pour vérifier son vote
+ * @date 2023-11-26
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

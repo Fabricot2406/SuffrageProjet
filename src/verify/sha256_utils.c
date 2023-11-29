@@ -1,3 +1,4 @@
+/** \\file */
 /*********************************************************************
 * Filename:   sha256.c
 * Author:     Brad Conte (brad AT bradconte.com)

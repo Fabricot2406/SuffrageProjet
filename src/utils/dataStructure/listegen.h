@@ -1,3 +1,4 @@
+/** \\file */
 /**
  * @file listegen.h
  * @author Anthony
@@ -14,6 +15,8 @@
 #include <stdbool.h>
 #include <assert.h>
 
+/******************* TYPE FONCTION *********************/
+
 typedef void(*SimpleFunctor)(void *);
 
 typedef int (*ReduceFunctor)(void *, int);
@@ -21,6 +24,8 @@ typedef int (*ReduceFunctor)(void *, int);
 typedef int (*Functor)(void *, void *);
 
 typedef bool(*OrderFunctor)(void *, void *);
+
+/******************* STRUCTURE *********************/
 
 typedef struct s_LinkedElement {
 	void *value;
@@ -32,6 +37,8 @@ typedef struct s_List {
 	LinkedElement* sentinel;
 	int size;
 }List;
+
+/******************* CONSTRUCTEURS *********************/
 
 /**
  * @brief Constructeur de la structure de donnée List.
@@ -57,61 +64,6 @@ List* list_push_back(List* list, void *data);
 List* list_push_front(List* list, void *data, size_t date_size);
 
 /**
- * @brief Libère la mémoire allouée pour la liste.
- * @param l : pointeur vers la liste à libérer.
- * @param f : fonction permettant de libérer la mémoire allouée pour les données de la liste.
- **/
-void list_delete(List *l, SimpleFunctor f);
-
-/**
- * @brief Accède à l'élément en tête de liste.
- * @param l : liste à laquelle on veut accéder à l'élément en tête.
- * @return void* : pointeur vers les données de l'élément en tête de liste.
- */
-void *list_front(const List* l);
-
-/**
- * @brief Accède à l'élément en fin de liste.
- * @param l : liste à laquelle on veut accéder à l'élément en fin.
- * @return void* : pointeur vers les données de l'élément en fin de liste.
- */
-void *list_back(const List* l);
-
-/**
- * @brief Fonction indiquant si la liste est vide ou non.
- * @param l : liste à laquelle on veut savoir si elle est vide ou non.
- * @return true : si la liste est vide.
- * @return false : si la liste n'est pas vide.
- */
-bool list_is_empty(const List* l);
-
-/**
- * @brief Fonction indiquant la taille de la liste.
- * @param l : liste à laquelle on veut connaître la taille.
- * @return int : taille de la liste.
- */
-int list_size(const List* l);
-
-/**
- * @brief Supprime l'élément à la position spécifiée dans la liste.
- * @param l : La liste dont on veut supprimer un élément.
- * @param p : La position de l'élément à supprimer.
- * @param f : Une fonction pour libérer la mémoire allouée pour la valeur de l'élément.
- * @return List* : La liste modifiée sans l'élément supprimé.
- */
-List* list_remove_at(List* l, int p,SimpleFunctor f);
-
-void list_pop_back(List* list, SimpleFunctor f);
-
-/**
- * @brief Fonction permettant d'accéder à l'élément à une position donnée.
- * @param l La liste dans laquelle on veut accéder à l'élément
- * @param p La position à laquelle on veut accéder à l'élément
- * @return void* Le pointeur vers les données de l'élément à la position p
- */
-void *list_at(const List* l, int p);
-
-/**
  * @brief Fonction permettant d'inserer un élément à une position donnée.
  * @param l La liste dans laquelle on veut insérer l'élément
  * @param p La position à laquelle on veut insérer l'élément
@@ -130,6 +82,70 @@ List* list_insert_at(List* l, int p, void *v);
  * et un entier positif si le premier élément est supérieur au deuxième.
  */
 void insert_sorted(List *list, void *newElement, int (*compare)(const void *, const void *));
+
+/******************* OPERATEURS *********************/
+
+/**
+ * @brief Accède à l'élément en tête de liste.
+ * @param l : liste à laquelle on veut accéder à l'élément en tête.
+ * @return void* : pointeur vers les données de l'élément en tête de liste.
+ */
+void *list_front(const List* l);
+
+/**
+ * @brief Accède à l'élément en fin de liste.
+ * @param l : liste à laquelle on veut accéder à l'élément en fin.
+ * @return void* : pointeur vers les données de l'élément en fin de liste.
+ */
+void *list_back(const List* l);
+
+/**
+ * @brief Fonction permettant d'accéder à l'élément à une position donnée.
+ * @param l La liste dans laquelle on veut accéder à l'élément
+ * @param p La position à laquelle on veut accéder à l'élément
+ * @return void* Le pointeur vers les données de l'élément à la position p
+ */
+void *list_at(const List* l, int p);
+
+/**
+ * @brief Fonction indiquant si la liste est vide ou non.
+ * @param l : liste à laquelle on veut savoir si elle est vide ou non.
+ * @return true : si la liste est vide.
+ * @return false : si la liste n'est pas vide.
+ */
+bool list_is_empty(const List* l);
+
+/**
+ * @brief Fonction indiquant la taille de la liste.
+ * @param l : liste à laquelle on veut connaître la taille.
+ * @return int : taille de la liste.
+ */
+int list_size(const List* l);
+
+/**
+ * @brief Libère la mémoire allouée pour la liste.
+ * @param l : pointeur vers la liste à libérer.
+ * @param f : fonction permettant de libérer la mémoire allouée pour les données de la liste.
+ **/
+void list_delete(List *l, SimpleFunctor f);
+
+/**
+ * @brief Supprime l'élément à la position spécifiée dans la liste.
+ * @param l : La liste dont on veut supprimer un élément.
+ * @param p : La position de l'élément à supprimer.
+ * @param f : Une fonction pour libérer la mémoire allouée pour la valeur de l'élément.
+ * @return List* : La liste modifiée sans l'élément supprimé.
+ */
+List* list_remove_at(List* l, int p,SimpleFunctor f);
+
+/**
+ * @brief Supprime le dernier élément de la liste et libère la mémoire associée.
+ * @param list La liste à modifier.
+ * @param f Foncteur simple pour libérer la mémoire du contenu de l'élément.
+ * Si NULL, la fonction se contente de libérer l'élément sans libérer son contenu.
+ * @pre La liste ne doit pas être vide.
+ */
+void list_pop_back(List* list, SimpleFunctor f);
 
 /******************* UTILS *********************/
 

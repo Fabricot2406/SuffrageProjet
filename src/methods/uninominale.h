@@ -1,8 +1,8 @@
+/** \\file */
 /**
- * @file uninominale.c
+ * @file uninominale.h
  * @author Fabio
  * @brief Méthode uninominale à 1 et 2 tours
- * @version 2.0
  * @date 2023-11-25
  */
 

@@ -15,6 +15,9 @@
         "type_traits": "c",
         "utility": "c",
         "uninominale.h": "c",
-        "stdlib.h": "c"
-    }
+        "stdlib.h": "c",
+        "global.h": "c",
+        "graphe.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

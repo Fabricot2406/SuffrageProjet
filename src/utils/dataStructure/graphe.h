@@ -1,8 +1,8 @@
+/** \\file */
 /**
  * @file graphe.h
- * @autor Anthony
+ * @author Anthony
  * @brief Structure de données pour structurer un graphe
- * @version 1.0
  * @date 2023-11-27
 */
 
@@ -16,6 +16,9 @@
 #include <assert.h>
 #include "listegen.h"
 
+
+/******************* STRUCTURE *********************/
+
 typedef struct s_sommet {
 	int indice; // Indice globale du candidat
 	List *successeur; // Liste de pointeur de sommet (ensemble des arcs)
@@ -27,9 +30,13 @@ typedef struct s_graphe {
     int nb_candidat; // Nombre de candidat dans le graphe
 }graphe;
 
+/******************* CONSTRUCTEURS *********************/
+
 graphe *creation_graphe(int nb_candidat);
 
 sommet *creer_sommet(int indice);
+
+/******************* OPERATEURS *********************/
 
 void ajout_succession(sommet *s_current, sommet *s_successor);
 

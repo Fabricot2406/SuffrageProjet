@@ -1,8 +1,8 @@
+/** \\file */
 /**
- * @file utils_sd.c
- * @author Fabio
+ * @file utils_sd.h
+ * @authors Anthony, Marco et Fabio
  * @brief Fonctions utilitaires pour les méthodes de suffrage
- * @version 1.0
  * @date 2023-11-25
  */
 
@@ -17,6 +17,9 @@
 #include "./dataStructure/ballot.h"
 #include "./dataStructure/arc.h"
 #include "./dataStructure/listegen.h"
+
+#define INCREMENT_COLONNE 4
+#define INCREMENT_LIGNE 1
 
 typedef struct uni_data_s{
     int *vainqueurUn;
@@ -58,6 +61,20 @@ int uni_reduce(void *elem, void *data);
  * @return double Le score du candidat
  */
 double calculerScore(int nbVotants, int nbVotes);
+
+/**
+ * @brief Affiche un élément. Cet élément est un pointeur sur un entier.
+ * @param elem : L'élément à afficher.
+ */
+void afficher_int_ptr(void *elem);
+
+/**
+ * @brief Trie les votes. Les paramètres sont castés en int.
+ * @param i : Premier vote à comparer.
+ * @param j : Deuxième vote à comparer.
+ * @return bool : Renvoie vrai si le premier vote doit venir avant le deuxième.
+ */
+bool cmp_inferieur_egal(void *i, void *j);
 
 /**
  * @brief Fonction permettant de déterminer si il y a un vainqueur de Condorcet

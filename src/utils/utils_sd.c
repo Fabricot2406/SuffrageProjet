@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file utils_sd.c
+ * @authors Anthony, Marco et Fabio
+ * @date 2023-11-28
+ */
 #include "utils_sd.h"
 
 void afficherVainqueur(char * methode, int nbCandidats, int nbVotants, char * nomVainqueur, double score) {
@@ -36,6 +42,19 @@ int uni_reduce(void *elem, void *data){
 
 double calculerScore(int nbVotants, int nbVotes) {
     return ((double) nbVotes / nbVotants) * 100;
+}
+
+void afficher_int_ptr(void* elem){
+    //On cast elem au type int et on l'affiche
+    int *value = elem;
+    printf("%d  ",*value);
+}
+
+bool cmp_inferieur_egal(void *i, void *j){
+    //On cast i et j au type int et on les compare
+    int *elem1 = i;
+    int *elem2 = j;
+    return *elem1<=*elem2;
 }
 
 /**

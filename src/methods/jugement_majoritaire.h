@@ -1,13 +1,13 @@
+/** \\file */
 /**
  * @file jugement_majoritaire.h
- * @author Marco Regragui Martins
+ * @author Marco
  * @brief Fichier de la méthode de scrutin du jugement majoritaire
- * @version 1.0
- * @date Date de création
+ * @date 2023-11-28
  */
 
-#ifndef JUGEMENT_MAJORITAIRE_H
-#define JUGEMENT_MAJORITAIRE_H
+#ifndef __JUGEMENT_MAJORITAIRE_H__
+#define __JUGEMENT_MAJORITAIRE_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,47 +16,12 @@
 #include "../utils/dataStructure/listegen.h"
 #include "../utils/utils_sd.h"
 
-#define INCREMENT_COLONNE 4
+/******************* STRUCTURE *********************/
 
 /**
  * @brief Structure représentant un candidat dans le scrutin du jugement majoritaire.
  */
 typedef struct s_candidat Candidat;
-
-/**
- * @brief Affiche un élément.
- * @param elem : L'élément à afficher.
- */
-void afficherElem(void *elem);
-
-/**
- * @brief Trie les votes.
- * @param i : Premier vote à comparer.
- * @param j : Deuxième vote à comparer.
- * @return bool : Renvoie vrai si le premier vote doit venir avant le deuxième.
- */
-bool trierVotes(void *i, void *j);
-
-/**
- * @brief Calcule l'indice de mention.
- * @param nbVotes : Le nombre de votes.
- * @return int : L'indice de mention calculé.
- */
-int calculerIndiceMention(int nbVotes);
-
-/**
- * @brief Attribue une mention.
- * @param mention : La mention à attribuer.
- * @return char* : La mention attribuée sous forme de chaîne de caractères.
- */
-char *attribuerMention(int mention);
-
-/**
- * @brief Recherche la meilleure mention.
- * @param tabCandidat : La liste des candidats.
- * @return char* : La meilleure mention trouvée sous forme de chaîne de caractères.
- */
-char *rechercherMeilleureMention(List *tabCandidat);
 
 /**
  * @brief Initialise un candidat.
@@ -80,6 +45,36 @@ List *initTableauCandidat(t_mat_char_star_dyn *matrice);
 void libererCandidat(void *elem);
 
 /**
+ * @brief Libère une liste de candidats.
+ * @param tabCandidat : La liste des candidats à libérer.
+ */
+void libererListeCandidat(List *tabCandidat);
+
+
+/******************* METHODE *********************/
+
+/**
+ * @brief Calcule l'indice de mention.
+ * @param nbVotes : Le nombre de votes.
+ * @return int : L'indice de mention calculé.
+ */
+int calculerIndiceMention(int nbVotes);
+
+/**
+ * @brief Attribue une mention.
+ * @param mention : La mention à attribuer.
+ * @return char* : La mention attribuée sous forme de chaîne de caractères.
+ */
+char *attribuerMention(int mention);
+
+/**
+ * @brief Recherche la meilleure mention.
+ * @param tabCandidat : La liste des candidats.
+ * @return char* : La meilleure mention trouvée sous forme de chaîne de caractères.
+ */
+char *rechercherMeilleureMention(List *tabCandidat);
+
+/**
  * @brief Calcule le vainqueur du jugement.
  * @param tabCandidat : La liste des candidats.
  */
@@ -97,15 +92,9 @@ void recalculerMention (List *tabCandidatReduit);
 void testAffichage(List *tabCandidat);
 
 /**
- * @brief Libère une liste de candidats.
- * @param tabCandidat : La liste des candidats à libérer.
- */
-void libererListeCandidat(List *tabCandidat);
-
-/**
  * @brief Détermine le vainqueur du jugement.
  */
 void determinerVainqueurJugement();
 
 
-#endif
+#endif //__JUGEMENT_MAJORITAIRE_H__

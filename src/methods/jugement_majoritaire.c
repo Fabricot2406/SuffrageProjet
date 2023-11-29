@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file jugement_majoritaire.c
+ * @author Marco
+ * @date 2023-11-28
+ */
 #include "jugement_majoritaire.h"
 
 typedef struct s_candidat{
@@ -5,22 +11,6 @@ typedef struct s_candidat{
     List *votesCandidat;
     int *mention;
 }Candidat;
-
-// Implémenter dans le utils :
-
-void afficherElem(void* elem){
-    //On cast elem au type int et on l'affiche
-    int *value = elem;
-    printf("%d  ",*value);
-}
-
-// LT -> int à implémenter dans listgen.c
-bool trierVotes(void *i, void *j){
-    //On cast i et j au type int et on les compare
-    int *elem1 = i;
-    int *elem2 = j;
-    return *elem1<=*elem2;
-}
 
 int calculerIndiceMention(int nbVotes){
     //Si le nombre de votes est impair on l'incrémente afin de pouvoir le diviser par 2
@@ -83,7 +73,7 @@ Candidat *initCandidat(t_mat_char_star_dyn *matrice, int numCandidat){
         list_push_back(candidat->votesCandidat,valeur);
     }
     //On trie la liste par ordre croissant afin de trouver la médiane
-    candidat->votesCandidat=list_sort(candidat->votesCandidat,trierVotes);
+    candidat->votesCandidat=list_sort(candidat->votesCandidat,cmp_inferieur_egal);
     //Le nombre de votes est égal à la taille de la liste de votes
     int indiceMention = calculerIndiceMention(candidat->votesCandidat->size);
     candidat->mention = list_at(candidat->votesCandidat,indiceMention);
@@ -128,7 +118,6 @@ void calculerVainqueurJugement(List *tabCandidat){
         }
         free(mentionCandidat);
     }
-    //testAffichage(tabCandidat);
 
     free(meilleureMention);
     //Si le tableau contient plusieurs gagnants, on recalcule la mention de chaque candidat
@@ -155,7 +144,7 @@ void testAffichage(List *tabCandidat){
     for (int i=0;i<tabCandidat->size;i++){
         Candidat *candidat = list_at(tabCandidat,i);
         printf("Candidat Name = %s\tNumber of Votes = %d\n",candidat->nom,candidat->votesCandidat->size);
-        list_map(candidat->votesCandidat,afficherElem);
+        list_map(candidat->votesCandidat,afficher_int_ptr);
         char *mentionChar=attribuerMention(*candidat->mention);
         printf("\nCandidat Mediane = %d\tCandidat Mention = %s\n",*candidat->mention,mentionChar);
         free(mentionChar);
@@ -173,7 +162,7 @@ void determinerVainqueurJugement(t_mat_char_star_dyn *matrice){
     calculerVainqueurJugement(tabCandidat);
     Candidat *vainqueur = list_at(tabCandidat,0);
     int nb_candidat = matrice->nbColonnes-INCREMENT_COLONNE;
-    int nb_votant = matrice->nbLignes-1;
+    int nb_votant = matrice->nbLignes-INCREMENT_LIGNE;
     afficherVainqueur("Jugement majoritaire",nb_candidat,nb_votant,vainqueur->nom,0);
     libererListeCandidat(tabCandidat);
 }

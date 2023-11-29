@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file listegen.c
+ * @author Anthony
+ * @date 2023-11-28
+ */
 #include "listegen.h"
 
 List* list_create() {
@@ -169,7 +175,7 @@ void insert_sorted(List *list, void *newElement, int (*compare)(const void *, co
     iterator_delete(it);
 }
 
-/******************* FONCTION DE TRIE *********************/
+/******************* FONCTION DE TRI *********************/
 
 /**
  * @brief Structure de sous-liste
@@ -396,8 +402,8 @@ void iterator_next(Iterator* it) {
 }
 
 void set_position(Iterator* it, int p) {
-	assert((p >= 0) && (p < it->index));
+	assert((p >= 0));
 	it->current = it->sentinel->next;
-	while (p--) it->current = it->current->next;
 	it->index = p;
+	while (p--) it->current = it->current->next;
 }

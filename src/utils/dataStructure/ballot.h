@@ -1,8 +1,8 @@
+/** \\file */
 /**
  * @file ballot.h
  * @author Anthony
  * @brief Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur.
- * @version finale
  * @date 2021-11-26
  */
 
@@ -17,6 +17,11 @@
 #include "matrice_string_dyn.h"
 #include "matrice_int_dyn.h"
 #include "listegen.h"
+
+#define INCREMENT_COLONNE 4
+#define INCREMENT_LIGNE 1
+
+/******************* STRUCTURE *********************/
 
 /**
  * @struct s_ensemble_preference
@@ -39,6 +44,8 @@ typedef struct ballot_s{
     int nb_votants; // Nombre de votants
     List *classement; // Matrice de classement
 } ballot;
+
+/******************* CONSTRUCTEURS *********************/
 
 /**
  * @brief Crée un nouveau ballot vide.

@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file matrice_string_dyn.c
+ * @authors Marco, Anthony
+ * @date 2023-11-28
+ */
 #include "matrice_string_dyn.h"
 
 #define TAILLE_MAX 65

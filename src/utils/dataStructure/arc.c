@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file arc.c
+ * @author Anthony
+ * @date 2023-11-28
+ */
 #include "arc.h"
 
 arc* arc_create(int candidat_gagnant, int candidat_perdant, int score){

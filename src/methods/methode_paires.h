@@ -1,13 +1,13 @@
+/** \\file */
 /**
- * @file jugement_majoritaire.h
- * @author Marco Regragui Martins
- * @brief Fichier de la méthode de scrutin du jugement majoritaire
- * @version 1.0
- * @date Date de création
+ * @file methode_paires.h
+ * @author Anthony
+ * @brief 
+ * @date 2023-11-28
  */
 
-#ifndef __METHODE_PAIRE_H__
-#define __METHODE_PAIRE_H__
+#ifndef __METHODE_PAIRES_H__
+#define __METHODE_PAIRES_H__
 
 #include <stdio.h>
 #include <stdlib.h>

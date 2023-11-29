@@ -1,4 +1,10 @@
-#include "methode_paire.h"
+/** \\file */
+/**
+ * @file methode_paires.c
+ * @author Anthony
+ * @date 2023-11-28
+ */
+#include "methode_paires.h"
 
 void resoudre_paradoxe(larc *list_arc, int *vainqueur){
     int nb_candidats = list_arc->nb_candidats;

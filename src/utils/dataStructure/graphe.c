@@ -1,3 +1,9 @@
+/** \\file */
+/**
+ * @file graphe.c
+ * @author Anthony
+ * @date 2023-11-28
+ */
 #include "graphe.h"
 
 graphe *creation_graphe(int nb_candidat){

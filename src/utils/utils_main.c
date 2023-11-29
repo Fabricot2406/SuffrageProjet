@@ -1,3 +1,10 @@
+/** \\file */
+/**
+ * @file utils_main.c
+ * @authors Anthony, Marco et Fabio
+ * @version 0.1
+ * @date 2023-11-28
+ */
 #include "utils_main.h"
 
 char errorMsg[] = "\tErreur : Chaîne non valide\n";
@@ -81,7 +88,7 @@ int controlNomPrenom(char *chaine, int prenom){
 
 void construire_afficher_TAD(char *fichier) {
     t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
-    ballot *b = creer_ballot(matrice->nbColonnes - 4, matrice->nbLignes - 1);
+    ballot *b = creer_ballot(matrice->nbColonnes, matrice->nbLignes);
     remplir_ballot(b, matrice);
     afficher_ballot(b);
     t_mat_int_dyn *matrice_duel = creer_matrice_duel(b);

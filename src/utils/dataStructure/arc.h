@@ -1,8 +1,8 @@
+/** \\file */
 /**
  * @file arc.h
- * @autor Anthony
+ * @author Anthony
  * @brief Structure de données pour les arcs du graphe.
- * @version 1.0
  * @date 2023-11-27
 */
 
@@ -17,6 +17,8 @@
 #include "listegen.h"
 #include "matrice_int_dyn.h"
 
+/******************* STRUCTURE *********************/
+
 typedef struct t_arc_p{
     int candidat_gagnant;
     int candidat_perdant;
@@ -27,6 +29,8 @@ typedef struct s_arc{
     List *larc; // liste des arcs
     int nb_candidats;
 }larc;
+
+/******************* CONSTRUCTEURS *********************/
 
 /**
  * @brief Constructeur de la structure de donnée arc.
@@ -44,6 +48,8 @@ arc* arc_create(int candidat_gagnant, int candidat_perdant, int score);
  */
 larc* larc_init(t_mat_int_dyn *matrice_duel);
 
+
+/******************* OPERATEURS *********************/
 
 /**
  * @brief Libérer la mémoire allouée à une liste d'arcs.

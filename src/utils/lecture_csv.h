@@ -1,8 +1,8 @@
+/** \\file */
 /**
  * @file lecture_csv.h
  * @author Marco
  * @brief Fichier de déclaration pour la lecture d'un fichier CSV.
- * @version 1.0
  */
 
 #ifndef LECTURE_CSV_H
