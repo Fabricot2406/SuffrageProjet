@@ -54,6 +54,14 @@ List* list_push_front(List* list, void *data, size_t date_size) {
 	return list;
 }
 
+/**
+ * @brief Utiliser cette fonction dans le paramètre f de list_delete 
+ *        afin de ne pas libérer la mémoire des éléments de la liste.
+ */
+void vide(void *elem){
+    return;
+}
+
 void list_delete(List *l, SimpleFunctor f) {
 	assert(f!=NULL);
 	List *list = l;
@@ -399,6 +407,11 @@ int iterator_index(const Iterator *it){
 void iterator_next(Iterator* it) {
 	it->current = it->current->next;
 	it->index = it->index+1;
+}
+
+void iterator_prev(Iterator* it) {
+	it->current = it->current->previous;
+	it->index = it->index-1;
 }
 
 void set_position(Iterator* it, int p) {

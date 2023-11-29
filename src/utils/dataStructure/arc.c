@@ -84,6 +84,20 @@ void detruire_larc(larc *tab_arc){
     free(tab_arc);
 }
 
+void supprimer_candidat(List *list_arc,int candidat){
+    Iterator *it_larc = iterator_create(list_arc);
+    while (iterator_has_next(it_larc)){
+        arc *a = iterator_current(it_larc);
+        int index = iterator_index(it_larc);
+        if (a->candidat_gagnant == candidat){
+            iterator_prev(it_larc);
+            list_remove_at(list_arc,index,free);
+        }
+        iterator_next(it_larc);
+    }
+    iterator_delete(it_larc);
+}
+
 /******************* UTILS *********************/
 
 /**

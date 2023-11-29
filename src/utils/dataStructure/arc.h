@@ -63,4 +63,6 @@ void detruire_larc(larc *tab_arc);
  */
 void afficher_larc(larc *tab_arc);
 
+void supprimer_candidat(List *list_arc,int candidat);
+
 #endif // __ARC_H__

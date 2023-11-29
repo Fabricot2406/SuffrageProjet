@@ -48,4 +48,6 @@ void detruire_graphe(graphe *g);
 
 bool circuits(graphe *G,sommet *s_current);
 
+void initialiser_status(graphe *g, int sommet_depart);
+
 #endif //__GRAPHE_H__

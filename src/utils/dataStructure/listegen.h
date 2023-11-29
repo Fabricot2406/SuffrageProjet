@@ -123,9 +123,16 @@ bool list_is_empty(const List* l);
 int list_size(const List* l);
 
 /**
+ * @brief Utiliser cette fonction dans le paramètre f de list_delete 
+ *        afin de ne pas libérer la mémoire des éléments de la liste.
+ */
+void vide(void *elem);
+
+/**
  * @brief Libère la mémoire allouée pour la liste.
  * @param l : pointeur vers la liste à libérer.
  * @param f : fonction permettant de libérer la mémoire allouée pour les données de la liste.
+ * 			  Si vide est utilisé, la fonction ne libère pas la mémoire allouée pour les données.
  **/
 void list_delete(List *l, SimpleFunctor f);
 
@@ -216,6 +223,12 @@ void *iterator_current(const Iterator* it);
  * @param it L'itérateur utilisé
 */
 void iterator_next(Iterator* it);
+
+/**
+ * @brief Fonction permettant de passer à l'élément précédent
+ * @param it L'itérateur utilisé
+*/
+void iterator_prev(Iterator* it);
 
 /**
  * @brief Fonction permettant de mettre l'itérateur à position donnée
