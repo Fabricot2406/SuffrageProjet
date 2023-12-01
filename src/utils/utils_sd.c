@@ -91,7 +91,17 @@ bool vainqueur_condorcet(larc *list_arc, int *vainqueur){
     {
         cand_winner->candidat = candidat;
         cand_winner->est_gagant = true;
-        list_reduce(list,uni_perdant,cand_winner);
+
+        Iterator * it = iterator_create(list);
+        while (iterator_has_next(it)){
+            arc *a = (arc *)iterator_current(it);
+            if(uni_perdant(a, cand_winner)){
+                break;
+            }
+            iterator_next(it);
+        }
+        iterator_delete(it);
+
         if (cand_winner->est_gagant){
             *vainqueur = candidat;
             free(cand_winner);
@@ -113,6 +123,6 @@ void afficher_position(void *elem, void *data){
 void afficher_classement(List *classement){
     printf("Classement :\n\n");
     int position = 1;
-    list_reduce2(classement,afficher_position,(void *)&position);
+    list_reduce(classement,afficher_position,(void *)&position);
     printf("\n");
 }

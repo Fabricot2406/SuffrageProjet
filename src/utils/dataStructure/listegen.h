@@ -166,16 +166,6 @@ void list_pop_back(List* list, SimpleFunctor f);
 List* list_map(List* l, SimpleFunctor f);
 
 /**
- * @brief Fonction permettant de réduire une liste à un seul élément.
- * 
- * @param l Liste à réduire
- * @param f Fonction permettant de réduire la liste
- * @param userData L'élément à comparer, sous forme d'entier
- * @return List* La liste réduite
- */
-List* list_reduce(List* l, Functor f, void *userData);
-
-/**
  * @brief Fonction de réduction.
  * @details Cette fonction permet d'appliquer un traitement à une donnée passée en paramètre pour chaque élément de la liste.
  * 
@@ -186,7 +176,7 @@ List* list_reduce(List* l, Functor f, void *userData);
  * @pre La fonction f est de type void (*f)(int, void*)
  * @post La liste est inchangée
  */
-List* list_reduce2(List* list, void (*f)(void *, void*), void *userData);
+List* list_reduce(List* list, void (*f)(void *, void*), void *userData);
 
 /**
  * @brief Trie les éléments de la liste dans l'ordre croissant.

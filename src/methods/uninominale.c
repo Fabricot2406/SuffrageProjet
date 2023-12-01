@@ -79,7 +79,15 @@ void calculerUninominaleDeuxTours(ballot * matrice) {
         // Recherche du vainqueur au second tour
         for (int i_votant = 0; i_votant < nbVotants; i_votant++) {
             List * liste_preference = acces_liste_preference(matrice, i_votant);
-            list_reduce(liste_preference, uni_reduce, (void *)data);
+            Iterator * it = iterator_create(liste_preference);
+            while (iterator_has_next(it)){
+                Pref *pref = (Pref *)iterator_current(it);
+                if(uni_reduce(pref, data)){
+                    break;
+                }
+                iterator_next(it);
+            }
+            iterator_delete(it);
         }
         // Affichage du vainqueur au second tour
         if (votes[vainqueurUn] < votes[vainqueurDeux]) {

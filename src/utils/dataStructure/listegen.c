@@ -141,16 +141,7 @@ List* list_map(List* l, SimpleFunctor f) {
 	return l;
 }
 
-List* list_reduce(List* l, Functor f, void *userData) {
-	LinkedElement * sentinel = l->sentinel;
-	for (LinkedElement * element = sentinel->next; element!=sentinel; element=element->next)
-	{
-		if (f(element->value, userData)) break;
-	}
-	return l;
-}
-
-List* list_reduce2(List* list, void (*f)(void *, void*), void *userData) {
+List* list_reduce(List* list, void (*f)(void *, void*), void *userData) {
 	LinkedElement * sentinel = list->sentinel;
 	// on parcourt la liste
 	for (LinkedElement * element = sentinel->next; element!=sentinel; element=element->next)
