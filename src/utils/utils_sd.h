@@ -83,4 +83,14 @@ bool cmp_inferieur_egal(void *i, void *j);
  */
 bool vainqueur_condorcet(larc *list_arc, int *vainqueur);
 
+
+/**
+ * @brief Affichage du classement des candidats.
+ * @details Utilisation de la fonction list_reduce pour afficher les candidats dans l'ordre du classement.
+ *          La fonction de réduction est une fonction qui affiche le candidat passé en paramètre et sa position dans le classement.
+ * @pre La liste des arcs est non vide, triée par ordre décroissant de score.
+ * @param classement La liste des candidats du classement à afficher.
+ */
+void afficher_classement(List *classement);
+
 #endif

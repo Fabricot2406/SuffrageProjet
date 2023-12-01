@@ -50,20 +50,51 @@ Methode liste_methodes[] = {
  * @param fichier Le nom du fichier de données de vote.
  * @param output Le nom du fichier de sortie pour les résultats.
  * @param methode La méthode de calcul des résultats choisie par l'utilisateur.
+ * @param duel Le type de fichier (duel ou non). Si le fichier est un duel, alors type_fichier = true.
  */
-void calculerVote(char *fichier, char *output, char *methode) {
+void calculerVote(char *fichier, char *output, char *methode, bool duel) {
     int methode_trouvee = 0;
+
+    t_mat_int_dyn *matrice_duel = NULL;
+    ballot *matrice_ballot = NULL;
+    char **candidats_nom = NULL;
+
+    // Remplissage de la matrice de vote.
     t_mat_char_star_dyn *matrice_csv = remplirMatrice(fichier);
-    ballot *matrice_ballot = creer_ballot(matrice_csv -> nbColonnes, matrice_csv -> nbLignes);
-    remplir_ballot(matrice_ballot, matrice_csv);
+
+    if (!duel){
+        // Création et remplissage du ballot.
+        matrice_ballot = creer_ballot(matrice_csv -> nbColonnes, matrice_csv -> nbLignes);
+        remplir_ballot(matrice_ballot, matrice_csv);
+        candidats_nom = matrice_ballot->candidats_nom;
+
+        // Création de la matrice de duel à partir du ballot.
+        matrice_duel = creer_matrice_duel(matrice_ballot);
+
+    }else{
+        // Création de la matrice de duel directement à partir de la matrice de chaines de caractères.
+        matrice_duel = creer_matrice_duel_f_char(matrice_csv);
+        candidats_nom = matrice_csv->tab[0];
+    }
+    
+
+
     // Cherche la méthode choisie.
     for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
         if (strcmp(methode, liste_methodes[i].nom) == 0) {
+            // Jugement majoritaire
             if (strcmp(methode, "jm") == 0) {
                 liste_methodes[i].fonction(matrice_csv);
                 methode_trouvee = 1;
                 break;
             }
+            // Classement par les pairs
+            if (strcmp(methode, "cp") == 0) {
+                liste_methodes[i].fonction(matrice_duel,candidats_nom);
+                methode_trouvee = 1;
+                break;
+            }
+            // Autres méthodes
             liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
             methode_trouvee = 1;
             break;
@@ -74,8 +105,11 @@ void calculerVote(char *fichier, char *output, char *methode) {
         fprintf(stderr, "Liste des paramètres de l'option m : uni1, uni2, cm, cp, cs, jm, all.\n");
         exit(EXIT_FAILURE);
     }
+    detruire_matrice(matrice_duel);
     libererMatrice(matrice_csv);
-    detruire_ballot(matrice_ballot);
+    if (!duel){
+        detruire_ballot(matrice_ballot);
+    }
 }
 
 /**
@@ -155,13 +189,14 @@ void verifierVote(char * fichier) {
 }
 
 /**
- * Affiche un menu d'actions pour l'utilisateur et effectue l'action choisie.
+ * @brief Affiche un menu d'actions pour l'utilisateur et effectue l'action choisie.
  *
  * @param fichier Le nom du fichier de données de vote.
  * @param output Le nom du fichier de sortie pour les résultats.
  * @param methode La méthode de calcul des résultats.
+ * @param duel Le type de fichier (duel ou non). Si le fichier est un duel, alors type_fichier = true.
  */
-void presentationMenu(char *fichier, char *output, char *methode) {
+void presentationMenu(char *fichier, char *output, char *methode, bool duel) {
     int choix;
 
     do {
@@ -177,7 +212,7 @@ void presentationMenu(char *fichier, char *output, char *methode) {
 
         switch (choix) {
             case 1:
-                calculerVote(fichier, output, methode);
+                calculerVote(fichier, output, methode, duel);
                 break;
             case 2:
                 verifierVote(fichier);
@@ -192,14 +227,22 @@ void presentationMenu(char *fichier, char *output, char *methode) {
     } while (choix != 1 && choix != 2 && choix != 3);
 }
 
-
+/**
+ * Affiche le tutoriel d'utilisation du programme.
+ *
+ * @param nom_executable Le nom de l'exécutable du programme.
+ */
 void afficher_tutoriel(char *nom_executable){
-    char *tuto = "-i et d sont incompatibles.\n-i signifie que le fichier est un fichier d'entrée.\n"
-                 "-d signifie que le fichier est un fichier de duel (à utiliser pour condorcet).\n-o est le fichier de sortie des résultats. Pas encore implémenté\n"
-                "-m est la méthode de calcul des résultats. Mettre uninominal.\n"
-                "Exemple : ./Suffrage -i voteCondorcet test tes -m uninominal\n"
-                "Pour plus d'informations, veuillez consulter la documentation.\n";
-    fprintf(stderr, "Usage : %s (-i fichier_csv ou -d fichier_csv) -o fichier_log_txt -m methode\n%s", nom_executable,tuto);           
+
+    char *tuto =    "\n\t-i et -d sont incompatibles."
+                    "\n\t-i signifie que le fichier est un fichier d'entrée."
+                    "\n\t-d signifie que le fichier est un fichier de duel (à utiliser pour condorcet)."
+                    "\n\t-m est la méthode de calcul des résultats. Mettre uninominal."
+                    "\n\tFacultatif : -o est le fichier de sortie des résultats. Pas encore implémenté"
+                    "\n\nExemple : ./Suffrage -i voteCondorcet test tes -m uninominal"
+                    "\n\nPour plus d'informations, veuillez consulter la documentation.\n";
+                
+    fprintf(stderr, "\n<USAGE> : %s (-i fichier) ou (-d fichier) -o fichier_log -m methode\n%s", nom_executable,tuto);           
 }
 
 /*------------------------ PROGRAMME PRINCIPAL ------------------------*/
@@ -273,9 +316,9 @@ int main(int argc, char* argv[]) {
                     "Exemple : ./Suffrage -i voteCondorcet -m uni1\n");
         exit(EXIT_FAILURE);
     }
-    
+    printf("Duel : %s\n", duel);
     // Lancement du menu contextuel
-    presentationMenu(cheminComplet, output, methode);
+    presentationMenu(cheminComplet, output, methode, duel != NULL);
 
     return 0;
 }

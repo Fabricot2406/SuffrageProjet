@@ -174,6 +174,20 @@ List* list_map(List* l, SimpleFunctor f);
  * @return List* La liste réduite
  */
 List* list_reduce(List* l, Functor f, void *userData);
+
+/**
+ * @brief Fonction de réduction.
+ * @details Cette fonction permet d'appliquer un traitement à une donnée passée en paramètre pour chaque élément de la liste.
+ * 
+ * @param list La liste à parcourir
+ * @param f La fonction de traitement
+ * @param userData La donnée à traiter
+ * @return List* La liste passé en paramètre
+ * @pre La fonction f est de type void (*f)(int, void*)
+ * @post La liste est inchangée
+ */
+List* list_reduce2(List* list, void (*f)(void *, void*), void *userData);
+
 /**
  * @brief Trie les éléments de la liste dans l'ordre croissant.
  * @param l : La liste à trier.

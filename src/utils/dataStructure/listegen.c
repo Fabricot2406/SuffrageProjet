@@ -150,6 +150,17 @@ List* list_reduce(List* l, Functor f, void *userData) {
 	return l;
 }
 
+List* list_reduce2(List* list, void (*f)(void *, void*), void *userData) {
+	LinkedElement * sentinel = list->sentinel;
+	// on parcourt la liste
+	for (LinkedElement * element = sentinel->next; element!=sentinel; element=element->next)
+	{
+		// on applique la fonction de traitement à la donnée
+		f(element->value, userData);
+	}
+	return list;
+}
+
 List* list_insert_at(List* l, int p, void *v) {
 	assert((p <= l->size) && (p >= 0));
 	LinkedElement *element = malloc(sizeof(LinkedElement));

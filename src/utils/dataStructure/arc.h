@@ -63,6 +63,17 @@ void detruire_larc(larc *tab_arc);
  */
 void afficher_larc(larc *tab_arc);
 
+/**
+ * @brief Fonction qui permet de supprimer les arcs d'un candidat donné.
+ * Processus : On parcourt la liste des arcs.
+ *             Pour chaque itération si l'arc contient le candidat donné, on le supprime de la liste.
+ * 
+ * @param list_arc La liste des arcs à parcourir.
+ * @param candidat Le candidat à supprimer.
+ * @pre La liste des arcs est non vide, triée par ordre décroissant de score.
+ *      Le candidat donné est présent dans la liste des arcs.
+ * @post La liste des arcs ne contient plus d'arc avec le candidat donné.
+ */
 void supprimer_candidat(List *list_arc,int candidat);
 
 #endif // __ARC_H__

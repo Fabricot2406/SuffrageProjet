@@ -79,6 +79,22 @@ t_mat_int_dyn *creer_matrice_duel(ballot *b){
     return matrice_duel;
 }
 
+
+t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string){
+    // Ne pas tenir compte de la première ligne de la matrice de string
+    int nb_candidats = matrice_string->nbColonnes;
+    t_mat_int_dyn *matrice_duel = creer_matrice(nb_candidats, nb_candidats);
+
+    // Parcour de la matrice de string pour créer la matrice de duel en convertissant les chaines de caractères en entiers
+    for(int i = 0; i < nb_candidats; i++){
+        for(int j = 0; j < nb_candidats; j++){
+            matrice_duel->mat[i][j] = atoi(matrice_string->tab[i+1][j]);
+        }
+    }
+    return matrice_duel;
+}
+
+
 /******************* UTILS *********************/
 
 void afficher_matrice_duels(t_mat_int_dyn *matrice_duel){

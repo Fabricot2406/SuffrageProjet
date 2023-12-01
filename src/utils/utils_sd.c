@@ -101,3 +101,18 @@ bool vainqueur_condorcet(larc *list_arc, int *vainqueur){
     free(cand_winner);
     return false;
 }
+
+
+void afficher_position(void *elem, void *data){
+    char *candidat = (char *)elem;
+    int *position = (int *)data;
+    printf("%d. %s\n",*position,candidat);
+    (*position)++;
+}
+
+void afficher_classement(List *classement){
+    printf("Classement :\n\n");
+    int position = 1;
+    list_reduce2(classement,afficher_position,(void *)&position);
+    printf("\n");
+}

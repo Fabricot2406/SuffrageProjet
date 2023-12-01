@@ -19,6 +19,18 @@
 #include "../utils/dataStructure/arc.h"
 #include "../utils/dataStructure/duel.h"
 
-void condorcet_paires(ballot *matrice_ballot);
+
+/**
+ * @brief Fonction principale de la méthode de Condorcet par le classement des paires.
+ * Processus : 1) Créer la liste d'arc.
+ *             2) Filtrer la liste d'arc.
+ *             3) Déterminer le classement des candidats.
+ * 
+ * @param matrice_duel Matrice de duel.
+ * @param candidats_nom Tableau de nom des candidats.
+ * @pre La matrice de duel est initialisé et remplie.
+ * @pre Les noms sont rangés dans l'ordre de la matrice de duel.
+ */
+void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom);
 
 #endif // __METHODE_PAIRE_H__

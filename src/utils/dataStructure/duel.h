@@ -20,11 +20,19 @@
 #include "ballot.h"
 
 /**
- * @brief Fonction permettant de créer la matrice de duel.
+ * @brief Fonction permettant de créer la matrice de duel à partir d'un ballot.
  * @param b Le ballot qui contient les préférences des électeurs.
  * @return t_mat_int_dyn* La matrice de duel.
  */
 t_mat_int_dyn *creer_matrice_duel(ballot *b);
+
+/**
+ * @brief Fonction permettant de créer la matrice de duel à partir d'une matrice de chaines de caractères.
+ * @details Cette fonction est utilisée dans le cadre de l'option -d du programme.
+ * @param matrice_string La matrice de chaines de caractères.
+ * @return t_mat_int_dyn* La matrice de duel.
+ */
+t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string);
 
 /******************* UTILS *********************/
 

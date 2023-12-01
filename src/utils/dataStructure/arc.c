@@ -86,15 +86,25 @@ void detruire_larc(larc *tab_arc){
 
 void supprimer_candidat(List *list_arc,int candidat){
     Iterator *it_larc = iterator_create(list_arc);
+    // On parcourt la liste des arcs
     while (iterator_has_next(it_larc)){
-        arc *a = iterator_current(it_larc);
-        int index = iterator_index(it_larc);
-        if (a->candidat_gagnant == candidat){
+        arc *arc_courrant = iterator_current(it_larc);
+        int indice_courrant = iterator_index(it_larc);
+        // Si l'arc contient le candidat, on le supprime de la liste
+        // Candidat gagnant
+        if (arc_courrant->candidat_gagnant == candidat){
+            // On se place sur l'élément précédent pour ne pas sauter d'élément
             iterator_prev(it_larc);
-            list_remove_at(list_arc,index,free);
+            list_remove_at(list_arc,indice_courrant,free);
+        }
+        // Candidat perdant
+        else if(arc_courrant->candidat_perdant == candidat){
+            iterator_prev(it_larc);
+            list_remove_at(list_arc,indice_courrant,free);
         }
         iterator_next(it_larc);
     }
+    // Libération de la mémoire
     iterator_delete(it_larc);
 }
 
