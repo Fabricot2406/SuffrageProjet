@@ -1,0 +1,16 @@
+<map id="src/utils/utils_sd.h" name="src/utils/utils_sd.h">
+<area shape="rect" id="node1" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="501,5,640,32"/>
+<area shape="rect" id="node2" href="$jugement__majoritaire_8h.html" title="Fichier de la méthode de scrutin du jugement majoritaire." alt="" coords="56,80,224,121"/>
+<area shape="rect" id="node4" href="$global_8h.html" title="Fichier global qui contient tous les headers des fichiers .c." alt="" coords="386,177,515,203"/>
+<area shape="rect" id="node6" href="$methode__minimax_8h.html" title="Fichier d&#39;en&#45;tête pour les fonctions de la méthode Minimax." alt="" coords="249,80,413,121"/>
+<area shape="rect" id="node8" href="$methode__paires_8h.html" title=" " alt="" coords="489,80,653,121"/>
+<area shape="rect" id="node10" href="$uninominale_8h.html" title="Méthode uninominale à 1 et 2 tours." alt="" coords="677,87,875,114"/>
+<area shape="rect" id="node12" href="$utils__main_8h.html" title="Fichier de fonctions utilitaires nécessaires au main.c." alt="" coords="900,87,1057,114"/>
+<area shape="rect" id="node14" href="$utils__sd_8c.html" title=" " alt="" coords="1081,87,1220,114"/>
+<area shape="rect" id="node3" href="$jugement__majoritaire_8c.html" title=" " alt="" coords="5,169,173,211"/>
+<area shape="rect" id="node5" href="$main_8c.html" title=" " alt="" coords="406,259,495,285"/>
+<area shape="rect" id="node7" href="$methode__minimax_8c.html" title="Implémentation de la méthode Minimax." alt="" coords="198,169,362,211"/>
+<area shape="rect" id="node9" href="$methode__paires_8c.html" title=" " alt="" coords="539,169,703,211"/>
+<area shape="rect" id="node11" href="$uninominale_8c.html" title=" " alt="" coords="727,177,926,203"/>
+<area shape="rect" id="node13" href="$utils__main_8c.html" title=" " alt="" coords="950,177,1106,203"/>
+</map>

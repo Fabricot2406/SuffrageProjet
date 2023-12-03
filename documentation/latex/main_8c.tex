@@ -1,0 +1,176 @@
+\hypertarget{main_8c}{}\doxysection{src/main.c File Reference}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}./utils/global.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMethode}{Methode}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_aae80a936d9c411dd35560a0b5f9682d3}\label{main_8c_aae80a936d9c411dd35560a0b5f9682d3}} 
+void {\bfseries methode\+\_\+cm} ()
+\item 
+\mbox{\Hypertarget{main_8c_afb82c1015fb084e49782741291f5c929}\label{main_8c_afb82c1015fb084e49782741291f5c929}} 
+void {\bfseries methode\+\_\+cs} ()
+\item 
+\mbox{\Hypertarget{main_8c_a66cd7f6653e7a2279a7095a25f2b0eed}\label{main_8c_a66cd7f6653e7a2279a7095a25f2b0eed}} 
+void {\bfseries methode\+\_\+all} ()
+\item 
+void \mbox{\hyperlink{main_8c_a5e5554c8aabb8c4c7e1fb202336daf60}{calculer\+Vote}} (char $\ast$fichier, char $\ast$output, char $\ast$methode)
+\item 
+void \mbox{\hyperlink{main_8c_ae043ed088d03881f7cfa12e8a5872195}{presentation\+Identifiant}} (char $\ast$nom, char $\ast$prenom, char $\ast$cle)
+\item 
+void \mbox{\hyperlink{main_8c_a6c373ecf8124306dd309548a229f43da}{verifier\+Vote}} (char $\ast$fichier)
+\item 
+void \mbox{\hyperlink{main_8c_a7336c84ad66d473b76566bca92cc87fb}{presentation\+Menu}} (char $\ast$fichier, char $\ast$output, char $\ast$methode)
+\item 
+\mbox{\Hypertarget{main_8c_aa88a52f7b946b49805943ccbb7301b6f}\label{main_8c_aa88a52f7b946b49805943ccbb7301b6f}} 
+void {\bfseries afficher\+\_\+tutoriel} (char $\ast$nom\+\_\+executable)
+\item 
+int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structMethode}{Methode}} {\bfseries liste\+\_\+methodes} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Authors}
+Fabio, Anthony et Marco 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a5e5554c8aabb8c4c7e1fb202336daf60}\label{main_8c_a5e5554c8aabb8c4c7e1fb202336daf60}} 
+\index{main.c@{main.c}!calculerVote@{calculerVote}}
+\index{calculerVote@{calculerVote}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{calculerVote()}{calculerVote()}}
+{\footnotesize\ttfamily void calculer\+Vote (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier,  }\item[{char $\ast$}]{output,  }\item[{char $\ast$}]{methode }\end{DoxyParamCaption})}
+
+Lance le calcul du vote en utilisant la méthode spécifiée par l\textquotesingle{}utilisateur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fichier} & Le nom du fichier de données de vote. \\
+\hline
+{\em output} & Le nom du fichier de sortie pour les résultats. \\
+\hline
+{\em methode} & La méthode de calcul des résultats choisie par l\textquotesingle{}utilisateur. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Fonction principale du programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Le nombre d\textquotesingle{}arguments de la ligne de commande. \\
+\hline
+{\em argv} & Un tableau d\textquotesingle{}arguments de la ligne de commande. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 en cas de succès, d\textquotesingle{}autres valeurs en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_ae043ed088d03881f7cfa12e8a5872195}\label{main_8c_ae043ed088d03881f7cfa12e8a5872195}} 
+\index{main.c@{main.c}!presentationIdentifiant@{presentationIdentifiant}}
+\index{presentationIdentifiant@{presentationIdentifiant}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{presentationIdentifiant()}{presentationIdentifiant()}}
+{\footnotesize\ttfamily void presentation\+Identifiant (\begin{DoxyParamCaption}\item[{char $\ast$}]{nom,  }\item[{char $\ast$}]{prenom,  }\item[{char $\ast$}]{cle }\end{DoxyParamCaption})}
+
+Demande à l\textquotesingle{}utilisateur d\textquotesingle{}entrer son nom de famille, prénom et clé, puis vérifie leur validité. La fonction affiche également le nom complet (nom et prénom concaténés) et la clé à la fin.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom} & Pointeur vers le tableau où le nom de famille sera stocké. \\
+\hline
+{\em prenom} & Pointeur vers le tableau où le prénom sera stocké. \\
+\hline
+{\em cle} & Pointeur vers le tableau où la clé sera stockée. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_a7336c84ad66d473b76566bca92cc87fb}\label{main_8c_a7336c84ad66d473b76566bca92cc87fb}} 
+\index{main.c@{main.c}!presentationMenu@{presentationMenu}}
+\index{presentationMenu@{presentationMenu}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{presentationMenu()}{presentationMenu()}}
+{\footnotesize\ttfamily void presentation\+Menu (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier,  }\item[{char $\ast$}]{output,  }\item[{char $\ast$}]{methode }\end{DoxyParamCaption})}
+
+Affiche un menu d\textquotesingle{}actions pour l\textquotesingle{}utilisateur et effectue l\textquotesingle{}action choisie.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fichier} & Le nom du fichier de données de vote. \\
+\hline
+{\em output} & Le nom du fichier de sortie pour les résultats. \\
+\hline
+{\em methode} & La méthode de calcul des résultats. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_a6c373ecf8124306dd309548a229f43da}\label{main_8c_a6c373ecf8124306dd309548a229f43da}} 
+\index{main.c@{main.c}!verifierVote@{verifierVote}}
+\index{verifierVote@{verifierVote}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{verifierVote()}{verifierVote()}}
+{\footnotesize\ttfamily void verifier\+Vote (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+Vérifie la validité du vote en demandant à l\textquotesingle{}utilisateur d\textquotesingle{}entrer ses informations d\textquotesingle{}identification, de les hasher, puis de rechercher le hash correspondant dans un fichier CSV. La fonction effectue les étapes suivantes \+:
+\begin{DoxyEnumerate}
+\item Demande à l\textquotesingle{}utilisateur d\textquotesingle{}entrer son nom, prénom et clé d\textquotesingle{}identification.
+\item Hash les informations d\textquotesingle{}identification.
+\item Recherche le hash dans un fichier CSV contenant les informations de vote.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em fichier} & Le nom du fichier CSV contenant les informations de vote. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_a63b53c42a12fb1fdad4129a799fcf5e9}\label{main_8c_a63b53c42a12fb1fdad4129a799fcf5e9}} 
+\index{main.c@{main.c}!liste\_methodes@{liste\_methodes}}
+\index{liste\_methodes@{liste\_methodes}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{liste\_methodes}{liste\_methodes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMethode}{Methode}} liste\+\_\+methodes\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}uni1"{}}, \mbox{\hyperlink{uninominale_8c_a5a70d77b3921163d5a713294c180641f}{calculerUninominaleUnTour}}\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}uni2"{}}, \mbox{\hyperlink{uninominale_8c_afaacbf88e388bb6f9a32dff6d1470c92}{calculerUninominaleDeuxTours}}\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}cm"{}}, \mbox{\hyperlink{methode__minimax_8c_a2f65cfe371c272b09b630c6573b28532}{methodeMinimax}}\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}cp"{}}, condorcet\_paires\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}cs"{}}, methode\_cs\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}jm"{}}, \mbox{\hyperlink{jugement__majoritaire_8h_ae489240ce852632a37565bd10aec385e}{determinerVainqueurJugement}}\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}all"{}}, methode\_all\},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

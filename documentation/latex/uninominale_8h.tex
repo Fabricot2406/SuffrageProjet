@@ -1,0 +1,96 @@
+\hypertarget{uninominale_8h}{}\doxysection{src/methods/uninominale.h File Reference}
+\label{uninominale_8h}\index{src/methods/uninominale.h@{src/methods/uninominale.h}}
+
+
+Méthode uninominale à 1 et 2 tours.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../utils/utils\+\_\+sd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../utils/data\+Structure/ballot.\+h\char`\"{}}\newline
+Include dependency graph for uninominale.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uninominale_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{uninominale_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{uninominale_8h_ae6b39cba2fbe1768bf64b4521fbcc89f}{initialiser\+Tableau\+Votes}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Initialise un tableau contenant le score de chaque candidat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uninominale_8h_a5a70d77b3921163d5a713294c180641f}{calculer\+Uninominale\+Un\+Tour}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Calcule le résultat de la méthode uninominale à un tour. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uninominale_8h_afaacbf88e388bb6f9a32dff6d1470c92}{calculer\+Uninominale\+Deux\+Tours}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Calcule le résultat de la méthode uninominale à deux tours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Méthode uninominale à 1 et 2 tours. 
+
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Author}
+Fabio 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/25 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{uninominale_8h_afaacbf88e388bb6f9a32dff6d1470c92}\label{uninominale_8h_afaacbf88e388bb6f9a32dff6d1470c92}} 
+\index{uninominale.h@{uninominale.h}!calculerUninominaleDeuxTours@{calculerUninominaleDeuxTours}}
+\index{calculerUninominaleDeuxTours@{calculerUninominaleDeuxTours}!uninominale.h@{uninominale.h}}
+\doxysubsubsection{\texorpdfstring{calculerUninominaleDeuxTours()}{calculerUninominaleDeuxTours()}}
+{\footnotesize\ttfamily void calculer\+Uninominale\+Deux\+Tours (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Calcule le résultat de la méthode uninominale à deux tours. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Une matrice de type ballot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{uninominale_8h_a5a70d77b3921163d5a713294c180641f}\label{uninominale_8h_a5a70d77b3921163d5a713294c180641f}} 
+\index{uninominale.h@{uninominale.h}!calculerUninominaleUnTour@{calculerUninominaleUnTour}}
+\index{calculerUninominaleUnTour@{calculerUninominaleUnTour}!uninominale.h@{uninominale.h}}
+\doxysubsubsection{\texorpdfstring{calculerUninominaleUnTour()}{calculerUninominaleUnTour()}}
+{\footnotesize\ttfamily void calculer\+Uninominale\+Un\+Tour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Calcule le résultat de la méthode uninominale à un tour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Une matrice de type ballot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{uninominale_8h_ae6b39cba2fbe1768bf64b4521fbcc89f}\label{uninominale_8h_ae6b39cba2fbe1768bf64b4521fbcc89f}} 
+\index{uninominale.h@{uninominale.h}!initialiserTableauVotes@{initialiserTableauVotes}}
+\index{initialiserTableauVotes@{initialiserTableauVotes}!uninominale.h@{uninominale.h}}
+\doxysubsubsection{\texorpdfstring{initialiserTableauVotes()}{initialiserTableauVotes()}}
+{\footnotesize\ttfamily void initialiser\+Tableau\+Votes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Initialise un tableau contenant le score de chaque candidat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Une matrice de type ballot \\
+\hline
+\end{DoxyParams}

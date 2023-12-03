@@ -1,0 +1,150 @@
+\hypertarget{arc_8c}{}\doxysection{src/utils/data\+Structure/arc.c File Reference}
+\label{arc_8c}\index{src/utils/dataStructure/arc.c@{src/utils/dataStructure/arc.c}}
+{\ttfamily \#include \char`\"{}arc.\+h\char`\"{}}\newline
+Include dependency graph for arc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__arc__p}{arc}} $\ast$ \mbox{\hyperlink{arc_8c_af278dd61715097a5ebdce545055065c4}{arc\+\_\+create}} (int candidat\+\_\+gagnant, int candidat\+\_\+perdant, int score)
+\begin{DoxyCompactList}\small\item\em Constructeur de la structure de donnée arc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{arc_8c_aa222c2586afef062fa86a98fb9ed45ba}\label{arc_8c_aa222c2586afef062fa86a98fb9ed45ba}} 
+double {\bfseries calculer\+Pourcentage} (int score1, int score2)
+\item 
+\mbox{\Hypertarget{arc_8c_a30147363cbad5faa6f77bb25465358a7}\label{arc_8c_a30147363cbad5faa6f77bb25465358a7}} 
+int {\bfseries compare\+\_\+arc} (const void $\ast$a, const void $\ast$b)
+\item 
+void \mbox{\hyperlink{arc_8c_a4b2247e60a9cc7f0d63cc62b00904d30}{larc\+\_\+complete}} (\mbox{\hyperlink{structs__arc}{larc}} $\ast$tab\+\_\+arc, \mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice\+\_\+duel)
+\begin{DoxyCompactList}\small\item\em Complète une liste d\textquotesingle{}arcs avec des pourcentages de victoire entre les candidats. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__arc}{larc}} $\ast$ \mbox{\hyperlink{arc_8c_af0f951e56bdba93b92ee56722ee93ed0}{larc\+\_\+init}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice\+\_\+duel)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}initialiser et de completer la liste des arcs à partir de la matrice de duel. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{arc_8c_a3002928af03d4240bdaec331f5d83bb0}\label{arc_8c_a3002928af03d4240bdaec331f5d83bb0}} 
+void {\bfseries detruire\+\_\+arc} (void $\ast$elem)
+\item 
+void \mbox{\hyperlink{arc_8c_a03337498d8357ea064dfd58a64e5bb9c}{detruire\+\_\+larc}} (\mbox{\hyperlink{structs__arc}{larc}} $\ast$tab\+\_\+arc)
+\begin{DoxyCompactList}\small\item\em Libérer la mémoire allouée à une liste d\textquotesingle{}arcs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arc_8c_a348d60a288b71f14e7455481d95ef396}{afficher\+\_\+arc}} (void $\ast$input)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}afficher la liste des arcs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arc_8c_a1e03ec3d125d18c690233ba518a4db10}{afficher\+\_\+larc}} (\mbox{\hyperlink{structs__arc}{larc}} $\ast$tab\+\_\+arc)
+\begin{DoxyCompactList}\small\item\em Afficher la liste des arcs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Author}
+Anthony 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{arc_8c_a348d60a288b71f14e7455481d95ef396}\label{arc_8c_a348d60a288b71f14e7455481d95ef396}} 
+\index{arc.c@{arc.c}!afficher\_arc@{afficher\_arc}}
+\index{afficher\_arc@{afficher\_arc}!arc.c@{arc.c}}
+\doxysubsubsection{\texorpdfstring{afficher\_arc()}{afficher\_arc()}}
+{\footnotesize\ttfamily void afficher\+\_\+arc (\begin{DoxyParamCaption}\item[{void $\ast$}]{input }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet d\textquotesingle{}afficher la liste des arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & La liste des arcs à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{arc_8c_a1e03ec3d125d18c690233ba518a4db10}\label{arc_8c_a1e03ec3d125d18c690233ba518a4db10}} 
+\index{arc.c@{arc.c}!afficher\_larc@{afficher\_larc}}
+\index{afficher\_larc@{afficher\_larc}!arc.c@{arc.c}}
+\doxysubsubsection{\texorpdfstring{afficher\_larc()}{afficher\_larc()}}
+{\footnotesize\ttfamily void afficher\+\_\+larc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__arc}{larc}} $\ast$}]{tab\+\_\+arc }\end{DoxyParamCaption})}
+
+
+
+Afficher la liste des arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+\_\+arc} & Liste des arcs à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{arc_8c_af278dd61715097a5ebdce545055065c4}\label{arc_8c_af278dd61715097a5ebdce545055065c4}} 
+\index{arc.c@{arc.c}!arc\_create@{arc\_create}}
+\index{arc\_create@{arc\_create}!arc.c@{arc.c}}
+\doxysubsubsection{\texorpdfstring{arc\_create()}{arc\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__arc__p}{arc}}$\ast$ arc\+\_\+create (\begin{DoxyParamCaption}\item[{int}]{candidat\+\_\+gagnant,  }\item[{int}]{candidat\+\_\+perdant,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la structure de donnée arc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em candidat\+\_\+gagnant} & \\
+\hline
+{\em candidat\+\_\+perdant} & \\
+\hline
+{\em score} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+arc$\ast$ l\textquotesingle{}arc créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{arc_8c_a03337498d8357ea064dfd58a64e5bb9c}\label{arc_8c_a03337498d8357ea064dfd58a64e5bb9c}} 
+\index{arc.c@{arc.c}!detruire\_larc@{detruire\_larc}}
+\index{detruire\_larc@{detruire\_larc}!arc.c@{arc.c}}
+\doxysubsubsection{\texorpdfstring{detruire\_larc()}{detruire\_larc()}}
+{\footnotesize\ttfamily void detruire\+\_\+larc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__arc}{larc}} $\ast$}]{tab\+\_\+arc }\end{DoxyParamCaption})}
+
+
+
+Libérer la mémoire allouée à une liste d\textquotesingle{}arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+\_\+arc} & Liste des arcs à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{arc_8c_a4b2247e60a9cc7f0d63cc62b00904d30}\label{arc_8c_a4b2247e60a9cc7f0d63cc62b00904d30}} 
+\index{arc.c@{arc.c}!larc\_complete@{larc\_complete}}
+\index{larc\_complete@{larc\_complete}!arc.c@{arc.c}}
+\doxysubsubsection{\texorpdfstring{larc\_complete()}{larc\_complete()}}
+{\footnotesize\ttfamily void larc\+\_\+complete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__arc}{larc}} $\ast$}]{tab\+\_\+arc,  }\item[{\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$}]{matrice\+\_\+duel }\end{DoxyParamCaption})}
+
+
+
+Complète une liste d\textquotesingle{}arcs avec des pourcentages de victoire entre les candidats. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+\_\+arc} & Un tableau d\textquotesingle{}arcs à compléter. \\
+\hline
+{\em matrice\+\_\+duel} & Une matrice représentant les résultats des duels entre candidats. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{arc_8c_af0f951e56bdba93b92ee56722ee93ed0}\label{arc_8c_af0f951e56bdba93b92ee56722ee93ed0}} 
+\index{arc.c@{arc.c}!larc\_init@{larc\_init}}
+\index{larc\_init@{larc\_init}!arc.c@{arc.c}}
+\doxysubsubsection{\texorpdfstring{larc\_init()}{larc\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__arc}{larc}}$\ast$ larc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$}]{matrice\+\_\+duel }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet d\textquotesingle{}initialiser et de completer la liste des arcs à partir de la matrice de duel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice\+\_\+duel} & La matrice de duel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+larc$\ast$ La liste des arcs 
+\end{DoxyReturn}

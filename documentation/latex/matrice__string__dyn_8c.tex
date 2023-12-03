@@ -1,0 +1,127 @@
+\hypertarget{matrice__string__dyn_8c}{}\doxysection{src/utils/data\+Structure/matrice\+\_\+string\+\_\+dyn.c File Reference}
+\label{matrice__string__dyn_8c}\index{src/utils/dataStructure/matrice\_string\_dyn.c@{src/utils/dataStructure/matrice\_string\_dyn.c}}
+{\ttfamily \#include \char`\"{}matrice\+\_\+string\+\_\+dyn.\+h\char`\"{}}\newline
+Include dependency graph for matrice\+\_\+string\+\_\+dyn.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{matrice__string__dyn_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{matrice__string__dyn_8c_ae6ad0540d5109a0200f0dde5dc5b4bf6}\label{matrice__string__dyn_8c_ae6ad0540d5109a0200f0dde5dc5b4bf6}} 
+\#define {\bfseries TAILLE\+\_\+\+MAX}~65
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ \mbox{\hyperlink{matrice__string__dyn_8c_a45833389ad962dfb8e8f2ae01ca57596}{creer\+Matrice}} ()
+\begin{DoxyCompactList}\small\item\em Fonction pour initialiser la matrice. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{matrice__string__dyn_8c_ad02000de4994f1db33d83778272d9d49}{trouver\+Elem}} (\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice, char $\ast$elem, int $\ast$ligne, int $\ast$colonne)
+\begin{DoxyCompactList}\small\item\em Fonction qui trouve la ligne et la colonne d\textquotesingle{}un element dans un fichier CSV. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrice__string__dyn_8c_a8488b5df5e924c935d2d72ceb3fa43a5}{liberer\+Matrice}} (\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Fonction pour libérer la matrice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrice__string__dyn_8c_ab3870986f2a02b47472673a60a546034}{afficher\+Matrice}} (\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Fonction qui affiche la matrice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrice__string__dyn_8c_aea07fe2ec3e8f5d7c71c80495aa3c61b}{afficher\+Ligne}} (\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice, int ligne)
+\begin{DoxyCompactList}\small\item\em Fonction qui affiche une ligne du fichier CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Authors}
+Marco, Anthony 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{matrice__string__dyn_8c_aea07fe2ec3e8f5d7c71c80495aa3c61b}\label{matrice__string__dyn_8c_aea07fe2ec3e8f5d7c71c80495aa3c61b}} 
+\index{matrice\_string\_dyn.c@{matrice\_string\_dyn.c}!afficherLigne@{afficherLigne}}
+\index{afficherLigne@{afficherLigne}!matrice\_string\_dyn.c@{matrice\_string\_dyn.c}}
+\doxysubsubsection{\texorpdfstring{afficherLigne()}{afficherLigne()}}
+{\footnotesize\ttfamily void afficher\+Ligne (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice,  }\item[{int}]{ligne }\end{DoxyParamCaption})}
+
+
+
+Fonction qui affiche une ligne du fichier CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Pointeur vers la matrice à afficher. \\
+\hline
+{\em ligne} & Ligne à afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matrice__string__dyn_8c_ab3870986f2a02b47472673a60a546034}\label{matrice__string__dyn_8c_ab3870986f2a02b47472673a60a546034}} 
+\index{matrice\_string\_dyn.c@{matrice\_string\_dyn.c}!afficherMatrice@{afficherMatrice}}
+\index{afficherMatrice@{afficherMatrice}!matrice\_string\_dyn.c@{matrice\_string\_dyn.c}}
+\doxysubsubsection{\texorpdfstring{afficherMatrice()}{afficherMatrice()}}
+{\footnotesize\ttfamily void afficher\+Matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Fonction qui affiche la matrice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Pointeur vers la matrice à afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matrice__string__dyn_8c_a45833389ad962dfb8e8f2ae01ca57596}\label{matrice__string__dyn_8c_a45833389ad962dfb8e8f2ae01ca57596}} 
+\index{matrice\_string\_dyn.c@{matrice\_string\_dyn.c}!creerMatrice@{creerMatrice}}
+\index{creerMatrice@{creerMatrice}!matrice\_string\_dyn.c@{matrice\_string\_dyn.c}}
+\doxysubsubsection{\texorpdfstring{creerMatrice()}{creerMatrice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ creer\+Matrice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction pour initialiser la matrice. 
+
+\begin{DoxyReturn}{Returns}
+Pointeur vers la matrice créée. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrice__string__dyn_8c_a8488b5df5e924c935d2d72ceb3fa43a5}\label{matrice__string__dyn_8c_a8488b5df5e924c935d2d72ceb3fa43a5}} 
+\index{matrice\_string\_dyn.c@{matrice\_string\_dyn.c}!libererMatrice@{libererMatrice}}
+\index{libererMatrice@{libererMatrice}!matrice\_string\_dyn.c@{matrice\_string\_dyn.c}}
+\doxysubsubsection{\texorpdfstring{libererMatrice()}{libererMatrice()}}
+{\footnotesize\ttfamily void liberer\+Matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Fonction pour libérer la matrice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Pointeur vers la matrice à libérer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matrice__string__dyn_8c_ad02000de4994f1db33d83778272d9d49}\label{matrice__string__dyn_8c_ad02000de4994f1db33d83778272d9d49}} 
+\index{matrice\_string\_dyn.c@{matrice\_string\_dyn.c}!trouverElem@{trouverElem}}
+\index{trouverElem@{trouverElem}!matrice\_string\_dyn.c@{matrice\_string\_dyn.c}}
+\doxysubsubsection{\texorpdfstring{trouverElem()}{trouverElem()}}
+{\footnotesize\ttfamily int trouver\+Elem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice,  }\item[{char $\ast$}]{elem,  }\item[{int $\ast$}]{ligne,  }\item[{int $\ast$}]{colonne }\end{DoxyParamCaption})}
+
+
+
+Fonction qui trouve la ligne et la colonne d\textquotesingle{}un element dans un fichier CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Pointeur vers la matrice à afficher. \\
+\hline
+{\em elem} & Chaine de caractère à trouver. \\
+\hline
+{\em ligne} & Ligne où se trouve l\textquotesingle{}element. \\
+\hline
+{\em colonne} & Colonne où se trouve l\textquotesingle{}element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si element trouvé, 0 sinon. 
+\end{DoxyReturn}

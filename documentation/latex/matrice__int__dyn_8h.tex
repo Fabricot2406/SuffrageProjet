@@ -1,0 +1,134 @@
+\hypertarget{matrice__int__dyn_8h}{}\doxysection{src/utils/data\+Structure/matrice\+\_\+int\+\_\+dyn.h File Reference}
+\label{matrice__int__dyn_8h}\index{src/utils/dataStructure/matrice\_int\_dyn.h@{src/utils/dataStructure/matrice\_int\_dyn.h}}
+
+
+Structure de donnée correspondant à une matrice dynamique contenant des entiers.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for matrice\+\_\+int\+\_\+dyn.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{matrice__int__dyn_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{matrice__int__dyn_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}}
+\begin{DoxyCompactList}\small\item\em Structure représentant une matrice dynamique d\textquotesingle{}entiers. Contient un tableau bidimensionnel, le nombre de lignes et le nombre de colonnes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{matrice__int__dyn_8h_a553064a8a20e0de21522fcc3f6c5d2d3}\label{matrice__int__dyn_8h_a553064a8a20e0de21522fcc3f6c5d2d3}} 
+typedef struct \mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} {\bfseries t\+\_\+mat\+\_\+int\+\_\+dyn}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$ \mbox{\hyperlink{matrice__int__dyn_8h_a88682b418eacbd405292fed6d7020ee0}{creer\+\_\+matrice}} (int rows, int col)
+\begin{DoxyCompactList}\small\item\em Crée une nouvelle matrice dynamique d\textquotesingle{}entiers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrice__int__dyn_8h_a6c6d516d2b9e94e6897fdff2dcf1aa56}{detruire\+\_\+matrice}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Détruit une matrice dynamique d\textquotesingle{}entiers, libérant la mémoire allouée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrice__int__dyn_8h_a36bb3abfbdc03ac10de5a7f4b7be5bb1}{map\+\_\+matrice}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice, void($\ast$f)(int))
+\begin{DoxyCompactList}\small\item\em Applique une fonction donnée à chaque élément de la matrice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrice__int__dyn_8h_a273a06a01e42aca08511435336ea0060}{afficher\+\_\+matrice}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice, int not\+\_\+displayed\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Affiche une matrice dynamique d\textquotesingle{}entiers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure de donnée correspondant à une matrice dynamique contenant des entiers. 
+
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Author}
+Anthony 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021-\/11-\/23 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{matrice__int__dyn_8h_a273a06a01e42aca08511435336ea0060}\label{matrice__int__dyn_8h_a273a06a01e42aca08511435336ea0060}} 
+\index{matrice\_int\_dyn.h@{matrice\_int\_dyn.h}!afficher\_matrice@{afficher\_matrice}}
+\index{afficher\_matrice@{afficher\_matrice}!matrice\_int\_dyn.h@{matrice\_int\_dyn.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_matrice()}{afficher\_matrice()}}
+{\footnotesize\ttfamily void afficher\+\_\+matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$}]{matrice,  }\item[{int}]{not\+\_\+displayed\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Affiche une matrice dynamique d\textquotesingle{}entiers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Un pointeur vers la matrice dynamique. \\
+\hline
+{\em not\+\_\+displayed\+\_\+value} & Valeur à ne pas afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matrice__int__dyn_8h_a88682b418eacbd405292fed6d7020ee0}\label{matrice__int__dyn_8h_a88682b418eacbd405292fed6d7020ee0}} 
+\index{matrice\_int\_dyn.h@{matrice\_int\_dyn.h}!creer\_matrice@{creer\_matrice}}
+\index{creer\_matrice@{creer\_matrice}!matrice\_int\_dyn.h@{matrice\_int\_dyn.h}}
+\doxysubsubsection{\texorpdfstring{creer\_matrice()}{creer\_matrice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}}$\ast$ creer\+\_\+matrice (\begin{DoxyParamCaption}\item[{int}]{rows,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Crée une nouvelle matrice dynamique d\textquotesingle{}entiers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & Le nombre de lignes de la matrice. \\
+\hline
+{\em col} & Le nombre de colonnes de la matrice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la nouvelle matrice dynamique. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrice__int__dyn_8h_a6c6d516d2b9e94e6897fdff2dcf1aa56}\label{matrice__int__dyn_8h_a6c6d516d2b9e94e6897fdff2dcf1aa56}} 
+\index{matrice\_int\_dyn.h@{matrice\_int\_dyn.h}!detruire\_matrice@{detruire\_matrice}}
+\index{detruire\_matrice@{detruire\_matrice}!matrice\_int\_dyn.h@{matrice\_int\_dyn.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_matrice()}{detruire\_matrice()}}
+{\footnotesize\ttfamily void detruire\+\_\+matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Détruit une matrice dynamique d\textquotesingle{}entiers, libérant la mémoire allouée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Un pointeur vers la matrice dynamique à détruire. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matrice__int__dyn_8h_a36bb3abfbdc03ac10de5a7f4b7be5bb1}\label{matrice__int__dyn_8h_a36bb3abfbdc03ac10de5a7f4b7be5bb1}} 
+\index{matrice\_int\_dyn.h@{matrice\_int\_dyn.h}!map\_matrice@{map\_matrice}}
+\index{map\_matrice@{map\_matrice}!matrice\_int\_dyn.h@{matrice\_int\_dyn.h}}
+\doxysubsubsection{\texorpdfstring{map\_matrice()}{map\_matrice()}}
+{\footnotesize\ttfamily void map\+\_\+matrice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$}]{matrice,  }\item[{void($\ast$)(int)}]{f }\end{DoxyParamCaption})}
+
+
+
+Applique une fonction donnée à chaque élément de la matrice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Un pointeur vers la matrice dynamique. \\
+\hline
+{\em f} & Un pointeur de fonction prenant un entier en paramètre et ne retournant rien. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,242 @@
+\hypertarget{jugement__majoritaire_8h}{}\doxysection{src/methods/jugement\+\_\+majoritaire.h File Reference}
+\label{jugement__majoritaire_8h}\index{src/methods/jugement\_majoritaire.h@{src/methods/jugement\_majoritaire.h}}
+
+
+Fichier de la méthode de scrutin du jugement majoritaire.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../utils/lecture\+\_\+csv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../utils/data\+Structure/listegen.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../utils/utils\+\_\+sd.\+h\char`\"{}}\newline
+Include dependency graph for jugement\+\_\+majoritaire.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jugement__majoritaire_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{jugement__majoritaire_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{jugement__majoritaire_8h_a336939caf7a00ca3317a171f219ec5f9}\label{jugement__majoritaire_8h_a336939caf7a00ca3317a171f219ec5f9}} 
+typedef struct \mbox{\hyperlink{structs__candidat}{s\+\_\+candidat}} \mbox{\hyperlink{jugement__majoritaire_8h_a336939caf7a00ca3317a171f219ec5f9}{Candidat}}
+\begin{DoxyCompactList}\small\item\em Structure représentant un candidat dans le scrutin du jugement majoritaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structs__candidat}{Candidat}} $\ast$ \mbox{\hyperlink{jugement__majoritaire_8h_a2724b7156846d5699b1836ffd3f0284c}{init\+Candidat}} (\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice, int num\+Candidat)
+\begin{DoxyCompactList}\small\item\em Initialise un candidat. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{jugement__majoritaire_8h_a15982d6bbafc0dc5831e61436336e83c}{init\+Tableau\+Candidat}} (\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Initialise un tableau de candidats. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jugement__majoritaire_8h_a1d29fe17f00736fb5858a7480dd9268d}{liberer\+Candidat}} (void $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Libère un candidat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jugement__majoritaire_8h_a52f9adfc9a3c9028937c2699526ddff9}{liberer\+Liste\+Candidat}} (\mbox{\hyperlink{structs__List}{List}} $\ast$tab\+Candidat)
+\begin{DoxyCompactList}\small\item\em Libère une liste de candidats. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{jugement__majoritaire_8h_ad78be0e6f1d1be42d0d46b5a045b3293}{calculer\+Indice\+Mention}} (int nb\+Votes)
+\begin{DoxyCompactList}\small\item\em Calcule l\textquotesingle{}indice de mention. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{jugement__majoritaire_8h_a4d831b75f579e9a645c67655ffac0608}{attribuer\+Mention}} (int mention)
+\begin{DoxyCompactList}\small\item\em Attribue une mention. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{jugement__majoritaire_8h_a674aafb9380a71589e4cc178bed3f412}{rechercher\+Meilleure\+Mention}} (\mbox{\hyperlink{structs__List}{List}} $\ast$tab\+Candidat)
+\begin{DoxyCompactList}\small\item\em Recherche la meilleure mention. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jugement__majoritaire_8h_a960c508ed16441c84d9ada78caa4f709}{calculer\+Vainqueur\+Jugement}} (\mbox{\hyperlink{structs__List}{List}} $\ast$tab\+Candidat)
+\begin{DoxyCompactList}\small\item\em Calcule le vainqueur du jugement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jugement__majoritaire_8h_a3bcc600dbfb0d30562571eda809e02d0}{recalculer\+Mention}} (\mbox{\hyperlink{structs__List}{List}} $\ast$tab\+Candidat\+Reduit)
+\begin{DoxyCompactList}\small\item\em Recalcule la mention. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jugement__majoritaire_8h_aef9a47efc6de1ebaeafacb695698b6b9}{test\+Affichage}} (\mbox{\hyperlink{structs__List}{List}} $\ast$tab\+Candidat)
+\begin{DoxyCompactList}\small\item\em Teste l\textquotesingle{}affichage. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{jugement__majoritaire_8h_ae489240ce852632a37565bd10aec385e}\label{jugement__majoritaire_8h_ae489240ce852632a37565bd10aec385e}} 
+void \mbox{\hyperlink{jugement__majoritaire_8h_ae489240ce852632a37565bd10aec385e}{determiner\+Vainqueur\+Jugement}} ()
+\begin{DoxyCompactList}\small\item\em Détermine le vainqueur du jugement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier de la méthode de scrutin du jugement majoritaire. 
+
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Author}
+Marco 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a4d831b75f579e9a645c67655ffac0608}\label{jugement__majoritaire_8h_a4d831b75f579e9a645c67655ffac0608}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!attribuerMention@{attribuerMention}}
+\index{attribuerMention@{attribuerMention}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{attribuerMention()}{attribuerMention()}}
+{\footnotesize\ttfamily char$\ast$ attribuer\+Mention (\begin{DoxyParamCaption}\item[{int}]{mention }\end{DoxyParamCaption})}
+
+
+
+Attribue une mention. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mention} & \+: La mention à attribuer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ \+: La mention attribuée sous forme de chaîne de caractères. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{jugement__majoritaire_8h_ad78be0e6f1d1be42d0d46b5a045b3293}\label{jugement__majoritaire_8h_ad78be0e6f1d1be42d0d46b5a045b3293}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!calculerIndiceMention@{calculerIndiceMention}}
+\index{calculerIndiceMention@{calculerIndiceMention}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{calculerIndiceMention()}{calculerIndiceMention()}}
+{\footnotesize\ttfamily int calculer\+Indice\+Mention (\begin{DoxyParamCaption}\item[{int}]{nb\+Votes }\end{DoxyParamCaption})}
+
+
+
+Calcule l\textquotesingle{}indice de mention. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+Votes} & \+: Le nombre de votes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: L\textquotesingle{}indice de mention calculé. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a960c508ed16441c84d9ada78caa4f709}\label{jugement__majoritaire_8h_a960c508ed16441c84d9ada78caa4f709}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!calculerVainqueurJugement@{calculerVainqueurJugement}}
+\index{calculerVainqueurJugement@{calculerVainqueurJugement}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{calculerVainqueurJugement()}{calculerVainqueurJugement()}}
+{\footnotesize\ttfamily void calculer\+Vainqueur\+Jugement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{tab\+Candidat }\end{DoxyParamCaption})}
+
+
+
+Calcule le vainqueur du jugement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+Candidat} & \+: La liste des candidats. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a2724b7156846d5699b1836ffd3f0284c}\label{jugement__majoritaire_8h_a2724b7156846d5699b1836ffd3f0284c}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!initCandidat@{initCandidat}}
+\index{initCandidat@{initCandidat}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{initCandidat()}{initCandidat()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__candidat}{Candidat}}$\ast$ init\+Candidat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice,  }\item[{int}]{num\+Candidat }\end{DoxyParamCaption})}
+
+
+
+Initialise un candidat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & \+: La matrice contenant les informations du candidat. \\
+\hline
+{\em num\+Candidat} & \+: Le numéro du candidat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Candidat$\ast$ \+: Structure d\textquotesingle{}un candidat de l\textquotesingle{}élection. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a15982d6bbafc0dc5831e61436336e83c}\label{jugement__majoritaire_8h_a15982d6bbafc0dc5831e61436336e83c}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!initTableauCandidat@{initTableauCandidat}}
+\index{initTableauCandidat@{initTableauCandidat}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{initTableauCandidat()}{initTableauCandidat()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ init\+Tableau\+Candidat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Initialise un tableau de candidats. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & \+: La matrice contenant les informations des candidats. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ \+: Liste des candidats de l\textquotesingle{}élection. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a1d29fe17f00736fb5858a7480dd9268d}\label{jugement__majoritaire_8h_a1d29fe17f00736fb5858a7480dd9268d}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!libererCandidat@{libererCandidat}}
+\index{libererCandidat@{libererCandidat}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{libererCandidat()}{libererCandidat()}}
+{\footnotesize\ttfamily void liberer\+Candidat (\begin{DoxyParamCaption}\item[{void $\ast$}]{elem }\end{DoxyParamCaption})}
+
+
+
+Libère un candidat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & \+: Le candidat à libérer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a52f9adfc9a3c9028937c2699526ddff9}\label{jugement__majoritaire_8h_a52f9adfc9a3c9028937c2699526ddff9}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!libererListeCandidat@{libererListeCandidat}}
+\index{libererListeCandidat@{libererListeCandidat}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{libererListeCandidat()}{libererListeCandidat()}}
+{\footnotesize\ttfamily void liberer\+Liste\+Candidat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{tab\+Candidat }\end{DoxyParamCaption})}
+
+
+
+Libère une liste de candidats. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+Candidat} & \+: La liste des candidats à libérer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a3bcc600dbfb0d30562571eda809e02d0}\label{jugement__majoritaire_8h_a3bcc600dbfb0d30562571eda809e02d0}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!recalculerMention@{recalculerMention}}
+\index{recalculerMention@{recalculerMention}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{recalculerMention()}{recalculerMention()}}
+{\footnotesize\ttfamily void recalculer\+Mention (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{tab\+Candidat\+Reduit }\end{DoxyParamCaption})}
+
+
+
+Recalcule la mention. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+Candidat\+Reduit} & \+: La liste réduite des candidats. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a674aafb9380a71589e4cc178bed3f412}\label{jugement__majoritaire_8h_a674aafb9380a71589e4cc178bed3f412}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!rechercherMeilleureMention@{rechercherMeilleureMention}}
+\index{rechercherMeilleureMention@{rechercherMeilleureMention}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{rechercherMeilleureMention()}{rechercherMeilleureMention()}}
+{\footnotesize\ttfamily char$\ast$ rechercher\+Meilleure\+Mention (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{tab\+Candidat }\end{DoxyParamCaption})}
+
+
+
+Recherche la meilleure mention. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+Candidat} & \+: La liste des candidats. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ \+: La meilleure mention trouvée sous forme de chaîne de caractères. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{jugement__majoritaire_8h_aef9a47efc6de1ebaeafacb695698b6b9}\label{jugement__majoritaire_8h_aef9a47efc6de1ebaeafacb695698b6b9}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!testAffichage@{testAffichage}}
+\index{testAffichage@{testAffichage}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{testAffichage()}{testAffichage()}}
+{\footnotesize\ttfamily void test\+Affichage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{tab\+Candidat }\end{DoxyParamCaption})}
+
+
+
+Teste l\textquotesingle{}affichage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+Candidat} & \+: La liste des candidats. \\
+\hline
+\end{DoxyParams}

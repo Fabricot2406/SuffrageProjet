@@ -1,0 +1,13 @@
+<map id="src/utils/utils_sd.h" name="src/utils/utils_sd.h">
+<area shape="rect" id="node1" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="228,5,366,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="169,229,236,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="14,229,84,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="522,229,592,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="350,229,433,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="728,229,802,256"/>
+<area shape="rect" id="node7" href="$ballot_8h.html" title="Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur." alt="" coords="305,80,476,107"/>
+<area shape="rect" id="node10" href="$listegen_8h.html" title="Structure de donnée correspondant à une liste générique." alt="" coords="46,155,132,181"/>
+<area shape="rect" id="node11" href="$arc_8h.html" title="Structure de données pour les arcs du graphe." alt="" coords="126,80,281,107"/>
+<area shape="rect" id="node8" href="$matrice__string__dyn_8h.html" title="Structure de donnée correspondant à la matrice des votes issue d&#39;un fichier CSV." alt="" coords="422,155,580,181"/>
+<area shape="rect" id="node9" href="$matrice__int__dyn_8h.html" title="Structure de donnée correspondant à une matrice dynamique contenant des entiers." alt="" coords="258,155,397,181"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="src/utils/dataStructure/duel.h" name="src/utils/dataStructure/duel.h">
+<area shape="rect" id="node1" title="Création de la matrice de duel, qui contient les duels entre les candidats. La diagonale est remplie ..." alt="" coords="295,5,461,47"/>
+<area shape="rect" id="node2" href="$methode__minimax_8h.html" title="Fichier d&#39;en&#45;tête pour les fonctions de la méthode Minimax." alt="" coords="56,95,220,136"/>
+<area shape="rect" id="node4" href="$global_8h.html" title="Fichier global qui contient tous les headers des fichiers .c." alt="" coords="193,191,323,218"/>
+<area shape="rect" id="node6" href="$methode__paires_8h.html" title=" " alt="" coords="296,95,460,136"/>
+<area shape="rect" id="node8" href="$duel_8c.html" title=" " alt="" coords="666,95,831,136"/>
+<area shape="rect" id="node9" href="$utils__main_8h.html" title="Fichier de fonctions utilitaires nécessaires au main.c." alt="" coords="485,102,642,129"/>
+<area shape="rect" id="node3" href="$methode__minimax_8c.html" title="Implémentation de la méthode Minimax." alt="" coords="5,184,169,225"/>
+<area shape="rect" id="node5" href="$main_8c.html" title=" " alt="" coords="213,273,303,300"/>
+<area shape="rect" id="node7" href="$methode__paires_8c.html" title=" " alt="" coords="347,184,511,225"/>
+<area shape="rect" id="node10" href="$utils__main_8c.html" title=" " alt="" coords="535,191,691,218"/>
+</map>

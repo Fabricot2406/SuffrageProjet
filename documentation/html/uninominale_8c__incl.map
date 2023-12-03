@@ -1,0 +1,15 @@
+<map id="src/methods/uninominale.c" name="src/methods/uninominale.c">
+<area shape="rect" id="node1" title=" " alt="" coords="236,5,435,32"/>
+<area shape="rect" id="node2" href="$uninominale_8h.html" title="Méthode uninominale à 1 et 2 tours." alt="" coords="278,80,393,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="109,379,175,405"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,379,76,405"/>
+<area shape="rect" id="node5" title=" " alt="" coords="819,379,889,405"/>
+<area shape="rect" id="node6" href="$utils__sd_8h.html" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="458,155,586,181"/>
+<area shape="rect" id="node9" href="$ballot_8h.html" title="Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur." alt="" coords="250,229,421,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="619,379,702,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="438,379,513,405"/>
+<area shape="rect" id="node12" href="$listegen_8h.html" title="Structure de donnée correspondant à une liste générique." alt="" coords="577,304,664,331"/>
+<area shape="rect" id="node13" href="$arc_8h.html" title="Structure de données pour les arcs du graphe." alt="" coords="445,229,599,256"/>
+<area shape="rect" id="node10" href="$matrice__string__dyn_8h.html" title="Structure de donnée correspondant à la matrice des votes issue d&#39;un fichier CSV." alt="" coords="180,304,339,331"/>
+<area shape="rect" id="node11" href="$matrice__int__dyn_8h.html" title="Structure de donnée correspondant à une matrice dynamique contenant des entiers." alt="" coords="363,304,502,331"/>
+</map>

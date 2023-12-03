@@ -1,0 +1,94 @@
+\hypertarget{methode__minimax_8c}{}\doxysection{src/methods/methode\+\_\+minimax.c File Reference}
+\label{methode__minimax_8c}\index{src/methods/methode\_minimax.c@{src/methods/methode\_minimax.c}}
+
+
+Implémentation de la méthode Minimax.  
+
+
+{\ttfamily \#include \char`\"{}methode\+\_\+minimax.\+h\char`\"{}}\newline
+Include dependency graph for methode\+\_\+minimax.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methode__minimax_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{methode__minimax_8c_ad554a3a41f2a4d49bbe1df2fe4c58b97}{remplir\+Tab\+Pire\+Score}} (void $\ast$elem, void $\ast$tab)
+\begin{DoxyCompactList}\small\item\em Remplit le tableau des pires scores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{methode__minimax_8c_a2f65cfe371c272b09b630c6573b28532}{methode\+Minimax}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice\+\_\+ballot)
+\begin{DoxyCompactList}\small\item\em Implémente la méthode Minimax. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{methode__minimax_8c_a21b9be68bfc28555ef22334844a4c800}{afficher\+Tab}} (int $\ast$tab, int taille)
+\begin{DoxyCompactList}\small\item\em Utilisée pour afficher le tableau du pire score de chaque candidats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implémentation de la méthode Minimax. 
+
+\begin{DoxyAuthor}{Author}
+Marco 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{methode__minimax_8c_a21b9be68bfc28555ef22334844a4c800}\label{methode__minimax_8c_a21b9be68bfc28555ef22334844a4c800}} 
+\index{methode\_minimax.c@{methode\_minimax.c}!afficherTab@{afficherTab}}
+\index{afficherTab@{afficherTab}!methode\_minimax.c@{methode\_minimax.c}}
+\doxysubsubsection{\texorpdfstring{afficherTab()}{afficherTab()}}
+{\footnotesize\ttfamily void afficher\+Tab (\begin{DoxyParamCaption}\item[{int $\ast$}]{tab,  }\item[{int}]{taille }\end{DoxyParamCaption})}
+
+
+
+Utilisée pour afficher le tableau du pire score de chaque candidats. 
+
+Affiche un tableau.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & Le tableau à afficher. \\
+\hline
+{\em taille} & La taille du tableau. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{methode__minimax_8c_a2f65cfe371c272b09b630c6573b28532}\label{methode__minimax_8c_a2f65cfe371c272b09b630c6573b28532}} 
+\index{methode\_minimax.c@{methode\_minimax.c}!methodeMinimax@{methodeMinimax}}
+\index{methodeMinimax@{methodeMinimax}!methode\_minimax.c@{methode\_minimax.c}}
+\doxysubsubsection{\texorpdfstring{methodeMinimax()}{methodeMinimax()}}
+{\footnotesize\ttfamily void methode\+Minimax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{matrice\+\_\+ballot }\end{DoxyParamCaption})}
+
+
+
+Implémente la méthode Minimax. 
+
+Cette fonction implémente la méthode Minimax pour déterminer le gagnant d\textquotesingle{}une élection. Elle crée d\textquotesingle{}abord une matrice de duels à partir des bulletins de vote. Ensuite, elle initialise une liste d\textquotesingle{}arcs à partir de cette matrice. Elle alloue ensuite un tableau pour stocker le pire score de chaque candidat et initialise tous les scores à zéro. Elle utilise ensuite la fonction remplir\+Tab\+Pire\+Score pour remplir ce tableau avec les pires scores de chaque candidat. Enfin, elle détermine le candidat gagnant comme étant celui dont le pire score est le plus bas et affiche le nom du gagnant.
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice\+\_\+ballot} & La matrice des bulletins de vote. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{methode__minimax_8c_ad554a3a41f2a4d49bbe1df2fe4c58b97}\label{methode__minimax_8c_ad554a3a41f2a4d49bbe1df2fe4c58b97}} 
+\index{methode\_minimax.c@{methode\_minimax.c}!remplirTabPireScore@{remplirTabPireScore}}
+\index{remplirTabPireScore@{remplirTabPireScore}!methode\_minimax.c@{methode\_minimax.c}}
+\doxysubsubsection{\texorpdfstring{remplirTabPireScore()}{remplirTabPireScore()}}
+{\footnotesize\ttfamily void remplir\+Tab\+Pire\+Score (\begin{DoxyParamCaption}\item[{void $\ast$}]{elem,  }\item[{void $\ast$}]{tab }\end{DoxyParamCaption})}
+
+
+
+Remplit le tableau des pires scores. 
+
+Cette fonction compare le score de l\textquotesingle{}arc avec le score du candidat perdant (initialisé à 0). Si le score de l\textquotesingle{}arc est supérieur au pire score actuel du candidat perdant, il le remplace par le score de l\textquotesingle{}arc.
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & L\textquotesingle{}élément à traiter (un arc). \\
+\hline
+{\em tab} & Le tableau à remplir (tableau des pires scores). \\
+\hline
+\end{DoxyParams}

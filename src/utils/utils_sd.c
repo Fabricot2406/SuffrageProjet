@@ -91,7 +91,17 @@ bool vainqueur_condorcet(larc *list_arc, int *vainqueur){
     {
         cand_winner->candidat = candidat;
         cand_winner->est_gagant = true;
-        list_reduce(list,uni_perdant,cand_winner);
+
+        Iterator * it = iterator_create(list);
+        while (iterator_has_next(it)){
+            arc *a = (arc *)iterator_current(it);
+            if(uni_perdant(a, cand_winner)){
+                break;
+            }
+            iterator_next(it);
+        }
+        iterator_delete(it);
+
         if (cand_winner->est_gagant){
             *vainqueur = candidat;
             free(cand_winner);

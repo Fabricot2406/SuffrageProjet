@@ -166,7 +166,7 @@ List* list_map(List* l, SimpleFunctor f);
  * @param userData L'élément à comparer, sous forme d'entier
  * @return List* La liste réduite
  */
-List* list_reduce(List* l, Functor f, void *userData);
+List* list_reduce(List* list, void (*f)(void *, void*), void *userData);
 /**
  * @brief Trie les éléments de la liste dans l'ordre croissant.
  * @param l : La liste à trier.

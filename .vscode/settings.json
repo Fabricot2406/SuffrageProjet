@@ -17,7 +17,8 @@
         "uninominale.h": "c",
         "stdlib.h": "c",
         "global.h": "c",
-        "graphe.h": "c"
+        "graphe.h": "c",
+        "methode_minimax.h": "c"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "disabled"
 }

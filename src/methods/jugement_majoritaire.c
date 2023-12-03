@@ -143,10 +143,10 @@ void testAffichage(List *tabCandidat){
     printf("Candidat List Size = %d\n\n",tabCandidat->size);
     for (int i=0;i<tabCandidat->size;i++){
         Candidat *candidat = list_at(tabCandidat,i);
-        printf("Candidat Name = %s\tNumber of Votes = %d\n",candidat->nom,candidat->votesCandidat->size);
+        printf("Candidat Name = %s\n",candidat->nom);
         list_map(candidat->votesCandidat,afficher_int_ptr);
         char *mentionChar=attribuerMention(*candidat->mention);
-        printf("\nCandidat Mediane = %d\tCandidat Mention = %s\n",*candidat->mention,mentionChar);
+        printf("\nNumber of votes = %d\tCandidat Mediane = %d\tCandidat Mention = %s\n",candidat->votesCandidat->size,*candidat->mention,mentionChar);
         free(mentionChar);
         printf("\n");
     }

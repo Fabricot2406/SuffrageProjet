@@ -1,0 +1,67 @@
+\hypertarget{lecture__csv_8c}{}\doxysection{src/utils/lecture\+\_\+csv.c File Reference}
+\label{lecture__csv_8c}\index{src/utils/lecture\_csv.c@{src/utils/lecture\_csv.c}}
+{\ttfamily \#include \char`\"{}lecture\+\_\+csv.\+h\char`\"{}}\newline
+Include dependency graph for lecture\+\_\+csv.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lecture__csv_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ \mbox{\hyperlink{lecture__csv_8c_ad1daef60a33e3028170fd1800ac9e0cb}{remplir\+Matrice}} (char $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Fonction pour remplir la matrice avec les données du fichier CSV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lecture__csv_8c_a1d28fd32499311db8b038ac5865e4906}{est\+Mauvaise\+Extension}} (char $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Fonction qui confirme si le fichier est un \char`\"{}.\+csv\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Author}
+Marco 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lecture__csv_8c_a1d28fd32499311db8b038ac5865e4906}\label{lecture__csv_8c_a1d28fd32499311db8b038ac5865e4906}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!estMauvaiseExtension@{estMauvaiseExtension}}
+\index{estMauvaiseExtension@{estMauvaiseExtension}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{estMauvaiseExtension()}{estMauvaiseExtension()}}
+{\footnotesize\ttfamily int est\+Mauvaise\+Extension (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Fonction qui confirme si le fichier est un \char`\"{}.\+csv\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fichier} & Le nom du fichier à vérifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si le fichier n\textquotesingle{}est pas un \char`\"{}.\+csv\char`\"{}, 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lecture__csv_8c_ad1daef60a33e3028170fd1800ac9e0cb}\label{lecture__csv_8c_ad1daef60a33e3028170fd1800ac9e0cb}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!remplirMatrice@{remplirMatrice}}
+\index{remplirMatrice@{remplirMatrice}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{remplirMatrice()}{remplirMatrice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__matriceVote}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ remplir\+Matrice (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Fonction pour remplir la matrice avec les données du fichier CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fichier} & Le nom du fichier CSV. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers la matrice remplie. 
+\end{DoxyReturn}

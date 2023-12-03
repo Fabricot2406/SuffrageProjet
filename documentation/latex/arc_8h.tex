@@ -1,0 +1,142 @@
+\hypertarget{arc_8h}{}\doxysection{src/utils/data\+Structure/arc.h File Reference}
+\label{arc_8h}\index{src/utils/dataStructure/arc.h@{src/utils/dataStructure/arc.h}}
+
+
+Structure de données pour les arcs du graphe.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}listegen.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}matrice\+\_\+int\+\_\+dyn.\+h\char`\"{}}\newline
+Include dependency graph for arc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structt__arc__p}{t\+\_\+arc\+\_\+p}}
+\item 
+struct \mbox{\hyperlink{structs__arc}{s\+\_\+arc}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{arc_8h_a890ca7c7ac2da9cf125d1f4fe2826b46}\label{arc_8h_a890ca7c7ac2da9cf125d1f4fe2826b46}} 
+typedef struct \mbox{\hyperlink{structt__arc__p}{t\+\_\+arc\+\_\+p}} {\bfseries arc}
+\item 
+\mbox{\Hypertarget{arc_8h_a6f32f04776591b35c09f7d19c2f8347e}\label{arc_8h_a6f32f04776591b35c09f7d19c2f8347e}} 
+typedef struct \mbox{\hyperlink{structs__arc}{s\+\_\+arc}} {\bfseries larc}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__arc__p}{arc}} $\ast$ \mbox{\hyperlink{arc_8h_af278dd61715097a5ebdce545055065c4}{arc\+\_\+create}} (int candidat\+\_\+gagnant, int candidat\+\_\+perdant, int score)
+\begin{DoxyCompactList}\small\item\em Constructeur de la structure de donnée arc. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__arc}{larc}} $\ast$ \mbox{\hyperlink{arc_8h_af0f951e56bdba93b92ee56722ee93ed0}{larc\+\_\+init}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice\+\_\+duel)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}initialiser et de completer la liste des arcs à partir de la matrice de duel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arc_8h_a03337498d8357ea064dfd58a64e5bb9c}{detruire\+\_\+larc}} (\mbox{\hyperlink{structs__arc}{larc}} $\ast$tab\+\_\+arc)
+\begin{DoxyCompactList}\small\item\em Libérer la mémoire allouée à une liste d\textquotesingle{}arcs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arc_8h_a1e03ec3d125d18c690233ba518a4db10}{afficher\+\_\+larc}} (\mbox{\hyperlink{structs__arc}{larc}} $\ast$tab\+\_\+arc)
+\begin{DoxyCompactList}\small\item\em Afficher la liste des arcs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure de données pour les arcs du graphe. 
+
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Author}
+Anthony 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/27 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{arc_8h_a1e03ec3d125d18c690233ba518a4db10}\label{arc_8h_a1e03ec3d125d18c690233ba518a4db10}} 
+\index{arc.h@{arc.h}!afficher\_larc@{afficher\_larc}}
+\index{afficher\_larc@{afficher\_larc}!arc.h@{arc.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_larc()}{afficher\_larc()}}
+{\footnotesize\ttfamily void afficher\+\_\+larc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__arc}{larc}} $\ast$}]{tab\+\_\+arc }\end{DoxyParamCaption})}
+
+
+
+Afficher la liste des arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+\_\+arc} & Liste des arcs à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{arc_8h_af278dd61715097a5ebdce545055065c4}\label{arc_8h_af278dd61715097a5ebdce545055065c4}} 
+\index{arc.h@{arc.h}!arc\_create@{arc\_create}}
+\index{arc\_create@{arc\_create}!arc.h@{arc.h}}
+\doxysubsubsection{\texorpdfstring{arc\_create()}{arc\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__arc__p}{arc}}$\ast$ arc\+\_\+create (\begin{DoxyParamCaption}\item[{int}]{candidat\+\_\+gagnant,  }\item[{int}]{candidat\+\_\+perdant,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la structure de donnée arc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em candidat\+\_\+gagnant} & \\
+\hline
+{\em candidat\+\_\+perdant} & \\
+\hline
+{\em score} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+arc$\ast$ l\textquotesingle{}arc créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{arc_8h_a03337498d8357ea064dfd58a64e5bb9c}\label{arc_8h_a03337498d8357ea064dfd58a64e5bb9c}} 
+\index{arc.h@{arc.h}!detruire\_larc@{detruire\_larc}}
+\index{detruire\_larc@{detruire\_larc}!arc.h@{arc.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_larc()}{detruire\_larc()}}
+{\footnotesize\ttfamily void detruire\+\_\+larc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__arc}{larc}} $\ast$}]{tab\+\_\+arc }\end{DoxyParamCaption})}
+
+
+
+Libérer la mémoire allouée à une liste d\textquotesingle{}arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+\_\+arc} & Liste des arcs à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{arc_8h_af0f951e56bdba93b92ee56722ee93ed0}\label{arc_8h_af0f951e56bdba93b92ee56722ee93ed0}} 
+\index{arc.h@{arc.h}!larc\_init@{larc\_init}}
+\index{larc\_init@{larc\_init}!arc.h@{arc.h}}
+\doxysubsubsection{\texorpdfstring{larc\_init()}{larc\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__arc}{larc}}$\ast$ larc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$}]{matrice\+\_\+duel }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet d\textquotesingle{}initialiser et de completer la liste des arcs à partir de la matrice de duel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice\+\_\+duel} & La matrice de duel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+larc$\ast$ La liste des arcs 
+\end{DoxyReturn}

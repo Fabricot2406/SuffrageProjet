@@ -1,0 +1,14 @@
+<map id="src/verify/verify_my_vote.c" name="src/verify/verify_my_vote.c">
+<area shape="rect" id="node1" title="Fichier qui contient les fonctions pour vérifier son vote." alt="" coords="475,5,626,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,333,72,360"/>
+<area shape="rect" id="node3" title=" " alt="" coords="367,333,438,360"/>
+<area shape="rect" id="node4" title=" " alt="" coords="490,333,561,360"/>
+<area shape="rect" id="node5" href="$sha256_8h_source.html" title=" " alt="" coords="735,251,817,278"/>
+<area shape="rect" id="node7" href="$sha256__utils_8h.html" title="Fichier de déclaration pour la fonction de hashage sha256ofString." alt="" coords="718,169,834,196"/>
+<area shape="rect" id="node8" href="$lecture__csv_8h.html" title="Fichier de déclaration pour la lecture d&#39;un fichier CSV." alt="" coords="289,169,439,196"/>
+<area shape="rect" id="node12" href="$verify__my__vote_8h.html" title="Fichier de déclaration pour la vérification du vote de l&#39;utilisateur." alt="" coords="483,95,618,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="739,333,813,360"/>
+<area shape="rect" id="node9" title=" " alt="" coords="97,333,180,360"/>
+<area shape="rect" id="node10" href="$matrice__string__dyn_8h.html" title="Structure de donnée correspondant à la matrice des votes issue d&#39;un fichier CSV." alt="" coords="166,244,338,285"/>
+<area shape="rect" id="node11" title=" " alt="" coords="215,333,289,360"/>
+</map>

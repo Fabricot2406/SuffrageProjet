@@ -1,0 +1,45 @@
+\hypertarget{graphe_8c}{}\doxysection{src/utils/data\+Structure/graphe.c File Reference}
+\label{graphe_8c}\index{src/utils/dataStructure/graphe.c@{src/utils/dataStructure/graphe.c}}
+{\ttfamily \#include \char`\"{}graphe.\+h\char`\"{}}\newline
+Include dependency graph for graphe.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphe_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{graphe_8c_ac1c537c6e2e077149e8e84d5e9eea4f6}\label{graphe_8c_ac1c537c6e2e077149e8e84d5e9eea4f6}} 
+\mbox{\hyperlink{structs__graphe}{graphe}} $\ast$ {\bfseries creation\+\_\+graphe} (int nb\+\_\+candidat)
+\item 
+\mbox{\Hypertarget{graphe_8c_abee565021fed2b50ed9ae50f400bff78}\label{graphe_8c_abee565021fed2b50ed9ae50f400bff78}} 
+\mbox{\hyperlink{structs__sommet}{sommet}} $\ast$ {\bfseries creer\+\_\+sommet} (int indice)
+\item 
+\mbox{\Hypertarget{graphe_8c_aedc174cb199893794819e449ff5336a3}\label{graphe_8c_aedc174cb199893794819e449ff5336a3}} 
+void {\bfseries ajout\+\_\+succession} (\mbox{\hyperlink{structs__sommet}{sommet}} $\ast$s\+\_\+current, \mbox{\hyperlink{structs__sommet}{sommet}} $\ast$s\+\_\+successor)
+\item 
+\mbox{\Hypertarget{graphe_8c_a3620d6239e811dc7f33b87bb3e825aef}\label{graphe_8c_a3620d6239e811dc7f33b87bb3e825aef}} 
+void {\bfseries delete\+\_\+succession} (\mbox{\hyperlink{structs__sommet}{sommet}} $\ast$s\+\_\+current)
+\item 
+\mbox{\Hypertarget{graphe_8c_afeb8b13098919ec300344ccafa075fb1}\label{graphe_8c_afeb8b13098919ec300344ccafa075fb1}} 
+void {\bfseries detruire\+\_\+sommet} (void $\ast$elem)
+\item 
+\mbox{\Hypertarget{graphe_8c_a397fe67430fa3b56b1a38ff22bd03cf8}\label{graphe_8c_a397fe67430fa3b56b1a38ff22bd03cf8}} 
+void {\bfseries detruire\+\_\+graphe} (\mbox{\hyperlink{structs__graphe}{graphe}} $\ast$g)
+\item 
+\mbox{\Hypertarget{graphe_8c_a1ef041883773db1c4c71810d03263028}\label{graphe_8c_a1ef041883773db1c4c71810d03263028}} 
+bool {\bfseries circuits} (\mbox{\hyperlink{structs__graphe}{graphe}} $\ast$G, \mbox{\hyperlink{structs__sommet}{sommet}} $\ast$s\+\_\+current)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\textbackslash{}file
+
+\begin{DoxyAuthor}{Author}
+Anthony 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28 
+\end{DoxyDate}

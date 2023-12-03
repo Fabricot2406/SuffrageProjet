@@ -36,7 +36,7 @@ void methode_all() {
 Methode liste_methodes[] = {
     {"uni1", calculerUninominaleUnTour},
     {"uni2", calculerUninominaleDeuxTours},
-    {"cm", methode_cm},
+    {"cm", methodeMinimax},
     {"cp", condorcet_paires},
     {"cs", methode_cs},
     {"jm", determinerVainqueurJugement},
