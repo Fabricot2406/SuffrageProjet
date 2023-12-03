@@ -47,7 +47,7 @@ void methodeMinimax(ballot *matrice_ballot){
     //afficher_matrice_duels(matrice_duel);
     larc *list_arc = larc_init(matrice_duel);
     //afficher_larc(list_arc);
-    int *pireScore = malloc(sizeof(int)*matrice_ballot->nb_candidats);
+    int pireScore[matrice_ballot->nb_candidats];
     for (int i = 0; i<matrice_ballot->nb_candidats; i++){
         pireScore[i] = 0;
     }
