@@ -38,7 +38,7 @@ Methode liste_methodes[] = {
     {"uni2", calculerUninominaleDeuxTours},
     {"cm", methode_cm},
     {"cp", condorcet_paires},
-    {"cs", methode_cs},
+    {"cs", condorcet_schulze},
     {"jm", determinerVainqueurJugement},
     {"all", methode_all},
 };
@@ -56,11 +56,18 @@ void calculerVote(char *fichier, char *output, char *methode) {
     t_mat_char_star_dyn *matrice_csv = remplirMatrice(fichier);
     ballot *matrice_ballot = creer_ballot(matrice_csv -> nbColonnes, matrice_csv -> nbLignes);
     remplir_ballot(matrice_ballot, matrice_csv);
+    char** candidats_nom = matrice_ballot -> candidats_nom;
+    t_mat_int_dyn * matrice_duel = creer_matrice_duel(matrice_ballot);
     // Cherche la méthode choisie.
     for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
         if (strcmp(methode, liste_methodes[i].nom) == 0) {
             if (strcmp(methode, "jm") == 0) {
                 liste_methodes[i].fonction(matrice_csv);
+                methode_trouvee = 1;
+                break;
+            }
+            if (strcmp(methode, "cs") == 0) {
+                liste_methodes[i].fonction(matrice_duel,candidats_nom);
                 methode_trouvee = 1;
                 break;
             }

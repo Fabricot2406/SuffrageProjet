@@ -18,4 +18,5 @@
 #include "../methods/uninominale.h"
 #include "../methods/jugement_majoritaire.h"
 #include "../methods/methode_paires.h"
+#include "../methods/methode_schulze.h"
 #include "../verify/verify_my_vote.h"
