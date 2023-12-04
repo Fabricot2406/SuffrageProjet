@@ -58,6 +58,8 @@ void methodeMinimax(ballot *matrice_ballot){
             candidat_gagnant = i;
         }
     }
+    detruire_larc(list_arc);
+    detruire_matrice(matrice_duel);
     afficherVainqueur("Condorcet minimax",matrice_ballot->nb_candidats,matrice_ballot->nb_votants,nom_candidat(matrice_ballot,candidat_gagnant),0);
 }
 
