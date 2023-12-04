@@ -19,7 +19,9 @@
  */
 
 bool comparer_scores(void *a, void *b) {
-    return ((arc *)b)->score >= ((arc *)a)->score;
+    arc * elem1 = a;
+    arc * elem2 = b;
+    return elem1->score >= elem2->score;
 }
 
 bool est_vainqueur(List *list_arc, int candidat){
@@ -64,11 +66,9 @@ void reduction_arcs(List *list_arc, int nb_candidats, char **candidats_nom) {
 void condorcet_schulze(t_mat_int_dyn *matrice_duel, char **candidats_nom) {
     larc *list_arc = larc_init(matrice_duel);
     
-    list_sort(list_arc -> larc, comparer_scores);
-    afficher_larc(list_arc);
+    list_arc -> larc = list_sort(list_arc -> larc, comparer_scores);
 
     reduction_arcs(list_arc -> larc, list_arc -> nb_candidats, candidats_nom);
-    afficher_larc(list_arc);
     
     detruire_larc(list_arc);
 }

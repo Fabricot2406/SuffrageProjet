@@ -83,6 +83,7 @@ void calculerVote(char *fichier, char *output, char *methode) {
     }
     libererMatrice(matrice_csv);
     detruire_ballot(matrice_ballot);
+    detruire_matrice(matrice_duel);
 }
 
 /**
