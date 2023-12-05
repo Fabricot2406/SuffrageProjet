@@ -24,6 +24,7 @@ bool comparer_scores(void *a, void *b) {
     return elem1->score >= elem2->score;
 }
 
+// COMMUN ENTRE TOUT (util_sd)
 bool est_vainqueur(List *list_arc, int candidat){
     Iterator *it_larc = iterator_create(list_arc);
     // On parcourt la liste d'arc
@@ -42,21 +43,25 @@ bool est_vainqueur(List *list_arc, int candidat){
     return true;
 }
 
-int vainqueur_schulze(List *list_arc, int nb_candidats, char **candidats_nom) {
+int trouver_vainqueur_schulze(List *list_arc, int nb_candidats, char **candidats_nom) {
     
+    // Pour chaque candidat, on vérifie si il est vainqueur
     for (int candidat = 0; candidat < nb_candidats; candidat++) {
         if (est_vainqueur(list_arc, candidat)) {
+            // Le vainqueur est à l'indice désigné par la variable candidat
             return candidat;
         }
-        candidat ++;
     }
 
+    // Pas de vainqueur, on retourne -1
     return -1;
 }
 
-void reduction_arcs(List *list_arc, int nb_candidats, char **candidats_nom) {
+void reduire_arcs(List *list_arc, int nb_candidats, char **candidats_nom) {
     int vainqueur;
-    while ((vainqueur = vainqueur_schulze(list_arc, nb_candidats, candidats_nom)) == -1) {
+
+    // On continue de retirer l'arc tant qu'on n'a pas de vainqueur
+    while ((vainqueur = trouver_vainqueur_schulze(list_arc, nb_candidats, candidats_nom)) == -1) {
         list_remove_at(list_arc, 0, free);
     }
 
@@ -68,7 +73,7 @@ void condorcet_schulze(t_mat_int_dyn *matrice_duel, char **candidats_nom) {
     
     list_arc -> larc = list_sort(list_arc -> larc, comparer_scores);
 
-    reduction_arcs(list_arc -> larc, list_arc -> nb_candidats, candidats_nom);
+    reduire_arcs(list_arc -> larc, list_arc -> nb_candidats, candidats_nom);
     
     detruire_larc(list_arc);
 }

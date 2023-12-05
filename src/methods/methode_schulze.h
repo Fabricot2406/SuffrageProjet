@@ -39,7 +39,7 @@ bool est_vainqueur(List *list_arc, int candidat);
  * @return i : l'indice du candidat vainqueur si il y a un vainqueur.
  * @return -1 : si il n'y a pas de vainqueur à ce stade.
  */
-int vainqueur_schulze(List *list_arc, int nb_candidats, char **candidats_nom);
+int trouver_vainqueur_schulze(List *list_arc, int nb_candidats, char **candidats_nom);
 
 /**
  * @brief Fonction permettant de déterminer si un candidat est vainqueur de condorcet.
@@ -47,7 +47,7 @@ int vainqueur_schulze(List *list_arc, int nb_candidats, char **candidats_nom);
  * @param nb_candidats Nombre de candidats.
  * @param candidats_nom Liste des noms des candidats.
  */
-void reduction_arcs(List *list_arc, int nb_candidats, char **candidats_nom);
+void reduire_arcs(List *list_arc, int nb_candidats, char **candidats_nom);
 
 /**
  * @brief Fonction permettant de déterminer si un candidat est vainqueur de condorcet.
