@@ -54,35 +54,6 @@ int filtrer_larc(larc *list_arc){
 }
 
 /**
- * @brief Fonction permettant de déterminer si un candidat est vainqueur.
- * Processus à suivre : 1) On parcourt la liste d'arc.
- *                          - Si le candidat est impliqué dans un arc où il est perdant, alors il n'est pas vainqueur.
- *                          - Si le candidat n'est impliqué dans aucun arc où il est perdant, alors il est vainqueur.
- * 
- * @param list_arc Liste d'arc trié par ordre décroissant de différence de voix (score).
- * @param candidat Candidat dont on veut savoir si il est vainqueur.
- * @return true Si le candidat est vainqueur.
- * @return false Si le candidat n'est pas vainqueur.
- */
-bool est_vainqueur(List *list_arc, int candidat){
-    Iterator *it_larc = iterator_create(list_arc);
-    // On parcourt la liste d'arc
-    while (iterator_has_next(it_larc)){
-        arc *arc_courant = iterator_current(it_larc);
-        // Si le candidat est impliqué dans un arc où il est perdant
-        if (arc_courant->candidat_perdant == candidat){
-            // Il n'est pas vainqueur
-            iterator_delete(it_larc);
-            return false;
-        }
-        iterator_next(it_larc);
-    }
-    iterator_delete(it_larc);
-    // Sinon il est vainqueur
-    return true;
-}
-
-/**
  * @brief Fonction utilisé pour déterminer quel candidat est vainqueur parmi les candidats restant à classer.
  * Processus à suivre : 1) Pour chaque candidat restant, on vérifie si il est vainqueur (voir fonction est_vainqueur).
  *                      2) Si il est vainqueur :
@@ -154,16 +125,17 @@ List *determiner_classement(larc *list_arc,char **candidats_nom){
 void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom) {
     // Création de la liste d'arc
     larc *list_arc = larc_init(matrice_duel);
-    afficher_larc(list_arc);
+    //afficher_larc(list_arc);
 
     // Filtrage de la liste d'arc
     int nb_circuit = filtrer_larc(list_arc);
-    printf("Nombre de circuit détecté : %d\n\n",nb_circuit);
+    //printf("Nombre de circuit détecté : %d\n\n",nb_circuit);
     //afficher_larc(list_arc);
 
     // Détermination du classement des candidats
     List *classement = (List *)determiner_classement(list_arc,candidats_nom);
-    afficher_classement(classement);
+    //afficher_classement(classement);
+    afficher_vainqueur("Condorcet paires", matrice_duel->cols, matrice_duel->rows, list_at(classement, 0), 0); // A COMPLETER AVEC NBCANDIDATS ET NBVOTANTS
 
     // Libération de la mémoire
     detruire_larc(list_arc);

@@ -19,18 +19,18 @@
  * @brief Initialise un tableau contenant le score de chaque candidat
  * @param matrice Une matrice de type ballot
  */
-void initialiserTableauVotes(ballot * matrice);
+void initialiser_tableau_votes(ballot * matrice);
 
 /**
  * @brief Calcule le résultat de la méthode uninominale à un tour
  * @param matrice Une matrice de type ballot
  */
-void calculerUninominaleUnTour(ballot * matrice); // Calcule le vainqueur de la méthode uninominale à un tour.
+void calculer_uninominale_un_tour(ballot * matrice); // Calcule le vainqueur de la méthode uninominale à un tour.
 
 /**
  * @brief Calcule le résultat de la méthode uninominale à deux tours
  * @param matrice Une matrice de type ballot
  */
-void calculerUninominaleDeuxTours(ballot * matrice);// Calcule le vainqueur de la méthode uninominale à deux tours.
+void calculer_uninominale_deux_tours(ballot * matrice);// Calcule le vainqueur de la méthode uninominale à deux tours.
 
 #endif

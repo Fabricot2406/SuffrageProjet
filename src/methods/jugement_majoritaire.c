@@ -163,6 +163,6 @@ void determinerVainqueurJugement(t_mat_char_star_dyn *matrice){
     Candidat *vainqueur = list_at(tabCandidat,0);
     int nb_candidat = matrice->nbColonnes-INCREMENT_COLONNE;
     int nb_votant = matrice->nbLignes-INCREMENT_LIGNE;
-    afficherVainqueur("Jugement majoritaire",nb_candidat,nb_votant,vainqueur->nom,0);
+    afficher_vainqueur("Jugement majoritaire",nb_candidat,nb_votant,vainqueur->nom,0);
     libererListeCandidat(tabCandidat);
 }

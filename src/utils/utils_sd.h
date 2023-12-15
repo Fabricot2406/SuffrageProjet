@@ -35,7 +35,7 @@ typedef struct uni_data_s{
  * @param methode Une chaine de caractères représentant le nom du vainqueur
  * @param score Le score du candidat gagnant (à n'utiliser que lors d'uninominale 1 et 2)
  */
-void afficherVainqueur(char * methode, int nbCandidats, int nbVotants, char * nomVainqueur, double score); // Affiche le vainqueur de n'importe quelle méthode
+void afficher_vainqueur(char * methode, int nbCandidats, int nbVotants, char * nomVainqueur, double score); // Affiche le vainqueur de n'importe quelle méthode
 
 /**
  * @brief Crée une structure de données uni_data
@@ -60,7 +60,7 @@ int uni_reduce(void *elem, void *data);
  * @param nbVotes Le nombre de votes d'un candidat
  * @return double Le score du candidat
  */
-double calculerScore(int nbVotants, int nbVotes);
+double calculer_score(int nb_votants, int nb_votes);
 
 /**
  * @brief Affiche un élément. Cet élément est un pointeur sur un entier.
@@ -75,6 +75,8 @@ void afficher_int_ptr(void *elem);
  * @return bool : Renvoie vrai si le premier vote doit venir avant le deuxième.
  */
 bool cmp_inferieur_egal(void *i, void *j);
+
+bool est_vainqueur(List *list_arc, int candidat);
 
 /**
  * @brief Fonction permettant de déterminer si il y a un vainqueur de Condorcet

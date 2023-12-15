@@ -16,33 +16,33 @@
 
 // Structure pour représenter une méthode et sa fonction associée.
 typedef struct {
-    const char *nom;
+    char *nom;
     void (*fonction)();
 } Methode;
 
-
-void methode_cm() {
-    printf("Méthode cm sélectionnée.\n");
-}
-
-void methode_cs() {
-    printf("Méthode cs sélectionnée.\n");
-}
-
-void methode_all() {
-    printf("Méthode all sélectionnée.\n");
-}
-
 Methode liste_methodes[] = {
-    {"uni1", calculerUninominaleUnTour},
-    {"uni2", calculerUninominaleDeuxTours},
-    {"cm", methode_cm},
+    {"uni1", calculer_uninominale_un_tour},
+    {"uni2", calculer_uninominale_deux_tours},
+    {"cm", condorcet_minimax},
     {"cp", condorcet_paires},
-    {"cs", methode_cs},
+    {"cs", condorcet_schulze},
     {"jm", determinerVainqueurJugement},
-    {"all", methode_all},
 };
 
+void appliquer_methode(char *methode, t_mat_char_star_dyn *matrice_csv, ballot *matrice_ballot, t_mat_int_dyn *matrice_duel, char **candidats_nom, int i) {
+    // Jugement majoritaire
+    if (strcmp(methode, "jm") == 0) {
+        liste_methodes[i].fonction(matrice_csv);
+    }
+    // Classement par les pairs
+    else if (strcmp(methode, "cp") == 0  || strcmp(methode, "cs") == 0 || strcmp(methode, "cm") == 0) {
+        liste_methodes[i].fonction(matrice_duel,candidats_nom);
+    }
+    // Autres méthodes
+    else {
+        liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
+    }
+}
 
 /**
  * Lance le calcul du vote en utilisant la méthode spécifiée par l'utilisateur.
@@ -77,29 +77,22 @@ void calculerVote(char *fichier, char *output, char *methode, bool duel) {
         candidats_nom = matrice_csv->tab[0];
     }
     
-
-
-    // Cherche la méthode choisie.
-    for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
-        if (strcmp(methode, liste_methodes[i].nom) == 0) {
-            // Jugement majoritaire
-            if (strcmp(methode, "jm") == 0) {
-                liste_methodes[i].fonction(matrice_csv);
-                methode_trouvee = 1;
-                break;
-            }
-            // Classement par les pairs
-            if (strcmp(methode, "cp") == 0) {
-                liste_methodes[i].fonction(matrice_duel,candidats_nom);
-                methode_trouvee = 1;
-                break;
-            }
-            // Autres méthodes
-            liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
+    if (strcmp(methode, "all") == 0) {
+        for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
+            appliquer_methode(liste_methodes[i].nom, matrice_csv, matrice_ballot, matrice_duel, candidats_nom, i);
             methode_trouvee = 1;
-            break;
+        }
+    } else {
+        // Cherche la méthode choisie.
+        for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
+            if (strcmp(methode, liste_methodes[i].nom) == 0) {
+                appliquer_methode(methode, matrice_csv, matrice_ballot, matrice_duel, candidats_nom, i);
+                methode_trouvee = 1;
+                break;
+            }
         }
     }
+
 
     if (!methode_trouvee) {
         fprintf(stderr, "Liste des paramètres de l'option m : uni1, uni2, cm, cp, cs, jm, all.\n");
@@ -299,8 +292,8 @@ int main(int argc, char* argv[]) {
     }
 
     // Vérification de l'incompatibilité entre l'option -d et les méthodes uni1 et uni2.
-    if (duel != NULL && (strcmp(methode, "uni1") == 0 || strcmp(methode, "uni2") == 0)) {
-        fprintf(stderr, "Il est impossible d'utiliser les méthodes uni1 et uni2 avec l'option -d.\n");
+    if (duel != NULL && (strcmp(methode, "uni1") == 0 || strcmp(methode, "uni2") == 0 || strcmp(methode, "jm") == 0 || strcmp(methode, "all") == 0)) {
+        fprintf(stderr, "Il est impossible d'utiliser les méthodes uni1, uni2, jm et all avec l'option -d.\n");
         exit(EXIT_FAILURE);
     }
     // Vérification de l'existance des fichiers
@@ -316,7 +309,6 @@ int main(int argc, char* argv[]) {
                     "Exemple : ./Suffrage -i voteCondorcet -m uni1\n");
         exit(EXIT_FAILURE);
     }
-    printf("Duel : %s\n", duel);
     // Lancement du menu contextuel
     presentationMenu(cheminComplet, output, methode, duel != NULL);
 

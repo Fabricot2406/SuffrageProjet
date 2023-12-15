@@ -7,77 +7,77 @@
  */
 #include "uninominale.h"
 
-int nbCandidats, nbVotants;
+int nb_candidats, nb_votants;
 int * votes;
 
-void initialiserTableauVotes(ballot * matrice) {
-    nbCandidats = matrice -> nb_candidats;
-    nbVotants = matrice -> nb_votants; 
+void initialiser_tableau_votes(ballot * matrice) {
+    nb_candidats = matrice -> nb_candidats;
+    nb_votants = matrice -> nb_votants; 
 
     // Création d'un tableau de votes avec le résultat de chaque candidat
-    if ((votes = malloc(nbCandidats * sizeof(int))) == NULL) {
+    if ((votes = malloc(nb_candidats * sizeof(int))) == NULL) {
         fprintf(stderr,"Erreur lors de l'allocation de la mémoire.\n");
         exit(-1);
     }
 
     // Init du tableau de votes
-    for (int i = 0; i < nbCandidats; i++) {
+    for (int i = 0; i < nb_candidats; i++) {
         votes[i] = 0;
     }
     
     // Entrée des scores de chaque candidats
-    for (int i = 0; i < nbVotants; i++) {
+    for (int i = 0; i < nb_votants; i++) {
         votes[fav_candidat(matrice, i)] ++;
     }
 }
 
-void calculerUninominaleUnTour(ballot * matrice) {
-    initialiserTableauVotes(matrice);
+void calculer_uninominale_un_tour(ballot * matrice) {
+    initialiser_tableau_votes(matrice);
 
     // Recherche du vainqueur
     int vainqueur = 0;
-    for (int i = 0; i < nbCandidats; i++) {
+    for (int i = 0; i < nb_candidats; i++) {
         if (votes[i] > votes[vainqueur]) {
             vainqueur = i;
         }
     }
-    char * nomVainqueur = nom_candidat(matrice, vainqueur);
-    double score = calculerScore(nbVotants, votes[vainqueur]);
-    afficherVainqueur("uninominale à un tour", nbCandidats, nbVotants, nomVainqueur, score);
+    char * nom_vainqueur = nom_candidat(matrice, vainqueur);
+    double score = calculer_score(nb_votants, votes[vainqueur]);
+    afficher_vainqueur("uninominale à un tour", nb_candidats, nb_votants, nom_vainqueur, score);
 
     free(votes);
 }
 
-void calculerUninominaleDeuxTours(ballot * matrice) {
-    initialiserTableauVotes(matrice);
+void calculer_uninominale_deux_tours(ballot * matrice) {
+    initialiser_tableau_votes(matrice);
     // Recherche des deux vainqueurs
-    int vainqueurUn = 1, vainqueurDeux = 0;
-    for (int i = 0; i < nbCandidats; i++) {
-        if (votes[i] > votes[vainqueurUn]) {
-            vainqueurDeux = vainqueurUn;
-            vainqueurUn = i;
-        } else if (votes[i] > votes[vainqueurDeux]) {
-            vainqueurDeux = i;
+    int vainqueur_un = 0, vainqueur_deux = 1;
+    for (int i = 0; i < nb_candidats; i++) {
+        if (votes[i] > votes[vainqueur_un]) {
+            vainqueur_deux = vainqueur_un;
+            vainqueur_un = i;
+        } else if (votes[i] > votes[vainqueur_deux] && i != vainqueur_un) {
+            vainqueur_deux = i;
         }
     }
 
-    char * nomVainqueur1 = nom_candidat(matrice, vainqueurUn);
-    double score1 = calculerScore(nbVotants, votes[vainqueurUn]);
-    char * nomVainqueur2 = nom_candidat(matrice, vainqueurDeux);
-    double score2 = calculerScore(nbVotants, votes[vainqueurDeux]);
+    char * nom_vainqueur1 = nom_candidat(matrice, vainqueur_un);
+    double score1 = calculer_score(nb_votants, votes[vainqueur_un]);
+    char * nom_vainqueur2 = nom_candidat(matrice, vainqueur_deux);
+    double score2 = calculer_score(nb_votants, votes[vainqueur_deux]);
 
     // Vérification de la présence de majorité absolue
-    if (votes[vainqueurUn] > (nbVotants) / 2) {
-        afficherVainqueur("uninominale à deux tours, tour 1", nbCandidats, nbVotants, nomVainqueur1, score1);
+    if (votes[vainqueur_un] > (nb_votants) / 2) {
+        afficher_vainqueur("uninominale à deux tours, tour 1", nb_candidats, nb_votants, nom_vainqueur1, score1);
     } else {
-        afficherVainqueur("uninominale à deux tours, tour 1", nbCandidats, nbVotants, nomVainqueur1, score1);
-        afficherVainqueur("uninominale à deux tours, tour 1", nbCandidats, nbVotants, nomVainqueur2, score2);
-        votes[vainqueurUn] = 0;
-        votes[vainqueurDeux] = 0;
+        afficher_vainqueur("uninominale à deux tours, tour 1", nb_candidats, nb_votants, nom_vainqueur1, score1);
+        afficher_vainqueur("uninominale à deux tours, tour 1", nb_candidats, nb_votants, nom_vainqueur2, score2);
+        votes[vainqueur_un] = 0;
+        votes[vainqueur_deux] = 0;
 
-        uni_data *data = creer_uni_data(&vainqueurUn, &vainqueurDeux, votes);
+        uni_data *data = creer_uni_data(&vainqueur_un, &vainqueur_deux, votes);
         // Recherche du vainqueur au second tour
-        for (int i_votant = 0; i_votant < nbVotants; i_votant++) {
+        for (int i_votant = 0; i_votant < nb_votants; i_votant++) {
             List * liste_preference = acces_liste_preference(matrice, i_votant);
             Iterator * it = iterator_create(liste_preference);
             while (iterator_has_next(it)){
@@ -90,14 +90,14 @@ void calculerUninominaleDeuxTours(ballot * matrice) {
             iterator_delete(it);
         }
         // Affichage du vainqueur au second tour
-        if (votes[vainqueurUn] < votes[vainqueurDeux]) {
-            char * nomVainqueur = nom_candidat(matrice, vainqueurDeux);
-            double score = calculerScore(nbVotants, votes[vainqueurDeux]);
-            afficherVainqueur("uninominale à deux tours, tour 2", nbCandidats, nbVotants, nomVainqueur, score);
+        if (votes[vainqueur_un] < votes[vainqueur_deux]) {
+            char * nom_vainqueur = nom_candidat(matrice, vainqueur_deux);
+            double score = calculer_score(nb_votants, votes[vainqueur_deux]);
+            afficher_vainqueur("uninominale à deux tours, tour 2", nb_candidats, nb_votants, nom_vainqueur, score);
         } else {
-            char * nomVainqueur = nom_candidat(matrice, vainqueurUn);
-            double score = calculerScore(nbVotants, votes[vainqueurUn]);
-            afficherVainqueur("uninominale à deux tours, tour 2", nbCandidats, nbVotants, nomVainqueur, score);
+            char * nom_vainqueur = nom_candidat(matrice, vainqueur_un);
+            double score = calculer_score(nb_votants, votes[vainqueur_un]);
+            afficher_vainqueur("uninominale à deux tours, tour 2", nb_candidats, nb_votants, nom_vainqueur, score);
         }
         free(data);
     }
