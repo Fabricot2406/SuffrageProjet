@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file methode_paires.h
  * @author Anthony
@@ -28,9 +27,10 @@
  * 
  * @param matrice_duel Matrice de duel.
  * @param candidats_nom Tableau de nom des candidats.
+ * @param output Le fichier de sortie dans lequel on écrit le résultat.
  * @pre La matrice de duel est initialisé et remplie.
  * @pre Les noms sont rangés dans l'ordre de la matrice de duel.
  */
-void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom);
+void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output);
 
 #endif // __METHODE_PAIRE_H__

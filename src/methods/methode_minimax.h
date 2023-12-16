@@ -27,10 +27,11 @@ void remplir_tab_pire_score(void *elem, void *tab);
 
 /**
  * @brief Implémente la méthode Minimax.
- *
- * @param matrice_ballot La matrice des bulletins de vote.
+ * @param matrice_duel Matrice de duel avec les résultats du vote.
+ * @param candidats_nom Liste des noms des candidats.
+ * @param output Le fichier de sortie dans lequel on écrit le résultat.
  */
-void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom);
+void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output);
 
 /**
  * @brief Affiche un tableau.

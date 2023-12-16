@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file jugement_majoritaire.h
  * @author Marco
@@ -84,7 +83,7 @@ void calculerVainqueurJugement(List *tabCandidat);
  * @brief Recalcule la mention.
  * @param tabCandidatReduit : La liste réduite des candidats.
  */
-void recalculerMention (List *tabCandidatReduit);
+void recalculerMention(List *tabCandidatReduit);
 /**
  * @brief Teste l'affichage.
  * @param tabCandidat : La liste des candidats.
@@ -93,8 +92,10 @@ void testAffichage(List *tabCandidat);
 
 /**
  * @brief Détermine le vainqueur du jugement.
+ * @param matrice : La matrice contenant les informations des candidats.
+ * @param output : Le fichier de sortie dans lequel on écrit le résultat.
  */
-void determinerVainqueurJugement();
+void determinerVainqueurJugement(t_mat_char_star_dyn *matrice, FILE *output);
 
 
 #endif //__JUGEMENT_MAJORITAIRE_H__

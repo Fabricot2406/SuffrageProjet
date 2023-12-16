@@ -42,17 +42,18 @@ void larc_complete(larc *tab_arc, t_mat_int_dyn *matrice_duel){
     List *list = tab_arc->larc;
     int nb_candidats = tab_arc->nb_candidats;
     int nb_votes = 0;
+    int nb_votes_a = 0;
+    int nb_votes_b = 0;
     int cand_a = 0;
     int cand_b = 0;
     for (int candidat_1 = 0; candidat_1 < nb_candidats; candidat_1++) {
         for (int candidat_2 = candidat_1 + 1; candidat_2 < nb_candidats; candidat_2++) {
-            int nb_votes_a = matrice_duel->mat[candidat_1][candidat_2];
-            int nb_votes_b = matrice_duel->mat[candidat_2][candidat_1];
-            
-            int nb_votes = (nb_votes_a >= nb_votes_b) ? nb_votes_a - nb_votes_b : nb_votes_b - nb_votes_a;
-            int cand_a = (nb_votes_a >= nb_votes_b) ? candidat_1 : candidat_2;
-            int cand_b = (nb_votes_a >= nb_votes_b) ? candidat_2 : candidat_1;
-            if (nb_votes != 0) {
+            nb_votes_a = matrice_duel->mat[candidat_1][candidat_2];
+            nb_votes_b = matrice_duel->mat[candidat_2][candidat_1];
+            nb_votes = (nb_votes_a >= nb_votes_b) ? nb_votes_a - nb_votes_b : nb_votes_b - nb_votes_a;
+            cand_a = (nb_votes_a >= nb_votes_b) ? candidat_1 : candidat_2;
+            cand_b = (nb_votes_a >= nb_votes_b) ? candidat_2 : candidat_1;
+            if (nb_votes) {
                 arc *a = arc_create(cand_a, cand_b, nb_votes);
                 insert_sorted(list, a, compare_arc);
             }
@@ -67,7 +68,7 @@ larc* larc_init(t_mat_int_dyn *matrice_duel){
         exit(EXIT_FAILURE);
     }
     l_arc->larc = list_create();
-    List *list = l_arc->larc;
+    //List *list = l_arc->larc;
     l_arc->nb_candidats = matrice_duel->cols;
     larc_complete(l_arc, matrice_duel);
     return l_arc;

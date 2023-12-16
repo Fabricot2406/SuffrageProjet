@@ -36,7 +36,6 @@ Pref *creer_ensemble_preference(int rang){
  * @return ballot* Le ballot rempli
  */
 ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv){
-    int i = 0;
     char ***matrice_csv = classement_csv->tab;
     // Remplissage de la liste de candidats
     for (int i = 0; i < b->nb_candidats; i++){
@@ -175,6 +174,7 @@ void detruire_ballot(ballot *b){
     for (int i = 0; i < b->nb_candidats; i++){
         free(b->candidats_nom[i]);
     }
+    
     free(b->candidats_nom);
     list_delete(b->classement,detruire_liste_ensemble_preference);
     free(b);

@@ -22,6 +22,22 @@
 #include "./dataStructure/listegen.h"
 #include "./dataStructure/arc.h"
 
+#define BUFFER_SIZE 1024
+
+/******************* STRUCTURE *********************/
+
+/**
+ * @brief Structure représentant les données d'une élection.
+ *        Contient les TAD nécessaires à l'application de l'ensemble des méthodes de scrutin.
+ */
+typedef struct s_data {
+    char **candidats_nom;
+    t_mat_char_star_dyn *matrice_csv;
+    t_mat_int_dyn *matrice_duel;
+    ballot *matrice_ballot;
+} Data;
+
+
 /**
  * Vérifie l'existence d'un fichier en utilisant un chemin complet.
  *

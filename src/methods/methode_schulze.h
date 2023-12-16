@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file methode_schulze.h
  * @author Fabio
@@ -37,14 +36,16 @@ int trouver_vainqueur_schulze(List *list_arc, int nb_candidats, char **candidats
  * @param list_arc Liste d'arcs triée par ordre croissant.
  * @param nb_candidats Nombre de candidats.
  * @param candidats_nom Liste des noms des candidats.
+ * @param output Le fichier de sortie dans lequel on écrit le résultat.
  */
-void reduire_arcs(List *list_arc, int nb_candidats, char **candidats_nom);
+void reduire_arcs(List *list_arc, int nb_candidats, char **candidats_nom, FILE *output);
 
 /**
  * @brief Fonction permettant de déterminer si un candidat est vainqueur de condorcet.
  * @param matrice_duel Matrice de duel avec les résultats du vote.
  * @param candidats_nom Liste des noms des candidats.
+ * @param output Le fichier de sortie dans lequel on écrit le résultat.
  */
-void condorcet_schulze(t_mat_int_dyn *matrice_duel, char **candidats_nom);
+void condorcet_schulze(t_mat_int_dyn *matrice_duel, char **candidats_nom, FILE *output);
 
 #endif

@@ -42,7 +42,7 @@ void remplir_tab_pire_score(void *elem, void *tab){
  *
  * @param matrice_ballot La matrice des bulletins de vote.
  */
-void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom){
+void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output){
     larc *list_arc = larc_init(matrice_duel);
     //afficher_larc(list_arc);
     int pire_score[matrice_duel->cols];
@@ -57,7 +57,7 @@ void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom){
         }
     }
     detruire_larc(list_arc);
-    afficher_vainqueur("Condorcet minimax",matrice_duel->cols,matrice_duel->rows,candidats_nom[candidat_gagnant],0);
+    retourner_vainqueur("Condorcet minimax",matrice_duel->cols,matrice_duel->rows,candidats_nom[candidat_gagnant],0, output);
 }
 
 /**

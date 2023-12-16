@@ -17,7 +17,8 @@
         "uninominale.h": "c",
         "stdlib.h": "c",
         "global.h": "c",
-        "graphe.h": "c"
+        "graphe.h": "c",
+        "utils_sd.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

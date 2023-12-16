@@ -29,19 +29,25 @@ Methode liste_methodes[] = {
     {"jm", determinerVainqueurJugement},
 };
 
-void appliquer_methode(char *methode, t_mat_char_star_dyn *matrice_csv, ballot *matrice_ballot, t_mat_int_dyn *matrice_duel, char **candidats_nom, int i) {
+/**
+ * @brief Fonction permettant d'appliquer la méthode de scrutin spécifiée en paramètre.
+ * 
+ * @param methode Nom de la méthode à appliquer.
+ * @param structures Structure contenant les données nécessaires à l'application de la méthode.
+ * @param index Indice de la méthode dans le tableau liste_methodes.
+ * @param output Nom du fichier de sortie pour les résultats.
+ */
+void appliquer_methode(char *methode, Data structures, int index, FILE *output) {
     // Jugement majoritaire
     if (strcmp(methode, "jm") == 0) {
-        liste_methodes[i].fonction(matrice_csv);
+        liste_methodes[index].fonction(structures.matrice_csv,output);
     }
     // Classement par les pairs
     else if (strcmp(methode, "cp") == 0  || strcmp(methode, "cs") == 0 || strcmp(methode, "cm") == 0) {
-        liste_methodes[i].fonction(matrice_duel,candidats_nom);
+        liste_methodes[index].fonction(structures.matrice_duel,structures.candidats_nom,output);
     }
     // Autres méthodes
-    else {
-        liste_methodes[i].fonction(matrice_ballot); // Appelle la fonction associée à la méthode trouvée
-    }
+    else liste_methodes[index].fonction(structures.matrice_ballot,output);
 }
 
 /**
@@ -53,12 +59,17 @@ void appliquer_methode(char *methode, t_mat_char_star_dyn *matrice_csv, ballot *
  * @param duel Le type de fichier (duel ou non). Si le fichier est un duel, alors type_fichier = true.
  */
 void calculerVote(char *fichier, char *output, char *methode, bool duel) {
-    int methode_trouvee = 0;
-
+    int methode_trouvee = false;
+    // Structures de données 
     t_mat_int_dyn *matrice_duel = NULL;
     ballot *matrice_ballot = NULL;
     char **candidats_nom = NULL;
 
+    // Ouverture du fichier output en écriture.
+    FILE *output_file = fopen(output, "w");
+
+    /*------------------------ Traitement des données ------------------------*/
+    
     // Remplissage de la matrice de vote.
     t_mat_char_star_dyn *matrice_csv = remplirMatrice(fichier);
 
@@ -76,33 +87,40 @@ void calculerVote(char *fichier, char *output, char *methode, bool duel) {
         matrice_duel = creer_matrice_duel_f_char(matrice_csv);
         candidats_nom = matrice_csv->tab[0];
     }
+
+    // Structures de données à passer aux méthodes.
+    Data donnees = {candidats_nom, matrice_csv, matrice_duel, matrice_ballot};
     
-    if (strcmp(methode, "all") == 0) {
+    /*------------------------ Execution des méthodes ------------------------*/
+
+    // Si l'utilisateur a choisi la méthode "all", on applique toutes les méthodes.
+    if (!strcmp(methode, "all")) {
         for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
-            appliquer_methode(liste_methodes[i].nom, matrice_csv, matrice_ballot, matrice_duel, candidats_nom, i);
-            methode_trouvee = 1;
+            appliquer_methode(liste_methodes[i].nom, donnees, i, output_file);
+            methode_trouvee = true;
         }
-    } else {
+    } else { // Sinon, on applique la méthode choisie.
         // Cherche la méthode choisie.
         for (size_t i = 0; i < sizeof(liste_methodes) / sizeof(Methode); i++) {
-            if (strcmp(methode, liste_methodes[i].nom) == 0) {
-                appliquer_methode(methode, matrice_csv, matrice_ballot, matrice_duel, candidats_nom, i);
-                methode_trouvee = 1;
+            if (!strcmp(methode, liste_methodes[i].nom)) {
+                appliquer_methode(methode, donnees, i, output_file);
+                methode_trouvee = true;
                 break;
             }
         }
     }
 
-
+    // Si la méthode n'a pas été trouvée, on affiche un message d'erreur.
     if (!methode_trouvee) {
         fprintf(stderr, "Liste des paramètres de l'option m : uni1, uni2, cm, cp, cs, jm, all.\n");
         exit(EXIT_FAILURE);
     }
+
+    /*------------------------ Libération de la mémoire ------------------------*/
+
     detruire_matrice(matrice_duel);
     libererMatrice(matrice_csv);
-    if (!duel){
-        detruire_ballot(matrice_ballot);
-    }
+    if (!duel) detruire_ballot(matrice_ballot);
 }
 
 /**
@@ -298,10 +316,18 @@ int main(int argc, char* argv[]) {
     }
     // Vérification de l'existance des fichiers
     char const *fichierCSV = argv[2];
-    char const repertoire[] = "./tests/";
+    char const *fichierTXT = argv[4];
+    char const repertoire_CSV[] = "./tests/";
+    char const repertoire_TXT[] = "./tests/output/";
     char const extension_csv[] = ".csv";
-    char cheminComplet[1024];
-    if (!fichierExiste(fichierCSV,repertoire,extension_csv,cheminComplet))
+    char const extension_txt[] = ".txt";
+    char cheminCompletCsv[1024];
+    char cheminCompletOutput[1024];
+
+    /*------------------------ FICHIER LECTURE CSV ------------------------*/
+
+    // On concatène le chemin du répertoire avec le nom du fichier et son extension
+    if (!fichierExiste(fichierCSV,repertoire_CSV,extension_csv,cheminCompletCsv))
     {
         fprintf(stderr, "Le fichier CSV spécifié n'existe pas.\n"
                     "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
@@ -309,8 +335,21 @@ int main(int argc, char* argv[]) {
                     "Exemple : ./Suffrage -i voteCondorcet -m uni1\n");
         exit(EXIT_FAILURE);
     }
+
+    /*------------------------ FICHIER ECRITURE TXT ------------------------*/
+
+    // On concatène le chemin du répertoire avec le nom du fichier et l'extension
+    if (!fichierExiste(fichierTXT,repertoire_TXT,extension_txt,cheminCompletOutput))
+    {
+        fprintf(stderr, "Le fichier txt spécifié n'existe pas.\n"
+                    "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
+                    "Celui-ci doit se trouver dans le répertoire tests.\n\n"
+                    "Exemple : ./Suffrage -o voteCondorcet -m uni1\n");
+        exit(EXIT_FAILURE);
+    }
+
     // Lancement du menu contextuel
-    presentationMenu(cheminComplet, output, methode, duel != NULL);
+    presentationMenu(cheminCompletCsv, cheminCompletOutput, methode, duel != NULL);
 
     return 0;
 }

@@ -17,9 +17,12 @@
 #include "./dataStructure/ballot.h"
 #include "./dataStructure/arc.h"
 #include "./dataStructure/listegen.h"
+#include "string_builder.h"
 
 #define INCREMENT_COLONNE 4
 #define INCREMENT_LIGNE 1
+
+#define BUFFER_SIZE 1024
 
 typedef struct uni_data_s{
     int *vainqueurUn;
@@ -34,8 +37,9 @@ typedef struct uni_data_s{
  * @param nbVotants Le nombre de votants d'une élection
  * @param methode Une chaine de caractères représentant le nom du vainqueur
  * @param score Le score du candidat gagnant (à n'utiliser que lors d'uninominale 1 et 2)
+ * @param output Le fichier de sortie dans lequel on écrit le résultat
  */
-void afficher_vainqueur(char * methode, int nbCandidats, int nbVotants, char * nomVainqueur, double score); // Affiche le vainqueur de n'importe quelle méthode
+void retourner_vainqueur(char * methode, int nbCandidats, int nbVotants, char * nomVainqueur, double score, FILE *output);
 
 /**
  * @brief Crée une structure de données uni_data

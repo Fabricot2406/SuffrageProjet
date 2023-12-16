@@ -1,11 +1,9 @@
-/** \\file */
 /**
  * @file methode_paires.c
  * @author Anthony
  * @date 2023-11-28
  */
 #include "methode_paires.h"
-
 
 /**
  * @brief Parcour de la liste d'arc pour déterminer les potentiels arcs à supprimer.
@@ -122,20 +120,22 @@ List *determiner_classement(larc *list_arc,char **candidats_nom){
     return classement;
 }
 
-void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom) {
+void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output) {
     // Création de la liste d'arc
     larc *list_arc = larc_init(matrice_duel);
     //afficher_larc(list_arc);
 
     // Filtrage de la liste d'arc
-    int nb_circuit = filtrer_larc(list_arc);
+    //int nb_circuit = filtrer_larc(list_arc);
+    filtrer_larc(list_arc);
     //printf("Nombre de circuit détecté : %d\n\n",nb_circuit);
     //afficher_larc(list_arc);
 
     // Détermination du classement des candidats
     List *classement = (List *)determiner_classement(list_arc,candidats_nom);
     //afficher_classement(classement);
-    afficher_vainqueur("Condorcet paires", matrice_duel->cols, matrice_duel->rows, list_at(classement, 0), 0); // A COMPLETER AVEC NBCANDIDATS ET NBVOTANTS
+    // A COMPLETER AVEC NBCANDIDATS ET NBVOTANTS
+    retourner_vainqueur("Condorcet paires", matrice_duel->cols, matrice_duel->rows, list_at(classement, 0), 0, output);
 
     // Libération de la mémoire
     detruire_larc(list_arc);

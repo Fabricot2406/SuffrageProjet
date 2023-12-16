@@ -51,6 +51,7 @@ List* list_push_front(List* list, void *data, size_t date_size) {
 	sentinel->next->previous = element;
 	sentinel->next=element;
 	(list->size)++;
+	(void)date_size;
 	return list;
 }
 
@@ -59,7 +60,7 @@ List* list_push_front(List* list, void *data, size_t date_size) {
  *        afin de ne pas libérer la mémoire des éléments de la liste.
  */
 void vide(void *elem){
-    return;
+    (void)elem;
 }
 
 void list_delete(List *l, SimpleFunctor f) {

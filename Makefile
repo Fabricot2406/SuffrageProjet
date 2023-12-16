@@ -1,5 +1,5 @@
 # Nom de l'exécutable
-TARGET = Suffrage
+TARGET = scrutin
 
 # Répertoires source
 SRCDIR = src
@@ -12,7 +12,7 @@ VERIFYDIR = $(SRCDIR)/verify
 DOCDIR = documentation
 # Compilateur et options
 CC = gcc
-CFLAGS = -Wall -Wextra -g -Wno-unused-variable -Wno-unused-parameter
+CFLAGS = -Wall -Wextra -g 
 LDFLAGS = -lm
 
 # Liste de fichiers source

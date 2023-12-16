@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file jugement_majoritaire.c
  * @author Marco
@@ -157,12 +156,12 @@ void libererListeCandidat(List *tabCandidat){
     list_delete(tabCandidat,libererCandidat);
 }
 
-void determinerVainqueurJugement(t_mat_char_star_dyn *matrice){
+void determinerVainqueurJugement(t_mat_char_star_dyn *matrice, FILE *output){
     List *tabCandidat = initTableauCandidat(matrice);
     calculerVainqueurJugement(tabCandidat);
     Candidat *vainqueur = list_at(tabCandidat,0);
     int nb_candidat = matrice->nbColonnes-INCREMENT_COLONNE;
     int nb_votant = matrice->nbLignes-INCREMENT_LIGNE;
-    afficher_vainqueur("Jugement majoritaire",nb_candidat,nb_votant,vainqueur->nom,0);
+    retourner_vainqueur("Jugement majoritaire",nb_candidat,nb_votant,vainqueur->nom,0,output);
     libererListeCandidat(tabCandidat);
 }
