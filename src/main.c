@@ -26,7 +26,7 @@ Methode liste_methodes[] = {
     {"cm", condorcet_minimax},
     {"cp", condorcet_paires},
     {"cs", condorcet_schulze},
-    {"jm", determinerVainqueurJugement},
+    {"jm", determiner_vainqueur_jugement},
 };
 
 /**
@@ -250,7 +250,7 @@ void afficher_tutoriel(char *nom_executable){
                     "\n\t-d signifie que le fichier est un fichier de duel (à utiliser pour condorcet)."
                     "\n\t-m est la méthode de calcul des résultats. Mettre uninominal."
                     "\n\tFacultatif : -o est le fichier de sortie des résultats. Pas encore implémenté"
-                    "\n\nExemple : ./Suffrage -i voteCondorcet test tes -m uninominal"
+                    "\n\nExemple : ./scrutin -i voteCondorcet test tes -m uninominal"
                     "\n\nPour plus d'informations, veuillez consulter la documentation.\n";
                 
     fprintf(stderr, "\n<USAGE> : %s (-i fichier) ou (-d fichier) -o fichier_log -m methode\n%s", nom_executable,tuto);           
@@ -315,8 +315,8 @@ int main(int argc, char* argv[]) {
         exit(EXIT_FAILURE);
     }
     // Vérification de l'existance des fichiers
-    char const *fichierCSV = argv[2];
-    char const *fichierTXT = argv[4];
+    char const *fichierCSV = input;
+    char const *fichierTXT = output;
     char const repertoire_CSV[] = "./tests/";
     char const repertoire_TXT[] = "./tests/output/";
     char const extension_csv[] = ".csv";
@@ -332,21 +332,21 @@ int main(int argc, char* argv[]) {
         fprintf(stderr, "Le fichier CSV spécifié n'existe pas.\n"
                     "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
                     "Celui-ci doit se trouver dans le répertoire tests.\n\n"
-                    "Exemple : ./Suffrage -i voteCondorcet -m uni1\n");
+                    "Exemple : ./scrutin -i voteCondorcet -m uni1\n");
         exit(EXIT_FAILURE);
     }
 
     /*------------------------ FICHIER ECRITURE TXT ------------------------*/
 
-    // On concatène le chemin du répertoire avec le nom du fichier et l'extension
-    if (!fichierExiste(fichierTXT,repertoire_TXT,extension_txt,cheminCompletOutput))
+   // On concatène le chemin du répertoire avec le nom du fichier et l'extension
+   /* if (!fichierExiste(fichierTXT,repertoire_TXT,extension_txt,cheminCompletOutput))
     {
         fprintf(stderr, "Le fichier txt spécifié n'existe pas.\n"
                     "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
                     "Celui-ci doit se trouver dans le répertoire tests.\n\n"
-                    "Exemple : ./Suffrage -o voteCondorcet -m uni1\n");
+                    "Exemple : ./scrutin -o voteCondorcet -m uni1\n");
         exit(EXIT_FAILURE);
-    }
+    }*/
 
     // Lancement du menu contextuel
     presentationMenu(cheminCompletCsv, cheminCompletOutput, methode, duel != NULL);
