@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file verify_my_vote.h
  * @author Marco

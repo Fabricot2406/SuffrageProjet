@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file arc.h
  * @author Anthony

@@ -18,7 +18,9 @@
         "stdlib.h": "c",
         "global.h": "c",
         "graphe.h": "c",
-        "utils_sd.h": "c"
+        "utils_sd.h": "c",
+        "duel.h": "c",
+        "lecture_csv.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

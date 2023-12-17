@@ -1,7 +1,7 @@
-/** \\file */
 /**
  * @file listegen.c
  * @author Anthony
+ * @brief Structure de donnée correspondant à une liste générique.
  * @date 2023-11-28
  */
 #include "listegen.h"

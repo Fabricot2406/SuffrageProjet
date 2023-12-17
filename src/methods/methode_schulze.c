@@ -1,12 +1,6 @@
 /**
  * @file methode_schulze.c
- * @brief
-    Schulze algo :
-    1 - On prend les arcs dans l'ordre croissant.
-    2 - On retire petit à petit les arcs, à chaque itération, on vérifie si on a un vainqueur, si ce n'est pas le cas,
-    3 - on continue.
-    4 - On s'arrête lorsqu'un vainqueur est trouvé.
-
+ * @brief Fichier pour le calcul du vainqueur avec Schulze
  * @author Fabio
  * @date 2023-11-29
  */

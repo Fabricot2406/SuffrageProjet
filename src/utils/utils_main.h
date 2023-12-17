@@ -1,7 +1,8 @@
 /**
  * @file utils_main.h
+ * @brief Fichier de fonctions utilitaires nécessaires au main.
  * @authors Marco, Anthony et Fabio
- * @brief Fichier de fonctions utilitaires nécessaires au main.c
+ * @date 2023-12-17
  */
 
 #ifndef UTILS_MAIN_H
@@ -54,7 +55,7 @@ void creer_chemin_complet(char *chemin_complet, const char *nomFichier, const ch
  * @param extension L'extension du fichier à chercher
  * @return 1 si le fichier existe, 0 s'il n'existe pas ou en cas d'erreur d'ouverture.
  */
-int fichierExiste(const char *nomFichier, const char *repertoire, const char *extension, char *cheminComplet);
+int fichier_existe(const char *nomFichier, const char *repertoire, const char *extension, char *cheminComplet);
 
 /**
  * Vérifie si la chaîne de caractères 'cle' est constituée uniquement de caractères alphanumériques.
@@ -63,7 +64,7 @@ int fichierExiste(const char *nomFichier, const char *repertoire, const char *ex
  * @param cle La chaîne de caractères à vérifier.
  * @return 0 si 'cle' est valide, 1 en cas d'erreur.
  */
-int controlCle(char *cle);
+int control_cle(char *cle);
 
 
 /**
@@ -74,7 +75,7 @@ int controlCle(char *cle);
  * @param prenom 1 si la chaine saisie est un prénom. 0 si c'est un nom de famille
  * @return 0 si 'chaine' est valide, 1 en cas d'erreur.
  */
-int controlNomPrenom(char *chaine, int prenom);
+int control_nom_prenom(char *chaine, int prenom);
 
 
 /**

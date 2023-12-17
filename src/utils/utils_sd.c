@@ -1,6 +1,7 @@
 /**
  * @file utils_sd.c
  * @authors Anthony, Marco et Fabio
+ * @brief Fonctions utilitaires pour les méthodes de suffrage
  * @date 2023-11-28
  */
 #include "utils_sd.h"
@@ -88,17 +89,6 @@ int uni_perdant(void *elem, void *data){
     return 0;
 }
 
-/**
- * @brief Fonction permettant de déterminer si un candidat est vainqueur.
- * Processus à suivre : 1) On parcourt la liste d'arc.
- *                          - Si le candidat est impliqué dans un arc où il est perdant, alors il n'est pas vainqueur.
- *                          - Si le candidat n'est impliqué dans aucun arc où il est perdant, alors il est vainqueur.
- * 
- * @param list_arc Liste d'arc trié par ordre décroissant de différence de voix (score).
- * @param candidat Candidat dont on veut savoir si il est vainqueur.
- * @return true Si le candidat est vainqueur.
- * @return false Si le candidat n'est pas vainqueur.
- */
 bool est_vainqueur(List *list_arc, int candidat){
     int count_winner = 0;
     Iterator *it_larc = iterator_create(list_arc);
@@ -118,6 +108,23 @@ bool est_vainqueur(List *list_arc, int candidat){
     iterator_delete(it_larc);
     if (!count_winner) return false;
     // Sinon il est vainqueur
+    return true;
+}
+
+bool arc_sortant(List *list_arc, int candidat){
+    Iterator *it_larc = iterator_create(list_arc);
+    // On parcourt la liste d'arc
+    while (iterator_has_next(it_larc)){
+        arc *arc_courant = iterator_current(it_larc);
+        // Si le candidat est impliqué dans un arc où il est perdant
+        if (arc_courant->candidat_perdant == candidat){
+            // Il n'est pas vainqueur
+            iterator_delete(it_larc);
+            return false;
+        }
+        iterator_next(it_larc);
+    }
+    iterator_delete(it_larc);
     return true;
 }
 

@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file matrice_int_dyn.h
  * @author Anthony

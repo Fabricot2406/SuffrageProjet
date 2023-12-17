@@ -1,7 +1,7 @@
-/** \\file */
 /**
  * @file matrice_int_dyn.c
  * @author Anthony
+ * @brief Structure de donnée correspondant à une matrice dynamique contenant des entiers.
  * @date 2023-11-28
  */
 #include "matrice_int_dyn.h"

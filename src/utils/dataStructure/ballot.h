@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file ballot.h
  * @author Anthony

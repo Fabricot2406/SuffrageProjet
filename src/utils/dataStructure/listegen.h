@@ -1,9 +1,7 @@
-/** \\file */
 /**
  * @file listegen.h
  * @author Anthony
  * @brief Structure de donnée correspondant à une liste générique.
- * @version beta
  * @date 2021-11-26
  */
 

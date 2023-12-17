@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @authors Fabio, Anthony et Marco
- * @brief
+ * @brief Fichier principal du programme.
  * @date 2023-11-28
  * 
  * @copyright Copyright (c) 2023
@@ -140,7 +140,7 @@ void presentationIdentifiant(char *nom,char *prenom,char *cle){
         // On vide le tampon d'entrée (buffer) après la saisie.
         int c;
         while ((c = getchar()) != '\n' && c != EOF);
-    } while (controlNomPrenom(nom,0));
+    } while (control_nom_prenom(nom,0));
     printf("\tNom de famille saisie : %s\n",nom);
 
     // 2 - Prénom
@@ -151,7 +151,7 @@ void presentationIdentifiant(char *nom,char *prenom,char *cle){
         // On vide le tampon d'entrée (buffer) après la saisie.
         int c;
         while ((c = getchar()) != '\n' && c != EOF);
-    } while (controlNomPrenom(prenom,1));
+    } while (control_nom_prenom(prenom,1));
     printf("\tPrénom saisie : %s\n",prenom);
 
     // 3 - Cle
@@ -162,7 +162,7 @@ void presentationIdentifiant(char *nom,char *prenom,char *cle){
         // On vide le tampon d'entrée (buffer) après la saisie.
         int c;
         while ((c = getchar()) != '\n' && c != EOF);
-    } while (controlCle(cle));
+    } while (control_cle(cle));
     
     // On concatène le nom et prénom
     strcat(nom," ");
@@ -324,7 +324,7 @@ int main(int argc, char* argv[]) {
     if(duel != NULL) repertoire_CSV = "./tests/input/duel/";
     else repertoire_CSV = "./tests/input/vote/";
     // On concatène le chemin du répertoire avec le nom du fichier et son extension
-    if (!fichierExiste(fichier_csv,repertoire_CSV,extension_csv,cheminCompletCsv)){ 
+    if (!fichier_existe(fichier_csv,repertoire_CSV,extension_csv,cheminCompletCsv)){ 
         fprintf(stderr,
             "Le fichier CSV spécifié n'existe pas.\n"
             "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"

@@ -1,7 +1,7 @@
-/** \\file */
 /**
  * @file ballot.c
  * @author Anthony
+ * @brief Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur.
  * @date 2023-11-28
  */
 #include "ballot.h"

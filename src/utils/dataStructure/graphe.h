@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file graphe.h
  * @author Anthony

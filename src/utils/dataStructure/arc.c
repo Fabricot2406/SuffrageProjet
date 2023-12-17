@@ -1,7 +1,7 @@
-/** \\file */
 /**
  * @file arc.c
  * @author Anthony
+ * @brief Structure de données pour les arcs du graphe.
  * @date 2023-11-28
  */
 #include "arc.h"

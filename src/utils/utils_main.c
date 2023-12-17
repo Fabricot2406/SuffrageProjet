@@ -1,8 +1,8 @@
 /**
  * @file utils_main.c
+ * @brief Fichier de fonctions utilitaires nécessaires au main.
  * @authors Anthony, Marco et Fabio
- * @version 0.1
- * @date 2023-11-28
+ * @date 2023-12-17
  */
 #include "utils_main.h"
 
@@ -14,7 +14,7 @@ void creer_chemin_complet(char *chemin_complet, const char *nomFichier, const ch
     strcat(chemin_complet, extension);
 }
 
-int fichierExiste(const char *nomFichier, const char *repertoire, const char *extension, char *cheminComplet) {
+int fichier_existe(const char *nomFichier, const char *repertoire, const char *extension, char *cheminComplet) {
     creer_chemin_complet(cheminComplet, nomFichier, repertoire, extension);
     FILE *fichier = fopen(cheminComplet, "r");
     if (fichier != NULL) {
@@ -23,7 +23,7 @@ int fichierExiste(const char *nomFichier, const char *repertoire, const char *ex
     } else return 0;
 }
 
-int controlCle(char *cle){
+int control_cle(char *cle){
     for (int i = 0; cle[i] != '\0'; i++) {
         if (!isalnum(cle[i])){
             fprintf(stderr, "%s",error_msg);
@@ -82,7 +82,7 @@ int verif_chaine(char *chaine, int prenom){
     return 0;
 }
 
-int controlNomPrenom(char *chaine, int prenom){
+int control_nom_prenom(char *chaine, int prenom){
     // Verifier si la chaine est vide
     if (sizeof(chaine) == 0) {
         fprintf(stderr, "%s",error_msg);

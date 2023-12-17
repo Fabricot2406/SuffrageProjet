@@ -1,10 +1,8 @@
-/** \\file */
 /**
  * @file matrice_string_dyn.h
  * @authors Marco, Anthony
  * @brief Structure de donnée correspondant à la matrice des votes issue d'un fichier CSV.
- * @version finale
- * @date 2021-11-23
+ * @date 2023-10-17
  */
 
 #ifndef __MATRICE_STRING_DYN_H__

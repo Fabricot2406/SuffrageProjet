@@ -16,7 +16,6 @@
 #include "./dataStructure/ballot.h"
 #include "./dataStructure/arc.h"
 #include "./dataStructure/listegen.h"
-#include "string_builder.h"
 
 #define INCREMENT_COLONNE 4
 #define INCREMENT_LIGNE 1
@@ -79,7 +78,29 @@ void afficher_int_ptr(void *elem);
  */
 bool cmp_inferieur_egal(void *i, void *j);
 
+/**
+ * @brief Fonction permettant de déterminer si un candidat est vainqueur.
+ * Processus à suivre : 1) On parcourt la liste d'arc.
+ *                          - Si le candidat est impliqué dans un arc où il est perdant, alors il n'est pas vainqueur.
+ *                          - Si le candidat n'est impliqué dans aucun arc où il est perdant, alors il est vainqueur.
+ *                      2) Si le candidat est impliqué dans aucun arc, alors il n'est pas vainqueur.
+ * 
+ * @param list_arc Liste d'arc trié par ordre décroissant de différence de voix (score).
+ * @param candidat Candidat dont on veut savoir si il est vainqueur.
+ * @return true Si le candidat est vainqueur.
+ * @return false Si le candidat n'est pas vainqueur.
+ */
 bool est_vainqueur(List *list_arc, int candidat);
+
+/**
+ * @brief Fonction permettant de déterminer si un candidat n'a que des arcs sortants.
+ * 
+ * @param list_arc Liste d'arc trié par ordre décroissant de différence de voix (score).
+ * @param candidat Candidat dont on veut savoir si il n'a que des arcs sortants.
+ * @return true si le candidat n'a que des arcs sortants
+ * @return false si le candidat n'a pas que des arcs sortants
+ */
+bool arc_sortant(List *list_arc, int candidat);
 
 /**
  * @brief Fonction permettant de déterminer si il y a un vainqueur de Condorcet

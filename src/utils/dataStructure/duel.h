@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file duel.h
  * @author Anthony

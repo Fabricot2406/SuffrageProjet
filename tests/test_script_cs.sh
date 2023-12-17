@@ -12,7 +12,7 @@ RET=
 rm -rf $LOG
 mkdir $LOG
 
-function test_schulzeb {
+function test_schulze_ballots {
     RET=0
     if [ -x ./scrutin ]
     then
@@ -23,7 +23,7 @@ function test_schulzeb {
     do
         filename=$(basename "$i" .csv) # Supprime l'extension .csv
 
-        echo "1" | ./scrutin -i $filename -o log_$filename -m cs
+        echo "1" | ./scrutin -i $filename -o log_$filename -m cs > /dev/null
         diff $VALID/reference/ref_cs/$filename.txt $VALID/output/result/${filename}.txt  &>/dev/null
         RET=$?
         [ $RET -eq 0 ] && printf "\t%-12s [${ok}OK${wipe}]\n" "$filename"
@@ -34,7 +34,7 @@ function test_schulzeb {
     fi
 }
 
-function test_schulzed {
+function test_schulze_duels {
     RET=0
     if [ -x ./scrutin ]
     then
@@ -43,7 +43,7 @@ function test_schulzed {
     do
         filename=$(basename "$i" .csv) # Supprime l'extension .csv
 
-        echo "1" | ./scrutin -d $filename -o log_$filename -m cs
+        echo "1" | ./scrutin -d $filename -o log_$filename -m cs > /dev/null
         diff $VALID/reference/ref_cs/$filename.txt $VALID/output/result/${filename}.txt  &>/dev/null
         RET=$?
         [ $RET -eq 0 ] && printf "\t%-12s [${ok}OK${wipe}]\n" "$filename"
@@ -60,7 +60,7 @@ function test {
     [ $RET -ne 0 ] && printf "xxx> %-12s [${ko}KO${wipe}]\n" "$1"
 }
 
-test schulzeb;
-test schulzed;
+test schulze_ballots;
+test schulze_duels;
 
 exit 0

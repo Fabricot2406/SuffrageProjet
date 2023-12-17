@@ -71,7 +71,7 @@ void determiner_vainqueur(List *list_arc,List *classement,List *candidats_restan
     while(iterator_has_next(it_candidat_restant)){
         int *cand_courrant = iterator_current(it_candidat_restant);
         // Si le candidat est vainqueur
-        if (est_vainqueur(list_arc,*cand_courrant)){
+        if (arc_sortant(list_arc,*cand_courrant)){
             int candidat_gagnant = *cand_courrant;
             char *nom_candidat = candidats_nom[candidat_gagnant];
             // On l'ajoute dans le classement
@@ -126,14 +126,10 @@ void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *ou
     larc *list_arc = larc_init(matrice_duel);
 
     // Filtrage de la liste d'arc
-    // int nb_circuit = filtrer_larc(list_arc);
     filtrer_larc(list_arc);
-    // printf("Nombre de circuit détecté : %d\n\n",nb_circuit);
-    // log_larc(list_arc,stdout);
 
     // Détermination du classement des candidats
     List *classement = (List *)determiner_classement(list_arc,candidats_nom);
-    //afficher_classement(classement);
     retourner_vainqueur("Condorcet paires", matrice_duel->cols, matrice_duel->rows, list_at(classement, 0), 0, output);
 
     // Libération de la mémoire

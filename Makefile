@@ -39,6 +39,12 @@ else ifeq ($(TEST),uni)
 	@$(BASH) ./tests/test_script_uni.sh
 else ifeq ($(TEST),jm)
 	@$(BASH) ./tests/test_script_jm.sh
+else ifeq ($(TEST),all)
+	@$(BASH) ./tests/test_script_cp.sh
+	@$(BASH) ./tests/test_script_cm.sh
+	@$(BASH) ./tests/test_script_cs.sh
+	@$(BASH) ./tests/test_script_uni.sh
+	@$(BASH) ./tests/test_script_jm.sh
 endif
 
 $(TARGET): $(OBJECTS)

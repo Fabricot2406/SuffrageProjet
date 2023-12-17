@@ -1,7 +1,7 @@
-/** \\file */
 /**
  * @file graphe.c
  * @author Anthony
+ * @brief Structure de données pour structurer un graphe
  * @date 2023-11-28
  */
 #include "graphe.h"

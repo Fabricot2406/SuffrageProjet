@@ -1,8 +1,8 @@
-/** \\file */
 /**
  * @file matrice_string_dyn.c
  * @authors Marco, Anthony
- * @date 2023-11-28
+ * @brief Structure de donnée correspondant à la matrice des votes issue d'un fichier CSV.
+ * @date 2023-10-17
  */
 #include "matrice_string_dyn.h"
 
