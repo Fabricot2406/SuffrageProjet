@@ -4,10 +4,14 @@ TARGET = scrutin
 # Répertoires source
 SRCDIR = src
 OBJDIR = obj
+TESTDIR = tests
 UTILSDIR = $(SRCDIR)/utils
 DATADIR = $(UTILSDIR)/dataStructure
 METHODSDIR = $(SRCDIR)/methods
 VERIFYDIR = $(SRCDIR)/verify
+OUTPUTDIR = $(TESTDIR)/output/result
+LOGDIR = $(TESTDIR)/output/log
+
 # Répertoire de documentation
 DOCDIR = documentation
 # Compilateur et options
@@ -40,5 +44,8 @@ clean:
 	rm -f $(TARGET)
 	rm -rf $(DOCDIR)
 	rm -rf $(OBJDIR)
+
+	rm -f $(OUTPUTDIR)/*.txt
+	rm -f $(LOGDIR)/*.txt
 
 .PHONY: all clean doc valgrind

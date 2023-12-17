@@ -56,10 +56,11 @@ void detruire_matrice(t_mat_int_dyn* matrice);
 void map_matrice(t_mat_int_dyn *matrice, void (*f)(int));
 
 /**
- * @brief Affiche une matrice dynamique d'entiers.
- * @param matrice Un pointeur vers la matrice dynamique.
- * @param not_displayed_value Valeur à ne pas afficher.
+ * @brief Remplit un fichier de log avec la matrice dynamique.
+ * @param matrice la matrice que l'on souhaite saisir dans le fichier de log
+ * @param not_displayed_value la valeur que l'on ne souhaite pas afficher dans le fichier de log
+ * @param log_file le fichier de log
  */
-void afficher_matrice(t_mat_int_dyn *matrice, int not_displayed_value);
+void log_matrice(t_mat_int_dyn *matrice, int not_displayed_value, FILE *log_file);
 
 #endif

@@ -219,14 +219,44 @@ void afficher_liste_votant(void *data) {
     printf("\n");
 }
 
-void afficher_ballot(ballot *b) {
-    printf("\nNombre de candidats : %d\n", b->nb_candidats);
-    printf("Nombre de votants : %d\n\n", b->nb_votants);
-    printf("Liste des candidats : \n");
+void log_ballot(ballot *b, FILE *log_file) {
+    fprintf(log_file,"Nombre de candidats : %d\n", b->nb_candidats);
+    fprintf(log_file,"Nombre de votants : %d\n\n", b->nb_votants);
+    fprintf(log_file,"Liste des candidats : \n");
     for (int i = 0; i < b->nb_candidats; i++) {
-        printf("[%d] : %s\n",i,b->candidats_nom[i]);
+        fprintf(log_file,"[%d] : %s\n",i,b->candidats_nom[i]);
     }
-    printf("\n");
-    printf("Liste des ballots : \n\n");
-    list_map(b->classement, afficher_liste_votant);
+    fprintf(log_file,"\n");
+    fprintf(log_file,"Liste des ballots : (nombre occurence : indice_candidat > indice_candidat ...)\n");
+    fprintf(log_file,"(à saisir dans le simulateur \"https://jorisdeguet.github.io/PrefVote/tideman.html\")\n");
+
+    // Créer un iterateur sur la liste de votant
+    Iterator *it = iterator_create(b->classement);
+    // Parcourir la liste de votant
+    while (iterator_has_next(it)) {
+        fprintf(log_file,"1 : ");
+        List *list_pref = (List *)iterator_current(it);
+        Iterator *it_pref = iterator_create(list_pref);
+        // Parcourir la liste d'ensemble de préférence
+        while (iterator_has_next(it_pref)) {
+
+            Pref *pref = (Pref *)iterator_current(it_pref);
+            Iterator *it_candidat = iterator_create(pref->list);
+            // Parcourir la liste de candidat
+            while (iterator_has_next(it_candidat)) {
+                int *candidat = (int *)iterator_current(it_candidat);
+                fprintf(log_file,"%d",*candidat);
+                iterator_next(it_candidat);
+                if (iterator_has_next(it_candidat)) fprintf(log_file," = ");
+            }
+            iterator_delete(it_candidat);
+            iterator_next(it_pref);
+            if (iterator_has_next(it_pref)) fprintf(log_file," > ");
+        }
+        iterator_delete(it_pref);
+        iterator_next(it);
+        if (iterator_has_next(it)) fprintf(log_file,"\n");
+    }
+    iterator_delete(it);
+    fprintf(log_file,"\n\n");
 }

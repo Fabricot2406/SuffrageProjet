@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file lecture_csv.c
  * @author Marco

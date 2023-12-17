@@ -136,6 +136,23 @@ void liberer_candidat(void *elem){
 }
 
 /**
+ * @brief Recalcule la mention des candidats à égalité en supprimant le vote correspondant à leur mention et en recalculant leur mention avec la liste résultante.
+ * @param tab_candidat_reduit : La liste réduite des candidats.
+ */
+void recalculer_mention (List *tab_candidat){
+    //Pour chaque candidat à égalité, on supprime de leur liste de vote le vote correspondant à leur mention et 
+    //on recalcule leur mention avec la liste résultante.
+    for (int i=0;i<tab_candidat->size;i++){
+        Candidat *candidat = list_at(tab_candidat,i);
+        int indice_mention = calculer_indice_mention(candidat->votes_candidat->size);
+        list_remove_at(candidat->votes_candidat,indice_mention,free);
+        indice_mention = calculer_indice_mention(candidat->votes_candidat->size);
+        candidat->mention = list_at(candidat->votes_candidat,indice_mention);
+    }
+    calculer_vainqueur_jugement(tab_candidat);
+}
+
+/**
  * @brief Calcule le vainqueur du jugement majoritaire en parcourant la liste des candidats et en supprimant les candidats qui n'ont pas la meilleure mention.
  * si le tableau contient plusieurs gagnants, on recalcule la mention de chaque candidat.
  * @param tab_candidat : La liste des candidats.
@@ -161,22 +178,6 @@ void calculer_vainqueur_jugement(List *tab_candidat){
     }
 }
 
-/**
- * @brief Recalcule la mention des candidats à égalité en supprimant le vote correspondant à leur mention et en recalculant leur mention avec la liste résultante.
- * @param tab_candidat_reduit : La liste réduite des candidats.
- */
-void recalculer_mention (List *tab_candidat){
-    //Pour chaque candidat à égalité, on supprime de leur liste de vote le vote correspondant à leur mention et 
-    //on recalcule leur mention avec la liste résultante.
-    for (int i=0;i<tab_candidat->size;i++){
-        Candidat *candidat = list_at(tab_candidat,i);
-        int indice_mention = calculer_indice_mention(candidat->votes_candidat->size);
-        list_remove_at(candidat->votes_candidat,indice_mention,free);
-        indice_mention = calculer_indice_mention(candidat->votes_candidat->size);
-        candidat->mention = list_at(candidat->votes_candidat,indice_mention);
-    }
-    calculer_vainqueur_jugement(tab_candidat);
-}
 
 /**
  * @brief Teste l'affichage du tableau de structure candidat.

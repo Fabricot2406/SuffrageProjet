@@ -4,7 +4,7 @@
  * @file methode_minimax.c
  * @brief Implémentation de la méthode Minimax.
  * @author Marco
- * @version 1.0
+ * @date 2023-12-03
 */
 
 
@@ -39,8 +39,10 @@ void remplir_tab_pire_score(void *elem, void *tab){
  * de chaque candidat et initialise tous les scores à zéro. Elle utilise ensuite la fonction remplirTabpire_score
  * pour remplir ce tableau avec les pires scores de chaque candidat. Enfin, elle détermine le candidat gagnant
  * comme étant celui dont le pire score est le plus bas et affiche le nom du gagnant.
- *
- * @param matrice_ballot La matrice des bulletins de vote.
+ * 
+ * @param matrice_duel La matrice de duel.
+ * @param candidats_nom La liste des noms des candidats.
+ * @param output Le fichier de sortie dans lequel on écrit le résultat.
  */
 void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output){
     larc *list_arc = larc_init(matrice_duel);

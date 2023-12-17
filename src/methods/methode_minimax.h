@@ -2,7 +2,7 @@
  * @file methode_minimax.h
  * @brief Fichier d'en-tête pour les fonctions de la méthode Minimax.
  * @author Marco
- * @version 1.0
+ * @date 2023-12-03
  */
 
 #ifndef METHODE_MINMAX_H

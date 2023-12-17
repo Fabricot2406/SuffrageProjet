@@ -134,7 +134,6 @@ void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *ou
     // Détermination du classement des candidats
     List *classement = (List *)determiner_classement(list_arc,candidats_nom);
     //afficher_classement(classement);
-    // A COMPLETER AVEC NBCANDIDATS ET NBVOTANTS
     retourner_vainqueur("Condorcet paires", matrice_duel->cols, matrice_duel->rows, list_at(classement, 0), 0, output);
 
     // Libération de la mémoire

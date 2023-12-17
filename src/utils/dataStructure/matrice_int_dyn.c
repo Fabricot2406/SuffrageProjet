@@ -44,16 +44,14 @@ void detruire_matrice(t_mat_int_dyn *matrice){
 
 /******************* UTILS *********************/
 
-void afficher_matrice(t_mat_int_dyn *matrice, int not_displayed_value){
+void log_matrice(t_mat_int_dyn *matrice, int not_displayed_value, FILE *log_file){
     for(int i = 0; i < matrice->rows; i++){
         for(int j = 0; j < matrice->cols; j++){
             if (matrice->mat[i][j] != not_displayed_value){
-                printf("%2d ", matrice->mat[i][j]);
-            }else{
-                printf("   ");
-            }
+                fprintf(log_file, "%2d ", matrice->mat[i][j]);
+            }else fprintf(log_file, "   ");
         }
-        printf("\n");
+        fprintf(log_file,"\n");
     }
 }
 

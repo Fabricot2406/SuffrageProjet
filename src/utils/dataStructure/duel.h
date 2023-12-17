@@ -37,9 +37,11 @@ t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string);
 /******************* UTILS *********************/
 
 /**
- * @brief Affiche la matrice de duel.
- * @param matrice_duel La matrice de duel à afficher.
+ * @brief Fonction permettant de remplir un fichier de log avec la matrice de duel.
+ * 
+ * @param matrice_duel La matrice de duel.
+ * @param log_file Le fichier de log.
  */
-void afficher_matrice_duels(t_mat_int_dyn *matrice_duel);
+void log_duel(t_mat_int_dyn *matrice_duel, FILE *log_file);
 
 #endif // __DUEL_H__

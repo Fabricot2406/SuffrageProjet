@@ -97,9 +97,10 @@ List *acces_liste_preference(ballot *b, int num_votant);
 int fav_candidat(ballot *b,int num_votant);
 
 /**
- * @brief Fonction permettant d'afficher le ballot
+ * @brief Fonction permettant de remplir le fichier log avec le ballot
  * @param b ballot à afficher
+ * @param log_file le fichier de log à remplir
  */
-void afficher_ballot(ballot *b);
+void log_ballot(ballot *b, FILE *log_file);
 
 #endif //__BALLOT_H__

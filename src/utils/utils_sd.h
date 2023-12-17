@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file utils_sd.h
  * @authors Anthony, Marco et Fabio

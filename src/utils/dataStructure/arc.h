@@ -58,10 +58,11 @@ larc* larc_init(t_mat_int_dyn *matrice_duel);
 void detruire_larc(larc *tab_arc);
 
 /**
- * @brief Afficher la liste des arcs.
- * @param tab_arc Liste des arcs à afficher
+ * @brief Fonction permettant de remplir un fichier de log avec la liste d'arc.
+ * @param tab_arc La liste d'arc à saisir dans le fichier de log.
+ * @param log_file Le fichier de log.
  */
-void afficher_larc(larc *tab_arc);
+void log_larc(larc *tab_arc, FILE *log_file);
 
 /**
  * @brief Fonction qui permet de supprimer les arcs d'un candidat donné.

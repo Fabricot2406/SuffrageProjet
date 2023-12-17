@@ -43,8 +43,6 @@ char *rechercher_meilleure_mention(List *tab_candidat);
 
 void calculer_vainqueur_jugement(List *tab_candidat);
 
-void recalculer_mention (List *tab_candidat_reduit);
-
 void test_affichage(List *tab_candidat);
 
 /**

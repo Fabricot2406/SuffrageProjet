@@ -97,8 +97,8 @@ t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string){
 
 /******************* UTILS *********************/
 
-void afficher_matrice_duels(t_mat_int_dyn *matrice_duel){
-    printf("\nMatrice de duel :\n\n");
-    afficher_matrice(matrice_duel, 0);
-    printf("\n");
+void log_duel(t_mat_int_dyn *matrice_duel, FILE *log_file){
+    fprintf(log_file,"Matrice de duel :\n");
+    log_matrice(matrice_duel, 0, log_file);
+    fprintf(log_file,"\n");
 }

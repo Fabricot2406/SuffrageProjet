@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file utils_main.h
  * @authors Marco, Anthony et Fabio
@@ -37,6 +36,15 @@ typedef struct s_data {
     ballot *matrice_ballot;
 } Data;
 
+/**
+ * @brief Fonction permettant de créer un chemin complet à partir d'un nom de fichier, d'un répertoire et d'une extension.
+ * 
+ * @param chemin_complet Buffer dans lequel on stocke le chemin complet.
+ * @param nomFichier Nom du fichier.
+ * @param repertoire Répertoire dans lequel se trouve le fichier.
+ * @param extension Extension du fichier.
+ */
+void creer_chemin_complet(char *chemin_complet, const char *nomFichier, const char *repertoire, const char *suffixe,const char *extension);
 
 /**
  * Vérifie l'existence d'un fichier en utilisant un chemin complet.
@@ -70,11 +78,10 @@ int controlNomPrenom(char *chaine, int prenom);
 
 
 /**
- * @brief Fonction permettant de construire et d'afficher les structures de données à partir des fichiers csv.
- * Les TAD affichés sont les suivants : ballot, matrice de duel, liste des arcs.
- * Le vainqueur de Condorcet est également affiché si il existe.
- * @param fichier Le nom du fichier contenant les candidats.
+ * @brief Fonction permettant de remplir un fichier log avec les données d'une élection.
+ * @param log_file Le fichier log à remplir.
+ * @param data Les données de l'élection.
  */
-void construire_afficher_TAD(char *fichier);
+void remplir_log(FILE *log_file, Data data);
 
 #endif

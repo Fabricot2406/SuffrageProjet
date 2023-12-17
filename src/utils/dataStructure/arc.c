@@ -112,17 +112,29 @@ void supprimer_candidat(List *list_arc,int candidat){
 /******************* UTILS *********************/
 
 /**
- * @brief Fonction qui permet d'afficher la liste des arcs.
- * @param list La liste des arcs à afficher
+ * @brief Affiche un arc dans le fichier de log.
+ * 
+ * @param input l'arc à afficher
+ * @param log_file le fichier de log
  */
-void afficher_arc(void* input){
+void log_arc(void* input, FILE *log_file){
     arc *a = (arc *)input;
-    printf("(%d > %d: %d)\n",a->candidat_gagnant, a->candidat_perdant, a->score);
+    fprintf(log_file, "(%d > %d: %d)\n",a->candidat_gagnant, a->candidat_perdant, a->score);
 }
 
-void afficher_larc(larc *tab_arc){
-    printf("Liste des arcs :\n\n");
+void log_larc(larc *tab_arc, FILE *log_file){
+    fprintf(log_file ,"Liste des arcs : ");
+    fprintf(log_file ,"(indice_gagnant > indice_perdant: score)\n");
     List *list = tab_arc->larc;
-    list_map(list, afficher_arc);
-    printf("\n");
+    // On parcourt la liste des arcs
+    // Creer un iterateur
+    Iterator *it_larc = iterator_create(list);
+    // On parcourt la liste des arcs
+    while (iterator_has_next(it_larc)){
+        arc *arc_courrant = iterator_current(it_larc);
+        log_arc(arc_courrant, log_file);
+        iterator_next(it_larc);
+    }
+    iterator_delete(it_larc);
+    fprintf(log_file, "\n");
 }

@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file main.c
  * @authors Fabio, Anthony et Marco
@@ -35,7 +34,7 @@ Methode liste_methodes[] = {
  * @param methode Nom de la méthode à appliquer.
  * @param structures Structure contenant les données nécessaires à l'application de la méthode.
  * @param index Indice de la méthode dans le tableau liste_methodes.
- * @param output Nom du fichier de sortie pour les résultats.
+ * @param output Fichier de sortie pour les résultats.
  */
 void appliquer_methode(char *methode, Data structures, int index, FILE *output) {
     // Jugement majoritaire
@@ -54,19 +53,17 @@ void appliquer_methode(char *methode, Data structures, int index, FILE *output) 
  * Lance le calcul du vote en utilisant la méthode spécifiée par l'utilisateur.
  * 
  * @param fichier Le nom du fichier de données de vote.
- * @param output Le nom du fichier de sortie pour les résultats.
+ * @param log_file Le fichier de log.
+ * @param output_file Le fichier de sortie pour les résultats.
  * @param methode La méthode de calcul des résultats choisie par l'utilisateur.
  * @param duel Le type de fichier (duel ou non). Si le fichier est un duel, alors type_fichier = true.
  */
-void calculerVote(char *fichier, char *output, char *methode, bool duel) {
+void calculerVote(char *fichier, FILE *log_file, FILE *output_file, char *methode, bool duel) {
     int methode_trouvee = false;
     // Structures de données 
     t_mat_int_dyn *matrice_duel = NULL;
     ballot *matrice_ballot = NULL;
     char **candidats_nom = NULL;
-
-    // Ouverture du fichier output en écriture.
-    FILE *output_file = fopen(output, "w");
 
     /*------------------------ Traitement des données ------------------------*/
     
@@ -90,6 +87,9 @@ void calculerVote(char *fichier, char *output, char *methode, bool duel) {
 
     // Structures de données à passer aux méthodes.
     Data donnees = {candidats_nom, matrice_csv, matrice_duel, matrice_ballot};
+
+    // Remplissage du fichier de log.
+    if(log_file != NULL) remplir_log(log_file, donnees);
     
     /*------------------------ Execution des méthodes ------------------------*/
 
@@ -184,9 +184,9 @@ void presentationIdentifiant(char *nom,char *prenom,char *cle){
  * @param fichier Le nom du fichier CSV contenant les informations de vote.
  */
 void verifierVote(char * fichier) {
-    char nom[TAILLE_NOM_MAX]; // Contient NOM et prénom
-    char prenom[TAILLE_NOM_MAX];
-    char cle[TAILLE_CLE_MAX];
+    char nom[TAILLE_NOM_MAX] = "";
+    char prenom[TAILLE_NOM_MAX] = "";
+    char cle[TAILLE_CLE_MAX] = "";
 
     //on demande à l'utilisateur d'entrer ses informations
     presentationIdentifiant(nom,prenom,cle);
@@ -203,39 +203,34 @@ void verifierVote(char * fichier) {
  * @brief Affiche un menu d'actions pour l'utilisateur et effectue l'action choisie.
  *
  * @param fichier Le nom du fichier de données de vote.
- * @param output Le nom du fichier de sortie pour les résultats.
+ * @param log_file Le fichier de log.
+ * @param output_file Le fichier de sortie pour les résultats.
  * @param methode La méthode de calcul des résultats.
  * @param duel Le type de fichier (duel ou non). Si le fichier est un duel, alors type_fichier = true.
  */
-void presentationMenu(char *fichier, char *output, char *methode, bool duel) {
+void presentationMenu(char *fichier, FILE *log_file, FILE *output_file, char *methode, bool duel) {
     int choix;
-
     do {
-        printf("Choisissez une action à effectuer :\n");
-        printf("1. Calculer les résultats de vote.\n");
-        printf("2. Consulter ses votes.\n");
-        printf("3. Construire et afficher le ballot.\n");
-        printf("Votre choix : ");
+        printf("Choisissez une action à effectuer :"
+               "\n1. Calculer les résultats de vote."
+               "\n2. Consulter ses votes."
+               "\nVotre choix : ");
         scanf("%d", &choix);
-        // On vide le tampon d'entrée (buffer) après la saisie.
         int c;
         while ((c = getchar()) != '\n' && c != EOF);
 
         switch (choix) {
             case 1:
-                calculerVote(fichier, output, methode, duel);
+                calculerVote(fichier, log_file, output_file, methode, duel);
                 break;
             case 2:
                 verifierVote(fichier);
-                break;
-            case 3:
-                construire_afficher_TAD(fichier);
                 break;
             default:
                 printf("Veuillez choisir une action valide (1 ou 2) !\n");
                 break;
         }
-    } while (choix != 1 && choix != 2 && choix != 3);
+    } while (choix != 1 && choix != 2);
 }
 
 /**
@@ -244,16 +239,16 @@ void presentationMenu(char *fichier, char *output, char *methode, bool duel) {
  * @param nom_executable Le nom de l'exécutable du programme.
  */
 void afficher_tutoriel(char *nom_executable){
-
-    char *tuto =    "\n\t-i et -d sont incompatibles."
-                    "\n\t-i signifie que le fichier est un fichier d'entrée."
-                    "\n\t-d signifie que le fichier est un fichier de duel (à utiliser pour condorcet)."
-                    "\n\t-m est la méthode de calcul des résultats. Mettre uninominal."
-                    "\n\tFacultatif : -o est le fichier de sortie des résultats. Pas encore implémenté"
-                    "\n\nExemple : ./scrutin -i voteCondorcet test tes -m uninominal"
-                    "\n\nPour plus d'informations, veuillez consulter la documentation.\n";
-                
-    fprintf(stderr, "\n<USAGE> : %s (-i fichier) ou (-d fichier) -o fichier_log -m methode\n%s", nom_executable,tuto);           
+    fprintf(stderr, 
+        "\n<USAGE> : %s (-i fichier) ou (-d fichier) -o fichier_log -m methode\n"
+        "\n\t-i et -d sont incompatibles."
+        "\n\t-i signifie que le fichier est un fichier d'entrée."
+        "\n\t-d signifie que le fichier est un fichier de duel (à utiliser pour condorcet)."
+        "\n\t-m est la méthode de calcul des résultats. Mettre uninominal."
+        "\n\tFacultatif : -o est le fichier de sortie des résultats. Pas encore implémenté"
+        "\n\nExemple : ./scrutin -i voteCondorcet test tes -m uninominal"
+        "\n\nPour plus d'informations, veuillez consulter la documentation.\n", 
+    nom_executable);           
 }
 
 /*------------------------ PROGRAMME PRINCIPAL ------------------------*/
@@ -266,8 +261,19 @@ void afficher_tutoriel(char *nom_executable){
  * @return 0 en cas de succès, d'autres valeurs en cas d'erreur.
  */
 int main(int argc, char* argv[]) {
-    char *input = NULL, *duel = NULL, *output = NULL, *methode = NULL;
+    char *input = NULL, *duel = NULL, *methode = NULL;
     int option;
+    char const *fichier_csv = NULL;
+    char const *fichier_log = NULL;
+    char const *fichier_output = NULL;
+    char const *repertoire_CSV = "./tests/input/";
+    char const *repertoire_log = "./tests/output/log/";
+    char const *repertoire_output = "./tests/output/result/";
+    char const *extension_csv = ".csv";
+    char const *extension_txt = ".txt";
+
+    char const *suffixe_log = "_log";
+    char const *suffixe_output = "_res";
 
     // Vérification du nombre d'options (au minimum 5).
     if (argc < 5) {
@@ -278,18 +284,17 @@ int main(int argc, char* argv[]) {
     // Récupération des paramètres des options.
     while ((option = getopt(argc, argv, "i:d:o:m:")) != -1) {
         switch (option) {
-            case 'i':
-                input = optarg;
+            case 'i': 
+                fichier_csv = input = optarg;
+                fichier_output = optarg;
                 break;
-            case 'd':
-                duel = optarg;
+            case 'd': 
+                fichier_csv = duel = optarg;
+                fichier_output = optarg;
                 break;
-            case 'o': // Fichier de sortie pas encore implémenté
-                output = optarg;
-                // Ici on vérifiera si le fichier txt existe déjà, ou si il faut le créer.
+            case 'o': fichier_log = optarg;
                 break;
-            case 'm':
-                methode = optarg;
+            case 'm': methode = optarg;
                 break;
             default:
                 afficher_tutoriel(argv[0]);
@@ -314,42 +319,54 @@ int main(int argc, char* argv[]) {
         fprintf(stderr, "Il est impossible d'utiliser les méthodes uni1, uni2, jm et all avec l'option -d.\n");
         exit(EXIT_FAILURE);
     }
-    // Vérification de l'existance des fichiers
-    char const *fichierCSV = input;
-    char const *fichierTXT = output;
-    char const repertoire_CSV[] = "./tests/";
-    char const repertoire_TXT[] = "./tests/output/";
-    char const extension_csv[] = ".csv";
-    char const extension_txt[] = ".txt";
-    char cheminCompletCsv[1024];
-    char cheminCompletOutput[1024];
 
     /*------------------------ FICHIER LECTURE CSV ------------------------*/
+    char cheminCompletCsv[1024];
 
     // On concatène le chemin du répertoire avec le nom du fichier et son extension
-    if (!fichierExiste(fichierCSV,repertoire_CSV,extension_csv,cheminCompletCsv))
-    {
-        fprintf(stderr, "Le fichier CSV spécifié n'existe pas.\n"
-                    "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
-                    "Celui-ci doit se trouver dans le répertoire tests.\n\n"
-                    "Exemple : ./scrutin -i voteCondorcet -m uni1\n");
+    if (!fichierExiste(fichier_csv,repertoire_CSV,extension_csv,cheminCompletCsv)){ 
+        fprintf(stderr,
+            "Le fichier CSV spécifié n'existe pas.\n"
+            "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
+            "Celui-ci doit se trouver dans le répertoire tests.\n\n"
+            "Exemple : ./scrutin -i voteCondorcet -m uni1\n");
         exit(EXIT_FAILURE);
     }
 
-    /*------------------------ FICHIER ECRITURE TXT ------------------------*/
+    /*------------------------ FICHIER OUTPUT ------------------------*/
+    char chemin_complet_output[1024];
+    FILE *output_file = NULL;
 
-   // On concatène le chemin du répertoire avec le nom du fichier et l'extension
-   /* if (!fichierExiste(fichierTXT,repertoire_TXT,extension_txt,cheminCompletOutput))
-    {
-        fprintf(stderr, "Le fichier txt spécifié n'existe pas.\n"
-                    "Veuillez entrer le nom du fichier uniquement (sans son extension ni son chemin).\n"
-                    "Celui-ci doit se trouver dans le répertoire tests.\n\n"
-                    "Exemple : ./scrutin -o voteCondorcet -m uni1\n");
-        exit(EXIT_FAILURE);
-    }*/
+    if(fichier_output != NULL){
+        // On concatène le chemin du répertoire avec le nom du fichier et son extension
+        creer_chemin_complet(chemin_complet_output, fichier_output, repertoire_output, suffixe_output,extension_txt);
+
+        // Creer le fichier txt s'il n'existe pas encore :
+        output_file = fopen(chemin_complet_output, "w");
+    }
+
+
+    /*------------------------ FICHIER LOG ------------------------*/
+    char chemin_complet_log[1024];
+    FILE *log_file = NULL;
+    if(fichier_log != NULL){
+        // On concatène le chemin du répertoire avec le nom du fichier et son extension
+        creer_chemin_complet(chemin_complet_log, fichier_log, repertoire_log, suffixe_log, extension_txt);
+
+        // Creer le fichier txt s'il n'existe pas encore :
+        log_file = fopen(chemin_complet_log, "w");
+    }
+
+    /*------------------------ LANCEMENT DU MENU ------------------------*/
 
     // Lancement du menu contextuel
-    presentationMenu(cheminCompletCsv, cheminCompletOutput, methode, duel != NULL);
+    presentationMenu(cheminCompletCsv, log_file, output_file, methode, duel != NULL);
+
+    // Fermeture du fichier log.
+    if (fichier_log != NULL) fclose(log_file);
+
+    // Fermeture du fichier output.
+    if (fichier_output != NULL) fclose(output_file);
 
     return 0;
 }

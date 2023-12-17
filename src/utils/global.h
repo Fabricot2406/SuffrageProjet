@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file global.h
  * @author Anthony
