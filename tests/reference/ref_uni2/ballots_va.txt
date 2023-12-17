@@ -1,3 +1,3 @@
-Mode de scrutin : uninominal à deux tours, tour 1 vainqueur 1 : , 4 candidats, 100 votants, vainqueur = A, score = 42.00%
-Mode de scrutin : uninominal à deux tours, tour 1 vainqueur 2 : , 4 candidats, 100 votants, vainqueur = B, score = 26.00%
+Mode de scrutin : uninominal à deux tours, tour 1, 4 candidats, 100 votants, vainqueur = A, score = 42.00%
+Mode de scrutin : uninominal à deux tours, tour 1, 4 candidats, 100 votants, vainqueur = B, score = 26.00%
 Mode de scrutin : uninominal à deux tours, tour 2, 2 candidats, 100 votants, vainqueur = B, score = 58.00%

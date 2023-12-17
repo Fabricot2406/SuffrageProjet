@@ -1,6 +1,7 @@
 /**
  * @file methode_paires.c
  * @author Anthony
+ * @brief Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires.
  * @date 2023-11-28
  */
 #include "methode_paires.h"
@@ -123,13 +124,12 @@ List *determiner_classement(larc *list_arc,char **candidats_nom){
 void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output) {
     // Création de la liste d'arc
     larc *list_arc = larc_init(matrice_duel);
-    //afficher_larc(list_arc);
 
     // Filtrage de la liste d'arc
-    //int nb_circuit = filtrer_larc(list_arc);
+    // int nb_circuit = filtrer_larc(list_arc);
     filtrer_larc(list_arc);
-    //printf("Nombre de circuit détecté : %d\n\n",nb_circuit);
-    //afficher_larc(list_arc);
+    // printf("Nombre de circuit détecté : %d\n\n",nb_circuit);
+    // log_larc(list_arc,stdout);
 
     // Détermination du classement des candidats
     List *classement = (List *)determiner_classement(list_arc,candidats_nom);

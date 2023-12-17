@@ -1,15 +1,23 @@
 /**
  * @file uninominale.c
  * @author Fabio
+ * @brief Méthode uninominale à 1 et 2 tours
  * @date 2023-11-28
- * 
  */
 #include "uninominale.h"
 
 int nb_candidats, nb_votants;
 int * votes;
 
-void initialiser_tableau_votes(ballot * matrice) {
+/**
+ * @brief Initialise un tableau de votes contenant le score de chaque candidat
+ * Processus : 1) On initialise les éléments du tableaux à 0.
+ *             2) On ajoute le score de chaque candidats par votants à leur indice pour obtenir le score final.
+ * 
+ * @param matrice Une matrice de type ballot.
+ * @post Le tableau de votes est initialisé.
+ */
+ void initialiser_tableau_votes(ballot * matrice) {
     nb_candidats = matrice -> nb_candidats;
     nb_votants = matrice -> nb_votants; 
 
@@ -91,11 +99,11 @@ void calculer_uninominale_deux_tours(ballot * matrice, FILE *output) {
         if (votes[vainqueur_un] < votes[vainqueur_deux]) {
             char * nom_vainqueur = nom_candidat(matrice, vainqueur_deux);
             double score = calculer_score(nb_votants, votes[vainqueur_deux]);
-            retourner_vainqueur("uninominal à deux tours, tour 2", nb_candidats, nb_votants, nom_vainqueur, score, output);
+            retourner_vainqueur("uninominal à deux tours, tour 2", 2, nb_votants, nom_vainqueur, score, output);
         } else {
             char * nom_vainqueur = nom_candidat(matrice, vainqueur_un);
             double score = calculer_score(nb_votants, votes[vainqueur_un]);
-            retourner_vainqueur("uninominal à deux tours, tour 2", nb_candidats, nb_votants, nom_vainqueur, score, output);
+            retourner_vainqueur("uninominal à deux tours, tour 2", 2, nb_votants, nom_vainqueur, score, output);
         }
         free(data);
     }

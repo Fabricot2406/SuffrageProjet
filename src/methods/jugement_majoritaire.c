@@ -1,10 +1,13 @@
-/** \\file */
 /**
  * @file jugement_majoritaire.c
  * @author Marco
+ * @brief Fichier de la méthode de scrutin du jugement majoritaire
  * @date 2023-11-28
  */
 #include "jugement_majoritaire.h"
+
+void recalculer_mention(List *tab_candidat);
+void calculer_vainqueur_jugement(List *tab_candidat);
 
 typedef struct s_candidat{
     char *nom;
@@ -139,7 +142,7 @@ void liberer_candidat(void *elem){
  * @brief Recalcule la mention des candidats à égalité en supprimant le vote correspondant à leur mention et en recalculant leur mention avec la liste résultante.
  * @param tab_candidat_reduit : La liste réduite des candidats.
  */
-void recalculer_mention (List *tab_candidat){
+void recalculer_mention(List *tab_candidat){
     //Pour chaque candidat à égalité, on supprime de leur liste de vote le vote correspondant à leur mention et 
     //on recalcule leur mention avec la liste résultante.
     for (int i=0;i<tab_candidat->size;i++){

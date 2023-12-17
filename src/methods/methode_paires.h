@@ -1,7 +1,7 @@
 /**
  * @file methode_paires.h
  * @author Anthony
- * @brief 
+ * @brief Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires.
  * @date 2023-11-28
  */
 

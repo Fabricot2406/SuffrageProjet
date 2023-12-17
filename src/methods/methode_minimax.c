@@ -1,12 +1,10 @@
-#include "methode_minimax.h"
-
 /**
  * @file methode_minimax.c
  * @brief Implémentation de la méthode Minimax.
  * @author Marco
  * @date 2023-12-03
 */
-
+#include "methode_minimax.h"
 
 /**
  * @brief Remplit le tableau des pires scores.
@@ -30,23 +28,9 @@ void remplir_tab_pire_score(void *elem, void *tab){
     }
 }
 
-/**
- * @brief Implémente la méthode Minimax.
- *
- * Cette fonction implémente la méthode Minimax pour déterminer le gagnant d'une élection.
- * Elle crée d'abord une matrice de duels à partir des bulletins de vote. Ensuite, elle initialise
- * une liste d'arcs à partir de cette matrice. Elle alloue ensuite un tableau pour stocker le pire score
- * de chaque candidat et initialise tous les scores à zéro. Elle utilise ensuite la fonction remplirTabpire_score
- * pour remplir ce tableau avec les pires scores de chaque candidat. Enfin, elle détermine le candidat gagnant
- * comme étant celui dont le pire score est le plus bas et affiche le nom du gagnant.
- * 
- * @param matrice_duel La matrice de duel.
- * @param candidats_nom La liste des noms des candidats.
- * @param output Le fichier de sortie dans lequel on écrit le résultat.
- */
+
 void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output){
     larc *list_arc = larc_init(matrice_duel);
-    //afficher_larc(list_arc);
     int pire_score[matrice_duel->cols];
     for (int i = 0; i<matrice_duel->cols; i++){
         pire_score[i] = 0;

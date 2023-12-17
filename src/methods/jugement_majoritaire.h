@@ -1,4 +1,3 @@
-/** \\file */
 /**
  * @file jugement_majoritaire.h
  * @author Marco
@@ -23,30 +22,15 @@
  */
 typedef struct s_candidat Candidat;
 
-Candidat *init_candidat(t_mat_char_star_dyn *matrice, int num_candidat);
-
-List *init_tableau_candidat(t_mat_char_star_dyn *matrice);
-
-void liberer_candidat(void *elem);
-
-void liberer_liste_candidat(List *tab_candidat);
-
-
-/******************* METHODE *********************/
-
-
-int calculer_indice_mention(int nb_votes);
-
-char *attribuer_mention(int mention);
-
-char *rechercher_meilleure_mention(List *tab_candidat);
-
-void calculer_vainqueur_jugement(List *tab_candidat);
-
-void test_affichage(List *tab_candidat);
-
 /**
  * @brief Détermine le vainqueur du jugement en fonction des mentions de chaque candidat et affiche le nom du vainqueur.
+ * Procédé : 1) On initialise chaque candidat avec son nom, les votes des électeurs à son égard triés par ordre croissant et la mention majoritaire correspondante.
+ *           2) On initialise un tableau répertoriant tous les candidats du scrutin.
+ *           3) On calcule le vainqueur du jugement en fonction des mentions de chaque candidat.
+ *           4) Si il y a égalité, on supprime le vote correspondant à la mention majoritaire et on réitère l'étape 3.
+ *           5) On affiche le nom du vainqueur.
+ * @param matrice Matrice de mentions.
+ * @param output Fichier de sortie.
  */
 void determiner_vainqueur_jugement(t_mat_char_star_dyn *matrice,FILE *output);
 

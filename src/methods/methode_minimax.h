@@ -1,6 +1,6 @@
 /**
  * @file methode_minimax.h
- * @brief Fichier d'en-tête pour les fonctions de la méthode Minimax.
+ * @brief Implémentation de la méthode Minimax.
  * @author Marco
  * @date 2023-12-03
  */
@@ -18,27 +18,16 @@
 #include "../utils/dataStructure/arc.h"
 
 /**
- * @brief Remplit le tableau des pires scores.
- *
- * @param elem L'élément à traiter.
- * @param tab Le tableau à remplir.
- */
-void remplir_tab_pire_score(void *elem, void *tab);
-
-/**
  * @brief Implémente la méthode Minimax.
- * @param matrice_duel Matrice de duel avec les résultats du vote.
- * @param candidats_nom Liste des noms des candidats.
- * @param output Le fichier de sortie dans lequel on écrit le résultat.
+ * Procédé : 1) On initialise la liste d'arc résultant de la matrice de duel. 
+ *           2) On initialise un tableau répertoriant tous les candidats du scrutin à 0.
+ *           3) Pour chaque candidat perdant d'un duel, le score de l'arc ou il est perdant est supérieur à la valeur du tableau à l'indice correspondant on remplace la valeur du tableau par le score de l'arc.
+ *           4) Une fois tous les arcs traités on parcourt le tableau et on récupère l'indice du candidat ayant le score le plus faible.
+ *           5) On affiche le nom du candidat correspondant à l'indice récupéré.
+ * @param matrice_ballot La matrice des bulletins de vote.
+ * @param output Fichier de sortie.
  */
 void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *output);
 
-/**
- * @brief Affiche un tableau.
- *
- * @param tab Le tableau à afficher.
- * @param taille La taille du tableau.
- */
-void afficher_tab(int *tab, int taille);
 
 #endif /* METHODE_MINMAX_H */

@@ -100,6 +100,7 @@ int uni_perdant(void *elem, void *data){
  * @return false Si le candidat n'est pas vainqueur.
  */
 bool est_vainqueur(List *list_arc, int candidat){
+    int count_winner = 0;
     Iterator *it_larc = iterator_create(list_arc);
     // On parcourt la liste d'arc
     while (iterator_has_next(it_larc)){
@@ -110,9 +111,12 @@ bool est_vainqueur(List *list_arc, int candidat){
             iterator_delete(it_larc);
             return false;
         }
+        if (arc_courant->candidat_gagnant == candidat) count_winner++;
+        
         iterator_next(it_larc);
     }
     iterator_delete(it_larc);
+    if (!count_winner) return false;
     // Sinon il est vainqueur
     return true;
 }

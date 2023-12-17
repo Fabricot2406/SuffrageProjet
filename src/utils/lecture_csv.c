@@ -1,9 +1,23 @@
 /**
  * @file lecture_csv.c
+ * @brief Fichier de définition pour la lecture d'un fichier CSV.
  * @author Marco
- * @date 2023-11-28
+ * @date 2023-10-17
  */
 #include "lecture_csv.h"
+
+/**
+ * @fn int estMauvaiseExtension(char *fichier)
+ * @brief Fonction qui confirme si le fichier est un ".csv".
+ * @param fichier Le nom du fichier à vérifier.
+ * @return 1 si le fichier n'est pas un ".csv", 0 sinon.
+ */
+int estMauvaiseExtension(char *fichier){
+    //pointe sur la derniere occurence du "." dans le nom de fichier
+    char *extension = strrchr(fichier,'.');
+    //retourne 0 si l'extension est ".csv"
+    return extension!=NULL && strcmp(extension,".csv");
+}
 
 t_mat_char_star_dyn *remplirMatrice(char *fichier){
     //si mauvaise extension on retourne matrice vide
@@ -81,11 +95,4 @@ t_mat_char_star_dyn *remplirMatrice(char *fichier){
     //On determine le nombre total de lignes a la fin après avoir enlevé l'espace de tableau en trop dans la matrice avant de là retourner
     matrice->nbLignes=ligne;
     return matrice;
-}
-
-int estMauvaiseExtension(char *fichier){
-    //pointe sur la derniere occurence du "." dans le nom de fichier
-    char *extension = strrchr(fichier,'.');
-    //retourne 0 si l'extension est ".csv"
-    return extension!=NULL && strcmp(extension,".csv");
 }
