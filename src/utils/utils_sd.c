@@ -5,11 +5,11 @@
  */
 #include "utils_sd.h"
 
-void retourner_vainqueur(char * methode, int nbCandidats, int nbVotants, char * nomVainqueur, double score, FILE *output) {
+void retourner_vainqueur(char * methode, int nbCandidats, int nbVotants,char * nomVainqueur, double score, FILE *output) {
     // On affiche le vainqueur en fonction de la méthode de scrutin
     // Cas particulier pour le scrutin uninominal à deux tours
-    if (strcmp(methode, "uninominale à un tour") == 0 || strcmp(methode, "uninominale à deux tours, tour 1") == 0 || 
-    strcmp(methode, "uninominale à deux tours, tour 2") == 0){
+    if (strcmp(methode, "uninominal à un tour") == 0 || strcmp(methode, "uninominal à deux tours, tour 1") == 0 || 
+    strcmp(methode, "uninominal à deux tours, tour 2") == 0){
         fprintf(output, "Mode de scrutin : %s, %d candidats, %d votants, vainqueur = %s, score = %.2f%%\n",
         methode, nbCandidats, nbVotants, nomVainqueur, score);
         printf("Mode de scrutin : %s, %d candidats, %d votants, vainqueur = %s, score = %.2f%%\n",

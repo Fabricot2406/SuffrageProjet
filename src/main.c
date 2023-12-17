@@ -266,14 +266,11 @@ int main(int argc, char* argv[]) {
     char const *fichier_csv = NULL;
     char const *fichier_log = NULL;
     char const *fichier_output = NULL;
-    char const *repertoire_CSV = "./tests/input/";
+    char const *repertoire_CSV = NULL;
     char const *repertoire_log = "./tests/output/log/";
     char const *repertoire_output = "./tests/output/result/";
     char const *extension_csv = ".csv";
     char const *extension_txt = ".txt";
-
-    char const *suffixe_log = "_log";
-    char const *suffixe_output = "_res";
 
     // Vérification du nombre d'options (au minimum 5).
     if (argc < 5) {
@@ -284,12 +281,14 @@ int main(int argc, char* argv[]) {
     // Récupération des paramètres des options.
     while ((option = getopt(argc, argv, "i:d:o:m:")) != -1) {
         switch (option) {
-            case 'i': 
-                fichier_csv = input = optarg;
+            case 'i':
+                input = optarg;
+                fichier_csv = optarg;
                 fichier_output = optarg;
                 break;
             case 'd': 
-                fichier_csv = duel = optarg;
+                duel = optarg;
+                fichier_csv = optarg;
                 fichier_output = optarg;
                 break;
             case 'o': fichier_log = optarg;
@@ -322,7 +321,8 @@ int main(int argc, char* argv[]) {
 
     /*------------------------ FICHIER LECTURE CSV ------------------------*/
     char cheminCompletCsv[1024];
-
+    if(duel != NULL) repertoire_CSV = "./tests/input/duel/";
+    else repertoire_CSV = "./tests/input/vote/";
     // On concatène le chemin du répertoire avec le nom du fichier et son extension
     if (!fichierExiste(fichier_csv,repertoire_CSV,extension_csv,cheminCompletCsv)){ 
         fprintf(stderr,
@@ -339,7 +339,7 @@ int main(int argc, char* argv[]) {
 
     if(fichier_output != NULL){
         // On concatène le chemin du répertoire avec le nom du fichier et son extension
-        creer_chemin_complet(chemin_complet_output, fichier_output, repertoire_output, suffixe_output,extension_txt);
+        creer_chemin_complet(chemin_complet_output, fichier_output, repertoire_output, extension_txt);
 
         // Creer le fichier txt s'il n'existe pas encore :
         output_file = fopen(chemin_complet_output, "w");
@@ -351,7 +351,7 @@ int main(int argc, char* argv[]) {
     FILE *log_file = NULL;
     if(fichier_log != NULL){
         // On concatène le chemin du répertoire avec le nom du fichier et son extension
-        creer_chemin_complet(chemin_complet_log, fichier_log, repertoire_log, suffixe_log, extension_txt);
+        creer_chemin_complet(chemin_complet_log, fichier_log, repertoire_log, extension_txt);
 
         // Creer le fichier txt s'il n'existe pas encore :
         log_file = fopen(chemin_complet_log, "w");

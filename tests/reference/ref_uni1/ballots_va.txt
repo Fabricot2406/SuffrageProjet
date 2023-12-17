@@ -1,0 +1,1 @@
+Mode de scrutin : uninominal à un tour, 4 candidats, 100 votants, vainqueur = A, score = 42.00%

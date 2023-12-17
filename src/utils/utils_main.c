@@ -8,15 +8,14 @@
 
 char error_msg[] = "\tErreur : Chaîne non valide\n";
 
-void creer_chemin_complet(char *chemin_complet, const char *nomFichier, const char *repertoire, const char *suffixe,const char *extension) {
+void creer_chemin_complet(char *chemin_complet, const char *nomFichier, const char *repertoire,const char *extension) {
     strcpy(chemin_complet, repertoire);
     strcat(chemin_complet, nomFichier);
-    if (suffixe != NULL) strcat(chemin_complet, suffixe);
     strcat(chemin_complet, extension);
 }
 
 int fichierExiste(const char *nomFichier, const char *repertoire, const char *extension, char *cheminComplet) {
-    creer_chemin_complet(cheminComplet, nomFichier, repertoire, NULL, extension);
+    creer_chemin_complet(cheminComplet, nomFichier, repertoire, extension);
     FILE *fichier = fopen(cheminComplet, "r");
     if (fichier != NULL) {
         fclose(fichier);

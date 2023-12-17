@@ -1,0 +1,3 @@
+Mode de scrutin : uninominal à deux tours, tour 1 vainqueur 1 : , 5 candidats, 10 votants, vainqueur =  Charlotte aux poires, score = 50.00%
+Mode de scrutin : uninominal à deux tours, tour 1 vainqueur 2 : , 5 candidats, 10 votants, vainqueur =  Tarte à la fraise, score = 20.00%
+Mode de scrutin : uninominal à deux tours, tour 2, 2 candidats, 10 votants, vainqueur =  Charlotte aux poires, score = 40.00%

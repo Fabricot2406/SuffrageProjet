@@ -59,7 +59,7 @@ void condorcet_minimax(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *o
         }
     }
     detruire_larc(list_arc);
-    retourner_vainqueur("Condorcet minimax",matrice_duel->cols,matrice_duel->rows,candidats_nom[candidat_gagnant],0, output);
+    retourner_vainqueur("Condorcet minimax",matrice_duel->cols,matrice_duel->cols,candidats_nom[candidat_gagnant],0, output);
 }
 
 /**

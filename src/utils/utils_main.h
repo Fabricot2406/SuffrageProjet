@@ -44,7 +44,7 @@ typedef struct s_data {
  * @param repertoire Répertoire dans lequel se trouve le fichier.
  * @param extension Extension du fichier.
  */
-void creer_chemin_complet(char *chemin_complet, const char *nomFichier, const char *repertoire, const char *suffixe,const char *extension);
+void creer_chemin_complet(char *chemin_complet, const char *nomFichier, const char *repertoire, const char *extension);
 
 /**
  * Vérifie l'existence d'un fichier en utilisant un chemin complet.

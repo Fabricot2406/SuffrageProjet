@@ -46,10 +46,13 @@ void reduire_arcs(List *list_arc, int nb_candidats, char **candidats_nom, FILE *
 void condorcet_schulze(t_mat_int_dyn *matrice_duel, char **candidats_nom, FILE *output) {
     // Création de la liste d'arcs
     larc *list_arc = larc_init(matrice_duel);
+    log_larc(list_arc,stdout);
     // Tri de la liste d'arcs
     list_arc -> larc = list_sort(list_arc -> larc, comparer_scores);
+    log_larc(list_arc,stdout);
     // Détermination du vainqueur
     reduire_arcs(list_arc -> larc, list_arc -> nb_candidats, candidats_nom, output);
+    log_larc(list_arc,stdout);
     // Destruction de la liste d'arcs
     detruire_larc(list_arc);
 }

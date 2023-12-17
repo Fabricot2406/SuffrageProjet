@@ -1,0 +1,1 @@
+Mode de scrutin : Condorcet minimax, 4 candidats, 4 votants, vainqueur = B

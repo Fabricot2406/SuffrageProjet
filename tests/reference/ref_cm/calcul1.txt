@@ -1,0 +1,1 @@
+Mode de scrutin : Condorcet minimax, 5 candidats, 5 votants, vainqueur =  Y
