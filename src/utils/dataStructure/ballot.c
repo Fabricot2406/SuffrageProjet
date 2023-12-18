@@ -1,12 +1,18 @@
 /**
  * @file ballot.c
  * @author Anthony
- * @brief Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur.
- * @date 2023-11-28
+ * @brief Structure de données représentant un ballot de vote.
+ * @date 2023-11-15
  */
 #include "ballot.h"
 
-ballot *creer_ballot(int nb_candidats, int nb_votants){
+// Constantes d'incrémentation permettant d'ignorer les colonnes inutiles du CSV
+#define INCREMENT_COLONNE 4
+#define INCREMENT_LIGNE 1
+
+ballot *ballot_create(int nb_candidats, int nb_votants){
+    assert(nb_candidats > 0);
+    assert(nb_votants > 0);
     nb_candidats -= INCREMENT_COLONNE;
     nb_votants -= INCREMENT_LIGNE;
     ballot *b = malloc(sizeof(ballot));
@@ -22,7 +28,7 @@ ballot *creer_ballot(int nb_candidats, int nb_votants){
  * @param rang Le rang de préférence
  * @return Pref* L'ensemble de préférence créé
  */
-Pref *creer_ensemble_preference(int rang){
+Pref *ens_pref_create(int rang){
     Pref *pref = malloc(sizeof(Pref));
     pref->values = rang;
     pref->list = list_create();
@@ -35,7 +41,7 @@ Pref *creer_ensemble_preference(int rang){
  * @param classement_csv La matrice de classement à partir du fichier csv
  * @return ballot* Le ballot rempli
  */
-ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv){
+ballot *list_candidat_init(ballot *b, t_mat_char_star_dyn *classement_csv){
     char ***matrice_csv = classement_csv->tab;
     // Remplissage de la liste de candidats
     for (int i = 0; i < b->nb_candidats; i++){
@@ -49,19 +55,18 @@ ballot *remplir_liste_candidats(ballot *b, t_mat_char_star_dyn *classement_csv){
 /**
  * @brief Recherche le rang de préférence dans une liste.
  *
- * Cette fonction permet de rechercher le rang de préférence spécifié
+ * @details Cette fonction permet de rechercher le rang de préférence spécifié
  * dans une liste de préférences. Elle peut être utilisée pour vérifier
  * la présence du rang de préférence ou pour obtenir l'indice du premier
  * élément correspondant.
  *
- * @param list La liste dans laquelle effectuer la recherche.
+ * @param list La liste de préférence dans laquelle effectuer la recherche.
  * @param rang_preference Le rang de préférence à rechercher.
- * @param find_index Si vrai, retourne l'indice du premier élément correspondant.
- *                   Si faux, retourne simplement vrai si le rang est présent.
- * @return Si find_index est vrai, retourne l'indice du premier élément correspondant,
- *         sinon, retourne vrai si le rang de préférence est présent, sinon faux.
+ * @param find_index
+ * @return Si find_index = true : indice du premier élément correspondant.
+ * @return Si find_index = false : 1 si le rang de préférence est présent, sinon 0.
  */
-int rechercher_preference(List *list, int rang_preference, bool find_index) {
+int ens_pref_search(List *list, int rang_preference, bool find_index) {
     Iterator *it = iterator_create(list);
     int indice = 0;
 
@@ -69,42 +74,54 @@ int rechercher_preference(List *list, int rang_preference, bool find_index) {
         Pref *current = (Pref *)iterator_current(it);
 
         if (current->values == rang_preference) {
-            int result = (find_index) ? indice : 1;
             iterator_delete(it);
-            return result;
+            return (find_index) ? indice : 1;
         }
         indice++;
         iterator_next(it);
     }
     iterator_delete(it);
-    return (find_index) ? -1 : 0;
+    return find_index;
 }
 
-// Fonction de comparaison pour les préférences
-int compare_pref(const void *a, const void *b) {
+/**
+ * @brief Fonction de comparaison pour le tri de la liste d'ensemble de préférence
+ * @param a Pointeur vers le premier ensemble de préférence
+ * @param b Pointeur vers le second ensemble de préférence
+ * @return int Résultat de la comparaison
+ */
+int ens_pref_comp(const void *a, const void *b) {
     return ((Pref *)a)->values - ((Pref *)b)->values;
 }
 
 /**
- * @brief Ajoute un ensemble de préférence à la liste d'ensemble de préférence
+ * @brief Ajoute une liste de préférence à la liste d'ensemble de préférence
+ * @details Si l'ensemble de préférence n'existe pas, il est créé et ajouté à la liste
+ *        - Si l'ensemble de préférence existe, le candidat est ajouté à l'ensemble
+ *        - L'ensemble de préférence est trié par ordre croissant de rang de préférence
  * @param liste_preferences La liste d'ensemble de préférence
  * @param candidat_ptr Le pointeur vers le candidat à ajouter
  * @param rang_preference Le rang de préférence du candidat
  */
-void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int rang_preference){
+void ens_pref_add(List *liste_preferences, int * candidat_ptr, int rang_preference){
+
     // CAS 1 : Aucun ensemble de candidat n'existe pour le rang trouvé
-    if(rechercher_preference(liste_preferences,rang_preference,false) == false){
+    if(!ens_pref_search(liste_preferences,rang_preference,false)){
+
         // Création d'un ensemble de préférence
-        Pref *new_ens_pref = creer_ensemble_preference(rang_preference);
+        Pref *new_ens_pref = ens_pref_create(rang_preference);
         list_push_back(new_ens_pref->list, candidat_ptr);
+
         // Cas particulier : liste vide
-        if(list_is_empty(liste_preferences)){
+        if(list_is_empty(liste_preferences))
             list_push_back(liste_preferences, (void *)new_ens_pref);
-        }else{ // Cas général : liste non vide
-            insert_sorted(liste_preferences, new_ens_pref, compare_pref);
-        }
-    }else{ // CAS 2 : Un ensemble de candidat existe pour le rang trouvé
-        int indice = rechercher_preference(liste_preferences,rang_preference,true);
+
+        // Cas général : liste non vide
+        else insert_sorted(liste_preferences, new_ens_pref, ens_pref_comp);
+
+    // CAS 2 : Un ensemble de candidat existe pour le rang trouvé
+    }else{
+        int indice = ens_pref_search(liste_preferences,rang_preference,true);
         Pref *ens_pref_existant = (Pref *)list_at(liste_preferences, indice);
         list_push_back(ens_pref_existant->list, candidat_ptr);
     }
@@ -113,7 +130,7 @@ void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int 
 /**
  * @brief Remplit la structure de données de classement avec les données du fichier CSV.
  *
- * Cette fonction prend une structure de données de type ballot et remplit sa liste
+ * @details Cette fonction prend une structure de données de type ballot et remplit sa liste
  * de classement avec les informations provenant d'une matrice CSV représentant les
  * préférences des votants. Chaque ligne de la matrice CSV représente les préférences
  * d'un votant, et chaque colonne à partir de la 5ème contient le rang de préférence
@@ -123,19 +140,27 @@ void ajout_ensemble_preference(List *liste_preferences, int * candidat_ptr, int 
  * @param classement_csv La matrice CSV contenant les préférences des votants.
  * @return Un pointeur vers la structure de données ballot remplie.
  */
-ballot *remplir_classement(ballot *b, t_mat_char_star_dyn *classement_csv){
+ballot *classement_init(ballot *b, t_mat_char_star_dyn *classement_csv){
     char ***matrice_csv = classement_csv->tab;
     int nb_candidats = b->nb_candidats;
     int nb_votants = b->nb_votants;
+
+    // Pour chaque votant dans le fichier csv
     for(int votant = 0; votant < nb_votants; votant++){
-        // Création d'une liste d'ensemble de préférence pour un votant
+
+        // Création d'une liste d'ensemble de préférence
         List *liste_preferences = list_create();
+
+        // Remplissage de la liste d'ensemble de préférence
         for(int candidat = 0; candidat < nb_candidats; candidat++){
+            // Récupération du rang de préférence pour un candidat
             int rang_preference = atoi(matrice_csv[votant + INCREMENT_LIGNE][candidat + INCREMENT_COLONNE]);
             if (rang_preference == -1) rang_preference = nb_candidats + 1;
             int *candidat_ptr = malloc(sizeof(int));
             *candidat_ptr = candidat;
-            ajout_ensemble_preference(liste_preferences, candidat_ptr, rang_preference);
+
+            // Ajout du candidat à la liste d'ensemble de préférence
+            ens_pref_add(liste_preferences, candidat_ptr, rang_preference);
         }
         // Ajout de la liste d'ensemble de préférence à la liste de votant
         list_push_back(b->classement, liste_preferences);
@@ -143,20 +168,25 @@ ballot *remplir_classement(ballot *b, t_mat_char_star_dyn *classement_csv){
     return b;
 }
 
-ballot *remplir_ballot(ballot *b, t_mat_char_star_dyn *classement_csv){
+ballot *ballot_init(ballot *b, t_mat_char_star_dyn *classement_csv){
+    assert(b != NULL);
+    assert(classement_csv != NULL);
     // Remplissage de la liste des noms de candidats
-    b = remplir_liste_candidats(b, classement_csv);
+    b = list_candidat_init(b, classement_csv);
     // Remplissage de la matrice de classement
-    b = remplir_classement(b, classement_csv);
+    b = classement_init(b, classement_csv);
     return b;
 }
 
 /**
  * @brief Détruit un ensemble de préférence
  * @param elem Pointeur vers l'ensemble de préférence à détruire
+ * @pre elem != NULL
  */
-void detruire_ensemble_preference(void *elem){
+void ens_pref_delete(void *elem){
+    assert(elem != NULL);
     Pref *pref = (Pref *)elem;
+    // Libération de la mémoire allouée pour la liste de candidat
     list_delete(pref->list,free);
     free(pref);
 }
@@ -164,36 +194,41 @@ void detruire_ensemble_preference(void *elem){
 /**
  * @brief Détruit une liste d'ensemble de préférence
  * @param elem Pointeur vers la liste d'ensemble de préférence à détruire
+ * @pre elem != NULL
  */
-void detruire_liste_ensemble_preference(void *elem){
+void list_ens_pref_delete(void *elem){
+    assert(elem != NULL);
     List *list = (List *)elem;
-    list_delete(list,detruire_ensemble_preference);
+    // Libération de la mémoire allouée pour la liste de préférence
+    list_delete(list,ens_pref_delete);
 }
 
-void detruire_ballot(ballot *b){
-    for (int i = 0; i < b->nb_candidats; i++){
-        free(b->candidats_nom[i]);
-    }
-    
+void ballot_delete(ballot *b){
+    assert(b != NULL);
+    // Libération de la mémoire allouée pour les noms des candidats
+    for (int i = 0; i < b->nb_candidats; i++) free(b->candidats_nom[i]);
     free(b->candidats_nom);
-    list_delete(b->classement,detruire_liste_ensemble_preference);
+
+    // Libération de la mémoire allouée pour les listes de préférence
+    list_delete(b->classement,list_ens_pref_delete);
+    // Libération de la mémoire allouée pour le ballot
     free(b);
 }
 
 /******************* UTILS *********************/
 
-char *nom_candidat(ballot *b, int indice_candidat){
+char *get_candidat_nom(ballot *b, int indice_candidat){
     return b->candidats_nom[indice_candidat];
 }
 
-List *acces_liste_preference(ballot *b, int num_votant){
+List *get_liste_pref(ballot *b, int num_votant){
     assert(num_votant < b->nb_votants && num_votant >= 0);
     List *list = b->classement;
     List *classement_courant = (List *)list_at(list,num_votant);
     return classement_courant;
 }
 
-int fav_candidat(ballot *b,int num_votant){
+int get_fav_candidat(ballot *b,int num_votant){
     List *list = b->classement;
     List *classement_courant = (List *)list_at(list,num_votant);
     Pref *pref_courant = (Pref *)list_at(classement_courant,0);
@@ -201,25 +236,7 @@ int fav_candidat(ballot *b,int num_votant){
     return *indice_candidat;
 }
 
-void afficher_liste_candidat(void *data) {
-    printf(" %d ", *(int *)data);
-}
-
-void afficher_ensemble_preference(void *data) {
-    Pref *pref = (Pref *)data;
-    int rang = pref->values;
-    printf("(%d)", rang);
-    list_map(pref->list, afficher_liste_candidat);
-    printf("\t");
-}
-
-void afficher_liste_votant(void *data) {
-    List *list_pref = (List *)data;
-    list_map(list_pref, afficher_ensemble_preference);
-    printf("\n");
-}
-
-void log_ballot(ballot *b, FILE *log_file) {
+void ballot_log(ballot *b, FILE *log_file) {
     fprintf(log_file,"Nombre de candidats : %d\n", b->nb_candidats);
     fprintf(log_file,"Nombre de votants : %d\n\n", b->nb_votants);
     fprintf(log_file,"Liste des candidats : \n");

@@ -68,20 +68,20 @@ void calculerVote(char *fichier, FILE *log_file, FILE *output_file, char *method
     /*------------------------ Traitement des données ------------------------*/
     
     // Remplissage de la matrice de vote.
-    t_mat_char_star_dyn *matrice_csv = remplirMatrice(fichier);
+    t_mat_char_star_dyn *matrice_csv = mat_char_init_from_file(fichier);
 
     if (!duel){
         // Création et remplissage du ballot.
-        matrice_ballot = creer_ballot(matrice_csv -> nbColonnes, matrice_csv -> nbLignes);
-        remplir_ballot(matrice_ballot, matrice_csv);
+        matrice_ballot = ballot_create(matrice_csv -> nbColonnes, matrice_csv -> nbLignes);
+        ballot_init(matrice_ballot, matrice_csv);
         candidats_nom = matrice_ballot->candidats_nom;
 
         // Création de la matrice de duel à partir du ballot.
-        matrice_duel = creer_matrice_duel(matrice_ballot);
+        matrice_duel = mat_duel_create(matrice_ballot);
 
     }else{
         // Création de la matrice de duel directement à partir de la matrice de chaines de caractères.
-        matrice_duel = creer_matrice_duel_f_char(matrice_csv);
+        matrice_duel = mat_duel_create_from_str(matrice_csv);
         candidats_nom = matrice_csv->tab[0];
     }
 
@@ -118,9 +118,9 @@ void calculerVote(char *fichier, FILE *log_file, FILE *output_file, char *method
 
     /*------------------------ Libération de la mémoire ------------------------*/
 
-    detruire_matrice(matrice_duel);
-    libererMatrice(matrice_csv);
-    if (!duel) detruire_ballot(matrice_ballot);
+    mat_int_delete(matrice_duel);
+    mat_char_delete(matrice_csv);
+    if (!duel) ballot_delete(matrice_ballot);
 }
 
 /**

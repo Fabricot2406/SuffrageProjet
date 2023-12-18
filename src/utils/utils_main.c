@@ -105,20 +105,22 @@ void remplir_log(FILE *log_file, Data data) {
     t_mat_int_dyn *matrice_duel = data.matrice_duel;
     larc *list_arc = larc_init(matrice_duel);
     
-    if(ballot != NULL) log_ballot(ballot, log_file);
+    if(ballot != NULL) ballot_log(ballot, log_file);
     else{
         int nb_votants = matrice_duel->mat[0][1] + matrice_duel->mat[1][0];
         int nb_candidats = matrice_duel->cols;
-        fprintf(log_file,"Nombre de candidats : %d\n", nb_candidats);
-        fprintf(log_file,"Nombre de votants : %d\n", nb_votants);
-        fprintf(log_file,"Liste des candidats : \n");
+        fprintf(log_file,
+            "Nombre de candidats : %d\n"
+            "Nombre de votants : %d\n"
+            "Liste des candidats : \n", 
+        nb_candidats, nb_votants);
         for (int i = 0; i < nb_candidats; i++) {
             fprintf(log_file,"[%d] : %s\n",i,candidats_nom[i]);
         }
         fprintf(log_file,"\n");
     }
-    log_duel(matrice_duel, log_file);
-    log_larc(list_arc, log_file);
+    mat_duel_log(matrice_duel, log_file);
+    larc_log(list_arc, log_file);
 
-    detruire_larc(list_arc);
+    larc_delete(list_arc);
 }

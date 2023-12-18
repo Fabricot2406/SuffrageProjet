@@ -1,0 +1,75 @@
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+
+\begin{DoxyItemize}
+\item Anthony CHAIGNEAU (Responsable Utilitaires)
+\item Fabio YABAR (Responsable Méthodes)
+\item Marco REGRAGUI MARTINS (Responsable Sécurité / Documentation)
+\end{DoxyItemize}\hypertarget{index_autotoc_md1}{}\doxysection{Présentation du logiciel}\label{index_autotoc_md1}
+Ce logiciel a deux buts principaux \+: {\bfseries{calculer les résultats d\textquotesingle{}un scrutin à l\textquotesingle{}aide d\textquotesingle{}une méthode et consulter ses propres votes.}}
+
+La liste des méthodes accessibles dans ce logiciel sont les suivants \+:
+\begin{DoxyItemize}
+\item Méthode Uninominale (à un et deux tours)
+\item Méthode de Jugement Majoritaire
+\item Méthode de Condorcet (Minimax, Schulze et paires)
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{Avant de démarrer}\label{index_autotoc_md2}
+Pour utiliser le logiciel, vous devez prendre compte des commandes de compilation. Pour entrer celles-\/ci, ouvrez donc le terminal de votre choix (sous un système d\textquotesingle{}exploitation Unix) dans le dossier où le makefile se situe et \+:
+\begin{DoxyItemize}
+\item {\bfseries{Pour compiler le programme}}, utilisez la commande {\ttfamily make}.
+\item {\bfseries{Pour générer la documentation}}, utilisez la commande {\ttfamily make doc}.
+\item {\bfseries{Pour effectuer des tests automatiques}}, utilisez la commande {\ttfamily make TEST=$<$methode$>$}. \begin{quote}
+{\itshape avec \mbox{[}methode\mbox{]} étant choisi parmi \+: uni, cm, cp, cs, jm, all.} \end{quote}
+$\ast$ {\bfseries{Pour supprimer les fichiers locaux de compilation}}, utilisez la commande {\ttfamily make clean}.
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{Exécution du programme}\label{index_autotoc_md3}
+Pour exécuter le programme, utilisez la commande suivante \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./scrutin [-\/i <ballot>] [-\/d <duel>] [-\/o <output>] [-\/m <methode>]}
+
+\end{DoxyCode}
+
+
+Les balises doivent être utilisées comme ceci \+:
+\begin{DoxyItemize}
+\item {\bfseries{-\/i $<$ballot$>$}} \+: ouvre un fichier de scrutin (au format csv, de type ballot). \begin{quote}
+{\itshape avec \mbox{[}fichier\mbox{]} le nom du fichier, sans chemins ni extensions, placé dans le dossier {\ttfamily test/input}.} \end{quote}
+$\ast$ {\bfseries{-\/d $<$duel$>$}} \+: ouvre un fichier de scrutin (au format csv, de type duel). \begin{quote}
+{\itshape avec \mbox{[}fichier\mbox{]} le nom du fichier, sans chemins ni extensions, placé dans le dossier {\ttfamily test/input}.} \end{quote}
+$\ast$ {\bfseries{-\/o $<$output$>$}} \+: permet d\textquotesingle{}écrire la sortie du programme dans un fichier au choix. \begin{quote}
+{\itshape avec \mbox{[}output\mbox{]} le nom du fichier, sans chemins ni extensions, placé dans le dossier {\ttfamily test/output}.} \end{quote}
+$\ast$ {\bfseries{-\/m $<$methode$>$}} \+: la méthode au choix que vous souhaitez utiliser pour déterminer le vainqueur du scrutin. \begin{quote}
+{\itshape avec \mbox{[}methode\mbox{]} étant choisi parmi \+: uni1, uni2, cm, cp, cs, jm, all.} \end{quote}
+{\bfseries{ATTENTION \+:}}
+\item Il est au minimum {\bfseries{nécessaire}} d\textquotesingle{}utilisé une option d\textquotesingle{}input (-\/i ou -\/d) et l\textquotesingle{}option -\/m.
+\item Les options -\/i et -\/d sont {\bfseries{incompatibles}}.
+\item L\textquotesingle{}option -\/d {\bfseries{ne peut pas}} être utilisée avec les méthodes uni1, uni2, jm et all.
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysubsection{Exemples d\textquotesingle{}exécution}\label{index_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./scrutin -\/i vote10 -\/m uni2}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./scrutin -\/d wiki\_paires -\/o test\_wiki\_paire -\/m cp}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md5}{}\doxysection{Utilisation du programme}\label{index_autotoc_md5}
+Le programme vous propose deux options \+:
+\begin{DoxyItemize}
+\item {\bfseries{Entrez 1}} si vous souhaitez utiliser la méthode choisie sur le fichier demandé, le résultat du vote sera affiché en sortie.
+\item {\bfseries{Entrez 2}} si vous souhaitez consulter vos votes.
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysubsection{Consultation des votes}\label{index_autotoc_md6}
+Vous pouvez uniquement consulter vos votes dans le cas où vous utilisez l\textquotesingle{}option -\/i avec les fichiers {\ttfamily vote\+Jugement} et {\ttfamily vote\+Condorcet}.
+
+Les étapes de consultation sont les suivantes \+:
+\begin{DoxyItemize}
+\item Entrez votre nom.
+\item Entrez votre prénom.
+\item Entrez votre clé, celle-\/ci est trouvable dans les fichiers txt (respectivement {\ttfamily test/reference/code\+Jugement} et {\ttfamily test/reference/code\+Condorcet}) suivant votre numéro étudiant.
+\end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysubsection{Fichiers de log}\label{index_autotoc_md7}
+Vous pouvez consulter le fichier de log une fois le programme exécuté dans {\ttfamily test/output/log}. 

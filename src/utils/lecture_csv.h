@@ -16,7 +16,7 @@
 #define TAILLE_MAX 65
 
 /**
- * @fn t_mat_char_star_dyn *remplirMatrice(char *fichier)
+ * @fn t_mat_char_star_dyn *mat_char_init_from_file(char *fichier)
  * @brief Fonction pour remplir la matrice avec les données du fichier CSV.
  * Procédé : 1) On vérifie que le fichier est bien un ".csv".
  *           2) On ouvre le fichier en lecture.
@@ -29,6 +29,6 @@
  * @param fichier Le nom du fichier CSV.
  * @return Pointeur vers la matrice remplie.
  */
-t_mat_char_star_dyn *remplirMatrice(char *fichier);
+t_mat_char_star_dyn *mat_char_init_from_file(char *fichier);
 
 #endif // LECTURE_CSV_H

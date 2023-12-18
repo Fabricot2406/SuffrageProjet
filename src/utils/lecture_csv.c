@@ -7,21 +7,20 @@
 #include "lecture_csv.h"
 
 /**
- * @fn int estMauvaiseExtension(char *fichier)
  * @brief Fonction qui confirme si le fichier est un ".csv".
  * @param fichier Le nom du fichier à vérifier.
  * @return 1 si le fichier n'est pas un ".csv", 0 sinon.
  */
-int estMauvaiseExtension(char *fichier){
+int est_mauvaise_extension(char *fichier){
     //pointe sur la derniere occurence du "." dans le nom de fichier
     char *extension = strrchr(fichier,'.');
     //retourne 0 si l'extension est ".csv"
     return extension!=NULL && strcmp(extension,".csv");
 }
 
-t_mat_char_star_dyn *remplirMatrice(char *fichier){
+t_mat_char_star_dyn *mat_char_init_from_file(char *fichier){
     //si mauvaise extension on retourne matrice vide
-    if (estMauvaiseExtension(fichier)){
+    if (est_mauvaise_extension(fichier)){
         fprintf(stderr,"Erreur mauvaise extension de fichier.\n");
         return NULL;
     }
@@ -31,7 +30,7 @@ t_mat_char_star_dyn *remplirMatrice(char *fichier){
         fprintf(stderr,"Erreur lors de l'ouverture du fichier, verifiez le chemin ou le nom du fichier.\n");
         return NULL;
     }
-    t_mat_char_star_dyn *matrice = creerMatrice();
+    t_mat_char_star_dyn *matrice = mat_char_create();
 
 
     int ligne=0,colonne=0,cellule=0;

@@ -131,32 +131,31 @@ bool arc_sortant(List *list_arc, int candidat){
 bool vainqueur_condorcet(larc *list_arc, int *vainqueur){
     List *list = list_arc->larc;
     int nb_candidats = list_arc->nb_candidats;
-    statut_candidat *cand_winner = malloc(sizeof(statut_candidat));
-    for (int candidat = 0; candidat < nb_candidats; candidat++)
-    {
-        cand_winner->candidat = candidat;
-        cand_winner->est_gagant = true;
+    statut_candidat *cand_gagnant = malloc(sizeof(statut_candidat));
+    
+    for (int candidat = 0; candidat < nb_candidats; candidat++){
+        cand_gagnant->candidat = candidat;
+        cand_gagnant->est_gagant = true;
 
         Iterator * it = iterator_create(list);
         while (iterator_has_next(it)){
             arc *a = (arc *)iterator_current(it);
-            if(uni_perdant(a, cand_winner)){
+            if(uni_perdant(a, cand_gagnant)){
                 break;
             }
             iterator_next(it);
         }
         iterator_delete(it);
 
-        if (cand_winner->est_gagant){
+        if (cand_gagnant->est_gagant){
             *vainqueur = candidat;
-            free(cand_winner);
+            free(cand_gagnant);
             return true;
         }
     }
-    free(cand_winner);
+    free(cand_gagnant);
     return false;
 }
-
 
 void afficher_position(void *elem, void *data){
     char *candidat = (char *)elem;

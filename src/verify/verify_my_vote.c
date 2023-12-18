@@ -29,17 +29,17 @@ char *hasherChaines(char *nom,char *cle){
 
 void trouverHashDansCsv (char *hash, char *fichier){
     //on lit le fichier csv et on le stocke dans une matrice
-    t_mat_char_star_dyn *matrice = remplirMatrice(fichier);
+    t_mat_char_star_dyn *matrice = mat_char_init_from_file(fichier);
     int ligne,colonne;
     //on cherche le hash dans la matrice
-    if (trouverElem(matrice,hash,&ligne,&colonne)==0){
+    if (mat_char_search_elem(matrice,hash,&ligne,&colonne)==0){
         //si on ne le trouve pas on affiche un message d'erreur
         printf("Impossible de trouver votre vote veuillez verifier vos donnees.\n");
-        libererMatrice(matrice);
+        mat_char_delete(matrice);
         return;
     }
     //on affiche la ligne correspondante au hash
-    afficherLigne(matrice,ligne);
+    mat_char_display_row(matrice,ligne);
     //on libere la matrice
-    libererMatrice(matrice);
+    mat_char_delete(matrice);
 }

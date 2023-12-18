@@ -1,0 +1,22 @@
+<map id="src/utils/dataStructure/ballot.h" name="src/utils/dataStructure/ballot.h">
+<area shape="rect" id="node1" title="Structure de données représentant un ballot de vote." alt="" coords="681,5,846,47"/>
+<area shape="rect" id="node2" href="$methode__minimax_8h.html" title="Implémentation de la méthode Minimax." alt="" coords="5,184,169,225"/>
+<area shape="rect" id="node4" href="$global_8h.html" title="Fichier global qui contient tous les headers des fichiers .c." alt="" coords="777,281,907,307"/>
+<area shape="rect" id="node6" href="$methode__paires_8h.html" title="Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires." alt="" coords="435,184,599,225"/>
+<area shape="rect" id="node8" href="$uninominale_8h.html" title="Méthode uninominale à 1 et 2 tours." alt="" coords="1399,191,1597,218"/>
+<area shape="rect" id="node10" href="$ballot_8c.html" title="Structure de données représentant un ballot de vote." alt="" coords="1671,95,1837,136"/>
+<area shape="rect" id="node11" href="$duel_8h.html" title="Structure de données représentant une matrice de duel." alt="" coords="357,95,522,136"/>
+<area shape="rect" id="node13" href="$utils__main_8h.html" title="Fichier de fonctions utilitaires nécessaires au main." alt="" coords="623,191,781,218"/>
+<area shape="rect" id="node15" href="$utils__sd_8h.html" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="749,102,887,129"/>
+<area shape="rect" id="node3" href="$methode__minimax_8c.html" title="Implémentation de la méthode Minimax." alt="" coords="5,273,169,315"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="Fichier principal du programme." alt="" coords="797,363,887,389"/>
+<area shape="rect" id="node7" href="$methode__paires_8c.html" title="Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires." alt="" coords="409,273,573,315"/>
+<area shape="rect" id="node9" href="$uninominale_8c.html" title="Méthode uninominale à 1 et 2 tours." alt="" coords="1399,281,1597,307"/>
+<area shape="rect" id="node12" href="$duel_8c.html" title="Structure de données représentant une matrice de duel." alt="" coords="245,184,410,225"/>
+<area shape="rect" id="node14" href="$utils__main_8c.html" title="Fichier de fonctions utilitaires nécessaires au main." alt="" coords="597,281,753,307"/>
+<area shape="rect" id="node16" href="$jugement__majoritaire_8h.html" title="Fichier de la méthode de scrutin du jugement majoritaire." alt="" coords="855,184,1023,225"/>
+<area shape="rect" id="node18" href="$methode__schulze_8h.html" title="Fichier pour le calcul du vainqueur avec Schulze." alt="" coords="1211,184,1375,225"/>
+<area shape="rect" id="node20" href="$utils__sd_8c.html" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="1047,191,1186,218"/>
+<area shape="rect" id="node17" href="$jugement__majoritaire_8c.html" title="Fichier de la méthode de scrutin du jugement majoritaire." alt="" coords="931,273,1099,315"/>
+<area shape="rect" id="node19" href="$methode__schulze_8c.html" title="Fichier pour le calcul du vainqueur avec Schulze." alt="" coords="1211,273,1375,315"/>
+</map>

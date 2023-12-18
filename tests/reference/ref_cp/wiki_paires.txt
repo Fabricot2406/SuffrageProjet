@@ -1,0 +1,1 @@
+Mode de scrutin : Condorcet paires, 5 candidats, 5 votants, vainqueur = A

@@ -74,5 +74,5 @@ void condorcet_schulze(t_mat_int_dyn *matrice_duel, char **candidats_nom, FILE *
     // Détermination du vainqueur
     reduire_arcs(list_arc -> larc, list_arc -> nb_candidats, candidats_nom, output);
     // Destruction de la liste d'arcs
-    detruire_larc(list_arc);
+    larc_delete(list_arc);
 }

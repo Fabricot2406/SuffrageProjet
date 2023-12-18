@@ -8,7 +8,7 @@
 
 /******************* MATRICE *********************/
 
-t_mat_int_dyn *creer_matrice(int rows,int col){
+t_mat_int_dyn *mat_int_create(int rows,int col){
     t_mat_int_dyn *matrice = malloc(sizeof(t_mat_int_dyn));
     matrice->mat = (int**)malloc(rows * sizeof(int*));
     if (matrice->mat == NULL){
@@ -29,12 +29,8 @@ t_mat_int_dyn *creer_matrice(int rows,int col){
     return matrice;
 }
 
-void setPosition(t_mat_int_dyn* matrix, int value, int col, int row) {
-    assert(col >= 0 && col < matrix->cols && row >= 0 && row < matrix->rows);
-    matrix->mat[row][col] = value;
-}
 
-void detruire_matrice(t_mat_int_dyn *matrice){
+void mat_int_delete(t_mat_int_dyn *matrice){
     for(int i = 0; i < matrice->rows; i++){
         free(matrice->mat[i]);
     }
@@ -44,7 +40,7 @@ void detruire_matrice(t_mat_int_dyn *matrice){
 
 /******************* UTILS *********************/
 
-void log_matrice(t_mat_int_dyn *matrice, int not_displayed_value, FILE *log_file){
+void mat_int_log(t_mat_int_dyn *matrice, int not_displayed_value, FILE *log_file){
     for(int i = 0; i < matrice->rows; i++){
         for(int j = 0; j < matrice->cols; j++){
             if (matrice->mat[i][j] != not_displayed_value){
@@ -55,7 +51,7 @@ void log_matrice(t_mat_int_dyn *matrice, int not_displayed_value, FILE *log_file
     }
 }
 
-void map_matrice(t_mat_int_dyn *matrice, void (*f)(int)){
+void mat_int_map(t_mat_int_dyn *matrice, void (*f)(int)){
     for(int i = 0; i < matrice->rows; i++){
         for(int j = 0; j < matrice->cols; j++){
             f(matrice->mat[i][j]);

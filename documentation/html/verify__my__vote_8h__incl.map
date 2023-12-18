@@ -1,0 +1,13 @@
+<map id="src/verify/verify_my_vote.h" name="src/verify/verify_my_vote.h">
+<area shape="rect" id="node1" title="Fichier de déclaration pour la vérification du vote de l&#39;utilisateur." alt="" coords="342,5,493,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,259,72,285"/>
+<area shape="rect" id="node3" title=" " alt="" coords="97,259,167,285"/>
+<area shape="rect" id="node4" title=" " alt="" coords="405,259,475,285"/>
+<area shape="rect" id="node5" href="$sha256_8h_source.html" title=" " alt="" coords="547,177,629,203"/>
+<area shape="rect" id="node7" href="$sha256__utils_8h.html" title="Fichier de déclaration pour la fonction de hashage sha256ofString." alt="" coords="563,95,679,121"/>
+<area shape="rect" id="node8" href="$lecture__csv_8h.html" title="Fichier de déclaration pour la lecture d&#39;un fichier CSV." alt="" coords="230,95,381,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="551,259,625,285"/>
+<area shape="rect" id="node9" title=" " alt="" coords="297,259,380,285"/>
+<area shape="rect" id="node10" href="$matrice__string__dyn_8h.html" title="Structure de donnée correspondant à une matrice dynamique contenant des chaines de caractères." alt="" coords="163,169,335,211"/>
+<area shape="rect" id="node11" title=" " alt="" coords="199,259,273,285"/>
+</map>

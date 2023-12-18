@@ -1,8 +1,17 @@
 /**
  * @file duel.h
  * @author Anthony
- * @brief Création de la matrice de duel, qui contient les duels entre les candidats. 
- * La diagonale est remplie de 0, car un candidat ne peut pas se battre contre lui-même.
+ * @brief Structure de données représentant une matrice de duel.
+ * @details La diagonale est remplie de 0, car un candidat ne peut pas se battre contre lui-même.
+ * 
+ * @example matrice de duel : 5 candidats
+ * 
+ *           [[0  5  6  7  6], 
+ *            [1  0  4  6  6], 
+ *            [2  3  0  5  5], 
+ *            [2  3  3  0  3],
+ *            [3  3  3  5  0]]
+ * 
  * @date 2023-11-26
  */
 
@@ -22,8 +31,9 @@
  * @brief Fonction permettant de créer la matrice de duel à partir d'un ballot.
  * @param b Le ballot qui contient les préférences des électeurs.
  * @return t_mat_int_dyn* La matrice de duel.
+ * @pre Le ballot est initialisé.
  */
-t_mat_int_dyn *creer_matrice_duel(ballot *b);
+t_mat_int_dyn *mat_duel_create(ballot *b);
 
 /**
  * @brief Fonction permettant de créer la matrice de duel à partir d'une matrice de chaines de caractères.
@@ -31,7 +41,7 @@ t_mat_int_dyn *creer_matrice_duel(ballot *b);
  * @param matrice_string La matrice de chaines de caractères.
  * @return t_mat_int_dyn* La matrice de duel.
  */
-t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string);
+t_mat_int_dyn *mat_duel_create_from_str(t_mat_char_star_dyn *matrice_string);
 
 /******************* UTILS *********************/
 
@@ -41,6 +51,6 @@ t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string);
  * @param matrice_duel La matrice de duel.
  * @param log_file Le fichier de log.
  */
-void log_duel(t_mat_int_dyn *matrice_duel, FILE *log_file);
+void mat_duel_log(t_mat_int_dyn *matrice_duel, FILE *log_file);
 
 #endif // __DUEL_H__

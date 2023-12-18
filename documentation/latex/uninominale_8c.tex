@@ -1,0 +1,115 @@
+\hypertarget{uninominale_8c}{}\doxysection{src/methods/uninominale.c File Reference}
+\label{uninominale_8c}\index{src/methods/uninominale.c@{src/methods/uninominale.c}}
+
+
+Méthode uninominale à 1 et 2 tours.  
+
+
+{\ttfamily \#include \char`\"{}uninominale.\+h\char`\"{}}\newline
+Include dependency graph for uninominale.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uninominale_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{uninominale_8c_a4782f24c7b7fb75ece148f60b025b1fc}{initialiser\+\_\+tableau\+\_\+votes}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice)
+\begin{DoxyCompactList}\small\item\em Initialise un tableau de votes contenant le score de chaque candidat Processus \+: 1) On initialise les éléments du tableaux à 0. 2) On ajoute le score de chaque candidats par votants à leur indice pour obtenir le score final. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uninominale_8c_aa4ca076b9b595f4105431094de06a0bf}{calculer\+\_\+uninominale\+\_\+un\+\_\+tour}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice, FILE $\ast$output)
+\begin{DoxyCompactList}\small\item\em Calcule le résultat de la méthode uninominale à un tour. Processus \+: 1) On initialise un tableau de votes. 2) On cherche dans ce tableau le vainqueur. 3) On affiche le vainqueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uninominale_8c_abb084f0957af5e78686513014f425692}{calculer\+\_\+uninominale\+\_\+deux\+\_\+tours}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice, FILE $\ast$output)
+\begin{DoxyCompactList}\small\item\em Calcule le résultat de la méthode uninominale à deux tour. Processus \+: 1) On initialise un tableau de votes. 2) On cherche dans ce tableau les deux vainqueurs. 3) Si le score du vainqueur un est supérieur à 50\%, alors on l\textquotesingle{}affique comme vainqueur, sinon on continue. 4) On cherche le vainqueur entre les deux (celui qui obtient le plus de voix en ne contant que leurs votes). 5) On affiche le vainqueur dépendant de qui a le plus haut score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{uninominale_8c_ae524ad05181f422b05068c0a7f955424}\label{uninominale_8c_ae524ad05181f422b05068c0a7f955424}} 
+int {\bfseries nb\+\_\+candidats}
+\item 
+\mbox{\Hypertarget{uninominale_8c_ac7589c13ce94ae280efba1f8e2b0e586}\label{uninominale_8c_ac7589c13ce94ae280efba1f8e2b0e586}} 
+int {\bfseries nb\+\_\+votants}
+\item 
+\mbox{\Hypertarget{uninominale_8c_a8a67878da7ca91e1db9cfd3cf1a654a8}\label{uninominale_8c_a8a67878da7ca91e1db9cfd3cf1a654a8}} 
+int $\ast$ {\bfseries votes}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Méthode uninominale à 1 et 2 tours. 
+
+\begin{DoxyAuthor}{Author}
+Fabio 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{uninominale_8c_abb084f0957af5e78686513014f425692}\label{uninominale_8c_abb084f0957af5e78686513014f425692}} 
+\index{uninominale.c@{uninominale.c}!calculer\_uninominale\_deux\_tours@{calculer\_uninominale\_deux\_tours}}
+\index{calculer\_uninominale\_deux\_tours@{calculer\_uninominale\_deux\_tours}!uninominale.c@{uninominale.c}}
+\doxysubsubsection{\texorpdfstring{calculer\_uninominale\_deux\_tours()}{calculer\_uninominale\_deux\_tours()}}
+{\footnotesize\ttfamily void calculer\+\_\+uninominale\+\_\+deux\+\_\+tours (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{matrice,  }\item[{FILE $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Calcule le résultat de la méthode uninominale à deux tour. Processus \+: 1) On initialise un tableau de votes. 2) On cherche dans ce tableau les deux vainqueurs. 3) Si le score du vainqueur un est supérieur à 50\%, alors on l\textquotesingle{}affique comme vainqueur, sinon on continue. 4) On cherche le vainqueur entre les deux (celui qui obtient le plus de voix en ne contant que leurs votes). 5) On affiche le vainqueur dépendant de qui a le plus haut score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Une matrice de type ballot. \\
+\hline
+{\em output} & Le fichier de sortie dans lequel on écrit le résultat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+La matrice ballot est initialisée et remplie. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le vainqueur du scrutin est affiché. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{uninominale_8c_aa4ca076b9b595f4105431094de06a0bf}\label{uninominale_8c_aa4ca076b9b595f4105431094de06a0bf}} 
+\index{uninominale.c@{uninominale.c}!calculer\_uninominale\_un\_tour@{calculer\_uninominale\_un\_tour}}
+\index{calculer\_uninominale\_un\_tour@{calculer\_uninominale\_un\_tour}!uninominale.c@{uninominale.c}}
+\doxysubsubsection{\texorpdfstring{calculer\_uninominale\_un\_tour()}{calculer\_uninominale\_un\_tour()}}
+{\footnotesize\ttfamily void calculer\+\_\+uninominale\+\_\+un\+\_\+tour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{matrice,  }\item[{FILE $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Calcule le résultat de la méthode uninominale à un tour. Processus \+: 1) On initialise un tableau de votes. 2) On cherche dans ce tableau le vainqueur. 3) On affiche le vainqueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Une matrice de type ballot. \\
+\hline
+{\em output} & Le fichier de sortie dans lequel on écrit le résultat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+La matrice ballot est initialisée et remplie. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Le vainqueur du scrutin est affiché. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{uninominale_8c_a4782f24c7b7fb75ece148f60b025b1fc}\label{uninominale_8c_a4782f24c7b7fb75ece148f60b025b1fc}} 
+\index{uninominale.c@{uninominale.c}!initialiser\_tableau\_votes@{initialiser\_tableau\_votes}}
+\index{initialiser\_tableau\_votes@{initialiser\_tableau\_votes}!uninominale.c@{uninominale.c}}
+\doxysubsubsection{\texorpdfstring{initialiser\_tableau\_votes()}{initialiser\_tableau\_votes()}}
+{\footnotesize\ttfamily void initialiser\+\_\+tableau\+\_\+votes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{matrice }\end{DoxyParamCaption})}
+
+
+
+Initialise un tableau de votes contenant le score de chaque candidat Processus \+: 1) On initialise les éléments du tableaux à 0. 2) On ajoute le score de chaque candidats par votants à leur indice pour obtenir le score final. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Une matrice de type ballot. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Le tableau de votes est initialisé. 
+\end{DoxyPostcond}

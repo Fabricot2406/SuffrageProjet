@@ -1,8 +1,7 @@
 /**
  * @file duel.c
  * @author Anthony
- * @brief Création de la matrice de duel, qui contient les duels entre les candidats. 
- * La diagonale est remplie de 0, car un candidat ne peut pas se battre contre lui-même.
+ * @brief Structure de données représentant une matrice de duel.
  * @date 2023-11-28
  */
 #include "duel.h"
@@ -18,7 +17,7 @@
  * @param pref_sujet La préférence du sujet.
  * @param it Un itérateur sur la liste des préférences.
  */
-void creer_duels(t_mat_int_dyn *matrice_duel, Pref *pref_sujet, Iterator *it) {
+void duel_create(t_mat_int_dyn *matrice_duel, Pref *pref_sujet, Iterator *it) {
     // Récupération de la liste des préférences du sujet et création d'un itérateur sur celle-ci
     List *liste_sujet = pref_sujet->list;
     Iterator *it_sujet = iterator_create(liste_sujet);
@@ -56,10 +55,11 @@ void creer_duels(t_mat_int_dyn *matrice_duel, Pref *pref_sujet, Iterator *it) {
     iterator_delete(it_sujet);
 }
 
-t_mat_int_dyn *creer_matrice_duel(ballot *b){
+t_mat_int_dyn *mat_duel_create(ballot *b){
+    assert(b != NULL);
     int nb_candidats = b->nb_candidats;
     int nb_votants = b->nb_votants;
-    t_mat_int_dyn *matrice_duel = creer_matrice(nb_candidats, nb_candidats);
+    t_mat_int_dyn *matrice_duel = mat_int_create(nb_candidats, nb_candidats);
     // Initialisation de la matrice à 0
     for(int i = 0; i < nb_candidats; i++){
         for(int j = 0; j < nb_candidats; j++){
@@ -73,7 +73,7 @@ t_mat_int_dyn *creer_matrice_duel(ballot *b){
             Pref *pref_sujet = (Pref *)list_at(liste_preferences, i);
             Iterator *it = iterator_create(liste_preferences);
             set_position(it, i+1);
-            creer_duels(matrice_duel,pref_sujet,it);
+            duel_create(matrice_duel,pref_sujet,it);
             iterator_delete(it);
         }
     }
@@ -81,10 +81,10 @@ t_mat_int_dyn *creer_matrice_duel(ballot *b){
 }
 
 
-t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string){
+t_mat_int_dyn *mat_duel_create_from_str(t_mat_char_star_dyn *matrice_string){
     // Ne pas tenir compte de la première ligne de la matrice de string
     int nb_candidats = matrice_string->nbColonnes;
-    t_mat_int_dyn *matrice_duel = creer_matrice(nb_candidats, nb_candidats);
+    t_mat_int_dyn *matrice_duel = mat_int_create(nb_candidats, nb_candidats);
 
     // Parcour de la matrice de string pour créer la matrice de duel en convertissant les chaines de caractères en entiers
     for(int i = 0; i < nb_candidats; i++){
@@ -98,8 +98,8 @@ t_mat_int_dyn *creer_matrice_duel_f_char(t_mat_char_star_dyn *matrice_string){
 
 /******************* UTILS *********************/
 
-void log_duel(t_mat_int_dyn *matrice_duel, FILE *log_file){
+void mat_duel_log(t_mat_int_dyn *matrice_duel, FILE *log_file){
     fprintf(log_file,"Matrice de duel :\n");
-    log_matrice(matrice_duel, 0, log_file);
+    mat_int_log(matrice_duel, 0, log_file);
     fprintf(log_file,"\n");
 }

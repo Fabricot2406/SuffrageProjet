@@ -1,0 +1,8 @@
+vote10.csv
+vote100.csv
+ballots_va.csv
+voteCondorcet.csv
+voteJugement.csv
+voteUninominale.csv
+voteUninominaleMajorite.csv
+paradoxe.csv

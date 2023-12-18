@@ -21,23 +21,23 @@
 int filtrer_larc(larc *list_arc){
     int nb_circuit = 0;
     int nb_candidats = list_arc->nb_candidats;
-    graphe *g = creation_graphe(nb_candidats);
+    graphe *g = graphe_create(nb_candidats);
     Iterator *it = iterator_create(list_arc->larc);
 
     // Pour chaque arc de la liste
     while (iterator_has_next(it)){
         arc *a = iterator_current(it);
         // On ajoute une succession dans le graphe
-        ajout_succession(g->graphe[a->candidat_gagnant], g->graphe[a->candidat_perdant]);
+        succ_add(g->graphe[a->candidat_gagnant], g->graphe[a->candidat_perdant]);
         sommet *s_current = g->graphe[a->candidat_gagnant];
         // Tableau de status initialisé à chaque ajout de succession
-        initialiser_status(g, s_current->indice);
+        status_init(g, s_current->indice);
 
         // Si un circuit est détecté dans le graphe après l'ajout de l'arc
-        if (circuits(g, s_current)){
+        if (contain_circuit(g, s_current)){
             nb_circuit++;
             // On supprime l'arc de la liste et on supprime la succession dans le graphe
-            delete_succession(g->graphe[a->candidat_gagnant]);
+            last_succ_delete(g->graphe[a->candidat_gagnant]);
             int index = iterator_index(it);
             iterator_prev(it);
             // Arc supprimé de la liste
@@ -48,7 +48,7 @@ int filtrer_larc(larc *list_arc){
     }
     // Libération de la mémoire
     iterator_delete(it);
-    detruire_graphe(g);
+    graphe_delete(g);
     return nb_circuit;
 }
 
@@ -79,7 +79,7 @@ void determiner_vainqueur(List *list_arc,List *classement,List *candidats_restan
             // On le supprime de la liste des candidats restant
             list_remove_at(candidats_restant,iterator_index(it_candidat_restant),free);
             // Supression des arcs pour lesquels le candidat est impliqué
-            supprimer_candidat(list_arc,candidat_gagnant);
+            candidat_delete(list_arc,candidat_gagnant);
             break;
         }
         iterator_next(it_candidat_restant);
@@ -133,6 +133,6 @@ void condorcet_paires(t_mat_int_dyn *matrice_duel,char **candidats_nom, FILE *ou
     retourner_vainqueur("Condorcet paires", matrice_duel->cols, matrice_duel->rows, list_at(classement, 0), 0, output);
 
     // Libération de la mémoire
-    detruire_larc(list_arc);
+    larc_delete(list_arc);
     list_delete(classement,vide);
 }

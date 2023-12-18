@@ -1,8 +1,43 @@
 /**
  * @file ballot.h
  * @author Anthony
- * @brief Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur.
- * @date 2021-11-26
+ * @brief Structure de données représentant un ballot de vote.
+ * @details Un ballot est une structure composée d'une liste de candidats, d'une matrice de classement et d'un nombre de votants.
+ * 
+ *        - Chaque élément de la matrice de classement est un ensemble de préférence.
+ *             - Chaque ligne de la matrice de classement correspond une liste d'ensemble de préférence.
+ *             - Il y a autant de lignes que de votants.
+ *             - Il peut y avoir (nb_candidats + 1) colonnes dans la matrice de classement.
+ *             - Chaque colonne de la matrice de classement correspond à un rang de préférence.
+ *             - La liste d'ensemble de préférence est triée par ordre croissant de rang.
+ * 
+ *        - Chaque ensemble de préférence est composée d'un rang et d'une liste d'indice de candidat.
+ *        - Le pire rang est -1. Le meilleur rang est 1.
+ * 
+ * @example ensemble de préférence : {rang : [indice_candidat_1, indice_candidat_2, ...]}
+ * @example liste d'ensemble préférence : [{1 : [2 , 3]} , {3 : 4} , {4 : [0 , 1]}]
+ * @example ballot : 5 candidats, 10 votants
+ * 
+ *          [0] :  Charlotte aux poires
+ *          [1] :  Clafouti
+ *          [2] :  Quatre quart
+ *          [3] :  Baba au ruhm
+ *          [4] :  Tarte à la fraise
+ *          
+ *          Matrice de classement :
+ * 
+ *          votant n°0 : [{1 : 4} , {2 : [0 , 3]} , {4 : 2} , {-1 : 1}]
+ *          votant n°1 : [{1 : [2 , 3]} , {3 : 4} , {4 : [0 , 1]}]
+ *          votant n°2 : [...]
+ *          votant n°3 : [...]
+ *          votant n°4 : [...]
+ *          votant n°5 : [...]
+ *          votant n°6 : [...]
+ *          votant n°7 : [...]
+ *          votant n°8 : [{2 : 0} , {3 : 1} , {4 : [2 , 4]} , {-1 : 3}]
+ *          votant n°9 : [{1 : 4} , {2 : [0 , 2]} , {4 : [1 , 3]}]
+ * 
+ * @date 2023-11-15
  */
 
 #ifndef __BALLOT_H__
@@ -17,31 +52,28 @@
 #include "matrice_int_dyn.h"
 #include "listegen.h"
 
-#define INCREMENT_COLONNE 4
-#define INCREMENT_LIGNE 1
-
 /******************* STRUCTURE *********************/
 
 /**
  * @struct s_ensemble_preference
- * @brief Structure de données pour les ensembles de préférences, permettant de stocker les votes de chaque électeur.
- * @details Définition opaque de la structure
+ * @brief Structure de données représentant un ensemble de préférence.
+ * @details Au moins un candidat est présent dans l'ensemble de préférence.
  */
 typedef struct s_ensemble_preference{
     int values; // Rang de préférence
-    List *list; // List d'indice de candidat
+    List *list; // Liste de candidat
 } Pref;
 
 /**
  * @struct ballot_s
- * @brief Structure de données pour les bulletins de vote, permettant de stocker les votes de chaque électeur.
- * @details Utilisation d'une matrice dynamique contenant des entiens non signés
+ * @brief Structure de données représentant un ballot de vote.
+ * @details Utilisation d'une liste générique contenant des listes d'ensemble de préférence.
  */
 typedef struct ballot_s{
-    char **candidats_nom; // Liste des noms des candidats
-    int nb_candidats; // Nombre de candidats
-    int nb_votants; // Nombre de votants
-    List *classement; // Matrice de classement
+    char **candidats_nom; // Liste des candidats (noms des candidats)
+    int nb_candidats;
+    int nb_votants;
+    List *classement; // Matrice d'ensemble de préférence
 } ballot;
 
 /******************* CONSTRUCTEURS *********************/
@@ -51,22 +83,27 @@ typedef struct ballot_s{
  * @param nb_candidats Nombre de candidats
  * @param nb_votants Nombre de votants
  * @return Pointeur vers le nouveau ballot.
+ * @pre nb_candidats > 0
+ * @pre nb_votants > 0
  */
-ballot *creer_ballot(int nb_candidats, int nb_votants);
+ballot *ballot_create(int nb_candidats, int nb_votants);
 
 /**
  * @brief Fonction permettant de remplir un ballot à partir d'un classement CSV.
  * @param b Pointeur vers le ballot à remplir.
  * @param classement_csv Pointeur vers la matrice contenant le classement CSV.
  * @return Pointeur vers le ballot rempli.
+ * @pre b != NULL
+ * @pre classement_csv != NULL
  */
-ballot *remplir_ballot(ballot *b, t_mat_char_star_dyn *classement_csv);
+ballot *ballot_init(ballot *b, t_mat_char_star_dyn *classement_csv);
 
 /**
  * @brief Détruit un ballot, libérant la mémoire allouée.
  * @param b Pointeur vers le ballot à détruire.
+ * @pre b != NULL
  */
-void detruire_ballot(ballot *b);
+void ballot_delete(ballot *b);
 
 /******************* UTILS *********************/
 
@@ -76,7 +113,7 @@ void detruire_ballot(ballot *b);
  * @param indice_candidat correspond à l'indice du candidat dans la liste des noms des candidats : (numéro de colonne - 1)
  * @return Pointeur vers le nom du candidat.
  */
-char *nom_candidat(ballot *b, int indice_candidat);
+char *get_candidat_nom(ballot *b, int indice_candidat);
 
 /**
  * @brief Fonction permettant d'accéder à la liste de préférence d'un votant.
@@ -84,7 +121,7 @@ char *nom_candidat(ballot *b, int indice_candidat);
  * @param num_votant correspond à l'indice du votant dans la matrice de classement : (numéro de ligne - 1)
  * @return Pointeur vers la liste de préférence du votant.
  */
-List *acces_liste_preference(ballot *b, int num_votant);
+List *get_liste_pref(ballot *b, int num_votant);
 
 /**
  * @brief Affiche le premier candidat favori d'un votant.
@@ -93,13 +130,13 @@ List *acces_liste_preference(ballot *b, int num_votant);
  * @param votant correspond à l'indice du votant dans la matrice de classement : (numéro de ligne - 1)
  * @return int l'indice du candidat favori dans la liste des noms des candidats
  */
-int fav_candidat(ballot *b,int num_votant);
+int get_fav_candidat(ballot *b,int num_votant);
 
 /**
  * @brief Fonction permettant de remplir le fichier log avec le ballot
  * @param b ballot à afficher
  * @param log_file le fichier de log à remplir
  */
-void log_ballot(ballot *b, FILE *log_file);
+void ballot_log(ballot *b, FILE *log_file);
 
 #endif //__BALLOT_H__

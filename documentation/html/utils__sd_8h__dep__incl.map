@@ -1,0 +1,18 @@
+<map id="src/utils/utils_sd.h" name="src/utils/utils_sd.h">
+<area shape="rect" id="node1" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="629,5,768,32"/>
+<area shape="rect" id="node2" href="$jugement__majoritaire_8h.html" title="Fichier de la méthode de scrutin du jugement majoritaire." alt="" coords="56,80,224,121"/>
+<area shape="rect" id="node4" href="$global_8h.html" title="Fichier global qui contient tous les headers des fichiers .c." alt="" coords="574,177,703,203"/>
+<area shape="rect" id="node6" href="$methode__minimax_8h.html" title="Implémentation de la méthode Minimax." alt="" coords="249,80,413,121"/>
+<area shape="rect" id="node8" href="$methode__paires_8h.html" title="Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires." alt="" coords="437,80,601,121"/>
+<area shape="rect" id="node10" href="$methode__schulze_8h.html" title="Fichier pour le calcul du vainqueur avec Schulze." alt="" coords="677,80,841,121"/>
+<area shape="rect" id="node12" href="$uninominale_8h.html" title="Méthode uninominale à 1 et 2 tours." alt="" coords="865,87,1063,114"/>
+<area shape="rect" id="node14" href="$utils__main_8h.html" title="Fichier de fonctions utilitaires nécessaires au main." alt="" coords="1088,87,1245,114"/>
+<area shape="rect" id="node16" href="$utils__sd_8c.html" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="1269,87,1408,114"/>
+<area shape="rect" id="node3" href="$jugement__majoritaire_8c.html" title="Fichier de la méthode de scrutin du jugement majoritaire." alt="" coords="5,169,173,211"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="Fichier principal du programme." alt="" coords="594,259,683,285"/>
+<area shape="rect" id="node7" href="$methode__minimax_8c.html" title="Implémentation de la méthode Minimax." alt="" coords="198,169,362,211"/>
+<area shape="rect" id="node9" href="$methode__paires_8c.html" title="Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires." alt="" coords="386,169,550,211"/>
+<area shape="rect" id="node11" href="$methode__schulze_8c.html" title="Fichier pour le calcul du vainqueur avec Schulze." alt="" coords="727,169,891,211"/>
+<area shape="rect" id="node13" href="$uninominale_8c.html" title="Méthode uninominale à 1 et 2 tours." alt="" coords="915,177,1114,203"/>
+<area shape="rect" id="node15" href="$utils__main_8c.html" title="Fichier de fonctions utilitaires nécessaires au main." alt="" coords="1138,177,1294,203"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="src/utils/dataStructure/duel.c" name="src/utils/dataStructure/duel.c">
+<area shape="rect" id="node1" title="Structure de données représentant une matrice de duel." alt="" coords="326,5,491,47"/>
+<area shape="rect" id="node2" href="$duel_8h.html" title="Structure de données représentant une matrice de duel." alt="" coords="377,95,440,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="125,319,191,345"/>
+<area shape="rect" id="node4" title=" " alt="" coords="300,319,371,345"/>
+<area shape="rect" id="node5" title=" " alt="" coords="29,319,100,345"/>
+<area shape="rect" id="node6" title=" " alt="" coords="418,319,501,345"/>
+<area shape="rect" id="node7" title=" " alt="" coords="525,319,599,345"/>
+<area shape="rect" id="node8" href="$matrice__int__dyn_8h.html" title="Structure de donnée correspondant à une matrice dynamique contenant des entiers." alt="" coords="42,244,181,271"/>
+<area shape="rect" id="node9" href="$listegen_8h.html" title="Structure de donnée correspondant à une liste générique." alt="" coords="439,244,525,271"/>
+<area shape="rect" id="node10" href="$ballot_8h.html" title="Structure de données représentant un ballot de vote." alt="" coords="300,169,371,196"/>
+<area shape="rect" id="node11" href="$matrice__string__dyn_8h.html" title="Structure de donnée correspondant à une matrice dynamique contenant des chaines de caractères." alt="" coords="256,244,415,271"/>
+</map>

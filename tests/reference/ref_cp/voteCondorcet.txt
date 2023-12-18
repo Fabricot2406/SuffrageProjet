@@ -1,0 +1,1 @@
+Mode de scrutin : Condorcet paires, 10 candidats, 10 votants, vainqueur = Q00_Vote->1 - Burger Black Pepper

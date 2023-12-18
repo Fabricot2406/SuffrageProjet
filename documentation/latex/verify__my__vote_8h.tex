@@ -1,0 +1,99 @@
+\hypertarget{verify__my__vote_8h}{}\doxysection{src/verify/verify\+\_\+my\+\_\+vote.h File Reference}
+\label{verify__my__vote_8h}\index{src/verify/verify\_my\_vote.h@{src/verify/verify\_my\_vote.h}}
+
+
+Fichier de déclaration pour la vérification du vote de l\textquotesingle{}utilisateur.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}sha256.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sha256\+\_\+utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../utils/lecture\+\_\+csv.\+h\char`\"{}}\newline
+Include dependency graph for verify\+\_\+my\+\_\+vote.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{verify__my__vote_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{verify__my__vote_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{verify__my__vote_8h_ae5c9a215573b6aa42486017c7790dfa6}\label{verify__my__vote_8h_ae5c9a215573b6aa42486017c7790dfa6}} 
+\#define \mbox{\hyperlink{verify__my__vote_8h_ae5c9a215573b6aa42486017c7790dfa6}{TAILLE\+\_\+\+NOM\+\_\+\+MAX}}~50
+\begin{DoxyCompactList}\small\item\em Taille maximale du nom. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{verify__my__vote_8h_a4427d04f6f1aa8f6733ff79fbe762a86}\label{verify__my__vote_8h_a4427d04f6f1aa8f6733ff79fbe762a86}} 
+\#define \mbox{\hyperlink{verify__my__vote_8h_a4427d04f6f1aa8f6733ff79fbe762a86}{TAILLE\+\_\+\+CLE\+\_\+\+MAX}}~17
+\begin{DoxyCompactList}\small\item\em Taille maximale de la clé. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{verify__my__vote_8h_af9d5dfb63a9ee0469da7e6b1e865dc60}\label{verify__my__vote_8h_af9d5dfb63a9ee0469da7e6b1e865dc60}} 
+\#define \mbox{\hyperlink{verify__my__vote_8h_af9d5dfb63a9ee0469da7e6b1e865dc60}{TAILLE\+\_\+\+NOM\+\_\+\+FICHIER\+\_\+\+MAX}}~100
+\begin{DoxyCompactList}\small\item\em Taille maximale du nom de fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{verify__my__vote_8h_a354963e192fa62690a48069b1bd3c5e1}{hasher\+Chaines}} (char $\ast$nom, char $\ast$cle)
+\begin{DoxyCompactList}\small\item\em Hash deux chaînes de caractères ensemble. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{verify__my__vote_8h_af9773c6227de6db6d084866d3f4dde8f}{trouver\+Hash\+Dans\+Csv}} (char $\ast$hash, char $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Recherche un hash dans un fichier CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier de déclaration pour la vérification du vote de l\textquotesingle{}utilisateur. 
+
+\begin{DoxyAuthor}{Author}
+Marco 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/26 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{verify__my__vote_8h_a354963e192fa62690a48069b1bd3c5e1}\label{verify__my__vote_8h_a354963e192fa62690a48069b1bd3c5e1}} 
+\index{verify\_my\_vote.h@{verify\_my\_vote.h}!hasherChaines@{hasherChaines}}
+\index{hasherChaines@{hasherChaines}!verify\_my\_vote.h@{verify\_my\_vote.h}}
+\doxysubsubsection{\texorpdfstring{hasherChaines()}{hasherChaines()}}
+{\footnotesize\ttfamily char$\ast$ hasher\+Chaines (\begin{DoxyParamCaption}\item[{char $\ast$}]{nom,  }\item[{char $\ast$}]{cle }\end{DoxyParamCaption})}
+
+
+
+Hash deux chaînes de caractères ensemble. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom} & Le nom à hacher. \\
+\hline
+{\em cle} & La clé à hacher avec le nom. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la chaîne de caractères résultante. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{verify__my__vote_8h_af9773c6227de6db6d084866d3f4dde8f}\label{verify__my__vote_8h_af9773c6227de6db6d084866d3f4dde8f}} 
+\index{verify\_my\_vote.h@{verify\_my\_vote.h}!trouverHashDansCsv@{trouverHashDansCsv}}
+\index{trouverHashDansCsv@{trouverHashDansCsv}!verify\_my\_vote.h@{verify\_my\_vote.h}}
+\doxysubsubsection{\texorpdfstring{trouverHashDansCsv()}{trouverHashDansCsv()}}
+{\footnotesize\ttfamily void trouver\+Hash\+Dans\+Csv (\begin{DoxyParamCaption}\item[{char $\ast$}]{hash,  }\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Recherche un hash dans un fichier CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash} & Le hash à rechercher. \\
+\hline
+{\em fichier} & Le nom du fichier CSV dans lequel rechercher. \\
+\hline
+\end{DoxyParams}

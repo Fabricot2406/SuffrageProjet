@@ -6,7 +6,7 @@
  */
 #include "graphe.h"
 
-graphe *creation_graphe(int nb_candidat){
+graphe *graphe_create(int nb_candidat){
     graphe *g = malloc(sizeof(graphe));
     if (g == NULL) {
         fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
@@ -24,19 +24,19 @@ graphe *creation_graphe(int nb_candidat){
     }
     g->nb_candidat = nb_candidat;
     for (int candidat = 0; candidat < nb_candidat; candidat++){
-        g->graphe[candidat] = creer_sommet(candidat);
+        g->graphe[candidat] = sommet_create(candidat);
     }
     return g;
 }
 
-void initialiser_status(graphe *g, int sommet_depart){
+void status_init(graphe *g, int sommet_depart){
     for (int candidat = 0; candidat < g->nb_candidat; candidat++){
         g->status[candidat] = -1;
     }
     g->status[sommet_depart] = 0;
 }
 
-sommet *creer_sommet(int indice){
+sommet *sommet_create(int indice){
     sommet *s = malloc(sizeof(sommet));
     if (s == NULL) {
         fprintf(stderr, "Erreur lors de l'allocation de la mémoire\n");
@@ -47,23 +47,23 @@ sommet *creer_sommet(int indice){
     return s;
 }
 
-void ajout_succession(sommet *s_current, sommet *s_successor){
+void succ_add(sommet *s_current, sommet *s_successor){
     list_push_back(s_current->successeur, s_successor);
 }
 
-void delete_succession(sommet *s_current){
+void last_succ_delete(sommet *s_current){
     list_pop_back(s_current->successeur,vide);
 }
 
-void detruire_sommet(void *elem){
+void sommet_delete(void *elem){
     sommet *s = (sommet *)elem;
     list_delete(s->successeur, vide);
     free(s);
 }
 
-void detruire_graphe(graphe *g){
+void graphe_delete(graphe *g){
     for (int candidat = 0; candidat < g->nb_candidat; candidat++){
-        detruire_sommet(g->graphe[candidat]);
+        sommet_delete(g->graphe[candidat]);
     }
     free(g->graphe);
     free(g->status);
@@ -87,7 +87,7 @@ Entier circuit(graphe G, tableau statut, sommet x){
     retourner 0
 } 
 */
-bool circuits(graphe *G,sommet *s_current){
+bool contain_circuit(graphe *G,sommet *s_current){
     int r = 0;
     Iterator *it = iterator_create(s_current->successeur);
     // Pour tout successeur de s_current
@@ -102,7 +102,7 @@ bool circuits(graphe *G,sommet *s_current){
         else if (G->status[successor->indice] == -1) {
             G->status[successor->indice] = 0;
             // Appel récursif pour le successeur
-            r = circuits(G, successor);
+            r = contain_circuit(G, successor);
             if (r == 1) {
                 iterator_delete(it);
                 return true;

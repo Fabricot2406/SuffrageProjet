@@ -1,0 +1,580 @@
+\hypertarget{listegen_8h}{}\doxysection{src/utils/data\+Structure/listegen.h File Reference}
+\label{listegen_8h}\index{src/utils/dataStructure/listegen.h@{src/utils/dataStructure/listegen.h}}
+
+
+Structure de donnée correspondant à une liste générique.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+Include dependency graph for listegen.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{listegen_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{listegen_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__LinkedElement}{s\+\_\+\+Linked\+Element}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un élément de la liste. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structs__List}{s\+\_\+\+List}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{listegen_8h_ac8dc3c74b7797529d115c050727fa864}\label{listegen_8h_ac8dc3c74b7797529d115c050727fa864}} 
+typedef void($\ast$ {\bfseries Simple\+Functor}) (void $\ast$)
+\item 
+\mbox{\Hypertarget{listegen_8h_ae02f634368ca1be33dc7fdd2fea31b6b}\label{listegen_8h_ae02f634368ca1be33dc7fdd2fea31b6b}} 
+typedef int($\ast$ {\bfseries Reduce\+Functor}) (void $\ast$, int)
+\item 
+\mbox{\Hypertarget{listegen_8h_a8c296737cee58bdda07b7c86b3f0711f}\label{listegen_8h_a8c296737cee58bdda07b7c86b3f0711f}} 
+typedef int($\ast$ {\bfseries Functor}) (void $\ast$, void $\ast$)
+\item 
+\mbox{\Hypertarget{listegen_8h_a1f543c4ef5f51365de2b690159a7dcf7}\label{listegen_8h_a1f543c4ef5f51365de2b690159a7dcf7}} 
+typedef bool($\ast$ {\bfseries Order\+Functor}) (void $\ast$, void $\ast$)
+\item 
+\mbox{\Hypertarget{listegen_8h_a673c64c7c896f6d54618e605fe1216de}\label{listegen_8h_a673c64c7c896f6d54618e605fe1216de}} 
+typedef struct \mbox{\hyperlink{structs__LinkedElement}{s\+\_\+\+Linked\+Element}} \mbox{\hyperlink{listegen_8h_a673c64c7c896f6d54618e605fe1216de}{Linked\+Element}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un élément de la liste. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{listegen_8h_a7f9b44f298354a268147479e7905b44e}\label{listegen_8h_a7f9b44f298354a268147479e7905b44e}} 
+typedef struct \mbox{\hyperlink{structs__List}{s\+\_\+\+List}} {\bfseries List}
+\item 
+\mbox{\Hypertarget{listegen_8h_ae133ea039c49b627f5bb3a308341fd8d}\label{listegen_8h_ae133ea039c49b627f5bb3a308341fd8d}} 
+typedef struct \mbox{\hyperlink{structs__Iterator}{s\+\_\+\+Iterator}} \mbox{\hyperlink{listegen_8h_ae133ea039c49b627f5bb3a308341fd8d}{Iterator}}
+\begin{DoxyCompactList}\small\item\em Structure de l\textquotesingle{}iterateur utilisée pour la liste générique Définition opaque de la structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_a0ae9f0f842f635774a6670ab93809fb2}{list\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la structure de donnée List. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_a4c8ab4699710fd9a84987b672a0a1658}{list\+\_\+push\+\_\+back}} (\mbox{\hyperlink{structs__List}{List}} $\ast$list, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Ajoute un élément en fin de liste. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_ab82e357f0af652ea3749996672f70362}{list\+\_\+push\+\_\+front}} (\mbox{\hyperlink{structs__List}{List}} $\ast$list, void $\ast$data, size\+\_\+t date\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Ajoute un élément en début de liste. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_a53ceda64e7b60a5e1bcecebf846411b6}{list\+\_\+insert\+\_\+at}} (\mbox{\hyperlink{structs__List}{List}} $\ast$l, int p, void $\ast$v)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}inserer un élément à une position donnée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{listegen_8h_a6429ebdf3d3499a2d65c55785d219db1}{insert\+\_\+sorted}} (\mbox{\hyperlink{structs__List}{List}} $\ast$list, void $\ast$new\+Element, int($\ast$list\+\_\+comp)(const void $\ast$, const void $\ast$))
+\begin{DoxyCompactList}\small\item\em Insère un nouvel élément dans une liste triée. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{listegen_8h_a1a479e865e20fb2b6b2f52b7f22267b5}{list\+\_\+front}} (const \mbox{\hyperlink{structs__List}{List}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Accède à l\textquotesingle{}élément en tête de liste. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{listegen_8h_a045221d3f06a5147e2dc5ac40e104924}{list\+\_\+back}} (const \mbox{\hyperlink{structs__List}{List}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Accède à l\textquotesingle{}élément en fin de liste. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{listegen_8h_a785cd0414931e4b9cb6e9223866eb90a}{list\+\_\+at}} (const \mbox{\hyperlink{structs__List}{List}} $\ast$l, int p)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}accéder à l\textquotesingle{}élément à une position donnée. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{listegen_8h_a8bd9279ccb1d373e86fdc29ffd805684}{list\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structs__List}{List}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Fonction indiquant si la liste est vide ou non. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{listegen_8h_a08762973d73ab293413ac1acfa093283}{list\+\_\+size}} (const \mbox{\hyperlink{structs__List}{List}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Fonction indiquant la taille de la liste. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{listegen_8h_a7674acd25269d9aaa4de22744ded30ea}\label{listegen_8h_a7674acd25269d9aaa4de22744ded30ea}} 
+void \mbox{\hyperlink{listegen_8h_a7674acd25269d9aaa4de22744ded30ea}{vide}} (void $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Utiliser cette fonction dans le paramètre f de list\+\_\+delete afin de ne pas libérer la mémoire des éléments de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{listegen_8h_a2a3322a7d13a68582c62de5aab97ff33}{list\+\_\+delete}} (\mbox{\hyperlink{structs__List}{List}} $\ast$l, Simple\+Functor f)
+\begin{DoxyCompactList}\small\item\em Libère la mémoire allouée pour la liste. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_a7c3587b0b409df2ecd256176f25a8996}{list\+\_\+remove\+\_\+at}} (\mbox{\hyperlink{structs__List}{List}} $\ast$l, int p, Simple\+Functor f)
+\begin{DoxyCompactList}\small\item\em Supprime l\textquotesingle{}élément à la position spécifiée dans la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{listegen_8h_a7df27781d3870c1413e5f99a72f05897}{list\+\_\+pop\+\_\+back}} (\mbox{\hyperlink{structs__List}{List}} $\ast$list, Simple\+Functor f)
+\begin{DoxyCompactList}\small\item\em Supprime le dernier élément de la liste et libère la mémoire associée. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_aae5f2f38b60953431bbda72426c67136}{list\+\_\+map}} (\mbox{\hyperlink{structs__List}{List}} $\ast$l, Simple\+Functor f)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}appliquer une fonction sur tous les éléments d\textquotesingle{}une liste. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_a529ad030ae58b02c20e0193f7a2c63dd}{list\+\_\+reduce}} (\mbox{\hyperlink{structs__List}{List}} $\ast$list, void($\ast$f)(void $\ast$, void $\ast$), void $\ast$user\+Data)
+\begin{DoxyCompactList}\small\item\em Fonction de réduction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8h_a8a7f38490319c69844a6f719af489793}{list\+\_\+sort}} (\mbox{\hyperlink{structs__List}{List}} $\ast$l, Order\+Functor f)
+\begin{DoxyCompactList}\small\item\em Trie les éléments de la liste dans l\textquotesingle{}ordre croissant. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$ \mbox{\hyperlink{listegen_8h_afbbb1ba7e1e2a08fd9b911eaadc2a4de}{iterator\+\_\+create}} (const \mbox{\hyperlink{structs__List}{List}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de construire un iterateur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{listegen_8h_a062a7b73ac45e14229810c5342794583}{iterator\+\_\+delete}} (\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$it)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de supprimer un iterateur. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{listegen_8h_a21e93c6609d62e07b6b9d84cf9892c3b}{iterator\+\_\+has\+\_\+next}} (const \mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$it)
+\begin{DoxyCompactList}\small\item\em Fonction indiquant la fin du liste à la prochaine itération. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{listegen_8h_a9c7cf69e07fe83a90472cb0c8052ca07}{iterator\+\_\+current}} (const \mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$it)
+\begin{DoxyCompactList}\small\item\em Fonction renvoyant la valeur courrante pointée par l\textquotesingle{}itérateur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{listegen_8h_acbfb8b1d0d67cc5a7f96e472183ab2e5}{iterator\+\_\+next}} (\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$it)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de passer à l\textquotesingle{}élément suivant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{listegen_8h_a9bd34a791b979f8d603fba336d361c31}{iterator\+\_\+prev}} (\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$it)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de passer à l\textquotesingle{}élément précédent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{listegen_8h_aefbad5393d5da431df7cbab9b0e58f65}{set\+\_\+position}} (\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$it, int p)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de mettre l\textquotesingle{}itérateur à position donnée. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{listegen_8h_a0542eb4273494c90688f40ce11621c90}{iterator\+\_\+index}} (const \mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$it)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de récupérer la position courrante de l\textquotesingle{}itérateur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure de donnée correspondant à une liste générique. 
+
+\begin{DoxyAuthor}{Author}
+Anthony 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021-\/11-\/26 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{listegen_8h_a6429ebdf3d3499a2d65c55785d219db1}\label{listegen_8h_a6429ebdf3d3499a2d65c55785d219db1}} 
+\index{listegen.h@{listegen.h}!insert\_sorted@{insert\_sorted}}
+\index{insert\_sorted@{insert\_sorted}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{insert\_sorted()}{insert\_sorted()}}
+{\footnotesize\ttfamily void insert\+\_\+sorted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{list,  }\item[{void $\ast$}]{new\+Element,  }\item[{int($\ast$)(const void $\ast$, const void $\ast$)}]{list\+\_\+comp }\end{DoxyParamCaption})}
+
+
+
+Insère un nouvel élément dans une liste triée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & La liste dans laquelle insérer l\textquotesingle{}élément. \\
+\hline
+{\em new\+Element} & Un pointeur vers la nouvelle valeur à insérer. \\
+\hline
+{\em list\+\_\+comp} & La fonction de comparaison pour déterminer l\textquotesingle{}ordre des éléments. Cette fonction doit retourner un entier négatif si le premier élément est inférieur au deuxième, 0 s\textquotesingle{}ils sont égaux, et un entier positif si le premier élément est supérieur au deuxième. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listegen_8h_afbbb1ba7e1e2a08fd9b911eaadc2a4de}\label{listegen_8h_afbbb1ba7e1e2a08fd9b911eaadc2a4de}} 
+\index{listegen.h@{listegen.h}!iterator\_create@{iterator\_create}}
+\index{iterator\_create@{iterator\_create}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{iterator\_create()}{iterator\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__Iterator}{Iterator}}$\ast$ iterator\+\_\+create (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__List}{List}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de construire un iterateur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Liste que l\textquotesingle{}on souhaite parcourir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Iterator$\ast$ pointeur vers l\textquotesingle{}iterateur créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a9c7cf69e07fe83a90472cb0c8052ca07}\label{listegen_8h_a9c7cf69e07fe83a90472cb0c8052ca07}} 
+\index{listegen.h@{listegen.h}!iterator\_current@{iterator\_current}}
+\index{iterator\_current@{iterator\_current}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{iterator\_current()}{iterator\_current()}}
+{\footnotesize\ttfamily void$\ast$ iterator\+\_\+current (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$}]{it }\end{DoxyParamCaption})}
+
+
+
+Fonction renvoyant la valeur courrante pointée par l\textquotesingle{}itérateur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & L\textquotesingle{}itérateur utilisé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La valeur courrante 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a062a7b73ac45e14229810c5342794583}\label{listegen_8h_a062a7b73ac45e14229810c5342794583}} 
+\index{listegen.h@{listegen.h}!iterator\_delete@{iterator\_delete}}
+\index{iterator\_delete@{iterator\_delete}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{iterator\_delete()}{iterator\_delete()}}
+{\footnotesize\ttfamily void iterator\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$}]{it }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de supprimer un iterateur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & Iterateur que l\textquotesingle{}on souhaite supprimer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listegen_8h_a21e93c6609d62e07b6b9d84cf9892c3b}\label{listegen_8h_a21e93c6609d62e07b6b9d84cf9892c3b}} 
+\index{listegen.h@{listegen.h}!iterator\_has\_next@{iterator\_has\_next}}
+\index{iterator\_has\_next@{iterator\_has\_next}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{iterator\_has\_next()}{iterator\_has\_next()}}
+{\footnotesize\ttfamily bool iterator\+\_\+has\+\_\+next (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$}]{it }\end{DoxyParamCaption})}
+
+
+
+Fonction indiquant la fin du liste à la prochaine itération. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & L\textquotesingle{}itérateur utilisé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si il y a encore des éléments à parcourir et false sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a0542eb4273494c90688f40ce11621c90}\label{listegen_8h_a0542eb4273494c90688f40ce11621c90}} 
+\index{listegen.h@{listegen.h}!iterator\_index@{iterator\_index}}
+\index{iterator\_index@{iterator\_index}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{iterator\_index()}{iterator\_index()}}
+{\footnotesize\ttfamily int iterator\+\_\+index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$}]{it }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de récupérer la position courrante de l\textquotesingle{}itérateur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & L\textquotesingle{}itérateur utilisé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La position courrante 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_acbfb8b1d0d67cc5a7f96e472183ab2e5}\label{listegen_8h_acbfb8b1d0d67cc5a7f96e472183ab2e5}} 
+\index{listegen.h@{listegen.h}!iterator\_next@{iterator\_next}}
+\index{iterator\_next@{iterator\_next}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{iterator\_next()}{iterator\_next()}}
+{\footnotesize\ttfamily void iterator\+\_\+next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$}]{it }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de passer à l\textquotesingle{}élément suivant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & L\textquotesingle{}itérateur utilisé \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listegen_8h_a9bd34a791b979f8d603fba336d361c31}\label{listegen_8h_a9bd34a791b979f8d603fba336d361c31}} 
+\index{listegen.h@{listegen.h}!iterator\_prev@{iterator\_prev}}
+\index{iterator\_prev@{iterator\_prev}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{iterator\_prev()}{iterator\_prev()}}
+{\footnotesize\ttfamily void iterator\+\_\+prev (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$}]{it }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de passer à l\textquotesingle{}élément précédent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & L\textquotesingle{}itérateur utilisé \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listegen_8h_a785cd0414931e4b9cb6e9223866eb90a}\label{listegen_8h_a785cd0414931e4b9cb6e9223866eb90a}} 
+\index{listegen.h@{listegen.h}!list\_at@{list\_at}}
+\index{list\_at@{list\_at}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_at()}{list\_at()}}
+{\footnotesize\ttfamily void$\ast$ list\+\_\+at (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__List}{List}} $\ast$}]{l,  }\item[{int}]{p }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}accéder à l\textquotesingle{}élément à une position donnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & La liste dans laquelle on veut accéder à l\textquotesingle{}élément \\
+\hline
+{\em p} & La position à laquelle on veut accéder à l\textquotesingle{}élément \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ Le pointeur vers les données de l\textquotesingle{}élément à la position p 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a045221d3f06a5147e2dc5ac40e104924}\label{listegen_8h_a045221d3f06a5147e2dc5ac40e104924}} 
+\index{listegen.h@{listegen.h}!list\_back@{list\_back}}
+\index{list\_back@{list\_back}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_back()}{list\_back()}}
+{\footnotesize\ttfamily void$\ast$ list\+\_\+back (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__List}{List}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Accède à l\textquotesingle{}élément en fin de liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: liste à laquelle on veut accéder à l\textquotesingle{}élément en fin. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ \+: pointeur vers les données de l\textquotesingle{}élément en fin de liste. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a0ae9f0f842f635774a6670ab93809fb2}\label{listegen_8h_a0ae9f0f842f635774a6670ab93809fb2}} 
+\index{listegen.h@{listegen.h}!list\_create@{list\_create}}
+\index{list\_create@{list\_create}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_create()}{list\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la structure de donnée List. 
+
+\begin{DoxyReturn}{Returns}
+List$\ast$ \+: pointeur vers la liste créée. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a2a3322a7d13a68582c62de5aab97ff33}\label{listegen_8h_a2a3322a7d13a68582c62de5aab97ff33}} 
+\index{listegen.h@{listegen.h}!list\_delete@{list\_delete}}
+\index{list\_delete@{list\_delete}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_delete()}{list\_delete()}}
+{\footnotesize\ttfamily void list\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{l,  }\item[{Simple\+Functor}]{f }\end{DoxyParamCaption})}
+
+
+
+Libère la mémoire allouée pour la liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: pointeur vers la liste à libérer. \\
+\hline
+{\em f} & \+: fonction permettant de libérer la mémoire allouée pour les données de la liste. Si vide est utilisé, la fonction ne libère pas la mémoire allouée pour les données. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listegen_8h_a1a479e865e20fb2b6b2f52b7f22267b5}\label{listegen_8h_a1a479e865e20fb2b6b2f52b7f22267b5}} 
+\index{listegen.h@{listegen.h}!list\_front@{list\_front}}
+\index{list\_front@{list\_front}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_front()}{list\_front()}}
+{\footnotesize\ttfamily void$\ast$ list\+\_\+front (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__List}{List}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Accède à l\textquotesingle{}élément en tête de liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: liste à laquelle on veut accéder à l\textquotesingle{}élément en tête. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ \+: pointeur vers les données de l\textquotesingle{}élément en tête de liste. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a53ceda64e7b60a5e1bcecebf846411b6}\label{listegen_8h_a53ceda64e7b60a5e1bcecebf846411b6}} 
+\index{listegen.h@{listegen.h}!list\_insert\_at@{list\_insert\_at}}
+\index{list\_insert\_at@{list\_insert\_at}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_insert\_at()}{list\_insert\_at()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+insert\+\_\+at (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{l,  }\item[{int}]{p,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}inserer un élément à une position donnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & La liste dans laquelle on veut insérer l\textquotesingle{}élément \\
+\hline
+{\em p} & La position à laquelle on veut insérer l\textquotesingle{}élément \\
+\hline
+{\em v} & Le pointeur vers les données de l\textquotesingle{}élément à insérer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ La liste modifiée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a8bd9279ccb1d373e86fdc29ffd805684}\label{listegen_8h_a8bd9279ccb1d373e86fdc29ffd805684}} 
+\index{listegen.h@{listegen.h}!list\_is\_empty@{list\_is\_empty}}
+\index{list\_is\_empty@{list\_is\_empty}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_is\_empty()}{list\_is\_empty()}}
+{\footnotesize\ttfamily bool list\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__List}{List}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Fonction indiquant si la liste est vide ou non. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: liste à laquelle on veut savoir si elle est vide ou non. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \+: si la liste est vide. 
+
+false \+: si la liste n\textquotesingle{}est pas vide. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_aae5f2f38b60953431bbda72426c67136}\label{listegen_8h_aae5f2f38b60953431bbda72426c67136}} 
+\index{listegen.h@{listegen.h}!list\_map@{list\_map}}
+\index{list\_map@{list\_map}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_map()}{list\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{l,  }\item[{Simple\+Functor}]{f }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}appliquer une fonction sur tous les éléments d\textquotesingle{}une liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Liste sur laquelle on veut appliquer la fonction \\
+\hline
+{\em f} & Fonction à appliquer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ La liste modifiée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a7df27781d3870c1413e5f99a72f05897}\label{listegen_8h_a7df27781d3870c1413e5f99a72f05897}} 
+\index{listegen.h@{listegen.h}!list\_pop\_back@{list\_pop\_back}}
+\index{list\_pop\_back@{list\_pop\_back}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_pop\_back()}{list\_pop\_back()}}
+{\footnotesize\ttfamily void list\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{list,  }\item[{Simple\+Functor}]{f }\end{DoxyParamCaption})}
+
+
+
+Supprime le dernier élément de la liste et libère la mémoire associée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & La liste à modifier. \\
+\hline
+{\em f} & Foncteur simple pour libérer la mémoire du contenu de l\textquotesingle{}élément. Si NULL, la fonction se contente de libérer l\textquotesingle{}élément sans libérer son contenu. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+La liste ne doit pas être vide. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{listegen_8h_a4c8ab4699710fd9a84987b672a0a1658}\label{listegen_8h_a4c8ab4699710fd9a84987b672a0a1658}} 
+\index{listegen.h@{listegen.h}!list\_push\_back@{list\_push\_back}}
+\index{list\_push\_back@{list\_push\_back}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_push\_back()}{list\_push\_back()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+push\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{list,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Ajoute un élément en fin de liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \+: liste à laquelle on veut ajouter un élément. \\
+\hline
+{\em data} & \+: pointeur vers les données à ajouter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ \+: pointeur vers la liste modifiée. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_ab82e357f0af652ea3749996672f70362}\label{listegen_8h_ab82e357f0af652ea3749996672f70362}} 
+\index{listegen.h@{listegen.h}!list\_push\_front@{list\_push\_front}}
+\index{list\_push\_front@{list\_push\_front}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_push\_front()}{list\_push\_front()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+push\+\_\+front (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{list,  }\item[{void $\ast$}]{data,  }\item[{size\+\_\+t}]{date\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Ajoute un élément en début de liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \+: liste à laquelle on veut ajouter un élément. \\
+\hline
+{\em data} & \+: pointeur vers les données à ajouter. \\
+\hline
+{\em data\+\_\+size} & \+: la taille de data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ \+: pointeur vers la liste modifiée. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a529ad030ae58b02c20e0193f7a2c63dd}\label{listegen_8h_a529ad030ae58b02c20e0193f7a2c63dd}} 
+\index{listegen.h@{listegen.h}!list\_reduce@{list\_reduce}}
+\index{list\_reduce@{list\_reduce}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_reduce()}{list\_reduce()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{list,  }\item[{void($\ast$)(void $\ast$, void $\ast$)}]{f,  }\item[{void $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Fonction de réduction. 
+
+Cette fonction permet d\textquotesingle{}appliquer un traitement à une donnée passée en paramètre pour chaque élément de la liste.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & La liste à parcourir \\
+\hline
+{\em f} & La fonction de traitement \\
+\hline
+{\em user\+Data} & La donnée à traiter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ La liste passé en paramètre 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+La fonction f est de type void ({\itshape f)(int, void}) 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+La liste est inchangée 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{listegen_8h_a7c3587b0b409df2ecd256176f25a8996}\label{listegen_8h_a7c3587b0b409df2ecd256176f25a8996}} 
+\index{listegen.h@{listegen.h}!list\_remove\_at@{list\_remove\_at}}
+\index{list\_remove\_at@{list\_remove\_at}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_remove\_at()}{list\_remove\_at()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+remove\+\_\+at (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{l,  }\item[{int}]{p,  }\item[{Simple\+Functor}]{f }\end{DoxyParamCaption})}
+
+
+
+Supprime l\textquotesingle{}élément à la position spécifiée dans la liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: La liste dont on veut supprimer un élément. \\
+\hline
+{\em p} & \+: La position de l\textquotesingle{}élément à supprimer. \\
+\hline
+{\em f} & \+: Une fonction pour libérer la mémoire allouée pour la valeur de l\textquotesingle{}élément. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ \+: La liste modifiée sans l\textquotesingle{}élément supprimé. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a08762973d73ab293413ac1acfa093283}\label{listegen_8h_a08762973d73ab293413ac1acfa093283}} 
+\index{listegen.h@{listegen.h}!list\_size@{list\_size}}
+\index{list\_size@{list\_size}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_size()}{list\_size()}}
+{\footnotesize\ttfamily int list\+\_\+size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structs__List}{List}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Fonction indiquant la taille de la liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: liste à laquelle on veut connaître la taille. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: taille de la liste. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_a8a7f38490319c69844a6f719af489793}\label{listegen_8h_a8a7f38490319c69844a6f719af489793}} 
+\index{listegen.h@{listegen.h}!list\_sort@{list\_sort}}
+\index{list\_sort@{list\_sort}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{list\_sort()}{list\_sort()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ list\+\_\+sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{l,  }\item[{Order\+Functor}]{f }\end{DoxyParamCaption})}
+
+
+
+Trie les éléments de la liste dans l\textquotesingle{}ordre croissant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: La liste à trier. \\
+\hline
+{\em comp} & \+: Une fonction de comparaison qui renvoie vrai si le premier argument doit venir avant le second dans la liste triée. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$\ast$ \+: La liste triée selon la fonction de comparaison f. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{listegen_8h_aefbad5393d5da431df7cbab9b0e58f65}\label{listegen_8h_aefbad5393d5da431df7cbab9b0e58f65}} 
+\index{listegen.h@{listegen.h}!set\_position@{set\_position}}
+\index{set\_position@{set\_position}!listegen.h@{listegen.h}}
+\doxysubsubsection{\texorpdfstring{set\_position()}{set\_position()}}
+{\footnotesize\ttfamily void set\+\_\+position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__Iterator}{Iterator}} $\ast$}]{it,  }\item[{int}]{p }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de mettre l\textquotesingle{}itérateur à position donnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & L\textquotesingle{}itérateur utilisé \\
+\hline
+{\em p} & La position souhaitée \\
+\hline
+\end{DoxyParams}

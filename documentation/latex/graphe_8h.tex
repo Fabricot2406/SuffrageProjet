@@ -1,0 +1,227 @@
+\hypertarget{graphe_8h}{}\doxysection{src/utils/data\+Structure/graphe.h File Reference}
+\label{graphe_8h}\index{src/utils/dataStructure/graphe.h@{src/utils/dataStructure/graphe.h}}
+
+
+Structure de données représentant un graphe.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}listegen.\+h\char`\"{}}\newline
+Include dependency graph for graphe.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphe_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphe_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__sommet}{s\+\_\+sommet}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un sommet du graphe. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structs__graphe}{s\+\_\+graphe}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un graphe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structs__sommet}{s\+\_\+sommet}} \mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un sommet du graphe. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{graphe_8h_a4b47d2655c333ea88371e453be778eeb}\label{graphe_8h_a4b47d2655c333ea88371e453be778eeb}} 
+typedef struct \mbox{\hyperlink{structs__graphe}{s\+\_\+graphe}} \mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un graphe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$ \mbox{\hyperlink{graphe_8h_a65cb732950d8eb6b942ae99f3c06cc21}{graphe\+\_\+create}} (int nb\+\_\+candidat)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de créer un graphe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$ \mbox{\hyperlink{graphe_8h_ad959493f445cea51feaa4a3a76f8a28b}{sommet\+\_\+create}} (int indice)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de créer un sommet. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{graphe_8h_a2e2b47a3a7df4e86f1206cf05d9a05c5}{contain\+\_\+circuit}} (\mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$G, \mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$s\+\_\+current)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de savoir si un circuit est présent dans le graphe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphe_8h_a36953947c4f2bd88cf6ff23f2042354d}{succ\+\_\+add}} (\mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$s\+\_\+current, \mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$s\+\_\+successor)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}ajouter une succession à un sommet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphe_8h_a87f9ce09ed28edcf412fe58e9c5dd047}{status\+\_\+init}} (\mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$g, int sommet\+\_\+depart)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}initialiser le tableau d\textquotesingle{}état. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphe_8h_adde20d40eac5ca3bee90cfc4ca9175d9}{last\+\_\+succ\+\_\+delete}} (\mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$s\+\_\+current)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de supprimer la dernière succession d\textquotesingle{}un sommet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphe_8h_ac5a6b79a81e048800aa658073d13f79f}{sommet\+\_\+delete}} (void $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de supprimer un sommet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphe_8h_a8c00a0e4ed4d07f183eb123f99264666}{graphe\+\_\+delete}} (\mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de supprimer un graphe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure de données représentant un graphe. 
+
+\begin{DoxyAuthor}{Author}
+Anthony
+\end{DoxyAuthor}
+Un graphe est une structure composée d\textquotesingle{}un tableau de pointeur de sommet et d\textquotesingle{}un tableau d\textquotesingle{}état. \begin{DoxyDate}{Date}
+2023-\/11-\/27 
+\end{DoxyDate}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{graphe_8h_afec600160af1738bab8cb1eead341fcf}\label{graphe_8h_afec600160af1738bab8cb1eead341fcf}} 
+\index{graphe.h@{graphe.h}!sommet@{sommet}}
+\index{sommet@{sommet}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{sommet}{sommet}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structs__sommet}{s\+\_\+sommet}} \mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}}}
+
+
+
+Structure de données représentant un sommet du graphe. 
+
+Un sommet est une structure composée d\textquotesingle{}un indice et d\textquotesingle{}une liste de pointeur de sommet. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{graphe_8h_a2e2b47a3a7df4e86f1206cf05d9a05c5}\label{graphe_8h_a2e2b47a3a7df4e86f1206cf05d9a05c5}} 
+\index{graphe.h@{graphe.h}!contain\_circuit@{contain\_circuit}}
+\index{contain\_circuit@{contain\_circuit}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{contain\_circuit()}{contain\_circuit()}}
+{\footnotesize\ttfamily bool contain\+\_\+circuit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$}]{G,  }\item[{\mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$}]{s\+\_\+current }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de savoir si un circuit est présent dans le graphe. 
+
+Cette fonction est utilisée dans le cadre de la méthode de classement par les paires. 
+\begin{DoxyParams}{Parameters}
+{\em G} & le graphe \\
+\hline
+{\em s\+\_\+current} & le sommet courant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si un circuit est présent dans le graphe 
+
+false si aucun circuit est présent dans le graphe 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphe_8h_a65cb732950d8eb6b942ae99f3c06cc21}\label{graphe_8h_a65cb732950d8eb6b942ae99f3c06cc21}} 
+\index{graphe.h@{graphe.h}!graphe\_create@{graphe\_create}}
+\index{graphe\_create@{graphe\_create}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{graphe\_create()}{graphe\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}}$\ast$ graphe\+\_\+create (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+candidat }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de créer un graphe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+\_\+candidat} & le nombre de candidat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+graphe$\ast$ le graphe créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphe_8h_a8c00a0e4ed4d07f183eb123f99264666}\label{graphe_8h_a8c00a0e4ed4d07f183eb123f99264666}} 
+\index{graphe.h@{graphe.h}!graphe\_delete@{graphe\_delete}}
+\index{graphe\_delete@{graphe\_delete}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{graphe\_delete()}{graphe\_delete()}}
+{\footnotesize\ttfamily void graphe\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de supprimer un graphe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & le graphe à supprimer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphe_8h_adde20d40eac5ca3bee90cfc4ca9175d9}\label{graphe_8h_adde20d40eac5ca3bee90cfc4ca9175d9}} 
+\index{graphe.h@{graphe.h}!last\_succ\_delete@{last\_succ\_delete}}
+\index{last\_succ\_delete@{last\_succ\_delete}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{last\_succ\_delete()}{last\_succ\_delete()}}
+{\footnotesize\ttfamily void last\+\_\+succ\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$}]{s\+\_\+current }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de supprimer la dernière succession d\textquotesingle{}un sommet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s\+\_\+current} & le sommet courant \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphe_8h_ad959493f445cea51feaa4a3a76f8a28b}\label{graphe_8h_ad959493f445cea51feaa4a3a76f8a28b}} 
+\index{graphe.h@{graphe.h}!sommet\_create@{sommet\_create}}
+\index{sommet\_create@{sommet\_create}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{sommet\_create()}{sommet\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}}$\ast$ sommet\+\_\+create (\begin{DoxyParamCaption}\item[{int}]{indice }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de créer un sommet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em indice} & l\textquotesingle{}indice du sommet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sommet$\ast$ le sommet créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphe_8h_ac5a6b79a81e048800aa658073d13f79f}\label{graphe_8h_ac5a6b79a81e048800aa658073d13f79f}} 
+\index{graphe.h@{graphe.h}!sommet\_delete@{sommet\_delete}}
+\index{sommet\_delete@{sommet\_delete}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{sommet\_delete()}{sommet\_delete()}}
+{\footnotesize\ttfamily void sommet\+\_\+delete (\begin{DoxyParamCaption}\item[{void $\ast$}]{elem }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de supprimer un sommet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & le pointeur générique vers le sommet à supprimer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphe_8h_a87f9ce09ed28edcf412fe58e9c5dd047}\label{graphe_8h_a87f9ce09ed28edcf412fe58e9c5dd047}} 
+\index{graphe.h@{graphe.h}!status\_init@{status\_init}}
+\index{status\_init@{status\_init}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{status\_init()}{status\_init()}}
+{\footnotesize\ttfamily void status\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$}]{g,  }\item[{int}]{sommet\+\_\+depart }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}initialiser le tableau d\textquotesingle{}état. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & le graphe \\
+\hline
+{\em sommet\+\_\+depart} & le sommet de départ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphe_8h_a36953947c4f2bd88cf6ff23f2042354d}\label{graphe_8h_a36953947c4f2bd88cf6ff23f2042354d}} 
+\index{graphe.h@{graphe.h}!succ\_add@{succ\_add}}
+\index{succ\_add@{succ\_add}!graphe.h@{graphe.h}}
+\doxysubsubsection{\texorpdfstring{succ\_add()}{succ\_add()}}
+{\footnotesize\ttfamily void succ\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$}]{s\+\_\+current,  }\item[{\mbox{\hyperlink{graphe_8h_afec600160af1738bab8cb1eead341fcf}{sommet}} $\ast$}]{s\+\_\+successor }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}ajouter une succession à un sommet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s\+\_\+current} & le sommet courant \\
+\hline
+{\em s\+\_\+successor} & le sommet successeur \\
+\hline
+\end{DoxyParams}

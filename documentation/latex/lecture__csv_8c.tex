@@ -1,0 +1,73 @@
+\hypertarget{lecture__csv_8c}{}\doxysection{src/utils/lecture\+\_\+csv.c File Reference}
+\label{lecture__csv_8c}\index{src/utils/lecture\_csv.c@{src/utils/lecture\_csv.c}}
+
+
+Fichier de définition pour la lecture d\textquotesingle{}un fichier CSV.  
+
+
+{\ttfamily \#include \char`\"{}lecture\+\_\+csv.\+h\char`\"{}}\newline
+Include dependency graph for lecture\+\_\+csv.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lecture__csv_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{lecture__csv_8c_ab0b9e200f85b65dce7d9ebc210575e11}{est\+\_\+mauvaise\+\_\+extension}} (char $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Fonction qui confirme si le fichier est un \char`\"{}.\+csv\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ \mbox{\hyperlink{lecture__csv_8c_ace75ebc97a9176ece6c98117e03c931b}{mat\+\_\+char\+\_\+init\+\_\+from\+\_\+file}} (char $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Fonction pour remplir la matrice avec les données du fichier CSV. Procédé \+: 1) On vérifie que le fichier est bien un \char`\"{}.\+csv\char`\"{}. 2) On ouvre le fichier en lecture. 3) On crée la matrice de chaînes de caractères. 4) On lit le fichier caractère par caractère. 5) Si on rencontre une virgule, on termine le mot correspondant à la cellule et on alloue de l\textquotesingle{}espace pour une colonne supplémentaire. 6) Si on rencontre un saut de ligne, on termine le mot correspondant à la dernière cellule de la ligne, on rajoute le nombre de colonnes total à la structure, on alloue de l\textquotesingle{}espace pour une ligne supplémentaire et on réinitialise l\textquotesingle{}indice de colonne. 7) Si on rencontre un caractère autre qu\textquotesingle{}une virgule ou un saut de ligne, on l\textquotesingle{}ajoute à la cellule. 8) On retourne la matrice remplie après avoir libéré l\textquotesingle{}espace alloué en trop et fermé le fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier de définition pour la lecture d\textquotesingle{}un fichier CSV. 
+
+\begin{DoxyAuthor}{Author}
+Marco 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/10-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lecture__csv_8c_ab0b9e200f85b65dce7d9ebc210575e11}\label{lecture__csv_8c_ab0b9e200f85b65dce7d9ebc210575e11}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!est\_mauvaise\_extension@{est\_mauvaise\_extension}}
+\index{est\_mauvaise\_extension@{est\_mauvaise\_extension}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{est\_mauvaise\_extension()}{est\_mauvaise\_extension()}}
+{\footnotesize\ttfamily int est\+\_\+mauvaise\+\_\+extension (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Fonction qui confirme si le fichier est un \char`\"{}.\+csv\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fichier} & Le nom du fichier à vérifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si le fichier n\textquotesingle{}est pas un \char`\"{}.\+csv\char`\"{}, 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lecture__csv_8c_ace75ebc97a9176ece6c98117e03c931b}\label{lecture__csv_8c_ace75ebc97a9176ece6c98117e03c931b}} 
+\index{lecture\_csv.c@{lecture\_csv.c}!mat\_char\_init\_from\_file@{mat\_char\_init\_from\_file}}
+\index{mat\_char\_init\_from\_file@{mat\_char\_init\_from\_file}!lecture\_csv.c@{lecture\_csv.c}}
+\doxysubsubsection{\texorpdfstring{mat\_char\_init\_from\_file()}{mat\_char\_init\_from\_file()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ mat\+\_\+char\+\_\+init\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Fonction pour remplir la matrice avec les données du fichier CSV. Procédé \+: 1) On vérifie que le fichier est bien un \char`\"{}.\+csv\char`\"{}. 2) On ouvre le fichier en lecture. 3) On crée la matrice de chaînes de caractères. 4) On lit le fichier caractère par caractère. 5) Si on rencontre une virgule, on termine le mot correspondant à la cellule et on alloue de l\textquotesingle{}espace pour une colonne supplémentaire. 6) Si on rencontre un saut de ligne, on termine le mot correspondant à la dernière cellule de la ligne, on rajoute le nombre de colonnes total à la structure, on alloue de l\textquotesingle{}espace pour une ligne supplémentaire et on réinitialise l\textquotesingle{}indice de colonne. 7) Si on rencontre un caractère autre qu\textquotesingle{}une virgule ou un saut de ligne, on l\textquotesingle{}ajoute à la cellule. 8) On retourne la matrice remplie après avoir libéré l\textquotesingle{}espace alloué en trop et fermé le fichier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fichier} & Le nom du fichier CSV. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers la matrice remplie. 
+\end{DoxyReturn}

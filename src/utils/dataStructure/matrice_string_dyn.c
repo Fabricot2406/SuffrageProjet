@@ -8,7 +8,7 @@
 
 #define TAILLE_MAX 65
 
-t_mat_char_star_dyn *creerMatrice (){
+t_mat_char_star_dyn *mat_char_create (){
     //initialisation de la structure
     t_mat_char_star_dyn *matrice;
     if ((matrice=malloc(sizeof(t_mat_char_star_dyn)))==NULL){
@@ -33,7 +33,7 @@ t_mat_char_star_dyn *creerMatrice (){
     return matrice;   
 }
 
-int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne){
+int mat_char_search_elem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colonne){
     //Si la matrice est nulle on renvoie une erreur
     if (matrice==NULL){
         fprintf(stderr,"Matrice non valide.\n");
@@ -57,7 +57,7 @@ int trouverElem(t_mat_char_star_dyn *matrice, char *elem, int *ligne, int *colon
     return *ligne!=1 && *colonne!=-1;
 }
 
-void libererMatrice(t_mat_char_star_dyn *matrice){
+void mat_char_delete(t_mat_char_star_dyn *matrice){
     //Si la matrice est nulle on renvoie une erreur
     if (matrice==NULL){
         return;
@@ -82,7 +82,7 @@ void libererMatrice(t_mat_char_star_dyn *matrice){
 
 /******************* UTILS *********************/
 
-void afficherMatrice(t_mat_char_star_dyn *matrice){
+void mat_char_display(t_mat_char_star_dyn *matrice){
     //Si la matrice est nulle on renvoie une erreur
     if (matrice==NULL){
         fprintf(stderr,"Matice non valide.\n");
@@ -98,7 +98,7 @@ void afficherMatrice(t_mat_char_star_dyn *matrice){
     }
 }
 
-void afficherLigne(t_mat_char_star_dyn *matrice, int ligne){
+void mat_char_display_row(t_mat_char_star_dyn *matrice, int ligne){
     //Si la matrice est nulle on renvoie une erreur
     if (matrice==NULL){
         fprintf(stderr,"Matice non valide.\n");

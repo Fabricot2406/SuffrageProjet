@@ -55,10 +55,6 @@ List* list_push_front(List* list, void *data, size_t date_size) {
 	return list;
 }
 
-/**
- * @brief Utiliser cette fonction dans le paramètre f de list_delete 
- *        afin de ne pas libérer la mémoire des éléments de la liste.
- */
 void vide(void *elem){
     (void)elem;
 }
@@ -126,19 +122,14 @@ List* list_remove_at(List* l, int p,SimpleFunctor f) {
 void *list_at(const List* l, int p) {
 	assert((p>=0) && (p<l->size));
 	LinkedElement *element = l->sentinel->next;
-	for (int i = 0; i < p; i++)
-	{
-		element = element->next;
-	}
+	for (int i = 0; i < p; i++) element = element->next;
 	return element->value;
 }
 
 List* list_map(List* l, SimpleFunctor f) {
 	LinkedElement * sentinel = l->sentinel;
 	for (LinkedElement * element = sentinel->next; element!=sentinel; element=element->next)
-	{
 		f(element->value);
-	}
 	return l;
 }
 
@@ -146,10 +137,8 @@ List* list_reduce(List* list, void (*f)(void *, void*), void *userData) {
 	LinkedElement * sentinel = list->sentinel;
 	// on parcourt la liste
 	for (LinkedElement * element = sentinel->next; element!=sentinel; element=element->next)
-	{
 		// on applique la fonction de traitement à la donnée
 		f(element->value, userData);
-	}
 	return list;
 }
 
@@ -174,14 +163,10 @@ void insert_sorted(List *list, void *newElement, int (*compare)(const void *, co
     
     while (iterator_has_next(it)) {
         void *current = iterator_current(it);
-        if (compare(current, newElement) > 0) {
-            break;
-        }
-        
+        if (compare(current, newElement) > 0) break;
         iterator_next(it);
         indice_insert = iterator_index(it);
     }
-    
     list_insert_at(list, indice_insert, newElement);
     iterator_delete(it);
 }

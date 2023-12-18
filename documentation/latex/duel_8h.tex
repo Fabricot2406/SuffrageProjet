@@ -1,0 +1,107 @@
+\hypertarget{duel_8h}{}\doxysection{src/utils/data\+Structure/duel.h File Reference}
+\label{duel_8h}\index{src/utils/dataStructure/duel.h@{src/utils/dataStructure/duel.h}}
+
+
+Structure de données représentant une matrice de duel.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}matrice\+\_\+int\+\_\+dyn.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}listegen.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ballot.\+h\char`\"{}}\newline
+Include dependency graph for duel.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{duel_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{duel_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$ \mbox{\hyperlink{duel_8h_a1add7b5e498e54031a1fb8fc0d294e60}{mat\+\_\+duel\+\_\+create}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de créer la matrice de duel à partir d\textquotesingle{}un ballot. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$ \mbox{\hyperlink{duel_8h_a9d8842e786f429278aa24c64eb92547b}{mat\+\_\+duel\+\_\+create\+\_\+from\+\_\+str}} (\mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de créer la matrice de duel à partir d\textquotesingle{}une matrice de chaines de caractères. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{duel_8h_aa5069db8074741191d6bb0235177f28c}{mat\+\_\+duel\+\_\+log}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice\+\_\+duel, FILE $\ast$log\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de remplir un fichier de log avec la matrice de duel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure de données représentant une matrice de duel. 
+
+\begin{DoxyAuthor}{Author}
+Anthony
+\end{DoxyAuthor}
+La diagonale est remplie de 0, car un candidat ne peut pas se battre contre lui-\/même. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{duel_8h_a1add7b5e498e54031a1fb8fc0d294e60}\label{duel_8h_a1add7b5e498e54031a1fb8fc0d294e60}} 
+\index{duel.h@{duel.h}!mat\_duel\_create@{mat\_duel\_create}}
+\index{mat\_duel\_create@{mat\_duel\_create}!duel.h@{duel.h}}
+\doxysubsubsection{\texorpdfstring{mat\_duel\_create()}{mat\_duel\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}}$\ast$ mat\+\_\+duel\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de créer la matrice de duel à partir d\textquotesingle{}un ballot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Le ballot qui contient les préférences des électeurs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+t\+\_\+mat\+\_\+int\+\_\+dyn$\ast$ La matrice de duel. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+Le ballot est initialisé. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{duel_8h_a9d8842e786f429278aa24c64eb92547b}\label{duel_8h_a9d8842e786f429278aa24c64eb92547b}} 
+\index{duel.h@{duel.h}!mat\_duel\_create\_from\_str@{mat\_duel\_create\_from\_str}}
+\index{mat\_duel\_create\_from\_str@{mat\_duel\_create\_from\_str}!duel.h@{duel.h}}
+\doxysubsubsection{\texorpdfstring{mat\_duel\_create\_from\_str()}{mat\_duel\_create\_from\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}}$\ast$ mat\+\_\+duel\+\_\+create\+\_\+from\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice\+\_\+string }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de créer la matrice de duel à partir d\textquotesingle{}une matrice de chaines de caractères. 
+
+Cette fonction est utilisée dans le cadre de l\textquotesingle{}option -\/d du programme. 
+\begin{DoxyParams}{Parameters}
+{\em matrice\+\_\+string} & La matrice de chaines de caractères. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+t\+\_\+mat\+\_\+int\+\_\+dyn$\ast$ La matrice de duel. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{duel_8h_aa5069db8074741191d6bb0235177f28c}\label{duel_8h_aa5069db8074741191d6bb0235177f28c}} 
+\index{duel.h@{duel.h}!mat\_duel\_log@{mat\_duel\_log}}
+\index{mat\_duel\_log@{mat\_duel\_log}!duel.h@{duel.h}}
+\doxysubsubsection{\texorpdfstring{mat\_duel\_log()}{mat\_duel\_log()}}
+{\footnotesize\ttfamily void mat\+\_\+duel\+\_\+log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$}]{matrice\+\_\+duel,  }\item[{FILE $\ast$}]{log\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de remplir un fichier de log avec la matrice de duel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice\+\_\+duel} & La matrice de duel. \\
+\hline
+{\em log\+\_\+file} & Le fichier de log. \\
+\hline
+\end{DoxyParams}

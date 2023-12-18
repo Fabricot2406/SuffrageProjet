@@ -1,0 +1,230 @@
+\hypertarget{ballot_8h}{}\doxysection{src/utils/data\+Structure/ballot.h File Reference}
+\label{ballot_8h}\index{src/utils/dataStructure/ballot.h@{src/utils/dataStructure/ballot.h}}
+
+
+Structure de données représentant un ballot de vote.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}matrice\+\_\+string\+\_\+dyn.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}matrice\+\_\+int\+\_\+dyn.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}listegen.\+h\char`\"{}}\newline
+Include dependency graph for ballot.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ballot_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ballot_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__ensemble__preference}{s\+\_\+ensemble\+\_\+preference}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un ensemble de préférence. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structballot__s}{ballot\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Structure de données représentant un ballot de vote. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ballot_8h_a1fd4ed894a5fabc466542ef886e8c125}\label{ballot_8h_a1fd4ed894a5fabc466542ef886e8c125}} 
+typedef struct \mbox{\hyperlink{structs__ensemble__preference}{s\+\_\+ensemble\+\_\+preference}} {\bfseries Pref}
+\item 
+\mbox{\Hypertarget{ballot_8h_a0313ae947feb0e3fafbf07ce60097543}\label{ballot_8h_a0313ae947feb0e3fafbf07ce60097543}} 
+typedef struct \mbox{\hyperlink{structballot__s}{ballot\+\_\+s}} {\bfseries ballot}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structballot__s}{ballot}} $\ast$ \mbox{\hyperlink{ballot_8h_a56039d560d6876e4f8954083c0cbe4ad}{ballot\+\_\+create}} (int nb\+\_\+candidats, int nb\+\_\+votants)
+\begin{DoxyCompactList}\small\item\em Crée un nouveau ballot vide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structballot__s}{ballot}} $\ast$ \mbox{\hyperlink{ballot_8h_a23e56f4f939c0cac30e197c71723d63a}{ballot\+\_\+init}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$b, \mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$classement\+\_\+csv)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de remplir un ballot à partir d\textquotesingle{}un classement CSV. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ballot_8h_a74bf50db6f487503381f92680b819ad4}{ballot\+\_\+delete}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Détruit un ballot, libérant la mémoire allouée. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{ballot_8h_a8823ccc44f2d9e382e1a246de21c37d1}{get\+\_\+candidat\+\_\+nom}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$b, int indice\+\_\+candidat)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}accéder au nom d\textquotesingle{}un candidat. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{ballot_8h_a95c07283cffca9672f4a619d19ad7d4d}{get\+\_\+liste\+\_\+pref}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$b, int num\+\_\+votant)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}accéder à la liste de préférence d\textquotesingle{}un votant. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ballot_8h_af71c236ecfb5f3440747dbb5d078305c}{get\+\_\+fav\+\_\+candidat}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$b, int num\+\_\+votant)
+\begin{DoxyCompactList}\small\item\em Affiche le premier candidat favori d\textquotesingle{}un votant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ballot_8h_af4255b2e45feb83b0c0b37aeaceea663}{ballot\+\_\+log}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$b, FILE $\ast$log\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de remplir le fichier log avec le ballot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure de données représentant un ballot de vote. 
+
+\begin{DoxyAuthor}{Author}
+Anthony
+\end{DoxyAuthor}
+Un ballot est une structure composée d\textquotesingle{}une liste de candidats, d\textquotesingle{}une matrice de classement et d\textquotesingle{}un nombre de votants. \begin{DoxyVerb}   - Chaque élément de la matrice de classement est un ensemble de préférence.
+        - Chaque ligne de la matrice de classement correspond une liste d'ensemble de préférence.
+        - Il y a autant de lignes que de votants.
+        - Il peut y avoir (nb_candidats + 1) colonnes dans la matrice de classement.
+        - Chaque colonne de la matrice de classement correspond à un rang de préférence.
+        - La liste d'ensemble de préférence est triée par ordre croissant de rang.
+
+   - Chaque ensemble de préférence est composée d'un rang et d'une liste d'indice de candidat.
+   - Le pire rang est -1. Le meilleur rang est 1.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ballot_8h_a56039d560d6876e4f8954083c0cbe4ad}\label{ballot_8h_a56039d560d6876e4f8954083c0cbe4ad}} 
+\index{ballot.h@{ballot.h}!ballot\_create@{ballot\_create}}
+\index{ballot\_create@{ballot\_create}!ballot.h@{ballot.h}}
+\doxysubsubsection{\texorpdfstring{ballot\_create()}{ballot\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structballot__s}{ballot}}$\ast$ ballot\+\_\+create (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+candidats,  }\item[{int}]{nb\+\_\+votants }\end{DoxyParamCaption})}
+
+
+
+Crée un nouveau ballot vide. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+\_\+candidats} & Nombre de candidats \\
+\hline
+{\em nb\+\_\+votants} & Nombre de votants \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers le nouveau ballot. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+nb\+\_\+candidats $>$ 0 
+
+nb\+\_\+votants $>$ 0 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{ballot_8h_a74bf50db6f487503381f92680b819ad4}\label{ballot_8h_a74bf50db6f487503381f92680b819ad4}} 
+\index{ballot.h@{ballot.h}!ballot\_delete@{ballot\_delete}}
+\index{ballot\_delete@{ballot\_delete}!ballot.h@{ballot.h}}
+\doxysubsubsection{\texorpdfstring{ballot\_delete()}{ballot\_delete()}}
+{\footnotesize\ttfamily void ballot\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Détruit un ballot, libérant la mémoire allouée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointeur vers le ballot à détruire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+b != NULL 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{ballot_8h_a23e56f4f939c0cac30e197c71723d63a}\label{ballot_8h_a23e56f4f939c0cac30e197c71723d63a}} 
+\index{ballot.h@{ballot.h}!ballot\_init@{ballot\_init}}
+\index{ballot\_init@{ballot\_init}!ballot.h@{ballot.h}}
+\doxysubsubsection{\texorpdfstring{ballot\_init()}{ballot\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structballot__s}{ballot}}$\ast$ ballot\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{b,  }\item[{\mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{classement\+\_\+csv }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de remplir un ballot à partir d\textquotesingle{}un classement CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointeur vers le ballot à remplir. \\
+\hline
+{\em classement\+\_\+csv} & Pointeur vers la matrice contenant le classement CSV. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers le ballot rempli. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+b != NULL 
+
+classement\+\_\+csv != NULL 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{ballot_8h_af4255b2e45feb83b0c0b37aeaceea663}\label{ballot_8h_af4255b2e45feb83b0c0b37aeaceea663}} 
+\index{ballot.h@{ballot.h}!ballot\_log@{ballot\_log}}
+\index{ballot\_log@{ballot\_log}!ballot.h@{ballot.h}}
+\doxysubsubsection{\texorpdfstring{ballot\_log()}{ballot\_log()}}
+{\footnotesize\ttfamily void ballot\+\_\+log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{b,  }\item[{FILE $\ast$}]{log\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de remplir le fichier log avec le ballot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & ballot à afficher \\
+\hline
+{\em log\+\_\+file} & le fichier de log à remplir \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ballot_8h_a8823ccc44f2d9e382e1a246de21c37d1}\label{ballot_8h_a8823ccc44f2d9e382e1a246de21c37d1}} 
+\index{ballot.h@{ballot.h}!get\_candidat\_nom@{get\_candidat\_nom}}
+\index{get\_candidat\_nom@{get\_candidat\_nom}!ballot.h@{ballot.h}}
+\doxysubsubsection{\texorpdfstring{get\_candidat\_nom()}{get\_candidat\_nom()}}
+{\footnotesize\ttfamily char$\ast$ get\+\_\+candidat\+\_\+nom (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{b,  }\item[{int}]{indice\+\_\+candidat }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}accéder au nom d\textquotesingle{}un candidat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointeur vers le ballot. \\
+\hline
+{\em indice\+\_\+candidat} & correspond à l\textquotesingle{}indice du candidat dans la liste des noms des candidats \+: (numéro de colonne -\/ 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers le nom du candidat. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ballot_8h_af71c236ecfb5f3440747dbb5d078305c}\label{ballot_8h_af71c236ecfb5f3440747dbb5d078305c}} 
+\index{ballot.h@{ballot.h}!get\_fav\_candidat@{get\_fav\_candidat}}
+\index{get\_fav\_candidat@{get\_fav\_candidat}!ballot.h@{ballot.h}}
+\doxysubsubsection{\texorpdfstring{get\_fav\_candidat()}{get\_fav\_candidat()}}
+{\footnotesize\ttfamily int get\+\_\+fav\+\_\+candidat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{b,  }\item[{int}]{num\+\_\+votant }\end{DoxyParamCaption})}
+
+
+
+Affiche le premier candidat favori d\textquotesingle{}un votant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointeur vers le ballot. \\
+\hline
+{\em votant} & correspond à l\textquotesingle{}indice du votant dans la matrice de classement \+: (numéro de ligne -\/ 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int l\textquotesingle{}indice du candidat favori dans la liste des noms des candidats 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ballot_8h_a95c07283cffca9672f4a619d19ad7d4d}\label{ballot_8h_a95c07283cffca9672f4a619d19ad7d4d}} 
+\index{ballot.h@{ballot.h}!get\_liste\_pref@{get\_liste\_pref}}
+\index{get\_liste\_pref@{get\_liste\_pref}!ballot.h@{ballot.h}}
+\doxysubsubsection{\texorpdfstring{get\_liste\_pref()}{get\_liste\_pref()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__List}{List}}$\ast$ get\+\_\+liste\+\_\+pref (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structballot__s}{ballot}} $\ast$}]{b,  }\item[{int}]{num\+\_\+votant }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}accéder à la liste de préférence d\textquotesingle{}un votant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointeur vers le ballot. \\
+\hline
+{\em num\+\_\+votant} & correspond à l\textquotesingle{}indice du votant dans la matrice de classement \+: (numéro de ligne -\/ 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers la liste de préférence du votant. 
+\end{DoxyReturn}

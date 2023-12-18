@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
-/******************* TYPE FONCTION *********************/
+/******************* TYPEDEF FONCTION *********************/
 
 typedef void(*SimpleFunctor)(void *);
 
@@ -25,11 +25,15 @@ typedef bool(*OrderFunctor)(void *, void *);
 
 /******************* STRUCTURE *********************/
 
+/**
+ * @brief Structure de données représentant un élément de la liste.
+ */
 typedef struct s_LinkedElement {
 	void *value;
 	struct s_LinkedElement* previous;
 	struct s_LinkedElement* next;
 } LinkedElement;
+
 
 typedef struct s_List {
 	LinkedElement* sentinel;
@@ -74,12 +78,12 @@ List* list_insert_at(List* l, int p, void *v);
  * @brief Insère un nouvel élément dans une liste triée.
  * @param list La liste dans laquelle insérer l'élément.
  * @param newElement Un pointeur vers la nouvelle valeur à insérer.
- * @param compare La fonction de comparaison pour déterminer l'ordre des éléments.
+ * @param list_comp La fonction de comparaison pour déterminer l'ordre des éléments.
  * Cette fonction doit retourner un entier négatif si le premier élément est inférieur au deuxième, 
  * 0 s'ils sont égaux, 
  * et un entier positif si le premier élément est supérieur au deuxième.
  */
-void insert_sorted(List *list, void *newElement, int (*compare)(const void *, const void *));
+void insert_sorted(List *list, void *newElement, int (*list_comp)(const void *, const void *));
 
 /******************* OPERATEURS *********************/
 

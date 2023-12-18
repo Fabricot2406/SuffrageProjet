@@ -1,0 +1,298 @@
+\hypertarget{utils__sd_8h}{}\doxysection{src/utils/utils\+\_\+sd.h File Reference}
+\label{utils__sd_8h}\index{src/utils/utils\_sd.h@{src/utils/utils\_sd.h}}
+
+
+Fonctions utilitaires pour les méthodes de suffrage.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}./data\+Structure/ballot.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./data\+Structure/arc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./data\+Structure/listegen.\+h\char`\"{}}\newline
+Include dependency graph for utils\+\_\+sd.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils__sd_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils__sd_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structuni__data__s}{uni\+\_\+data\+\_\+s}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{utils__sd_8h_ac107cbd735d6c3f0fc0cd250f1909d22}\label{utils__sd_8h_ac107cbd735d6c3f0fc0cd250f1909d22}} 
+\#define {\bfseries INCREMENT\+\_\+\+COLONNE}~4
+\item 
+\mbox{\Hypertarget{utils__sd_8h_a92a370b45b47c59da3b4ebe99823e88a}\label{utils__sd_8h_a92a370b45b47c59da3b4ebe99823e88a}} 
+\#define {\bfseries INCREMENT\+\_\+\+LIGNE}~1
+\item 
+\mbox{\Hypertarget{utils__sd_8h_a6b20d41d6252e9871430c242cb1a56e7}\label{utils__sd_8h_a6b20d41d6252e9871430c242cb1a56e7}} 
+\#define {\bfseries BUFFER\+\_\+\+SIZE}~1024
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{utils__sd_8h_a635c8cc38f50fce77c7f1f956d7ee90c}\label{utils__sd_8h_a635c8cc38f50fce77c7f1f956d7ee90c}} 
+typedef struct \mbox{\hyperlink{structuni__data__s}{uni\+\_\+data\+\_\+s}} {\bfseries uni\+\_\+data}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utils__sd_8h_a7ab0ebc9ae53aa40409c8630f230fb30}{retourner\+\_\+vainqueur}} (char $\ast$methode, int nb\+Candidats, int nb\+Votants, char $\ast$nom\+Vainqueur, double score, FILE $\ast$output)
+\begin{DoxyCompactList}\small\item\em Affiche le vainqueur d\textquotesingle{}un suffrage dépendant de la méthode choisie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structuni__data__s}{uni\+\_\+data}} $\ast$ \mbox{\hyperlink{utils__sd_8h_a1455a24587c17cddc2ec6d15b44b193c}{creer\+\_\+uni\+\_\+data}} (int $\ast$vainqueur\+Un, int $\ast$vainqueur\+Deux, int $\ast$votes)
+\begin{DoxyCompactList}\small\item\em Crée une structure de données uni\+\_\+data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils__sd_8h_acdee132af9dadd8db8c4e338874e7a4c}{uni\+\_\+reduce}} (void $\ast$elem, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Fonction de réduction pour uninominale 2. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{utils__sd_8h_a0a5d76a22d285b6d9796115f42edb902}{calculer\+\_\+score}} (int nb\+\_\+votants, int nb\+\_\+votes)
+\begin{DoxyCompactList}\small\item\em Calcule le score d\textquotesingle{}un candidat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils__sd_8h_a3199ea6e88ffdf89d06049c86216afc1}{afficher\+\_\+int\+\_\+ptr}} (void $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Affiche un élément. Cet élément est un pointeur sur un entier. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils__sd_8h_a6bdda3ed59345dda98f780b6bdd82b04}{cmp\+\_\+inferieur\+\_\+egal}} (void $\ast$i, void $\ast$j)
+\begin{DoxyCompactList}\small\item\em Trie les votes. Les paramètres sont castés en int. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils__sd_8h_adf40adb4e141d76c3b1f5f084b66c2b9}{est\+\_\+vainqueur}} (\mbox{\hyperlink{structs__List}{List}} $\ast$list\+\_\+arc, int candidat)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de déterminer si un candidat est vainqueur. Processus à suivre \+: 1) On parcourt la liste d\textquotesingle{}arc. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils__sd_8h_a6f3b7677ab3c7cf5a549660aa1911211}{arc\+\_\+sortant}} (\mbox{\hyperlink{structs__List}{List}} $\ast$list\+\_\+arc, int candidat)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de déterminer si un candidat n\textquotesingle{}a que des arcs sortants. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils__sd_8h_a500dc28b125717e8ceace4f7ce9b5e76}{vainqueur\+\_\+condorcet}} (\mbox{\hyperlink{arc_8h_a6f32f04776591b35c09f7d19c2f8347e}{larc}} $\ast$list\+\_\+arc, int $\ast$vainqueur)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de déterminer si il y a un vainqueur de Condorcet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils__sd_8h_af5c71eaebe34fbae1a865c946e297d35}{afficher\+\_\+classement}} (\mbox{\hyperlink{structs__List}{List}} $\ast$classement)
+\begin{DoxyCompactList}\small\item\em Affichage du classement des candidats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fonctions utilitaires pour les méthodes de suffrage. 
+
+\begin{DoxyAuthor}{Authors}
+Anthony, Marco et Fabio 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/25 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{utils__sd_8h_af5c71eaebe34fbae1a865c946e297d35}\label{utils__sd_8h_af5c71eaebe34fbae1a865c946e297d35}} 
+\index{utils\_sd.h@{utils\_sd.h}!afficher\_classement@{afficher\_classement}}
+\index{afficher\_classement@{afficher\_classement}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_classement()}{afficher\_classement()}}
+{\footnotesize\ttfamily void afficher\+\_\+classement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{classement }\end{DoxyParamCaption})}
+
+
+
+Affichage du classement des candidats. 
+
+Utilisation de la fonction list\+\_\+reduce pour afficher les candidats dans l\textquotesingle{}ordre du classement. La fonction de réduction est une fonction qui affiche le candidat passé en paramètre et sa position dans le classement. \begin{DoxyPrecond}{Precondition}
+La liste des arcs est non vide, triée par ordre décroissant de score. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em classement} & La liste des candidats du classement à afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utils__sd_8h_a3199ea6e88ffdf89d06049c86216afc1}\label{utils__sd_8h_a3199ea6e88ffdf89d06049c86216afc1}} 
+\index{utils\_sd.h@{utils\_sd.h}!afficher\_int\_ptr@{afficher\_int\_ptr}}
+\index{afficher\_int\_ptr@{afficher\_int\_ptr}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_int\_ptr()}{afficher\_int\_ptr()}}
+{\footnotesize\ttfamily void afficher\+\_\+int\+\_\+ptr (\begin{DoxyParamCaption}\item[{void $\ast$}]{elem }\end{DoxyParamCaption})}
+
+
+
+Affiche un élément. Cet élément est un pointeur sur un entier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & \+: L\textquotesingle{}élément à afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utils__sd_8h_a6f3b7677ab3c7cf5a549660aa1911211}\label{utils__sd_8h_a6f3b7677ab3c7cf5a549660aa1911211}} 
+\index{utils\_sd.h@{utils\_sd.h}!arc\_sortant@{arc\_sortant}}
+\index{arc\_sortant@{arc\_sortant}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{arc\_sortant()}{arc\_sortant()}}
+{\footnotesize\ttfamily bool arc\+\_\+sortant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{list\+\_\+arc,  }\item[{int}]{candidat }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de déterminer si un candidat n\textquotesingle{}a que des arcs sortants. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+\_\+arc} & Liste d\textquotesingle{}arc trié par ordre décroissant de différence de voix (score). \\
+\hline
+{\em candidat} & Candidat dont on veut savoir si il n\textquotesingle{}a que des arcs sortants. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le candidat n\textquotesingle{}a que des arcs sortants 
+
+false si le candidat n\textquotesingle{}a pas que des arcs sortants 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils__sd_8h_a0a5d76a22d285b6d9796115f42edb902}\label{utils__sd_8h_a0a5d76a22d285b6d9796115f42edb902}} 
+\index{utils\_sd.h@{utils\_sd.h}!calculer\_score@{calculer\_score}}
+\index{calculer\_score@{calculer\_score}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{calculer\_score()}{calculer\_score()}}
+{\footnotesize\ttfamily double calculer\+\_\+score (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+votants,  }\item[{int}]{nb\+\_\+votes }\end{DoxyParamCaption})}
+
+
+
+Calcule le score d\textquotesingle{}un candidat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+Votants} & Le nombre de votants d\textquotesingle{}une élection \\
+\hline
+{\em nb\+Votes} & Le nombre de votes d\textquotesingle{}un candidat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Le score du candidat 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils__sd_8h_a6bdda3ed59345dda98f780b6bdd82b04}\label{utils__sd_8h_a6bdda3ed59345dda98f780b6bdd82b04}} 
+\index{utils\_sd.h@{utils\_sd.h}!cmp\_inferieur\_egal@{cmp\_inferieur\_egal}}
+\index{cmp\_inferieur\_egal@{cmp\_inferieur\_egal}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{cmp\_inferieur\_egal()}{cmp\_inferieur\_egal()}}
+{\footnotesize\ttfamily bool cmp\+\_\+inferieur\+\_\+egal (\begin{DoxyParamCaption}\item[{void $\ast$}]{i,  }\item[{void $\ast$}]{j }\end{DoxyParamCaption})}
+
+
+
+Trie les votes. Les paramètres sont castés en int. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: Premier vote à comparer. \\
+\hline
+{\em j} & \+: Deuxième vote à comparer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool \+: Renvoie vrai si le premier vote doit venir avant le deuxième. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils__sd_8h_a1455a24587c17cddc2ec6d15b44b193c}\label{utils__sd_8h_a1455a24587c17cddc2ec6d15b44b193c}} 
+\index{utils\_sd.h@{utils\_sd.h}!creer\_uni\_data@{creer\_uni\_data}}
+\index{creer\_uni\_data@{creer\_uni\_data}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{creer\_uni\_data()}{creer\_uni\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structuni__data__s}{uni\+\_\+data}}$\ast$ creer\+\_\+uni\+\_\+data (\begin{DoxyParamCaption}\item[{int $\ast$}]{vainqueur\+Un,  }\item[{int $\ast$}]{vainqueur\+Deux,  }\item[{int $\ast$}]{votes }\end{DoxyParamCaption})}
+
+
+
+Crée une structure de données uni\+\_\+data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vainqueur\+Un} & Pointeur vers le vainqueur du premier tour \\
+\hline
+{\em vainqueur\+Deux} & Pointeur vers le vainqueur du deuxième tour \\
+\hline
+{\em votes} & Pointeur vers le tableau de votes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uni\+\_\+data$\ast$ Pointeur vers la structure de données uni\+\_\+data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils__sd_8h_adf40adb4e141d76c3b1f5f084b66c2b9}\label{utils__sd_8h_adf40adb4e141d76c3b1f5f084b66c2b9}} 
+\index{utils\_sd.h@{utils\_sd.h}!est\_vainqueur@{est\_vainqueur}}
+\index{est\_vainqueur@{est\_vainqueur}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{est\_vainqueur()}{est\_vainqueur()}}
+{\footnotesize\ttfamily bool est\+\_\+vainqueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__List}{List}} $\ast$}]{list\+\_\+arc,  }\item[{int}]{candidat }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de déterminer si un candidat est vainqueur. Processus à suivre \+: 1) On parcourt la liste d\textquotesingle{}arc. 
+
+
+\begin{DoxyItemize}
+\item Si le candidat est impliqué dans un arc où il est perdant, alors il n\textquotesingle{}est pas vainqueur.
+\item Si le candidat n\textquotesingle{}est impliqué dans aucun arc où il est perdant, alors il est vainqueur. 2) Si le candidat est impliqué dans aucun arc, alors il n\textquotesingle{}est pas vainqueur.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+\_\+arc} & Liste d\textquotesingle{}arc trié par ordre décroissant de différence de voix (score). \\
+\hline
+{\em candidat} & Candidat dont on veut savoir si il est vainqueur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Si le candidat est vainqueur. 
+
+false Si le candidat n\textquotesingle{}est pas vainqueur. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils__sd_8h_a7ab0ebc9ae53aa40409c8630f230fb30}\label{utils__sd_8h_a7ab0ebc9ae53aa40409c8630f230fb30}} 
+\index{utils\_sd.h@{utils\_sd.h}!retourner\_vainqueur@{retourner\_vainqueur}}
+\index{retourner\_vainqueur@{retourner\_vainqueur}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{retourner\_vainqueur()}{retourner\_vainqueur()}}
+{\footnotesize\ttfamily void retourner\+\_\+vainqueur (\begin{DoxyParamCaption}\item[{char $\ast$}]{methode,  }\item[{int}]{nb\+Candidats,  }\item[{int}]{nb\+Votants,  }\item[{char $\ast$}]{nom\+Vainqueur,  }\item[{double}]{score,  }\item[{FILE $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Affiche le vainqueur d\textquotesingle{}un suffrage dépendant de la méthode choisie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em methode} & Une chaine de caractères représentant le nom de la méthode employée \\
+\hline
+{\em nb\+Candidats} & Le nombre de candidats d\textquotesingle{}une élection \\
+\hline
+{\em nb\+Votants} & Le nombre de votants d\textquotesingle{}une élection \\
+\hline
+{\em methode} & Une chaine de caractères représentant le nom du vainqueur \\
+\hline
+{\em score} & Le score du candidat gagnant (à n\textquotesingle{}utiliser que lors d\textquotesingle{}uninominale 1 et 2) \\
+\hline
+{\em output} & Le fichier de sortie dans lequel on écrit le résultat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utils__sd_8h_acdee132af9dadd8db8c4e338874e7a4c}\label{utils__sd_8h_acdee132af9dadd8db8c4e338874e7a4c}} 
+\index{utils\_sd.h@{utils\_sd.h}!uni\_reduce@{uni\_reduce}}
+\index{uni\_reduce@{uni\_reduce}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{uni\_reduce()}{uni\_reduce()}}
+{\footnotesize\ttfamily int uni\+\_\+reduce (\begin{DoxyParamCaption}\item[{void $\ast$}]{elem,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Fonction de réduction pour uninominale 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & Un élément de la liste \\
+\hline
+{\em data} & La structure de données uni\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1 si le candidat est le vainqueur du premier ou du deuxième tour, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils__sd_8h_a500dc28b125717e8ceace4f7ce9b5e76}\label{utils__sd_8h_a500dc28b125717e8ceace4f7ce9b5e76}} 
+\index{utils\_sd.h@{utils\_sd.h}!vainqueur\_condorcet@{vainqueur\_condorcet}}
+\index{vainqueur\_condorcet@{vainqueur\_condorcet}!utils\_sd.h@{utils\_sd.h}}
+\doxysubsubsection{\texorpdfstring{vainqueur\_condorcet()}{vainqueur\_condorcet()}}
+{\footnotesize\ttfamily bool vainqueur\+\_\+condorcet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{arc_8h_a6f32f04776591b35c09f7d19c2f8347e}{larc}} $\ast$}]{list\+\_\+arc,  }\item[{int $\ast$}]{vainqueur }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de déterminer si il y a un vainqueur de Condorcet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+\_\+arc} & La liste des arcs représentant les paires de duel \\
+\hline
+{\em vainqueur} & Pointeur vers le vainqueur de Condorcet, s\textquotesingle{}il existe il sera modifié \\
+\hline
+\end{DoxyParams}

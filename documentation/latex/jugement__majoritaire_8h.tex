@@ -1,0 +1,71 @@
+\hypertarget{jugement__majoritaire_8h}{}\doxysection{src/methods/jugement\+\_\+majoritaire.h File Reference}
+\label{jugement__majoritaire_8h}\index{src/methods/jugement\_majoritaire.h@{src/methods/jugement\_majoritaire.h}}
+
+
+Fichier de la méthode de scrutin du jugement majoritaire.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../utils/lecture\+\_\+csv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../utils/data\+Structure/listegen.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../utils/utils\+\_\+sd.\+h\char`\"{}}\newline
+Include dependency graph for jugement\+\_\+majoritaire.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jugement__majoritaire_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{jugement__majoritaire_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{jugement__majoritaire_8h_a336939caf7a00ca3317a171f219ec5f9}\label{jugement__majoritaire_8h_a336939caf7a00ca3317a171f219ec5f9}} 
+typedef struct \mbox{\hyperlink{structs__candidat}{s\+\_\+candidat}} \mbox{\hyperlink{jugement__majoritaire_8h_a336939caf7a00ca3317a171f219ec5f9}{Candidat}}
+\begin{DoxyCompactList}\small\item\em Structure représentant un candidat dans le scrutin du jugement majoritaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{jugement__majoritaire_8h_a144b3f34acb9cae6c879ba2c1151cd0a}{determiner\+\_\+vainqueur\+\_\+jugement}} (\mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$matrice, FILE $\ast$output)
+\begin{DoxyCompactList}\small\item\em Détermine le vainqueur du jugement en fonction des mentions de chaque candidat et affiche le nom du vainqueur. Procédé \+: 1) On initialise chaque candidat avec son nom, les votes des électeurs à son égard triés par ordre croissant et la mention majoritaire correspondante. 2) On initialise un tableau répertoriant tous les candidats du scrutin. 3) On calcule le vainqueur du jugement en fonction des mentions de chaque candidat. 4) Si il y a égalité, on supprime le vote correspondant à la mention majoritaire et on réitère l\textquotesingle{}étape 3. 5) On affiche le nom du vainqueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier de la méthode de scrutin du jugement majoritaire. 
+
+\begin{DoxyAuthor}{Author}
+Marco 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{jugement__majoritaire_8h_a144b3f34acb9cae6c879ba2c1151cd0a}\label{jugement__majoritaire_8h_a144b3f34acb9cae6c879ba2c1151cd0a}} 
+\index{jugement\_majoritaire.h@{jugement\_majoritaire.h}!determiner\_vainqueur\_jugement@{determiner\_vainqueur\_jugement}}
+\index{determiner\_vainqueur\_jugement@{determiner\_vainqueur\_jugement}!jugement\_majoritaire.h@{jugement\_majoritaire.h}}
+\doxysubsubsection{\texorpdfstring{determiner\_vainqueur\_jugement()}{determiner\_vainqueur\_jugement()}}
+{\footnotesize\ttfamily void determiner\+\_\+vainqueur\+\_\+jugement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$}]{matrice,  }\item[{FILE $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Détermine le vainqueur du jugement en fonction des mentions de chaque candidat et affiche le nom du vainqueur. Procédé \+: 1) On initialise chaque candidat avec son nom, les votes des électeurs à son égard triés par ordre croissant et la mention majoritaire correspondante. 2) On initialise un tableau répertoriant tous les candidats du scrutin. 3) On calcule le vainqueur du jugement en fonction des mentions de chaque candidat. 4) Si il y a égalité, on supprime le vote correspondant à la mention majoritaire et on réitère l\textquotesingle{}étape 3. 5) On affiche le nom du vainqueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrice} & Matrice de mentions. \\
+\hline
+{\em output} & Fichier de sortie. \\
+\hline
+\end{DoxyParams}

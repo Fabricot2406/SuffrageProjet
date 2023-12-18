@@ -1,0 +1,30 @@
+<map id="src/main.c" name="src/main.c">
+<area shape="rect" id="node1" title="Fichier principal du programme." alt="" coords="935,5,1024,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="2505,497,2572,524"/>
+<area shape="rect" id="node3" title=" " alt="" coords="2047,497,2118,524"/>
+<area shape="rect" id="node4" title=" " alt="" coords="147,251,223,278"/>
+<area shape="rect" id="node5" title=" " alt="" coords="247,251,318,278"/>
+<area shape="rect" id="node6" title=" " alt="" coords="714,497,784,524"/>
+<area shape="rect" id="node7" href="$global_8h.html" title="Fichier global qui contient tous les headers des fichiers .c." alt="" coords="1610,80,1725,107"/>
+<area shape="rect" id="node8" href="$lecture__csv_8h.html" title="Fichier de déclaration pour la lecture d&#39;un fichier CSV." alt="" coords="2344,333,2450,360"/>
+<area shape="rect" id="node10" href="$matrice__string__dyn_8h.html" title="Structure de donnée correspondant à une matrice dynamique contenant des chaines de caractères." alt="" coords="888,408,1060,449"/>
+<area shape="rect" id="node12" href="$utils__main_8h.html" title="Fichier de fonctions utilitaires nécessaires au main." alt="" coords="1127,162,1230,189"/>
+<area shape="rect" id="node13" href="$utils__sd_8h.html" title="Fonctions utilitaires pour les méthodes de suffrage." alt="" coords="1752,251,1836,278"/>
+<area shape="rect" id="node14" href="$ballot_8h.html" title="Structure de données représentant un ballot de vote." alt="" coords="1261,333,1432,360"/>
+<area shape="rect" id="node15" href="$matrice__int__dyn_8h.html" title="Structure de donnée correspondant à une matrice dynamique contenant des entiers." alt="" coords="1298,415,1437,442"/>
+<area shape="rect" id="node16" href="$listegen_8h.html" title="Structure de donnée correspondant à une liste générique." alt="" coords="1187,415,1274,442"/>
+<area shape="rect" id="node17" href="$arc_8h.html" title="Structure de données representant un arc et une liste d&#39;arcs." alt="" coords="1658,333,1813,360"/>
+<area shape="rect" id="node18" href="$duel_8h.html" title="Structure de données représentant une matrice de duel." alt="" coords="1008,251,1170,278"/>
+<area shape="rect" id="node19" href="$graphe_8h.html" title="Structure de données représentant un graphe." alt="" coords="602,333,781,360"/>
+<area shape="rect" id="node20" href="$uninominale_8h.html" title="Méthode uninominale à 1 et 2 tours." alt="" coords="2040,162,2228,189"/>
+<area shape="rect" id="node21" href="$jugement__majoritaire_8h.html" title="Fichier de la méthode de scrutin du jugement majoritaire." alt="" coords="2454,155,2612,196"/>
+<area shape="rect" id="node22" href="$methode__paires_8h.html" title="Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires." alt="" coords="1254,155,1407,196"/>
+<area shape="rect" id="node23" href="$methode__schulze_8h.html" title="Fichier pour le calcul du vainqueur avec Schulze." alt="" coords="1848,155,2002,196"/>
+<area shape="rect" id="node24" href="$methode__minimax_8h.html" title="Implémentation de la méthode Minimax." alt="" coords="1591,155,1744,196"/>
+<area shape="rect" id="node25" href="$verify__my__vote_8h.html" title="Fichier de déclaration pour la vérification du vote de l&#39;utilisateur." alt="" coords="3032,244,3172,285"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1189,497,1272,524"/>
+<area shape="rect" id="node11" title=" " alt="" coords="585,497,660,524"/>
+<area shape="rect" id="node26" href="$sha256_8h_source.html" title=" " alt="" coords="3116,415,3198,442"/>
+<area shape="rect" id="node28" href="$sha256__utils_8h.html" title="Fichier de déclaration pour la fonction de hashage sha256ofString." alt="" coords="3134,333,3250,360"/>
+<area shape="rect" id="node27" title=" " alt="" coords="3120,497,3194,524"/>
+</map>

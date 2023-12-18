@@ -9,6 +9,9 @@
 void recalculer_mention(List *tab_candidat);
 void calculer_vainqueur_jugement(List *tab_candidat);
 
+/**
+ * @brief Structure représentant un candidat dans le scrutin du jugement majoritaire.
+ */
 typedef struct s_candidat{
     char *nom;
     List *votes_candidat;
@@ -61,14 +64,13 @@ char *rechercher_meilleure_mention(List *tab_candidat){
     return attribuer_mention(mention);
 }
 
-
 /**
  * @brief Initialise un candidat.
  * @param matrice : La matrice contenant les informations du candidat.
  * @param num_candidat : Le numéro du candidat.
  * @return Candidat* : Structure d'un candidat de l'élection.
  */
-Candidat *init_candidat(t_mat_char_star_dyn *matrice, int num_candidat){
+Candidat *candidat_init(t_mat_char_star_dyn *matrice, int num_candidat){
     //Initialisation de la structure candidat
     Candidat *candidat;
     if((candidat = malloc(sizeof(Candidat)))==NULL){
@@ -121,7 +123,7 @@ List *init_tableau_candidat(t_mat_char_star_dyn *matrice){
     List *tab_candidat=list_create();
     //Pour chaque element du tableau on crée une structure correspondant au candidats de l'élection et on la pousse dans la liste
     for (int i=0;i<nb_candidat;i++){
-        list_push_back(tab_candidat,init_candidat(matrice,i));
+        list_push_back(tab_candidat,candidat_init(matrice,i));
     }
     return tab_candidat;
 }
