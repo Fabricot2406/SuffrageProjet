@@ -1,8 +1,0 @@
-<map id="src/utils/dataStructure/graphe.h" name="src/utils/dataStructure/graphe.h">
-<area shape="rect" id="node1" title="Structure de données représentant un graphe." alt="" coords="175,5,341,47"/>
-<area shape="rect" id="node2" href="$methode__paires_8h.html" title="Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires." alt="" coords="56,95,220,136"/>
-<area shape="rect" id="node4" href="$global_8h.html" title="Fichier global qui contient tous les headers des fichiers .c." alt="" coords="193,191,323,218"/>
-<area shape="rect" id="node6" href="$graphe_8c.html" title="Structure de données pour structurer un graphe." alt="" coords="295,95,461,136"/>
-<area shape="rect" id="node3" href="$methode__paires_8c.html" title="Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires." alt="" coords="5,184,169,225"/>
-<area shape="rect" id="node5" href="$main_8c.html" title="Fichier principal du programme." alt="" coords="213,273,303,300"/>
-</map>

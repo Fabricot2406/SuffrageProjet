@@ -1,5 +1,0 @@
-<map id="s_arc" name="s_arc">
-<area shape="rect" id="node1" title="Liste d&#39;arcs." alt="" coords="43,187,99,213"/>
-<area shape="rect" id="node2" href="$structs__List.html" title=" " alt="" coords="42,97,101,124"/>
-<area shape="rect" id="node3" href="$structs__LinkedElement.html" title="Structure de données représentant un élément de la liste." alt="" coords="5,7,137,33"/>
-</map>

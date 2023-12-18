@@ -59,6 +59,8 @@ endif
 
 $(TARGET): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+	mkdir -p $(OUTPUTDIR)
+	mkdir -p $(LOGDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(dir $@)

@@ -1,8 +1,0 @@
-<map id="s_data" name="s_data">
-<area shape="rect" id="node1" title="Structure représentant les données d&#39;une élection. Contient les TAD nécessaires à l&#39;application de l&#39;..." alt="" coords="150,276,215,303"/>
-<area shape="rect" id="node2" href="$structt__mat__int__dyn.html" title="Structure représentant une matrice dynamique d&#39;entiers. Contient un tableau bidimensionnel,..." alt="" coords="5,187,120,213"/>
-<area shape="rect" id="node3" href="$structballot__s.html" title="Structure de données représentant un ballot de vote." alt="" coords="145,187,218,213"/>
-<area shape="rect" id="node4" href="$structs__List.html" title=" " alt="" coords="152,97,211,124"/>
-<area shape="rect" id="node5" href="$structs__LinkedElement.html" title="Structure de données représentant un élément de la liste." alt="" coords="115,7,247,33"/>
-<area shape="rect" id="node6" href="$structt__mat__char__star__dyn.html" title="Structure pour allocation matrice dynamique." alt="" coords="242,187,401,213"/>
-</map>

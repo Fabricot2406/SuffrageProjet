@@ -1,5 +1,0 @@
-<map id="s_candidat" name="s_candidat">
-<area shape="rect" id="node1" title="Structure représentant un candidat dans le scrutin du jugement majoritaire." alt="" coords="25,187,117,213"/>
-<area shape="rect" id="node2" href="$structs__List.html" title=" " alt="" coords="42,97,101,124"/>
-<area shape="rect" id="node3" href="$structs__LinkedElement.html" title="Structure de données représentant un élément de la liste." alt="" coords="5,7,137,33"/>
-</map>

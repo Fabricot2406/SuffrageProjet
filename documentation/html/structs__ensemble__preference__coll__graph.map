@@ -1,5 +1,0 @@
-<map id="s_ensemble_preference" name="s_ensemble_preference">
-<area shape="rect" id="node1" title="Structure de données représentant un ensemble de préférence." alt="" coords="5,187,183,213"/>
-<area shape="rect" id="node2" href="$structs__List.html" title=" " alt="" coords="65,97,123,124"/>
-<area shape="rect" id="node3" href="$structs__LinkedElement.html" title="Structure de données représentant un élément de la liste." alt="" coords="28,7,160,33"/>
-</map>
