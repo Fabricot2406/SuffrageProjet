@@ -32,11 +32,11 @@ Pour exécuter le programme, utilisez la commande suivante :
 
 Les balises doivent être utilisées comme ceci :
 * **-i <ballot>** : ouvre un fichier de scrutin (au format csv, de type ballot).
- > *avec [fichier] le nom du fichier, sans chemins ni extensions, placé dans le dossier `test/input`.*
+ > *avec [fichier] le nom du fichier, sans chemins ni extensions, placé dans le dossier `test/input/vote`.*
 * **-d <duel>** : ouvre un fichier de scrutin (au format csv, de type duel).
- > *avec [fichier] le nom du fichier, sans chemins ni extensions, placé dans le dossier `test/input`.*
+ > *avec [fichier] le nom du fichier, sans chemins ni extensions, placé dans le dossier `test/input/duel`.*
 * **-o <output>** : permet d'écrire la sortie du programme dans un fichier au choix.
- > *avec [output] le nom du fichier, sans chemins ni extensions, placé dans le dossier `test/output`.*
+ > *avec [output] le nom du fichier, sans chemins ni extensions, placé dans le dossier `test/output/log`.*
 * **-m <methode>** : la méthode au choix que vous souhaitez utiliser pour déterminer le vainqueur du scrutin.
  > *avec [methode] étant choisi parmi : uni1, uni2, cm, cp, cs, jm, all.*
 
