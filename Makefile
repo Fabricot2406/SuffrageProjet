@@ -30,16 +30,26 @@ DOCDIR = documentation
 
 all: $(TARGET)
 ifeq ($(TEST),cm)
+	@chmod +x ./tests/test_script_cm.sh
 	@$(BASH) ./tests/test_script_cm.sh
 else ifeq ($(TEST),cp)
+	@chmod +x ./tests/test_script_cp.sh
 	@$(BASH) ./tests/test_script_cp.sh
 else ifeq ($(TEST),cs)
+	@chmod +x ./tests/test_script_cs.sh
 	@$(BASH) ./tests/test_script_cs.sh
 else ifeq ($(TEST),uni)
+	@chmod +x ./tests/test_script_uni.sh
 	@$(BASH) ./tests/test_script_uni.sh
 else ifeq ($(TEST),jm)
+	@chmod +x ./tests/test_script_jm.sh
 	@$(BASH) ./tests/test_script_jm.sh
 else ifeq ($(TEST),all)
+	@chmod +x ./tests/test_script_cp.sh
+	@chmod +x ./tests/test_script_cm.sh
+	@chmod +x ./tests/test_script_cs.sh
+	@chmod +x ./tests/test_script_uni.sh
+	@chmod +x ./tests/test_script_jm.sh
 	@$(BASH) ./tests/test_script_cp.sh
 	@$(BASH) ./tests/test_script_cm.sh
 	@$(BASH) ./tests/test_script_cs.sh
