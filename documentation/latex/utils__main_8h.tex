@@ -1,4 +1,4 @@
-\hypertarget{utils__main_8h}{}\doxysection{src/utils/utils\+\_\+main.h File Reference}
+\hypertarget{utils__main_8h}{}\doxysection{Référence du fichier src/utils/utils\+\_\+main.h}
 \label{utils__main_8h}\index{src/utils/utils\_main.h@{src/utils/utils\_main.h}}
 
 
@@ -18,7 +18,7 @@ Fichier de fonctions utilitaires nécessaires au main.
 {\ttfamily \#include \char`\"{}./data\+Structure/matrice\+\_\+string\+\_\+dyn.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}./data\+Structure/listegen.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}./data\+Structure/arc.\+h\char`\"{}}\newline
-Include dependency graph for utils\+\_\+main.\+h\+:
+Graphe des dépendances par inclusion de utils\+\_\+main.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -26,7 +26,7 @@ Include dependency graph for utils\+\_\+main.\+h\+:
 \includegraphics[width=350pt]{utils__main_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -45,13 +45,13 @@ struct \mbox{\hyperlink{structs__data}{s\+\_\+data}}
 \mbox{\Hypertarget{utils__main_8h_a6b20d41d6252e9871430c242cb1a56e7}\label{utils__main_8h_a6b20d41d6252e9871430c242cb1a56e7}} 
 \#define {\bfseries BUFFER\+\_\+\+SIZE}~1024
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{utils__main_8h_aec32d411112156e14dfd477d29622b17}\label{utils__main_8h_aec32d411112156e14dfd477d29622b17}} 
 typedef struct \mbox{\hyperlink{structs__data}{s\+\_\+data}} \mbox{\hyperlink{utils__main_8h_aec32d411112156e14dfd477d29622b17}{Data}}
 \begin{DoxyCompactList}\small\item\em Structure représentant les données d\textquotesingle{}une élection. Contient les TAD nécessaires à l\textquotesingle{}application de l\textquotesingle{}ensemble des méthodes de scrutin. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{utils__main_8h_a0bf45d38cce5f8cc7e5b5e837bdd5757}{creer\+\_\+chemin\+\_\+complet}} (char $\ast$chemin\+\_\+complet, const char $\ast$nom\+Fichier, const char $\ast$repertoire, const char $\ast$extension)
@@ -66,10 +66,10 @@ void \mbox{\hyperlink{utils__main_8h_a4cd2dbc31a1bd5d341ee662d02714360}{remplir\
 \begin{DoxyCompactList}\small\item\em Fonction permettant de remplir un fichier log avec les données d\textquotesingle{}une élection. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Fichier de fonctions utilitaires nécessaires au main. 
 
-\begin{DoxyAuthor}{Authors}
+\begin{DoxyAuthor}{Auteurs}
 Marco, Anthony et Fabio 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -77,7 +77,7 @@ Marco, Anthony et Fabio
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{utils__main_8h_a3498ffff7c1c1207d26961453838e482}\label{utils__main_8h_a3498ffff7c1c1207d26961453838e482}} 
 \index{utils\_main.h@{utils\_main.h}!control\_cle@{control\_cle}}
 \index{control\_cle@{control\_cle}!utils\_main.h@{utils\_main.h}}
@@ -87,11 +87,11 @@ Marco, Anthony et Fabio
 Vérifie si la chaîne de caractères \textquotesingle{}cle\textquotesingle{} est constituée uniquement de caractères alphanumériques. Si la chaîne contient d\textquotesingle{}autres caractères, affiche un message d\textquotesingle{}erreur et renvoie 1.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em cle} & La chaîne de caractères à vérifier. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 0 si \textquotesingle{}cle\textquotesingle{} est valide, 1 en cas d\textquotesingle{}erreur. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__main_8h_ac523aa514c612331fe56cd72e24e6e04}\label{utils__main_8h_ac523aa514c612331fe56cd72e24e6e04}} 
@@ -103,13 +103,13 @@ Vérifie si la chaîne de caractères \textquotesingle{}cle\textquotesingle{} es
 Vérifie la validité d\textquotesingle{}une chaîne de caractères représentant un nom ou un prénom. La fonction contrôle que la chaîne passée en paramètre est valide
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em chaine} & La chaîne de caractères à vérifier. \\
 \hline
 {\em prenom} & 1 si la chaine saisie est un prénom. 0 si c\textquotesingle{}est un nom de famille \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 0 si \textquotesingle{}chaine\textquotesingle{} est valide, 1 en cas d\textquotesingle{}erreur. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__main_8h_a0bf45d38cce5f8cc7e5b5e837bdd5757}\label{utils__main_8h_a0bf45d38cce5f8cc7e5b5e837bdd5757}} 
@@ -123,7 +123,7 @@ Vérifie la validité d\textquotesingle{}une chaîne de caractères représentan
 Fonction permettant de créer un chemin complet à partir d\textquotesingle{}un nom de fichier, d\textquotesingle{}un répertoire et d\textquotesingle{}une extension. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em chemin\+\_\+complet} & Buffer dans lequel on stocke le chemin complet. \\
 \hline
 {\em nom\+Fichier} & Nom du fichier. \\
@@ -142,7 +142,7 @@ Fonction permettant de créer un chemin complet à partir d\textquotesingle{}un 
 Vérifie l\textquotesingle{}existence d\textquotesingle{}un fichier en utilisant un chemin complet.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nom\+Fichier} & Le nom du fichier que l\textquotesingle{}on souhaite vérifier. \\
 \hline
 {\em repertoire} & Le répertoire dans lequel le fichier est censé se trouver. \\
@@ -150,7 +150,7 @@ Vérifie l\textquotesingle{}existence d\textquotesingle{}un fichier en utilisant
 {\em extension} & L\textquotesingle{}extension du fichier à chercher \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 1 si le fichier existe, 0 s\textquotesingle{}il n\textquotesingle{}existe pas ou en cas d\textquotesingle{}erreur d\textquotesingle{}ouverture. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__main_8h_a4cd2dbc31a1bd5d341ee662d02714360}\label{utils__main_8h_a4cd2dbc31a1bd5d341ee662d02714360}} 
@@ -164,7 +164,7 @@ Vérifie l\textquotesingle{}existence d\textquotesingle{}un fichier en utilisant
 Fonction permettant de remplir un fichier log avec les données d\textquotesingle{}une élection. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em log\+\_\+file} & Le fichier log à remplir. \\
 \hline
 {\em data} & Les données de l\textquotesingle{}élection. \\

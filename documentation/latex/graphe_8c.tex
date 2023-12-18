@@ -1,4 +1,4 @@
-\hypertarget{graphe_8c}{}\doxysection{src/utils/data\+Structure/graphe.c File Reference}
+\hypertarget{graphe_8c}{}\doxysection{Référence du fichier src/utils/data\+Structure/graphe.c}
 \label{graphe_8c}\index{src/utils/dataStructure/graphe.c@{src/utils/dataStructure/graphe.c}}
 
 
@@ -6,7 +6,7 @@ Structure de données pour structurer un graphe.
 
 
 {\ttfamily \#include \char`\"{}graphe.\+h\char`\"{}}\newline
-Include dependency graph for graphe.\+c\+:
+Graphe des dépendances par inclusion de graphe.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -14,7 +14,7 @@ Include dependency graph for graphe.\+c\+:
 \includegraphics[width=350pt]{graphe_8c__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{graphe_8h_a4b47d2655c333ea88371e453be778eeb}{graphe}} $\ast$ \mbox{\hyperlink{graphe_8c_a65cb732950d8eb6b942ae99f3c06cc21}{graphe\+\_\+create}} (int nb\+\_\+candidat)
@@ -35,10 +35,10 @@ bool \mbox{\hyperlink{graphe_8c_a2e2b47a3a7df4e86f1206cf05d9a05c5}{contain\+\_\+
 \begin{DoxyCompactList}\small\item\em Fonction permettant de savoir si un circuit est présent dans le graphe. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Structure de données pour structurer un graphe. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Anthony 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -46,7 +46,7 @@ Anthony
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{graphe_8c_a2e2b47a3a7df4e86f1206cf05d9a05c5}\label{graphe_8c_a2e2b47a3a7df4e86f1206cf05d9a05c5}} 
 \index{graphe.c@{graphe.c}!contain\_circuit@{contain\_circuit}}
 \index{contain\_circuit@{contain\_circuit}!graphe.c@{graphe.c}}
@@ -58,13 +58,13 @@ Anthony
 Fonction permettant de savoir si un circuit est présent dans le graphe. 
 
 Cette fonction est utilisée dans le cadre de la méthode de classement par les paires. 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em G} & le graphe \\
 \hline
 {\em s\+\_\+current} & le sommet courant \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 true si un circuit est présent dans le graphe 
 
 false si aucun circuit est présent dans le graphe 
@@ -80,11 +80,11 @@ false si aucun circuit est présent dans le graphe
 Fonction permettant de créer un graphe. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nb\+\_\+candidat} & le nombre de candidat \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 graphe$\ast$ le graphe créé 
 \end{DoxyReturn}
 \mbox{\Hypertarget{graphe_8c_a8c00a0e4ed4d07f183eb123f99264666}\label{graphe_8c_a8c00a0e4ed4d07f183eb123f99264666}} 
@@ -98,7 +98,7 @@ graphe$\ast$ le graphe créé
 Fonction permettant de supprimer un graphe. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em g} & le graphe à supprimer \\
 \hline
 \end{DoxyParams}
@@ -113,7 +113,7 @@ Fonction permettant de supprimer un graphe.
 Fonction permettant de supprimer la dernière succession d\textquotesingle{}un sommet. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em s\+\_\+current} & le sommet courant \\
 \hline
 \end{DoxyParams}
@@ -128,11 +128,11 @@ Fonction permettant de supprimer la dernière succession d\textquotesingle{}un s
 Fonction permettant de créer un sommet. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em indice} & l\textquotesingle{}indice du sommet \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 sommet$\ast$ le sommet créé 
 \end{DoxyReturn}
 \mbox{\Hypertarget{graphe_8c_ac5a6b79a81e048800aa658073d13f79f}\label{graphe_8c_ac5a6b79a81e048800aa658073d13f79f}} 
@@ -146,7 +146,7 @@ sommet$\ast$ le sommet créé
 Fonction permettant de supprimer un sommet. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & le pointeur générique vers le sommet à supprimer \\
 \hline
 \end{DoxyParams}
@@ -161,7 +161,7 @@ Fonction permettant de supprimer un sommet.
 Fonction permettant d\textquotesingle{}initialiser le tableau d\textquotesingle{}état. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em g} & le graphe \\
 \hline
 {\em sommet\+\_\+depart} & le sommet de départ \\
@@ -178,7 +178,7 @@ Fonction permettant d\textquotesingle{}initialiser le tableau d\textquotesingle{
 Fonction permettant d\textquotesingle{}ajouter une succession à un sommet. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em s\+\_\+current} & le sommet courant \\
 \hline
 {\em s\+\_\+successor} & le sommet successeur \\

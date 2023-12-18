@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ko='\e[00;31m';
 wipe='\e[00m';

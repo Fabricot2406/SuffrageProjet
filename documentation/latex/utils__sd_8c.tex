@@ -1,4 +1,4 @@
-\hypertarget{utils__sd_8c}{}\doxysection{src/utils/utils\+\_\+sd.c File Reference}
+\hypertarget{utils__sd_8c}{}\doxysection{Référence du fichier src/utils/utils\+\_\+sd.c}
 \label{utils__sd_8c}\index{src/utils/utils\_sd.c@{src/utils/utils\_sd.c}}
 
 
@@ -6,7 +6,7 @@ Fonctions utilitaires pour les méthodes de suffrage.
 
 
 {\ttfamily \#include \char`\"{}utils\+\_\+sd.\+h\char`\"{}}\newline
-Include dependency graph for utils\+\_\+sd.\+c\+:
+Graphe des dépendances par inclusion de utils\+\_\+sd.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -19,12 +19,12 @@ Include dependency graph for utils\+\_\+sd.\+c\+:
 \item 
 struct \mbox{\hyperlink{structs__statut__candidat}{s\+\_\+statut\+\_\+candidat}}
 \begin{DoxyCompactList}\small\item\em Structure de données pour la méthode Condorcet. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \mbox{\hyperlink{structs__statut__candidat}{s\+\_\+statut\+\_\+candidat}} \mbox{\hyperlink{utils__sd_8c_a244a27dd1dff2e72205e07799ebc15e4}{statut\+\_\+candidat}}
 \begin{DoxyCompactList}\small\item\em Structure de données pour la méthode Condorcet. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{utils__sd_8c_a7ab0ebc9ae53aa40409c8630f230fb30}{retourner\+\_\+vainqueur}} (char $\ast$methode, int nb\+Candidats, int nb\+Votants, char $\ast$nom\+Vainqueur, double score, FILE $\ast$output)
@@ -54,10 +54,10 @@ void \mbox{\hyperlink{utils__sd_8c_af5c71eaebe34fbae1a865c946e297d35}{afficher\+
 \begin{DoxyCompactList}\small\item\em Affichage du classement des candidats. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Fonctions utilitaires pour les méthodes de suffrage. 
 
-\begin{DoxyAuthor}{Authors}
+\begin{DoxyAuthor}{Auteurs}
 Anthony, Marco et Fabio 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -65,7 +65,7 @@ Anthony, Marco et Fabio
 \end{DoxyDate}
 
 
-\doxysubsection{Typedef Documentation}
+\doxysubsection{Documentation des définitions de type}
 \mbox{\Hypertarget{utils__sd_8c_a244a27dd1dff2e72205e07799ebc15e4}\label{utils__sd_8c_a244a27dd1dff2e72205e07799ebc15e4}} 
 \index{utils\_sd.c@{utils\_sd.c}!statut\_candidat@{statut\_candidat}}
 \index{statut\_candidat@{statut\_candidat}!utils\_sd.c@{utils\_sd.c}}
@@ -78,7 +78,7 @@ Structure de données pour la méthode Condorcet.
 
 Cette structure permet de déterminer si un candidat est le perdant ou le gagnant d\textquotesingle{}un duel 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{utils__sd_8c_af5c71eaebe34fbae1a865c946e297d35}\label{utils__sd_8c_af5c71eaebe34fbae1a865c946e297d35}} 
 \index{utils\_sd.c@{utils\_sd.c}!afficher\_classement@{afficher\_classement}}
 \index{afficher\_classement@{afficher\_classement}!utils\_sd.c@{utils\_sd.c}}
@@ -89,11 +89,11 @@ Cette structure permet de déterminer si un candidat est le perdant ou le gagnan
 
 Affichage du classement des candidats. 
 
-Utilisation de la fonction list\+\_\+reduce pour afficher les candidats dans l\textquotesingle{}ordre du classement. La fonction de réduction est une fonction qui affiche le candidat passé en paramètre et sa position dans le classement. \begin{DoxyPrecond}{Precondition}
+Utilisation de la fonction list\+\_\+reduce pour afficher les candidats dans l\textquotesingle{}ordre du classement. La fonction de réduction est une fonction qui affiche le candidat passé en paramètre et sa position dans le classement. \begin{DoxyPrecond}{Précondition}
 La liste des arcs est non vide, triée par ordre décroissant de score. 
 \end{DoxyPrecond}
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em classement} & La liste des candidats du classement à afficher. \\
 \hline
 \end{DoxyParams}
@@ -108,7 +108,7 @@ La liste des arcs est non vide, triée par ordre décroissant de score.
 Affiche un élément. Cet élément est un pointeur sur un entier. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & \+: L\textquotesingle{}élément à afficher. \\
 \hline
 \end{DoxyParams}
@@ -123,13 +123,13 @@ Affiche un élément. Cet élément est un pointeur sur un entier.
 Fonction permettant de déterminer si un candidat n\textquotesingle{}a que des arcs sortants. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & Liste d\textquotesingle{}arc trié par ordre décroissant de différence de voix (score). \\
 \hline
 {\em candidat} & Candidat dont on veut savoir si il n\textquotesingle{}a que des arcs sortants. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 true si le candidat n\textquotesingle{}a que des arcs sortants 
 
 false si le candidat n\textquotesingle{}a pas que des arcs sortants 
@@ -145,13 +145,13 @@ false si le candidat n\textquotesingle{}a pas que des arcs sortants
 Calcule le score d\textquotesingle{}un candidat. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nb\+Votants} & Le nombre de votants d\textquotesingle{}une élection \\
 \hline
 {\em nb\+Votes} & Le nombre de votes d\textquotesingle{}un candidat \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 double Le score du candidat 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__sd_8c_a6bdda3ed59345dda98f780b6bdd82b04}\label{utils__sd_8c_a6bdda3ed59345dda98f780b6bdd82b04}} 
@@ -165,13 +165,13 @@ double Le score du candidat
 Trie les votes. Les paramètres sont castés en int. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em i} & \+: Premier vote à comparer. \\
 \hline
 {\em j} & \+: Deuxième vote à comparer. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 bool \+: Renvoie vrai si le premier vote doit venir avant le deuxième. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__sd_8c_a1455a24587c17cddc2ec6d15b44b193c}\label{utils__sd_8c_a1455a24587c17cddc2ec6d15b44b193c}} 
@@ -185,7 +185,7 @@ bool \+: Renvoie vrai si le premier vote doit venir avant le deuxième.
 Crée une structure de données uni\+\_\+data. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em vainqueur\+Un} & Pointeur vers le vainqueur du premier tour \\
 \hline
 {\em vainqueur\+Deux} & Pointeur vers le vainqueur du deuxième tour \\
@@ -193,7 +193,7 @@ Crée une structure de données uni\+\_\+data.
 {\em votes} & Pointeur vers le tableau de votes \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 uni\+\_\+data$\ast$ Pointeur vers la structure de données uni\+\_\+data 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__sd_8c_adf40adb4e141d76c3b1f5f084b66c2b9}\label{utils__sd_8c_adf40adb4e141d76c3b1f5f084b66c2b9}} 
@@ -213,13 +213,13 @@ Fonction permettant de déterminer si un candidat est vainqueur. Processus à su
 \end{DoxyItemize}
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & Liste d\textquotesingle{}arc trié par ordre décroissant de différence de voix (score). \\
 \hline
 {\em candidat} & Candidat dont on veut savoir si il est vainqueur. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 true Si le candidat est vainqueur. 
 
 false Si le candidat n\textquotesingle{}est pas vainqueur. 
@@ -235,7 +235,7 @@ false Si le candidat n\textquotesingle{}est pas vainqueur.
 Affiche le vainqueur d\textquotesingle{}un suffrage dépendant de la méthode choisie. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em methode} & Une chaine de caractères représentant le nom de la méthode employée \\
 \hline
 {\em nb\+Candidats} & Le nombre de candidats d\textquotesingle{}une élection \\
@@ -260,13 +260,13 @@ Affiche le vainqueur d\textquotesingle{}un suffrage dépendant de la méthode ch
 Fonction de réduction pour déterminer si le candidat passé en paramètre est le perdant d\textquotesingle{}un duel. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & Un élément de la liste, dans le cadre de cette fonction, un arc \\
 \hline
 {\em data} & La structure de données gagnant \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int 1 si le candidat est le perdant d\textquotesingle{}un duel, 0 sinon 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__sd_8c_acdee132af9dadd8db8c4e338874e7a4c}\label{utils__sd_8c_acdee132af9dadd8db8c4e338874e7a4c}} 
@@ -280,13 +280,13 @@ int 1 si le candidat est le perdant d\textquotesingle{}un duel, 0 sinon
 Fonction de réduction pour uninominale 2. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & Un élément de la liste \\
 \hline
 {\em data} & La structure de données uni\+\_\+data \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int 1 si le candidat est le vainqueur du premier ou du deuxième tour, 0 sinon 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__sd_8c_a500dc28b125717e8ceace4f7ce9b5e76}\label{utils__sd_8c_a500dc28b125717e8ceace4f7ce9b5e76}} 
@@ -300,7 +300,7 @@ int 1 si le candidat est le vainqueur du premier ou du deuxième tour, 0 sinon
 Fonction permettant de déterminer si il y a un vainqueur de Condorcet. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & La liste des arcs représentant les paires de duel \\
 \hline
 {\em vainqueur} & Pointeur vers le vainqueur de Condorcet, s\textquotesingle{}il existe il sera modifié \\

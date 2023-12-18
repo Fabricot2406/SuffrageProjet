@@ -1,4 +1,4 @@
-\hypertarget{jugement__majoritaire_8c}{}\doxysection{src/methods/jugement\+\_\+majoritaire.c File Reference}
+\hypertarget{jugement__majoritaire_8c}{}\doxysection{Référence du fichier src/methods/jugement\+\_\+majoritaire.c}
 \label{jugement__majoritaire_8c}\index{src/methods/jugement\_majoritaire.c@{src/methods/jugement\_majoritaire.c}}
 
 
@@ -6,7 +6,7 @@ Fichier de la méthode de scrutin du jugement majoritaire.
 
 
 {\ttfamily \#include \char`\"{}jugement\+\_\+majoritaire.\+h\char`\"{}}\newline
-Include dependency graph for jugement\+\_\+majoritaire.\+c\+:
+Graphe des dépendances par inclusion de jugement\+\_\+majoritaire.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -19,13 +19,13 @@ Include dependency graph for jugement\+\_\+majoritaire.\+c\+:
 \item 
 struct \mbox{\hyperlink{structs__candidat}{s\+\_\+candidat}}
 \begin{DoxyCompactList}\small\item\em Structure représentant un candidat dans le scrutin du jugement majoritaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{jugement__majoritaire_8c_a336939caf7a00ca3317a171f219ec5f9}\label{jugement__majoritaire_8c_a336939caf7a00ca3317a171f219ec5f9}} 
 typedef struct \mbox{\hyperlink{structs__candidat}{s\+\_\+candidat}} \mbox{\hyperlink{jugement__majoritaire_8c_a336939caf7a00ca3317a171f219ec5f9}{Candidat}}
 \begin{DoxyCompactList}\small\item\em Structure représentant un candidat dans le scrutin du jugement majoritaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{jugement__majoritaire_8c_adf05e18463a6a71a2321fc97b857cb51}{recalculer\+\_\+mention}} (\mbox{\hyperlink{structs__List}{List}} $\ast$tab\+\_\+candidat)
@@ -52,10 +52,10 @@ void \mbox{\hyperlink{jugement__majoritaire_8c_a144b3f34acb9cae6c879ba2c1151cd0a
 \begin{DoxyCompactList}\small\item\em Détermine le vainqueur du jugement en fonction des mentions de chaque candidat et affiche le nom du vainqueur. Procédé \+: 1) On initialise chaque candidat avec son nom, les votes des électeurs à son égard triés par ordre croissant et la mention majoritaire correspondante. 2) On initialise un tableau répertoriant tous les candidats du scrutin. 3) On calcule le vainqueur du jugement en fonction des mentions de chaque candidat. 4) Si il y a égalité, on supprime le vote correspondant à la mention majoritaire et on réitère l\textquotesingle{}étape 3. 5) On affiche le nom du vainqueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Fichier de la méthode de scrutin du jugement majoritaire. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Marco 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -63,7 +63,7 @@ Marco
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{jugement__majoritaire_8c_a6b42abc287074e3b7252bc69bd837553}\label{jugement__majoritaire_8c_a6b42abc287074e3b7252bc69bd837553}} 
 \index{jugement\_majoritaire.c@{jugement\_majoritaire.c}!attribuer\_mention@{attribuer\_mention}}
 \index{attribuer\_mention@{attribuer\_mention}!jugement\_majoritaire.c@{jugement\_majoritaire.c}}
@@ -75,11 +75,11 @@ Marco
 Attribue une mention. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em mention} & \+: La mention à attribuer. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 char$\ast$ \+: La mention attribuée sous forme de chaîne de caractères. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{jugement__majoritaire_8c_a83fd5a22a63db5fc752395d3c86ee3fa}\label{jugement__majoritaire_8c_a83fd5a22a63db5fc752395d3c86ee3fa}} 
@@ -93,11 +93,11 @@ char$\ast$ \+: La mention attribuée sous forme de chaîne de caractères.
 Calcule l\textquotesingle{}indice de mention. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nb\+\_\+votes} & \+: Le nombre de votes. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int \+: L\textquotesingle{}indice de mention calculé. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{jugement__majoritaire_8c_a772d8220583c0bbc6bb26de266845e5b}\label{jugement__majoritaire_8c_a772d8220583c0bbc6bb26de266845e5b}} 
@@ -111,7 +111,7 @@ int \+: L\textquotesingle{}indice de mention calculé.
 Calcule le vainqueur du jugement majoritaire en parcourant la liste des candidats et en supprimant les candidats qui n\textquotesingle{}ont pas la meilleure mention. si le tableau contient plusieurs gagnants, on recalcule la mention de chaque candidat. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+candidat} & \+: La liste des candidats. \\
 \hline
 \end{DoxyParams}
@@ -126,13 +126,13 @@ Calcule le vainqueur du jugement majoritaire en parcourant la liste des candidat
 Initialise un candidat. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & \+: La matrice contenant les informations du candidat. \\
 \hline
 {\em num\+\_\+candidat} & \+: Le numéro du candidat. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Candidat$\ast$ \+: Structure d\textquotesingle{}un candidat de l\textquotesingle{}élection. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{jugement__majoritaire_8c_a144b3f34acb9cae6c879ba2c1151cd0a}\label{jugement__majoritaire_8c_a144b3f34acb9cae6c879ba2c1151cd0a}} 
@@ -146,7 +146,7 @@ Candidat$\ast$ \+: Structure d\textquotesingle{}un candidat de l\textquotesingle
 Détermine le vainqueur du jugement en fonction des mentions de chaque candidat et affiche le nom du vainqueur. Procédé \+: 1) On initialise chaque candidat avec son nom, les votes des électeurs à son égard triés par ordre croissant et la mention majoritaire correspondante. 2) On initialise un tableau répertoriant tous les candidats du scrutin. 3) On calcule le vainqueur du jugement en fonction des mentions de chaque candidat. 4) Si il y a égalité, on supprime le vote correspondant à la mention majoritaire et on réitère l\textquotesingle{}étape 3. 5) On affiche le nom du vainqueur. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & Matrice de mentions. \\
 \hline
 {\em output} & Fichier de sortie. \\
@@ -163,11 +163,11 @@ Détermine le vainqueur du jugement en fonction des mentions de chaque candidat 
 Initialise un tableau de candidats. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & \+: La matrice contenant les informations des candidats. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ \+: Liste des candidats de l\textquotesingle{}élection. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{jugement__majoritaire_8c_a776acc178bf130347e831ba07df477d9}\label{jugement__majoritaire_8c_a776acc178bf130347e831ba07df477d9}} 
@@ -181,7 +181,7 @@ List$\ast$ \+: Liste des candidats de l\textquotesingle{}élection.
 Libère un candidat. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & \+: Le candidat à libérer. \\
 \hline
 \end{DoxyParams}
@@ -196,7 +196,7 @@ Libère un candidat.
 Libère une liste de candidats. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+candidat} & \+: La liste des candidats à libérer. \\
 \hline
 \end{DoxyParams}
@@ -211,7 +211,7 @@ Libère une liste de candidats.
 Recalcule la mention des candidats à égalité en supprimant le vote correspondant à leur mention et en recalculant leur mention avec la liste résultante. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+candidat\+\_\+reduit} & \+: La liste réduite des candidats. \\
 \hline
 \end{DoxyParams}
@@ -226,11 +226,11 @@ Recalcule la mention des candidats à égalité en supprimant le vote correspond
 Recherche la meilleure mention. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+candidat} & \+: La liste des candidats. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 char$\ast$ \+: La meilleure mention trouvée sous forme de chaîne de caractères. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{jugement__majoritaire_8c_ab0828f85db145dd7db5712292b068db8}\label{jugement__majoritaire_8c_ab0828f85db145dd7db5712292b068db8}} 
@@ -244,7 +244,7 @@ char$\ast$ \+: La meilleure mention trouvée sous forme de chaîne de caractère
 Teste l\textquotesingle{}affichage du tableau de structure candidat. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+candidat} & \+: La liste des candidats. \\
 \hline
 \end{DoxyParams}

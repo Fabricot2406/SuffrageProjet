@@ -1,4 +1,4 @@
-\hypertarget{ballot_8c}{}\doxysection{src/utils/data\+Structure/ballot.c File Reference}
+\hypertarget{ballot_8c}{}\doxysection{Référence du fichier src/utils/data\+Structure/ballot.c}
 \label{ballot_8c}\index{src/utils/dataStructure/ballot.c@{src/utils/dataStructure/ballot.c}}
 
 
@@ -6,7 +6,7 @@ Structure de données représentant un ballot de vote.
 
 
 {\ttfamily \#include \char`\"{}ballot.\+h\char`\"{}}\newline
-Include dependency graph for ballot.\+c\+:
+Graphe des dépendances par inclusion de ballot.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -23,7 +23,7 @@ Include dependency graph for ballot.\+c\+:
 \mbox{\Hypertarget{ballot_8c_a92a370b45b47c59da3b4ebe99823e88a}\label{ballot_8c_a92a370b45b47c59da3b4ebe99823e88a}} 
 \#define {\bfseries INCREMENT\+\_\+\+LIGNE}~1
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structballot__s}{ballot}} $\ast$ \mbox{\hyperlink{ballot_8c_a56039d560d6876e4f8954083c0cbe4ad}{ballot\+\_\+create}} (int nb\+\_\+candidats, int nb\+\_\+votants)
@@ -58,10 +58,10 @@ void \mbox{\hyperlink{ballot_8c_af4255b2e45feb83b0c0b37aeaceea663}{ballot\+\_\+l
 \begin{DoxyCompactList}\small\item\em Fonction permettant de remplir le fichier log avec le ballot. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Structure de données représentant un ballot de vote. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Anthony 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -69,7 +69,7 @@ Anthony
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{ballot_8c_a56039d560d6876e4f8954083c0cbe4ad}\label{ballot_8c_a56039d560d6876e4f8954083c0cbe4ad}} 
 \index{ballot.c@{ballot.c}!ballot\_create@{ballot\_create}}
 \index{ballot\_create@{ballot\_create}!ballot.c@{ballot.c}}
@@ -81,16 +81,16 @@ Anthony
 Crée un nouveau ballot vide. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nb\+\_\+candidats} & Nombre de candidats \\
 \hline
 {\em nb\+\_\+votants} & Nombre de votants \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Pointeur vers le nouveau ballot. 
 \end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 nb\+\_\+candidats $>$ 0 
 
 nb\+\_\+votants $>$ 0 
@@ -106,11 +106,11 @@ nb\+\_\+votants $>$ 0
 Détruit un ballot, libérant la mémoire allouée. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & Pointeur vers le ballot à détruire. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 b != NULL 
 \end{DoxyPrecond}
 \mbox{\Hypertarget{ballot_8c_a23e56f4f939c0cac30e197c71723d63a}\label{ballot_8c_a23e56f4f939c0cac30e197c71723d63a}} 
@@ -124,16 +124,16 @@ b != NULL
 Fonction permettant de remplir un ballot à partir d\textquotesingle{}un classement CSV. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & Pointeur vers le ballot à remplir. \\
 \hline
 {\em classement\+\_\+csv} & Pointeur vers la matrice contenant le classement CSV. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Pointeur vers le ballot rempli. 
 \end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 b != NULL 
 
 classement\+\_\+csv != NULL 
@@ -149,7 +149,7 @@ classement\+\_\+csv != NULL
 Fonction permettant de remplir le fichier log avec le ballot. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & ballot à afficher \\
 \hline
 {\em log\+\_\+file} & le fichier de log à remplir \\
@@ -168,13 +168,13 @@ Remplit la structure de données de classement avec les données du fichier CSV.
 Cette fonction prend une structure de données de type ballot et remplit sa liste de classement avec les informations provenant d\textquotesingle{}une matrice CSV représentant les préférences des votants. Chaque ligne de la matrice CSV représente les préférences d\textquotesingle{}un votant, et chaque colonne à partir de la 5ème contient le rang de préférence d\textquotesingle{}un candidat pour ce votant.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & La structure de données de type ballot à remplir. \\
 \hline
 {\em classement\+\_\+csv} & La matrice CSV contenant les préférences des votants. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers la structure de données ballot remplie. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{ballot_8c_a43e049f09664aaf7f8396bf4120de153}\label{ballot_8c_a43e049f09664aaf7f8396bf4120de153}} 
@@ -191,7 +191,7 @@ Si l\textquotesingle{}ensemble de préférence n\textquotesingle{}existe pas, il
 \begin{DoxyItemize}
 \item Si l\textquotesingle{}ensemble de préférence existe, le candidat est ajouté à l\textquotesingle{}ensemble
 \item L\textquotesingle{}ensemble de préférence est trié par ordre croissant de rang de préférence 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em liste\+\_\+preferences} & La liste d\textquotesingle{}ensemble de préférence \\
 \hline
 {\em candidat\+\_\+ptr} & Le pointeur vers le candidat à ajouter \\
@@ -211,13 +211,13 @@ Si l\textquotesingle{}ensemble de préférence n\textquotesingle{}existe pas, il
 Fonction de comparaison pour le tri de la liste d\textquotesingle{}ensemble de préférence. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em a} & Pointeur vers le premier ensemble de préférence \\
 \hline
 {\em b} & Pointeur vers le second ensemble de préférence \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int Résultat de la comparaison 
 \end{DoxyReturn}
 \mbox{\Hypertarget{ballot_8c_a98e3ae7d8f954a9f4d10b774d56e434a}\label{ballot_8c_a98e3ae7d8f954a9f4d10b774d56e434a}} 
@@ -231,11 +231,11 @@ int Résultat de la comparaison
 Crée un ensemble de préférence. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em rang} & Le rang de préférence \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Pref$\ast$ L\textquotesingle{}ensemble de préférence créé 
 \end{DoxyReturn}
 \mbox{\Hypertarget{ballot_8c_ad233b950e45754505ebc07082f7047db}\label{ballot_8c_ad233b950e45754505ebc07082f7047db}} 
@@ -249,11 +249,11 @@ Pref$\ast$ L\textquotesingle{}ensemble de préférence créé
 Détruit un ensemble de préférence. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & Pointeur vers l\textquotesingle{}ensemble de préférence à détruire \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 elem != NULL 
 \end{DoxyPrecond}
 \mbox{\Hypertarget{ballot_8c_abcc28242dfe07a775f4ddf241dd1e806}\label{ballot_8c_abcc28242dfe07a775f4ddf241dd1e806}} 
@@ -269,7 +269,7 @@ Recherche le rang de préférence dans une liste.
 Cette fonction permet de rechercher le rang de préférence spécifié dans une liste de préférences. Elle peut être utilisée pour vérifier la présence du rang de préférence ou pour obtenir l\textquotesingle{}indice du premier élément correspondant.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list} & La liste de préférence dans laquelle effectuer la recherche. \\
 \hline
 {\em rang\+\_\+preference} & Le rang de préférence à rechercher. \\
@@ -277,7 +277,7 @@ Cette fonction permet de rechercher le rang de préférence spécifié dans une 
 {\em find\+\_\+index} & \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Si find\+\_\+index = true \+: indice du premier élément correspondant. 
 
 Si find\+\_\+index = false \+: 1 si le rang de préférence est présent, sinon 0. 
@@ -293,13 +293,13 @@ Si find\+\_\+index = false \+: 1 si le rang de préférence est présent, sinon 
 Fonction permettant d\textquotesingle{}accéder au nom d\textquotesingle{}un candidat. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & Pointeur vers le ballot. \\
 \hline
 {\em indice\+\_\+candidat} & correspond à l\textquotesingle{}indice du candidat dans la liste des noms des candidats \+: (numéro de colonne -\/ 1) \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Pointeur vers le nom du candidat. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{ballot_8c_af71c236ecfb5f3440747dbb5d078305c}\label{ballot_8c_af71c236ecfb5f3440747dbb5d078305c}} 
@@ -313,13 +313,13 @@ Pointeur vers le nom du candidat.
 Affiche le premier candidat favori d\textquotesingle{}un votant. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & Pointeur vers le ballot. \\
 \hline
 {\em votant} & correspond à l\textquotesingle{}indice du votant dans la matrice de classement \+: (numéro de ligne -\/ 1) \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int l\textquotesingle{}indice du candidat favori dans la liste des noms des candidats 
 \end{DoxyReturn}
 \mbox{\Hypertarget{ballot_8c_a95c07283cffca9672f4a619d19ad7d4d}\label{ballot_8c_a95c07283cffca9672f4a619d19ad7d4d}} 
@@ -333,13 +333,13 @@ int l\textquotesingle{}indice du candidat favori dans la liste des noms des cand
 Fonction permettant d\textquotesingle{}accéder à la liste de préférence d\textquotesingle{}un votant. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & Pointeur vers le ballot. \\
 \hline
 {\em num\+\_\+votant} & correspond à l\textquotesingle{}indice du votant dans la matrice de classement \+: (numéro de ligne -\/ 1) \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Pointeur vers la liste de préférence du votant. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{ballot_8c_affdb8090eafb26f592fd2b01208f0b32}\label{ballot_8c_affdb8090eafb26f592fd2b01208f0b32}} 
@@ -353,13 +353,13 @@ Pointeur vers la liste de préférence du votant.
 Remplit la liste des noms de candidats à partir du fichier csv. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em b} & Le ballot à remplir \\
 \hline
 {\em classement\+\_\+csv} & La matrice de classement à partir du fichier csv \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 ballot$\ast$ Le ballot rempli 
 \end{DoxyReturn}
 \mbox{\Hypertarget{ballot_8c_ae912290c1535059d278c741265e3f0c9}\label{ballot_8c_ae912290c1535059d278c741265e3f0c9}} 
@@ -373,10 +373,10 @@ ballot$\ast$ Le ballot rempli
 Détruit une liste d\textquotesingle{}ensemble de préférence. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & Pointeur vers la liste d\textquotesingle{}ensemble de préférence à détruire \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 elem != NULL 
 \end{DoxyPrecond}

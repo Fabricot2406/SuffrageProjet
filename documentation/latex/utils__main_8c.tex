@@ -1,4 +1,4 @@
-\hypertarget{utils__main_8c}{}\doxysection{src/utils/utils\+\_\+main.c File Reference}
+\hypertarget{utils__main_8c}{}\doxysection{Référence du fichier src/utils/utils\+\_\+main.c}
 \label{utils__main_8c}\index{src/utils/utils\_main.c@{src/utils/utils\_main.c}}
 
 
@@ -6,7 +6,7 @@ Fichier de fonctions utilitaires nécessaires au main.
 
 
 {\ttfamily \#include \char`\"{}utils\+\_\+main.\+h\char`\"{}}\newline
-Include dependency graph for utils\+\_\+main.\+c\+:
+Graphe des dépendances par inclusion de utils\+\_\+main.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -14,7 +14,7 @@ Include dependency graph for utils\+\_\+main.\+c\+:
 \includegraphics[width=350pt]{utils__main_8c__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{utils__main_8c_a0bf45d38cce5f8cc7e5b5e837bdd5757}{creer\+\_\+chemin\+\_\+complet}} (char $\ast$chemin\+\_\+complet, const char $\ast$nom\+Fichier, const char $\ast$repertoire, const char $\ast$extension)
@@ -37,10 +37,10 @@ char {\bfseries error\+\_\+msg} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Fichier de fonctions utilitaires nécessaires au main. 
 
-\begin{DoxyAuthor}{Authors}
+\begin{DoxyAuthor}{Auteurs}
 Anthony, Marco et Fabio 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -48,7 +48,7 @@ Anthony, Marco et Fabio
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{utils__main_8c_a3498ffff7c1c1207d26961453838e482}\label{utils__main_8c_a3498ffff7c1c1207d26961453838e482}} 
 \index{utils\_main.c@{utils\_main.c}!control\_cle@{control\_cle}}
 \index{control\_cle@{control\_cle}!utils\_main.c@{utils\_main.c}}
@@ -58,11 +58,11 @@ Anthony, Marco et Fabio
 Vérifie si la chaîne de caractères \textquotesingle{}cle\textquotesingle{} est constituée uniquement de caractères alphanumériques. Si la chaîne contient d\textquotesingle{}autres caractères, affiche un message d\textquotesingle{}erreur et renvoie 1.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em cle} & La chaîne de caractères à vérifier. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 0 si \textquotesingle{}cle\textquotesingle{} est valide, 1 en cas d\textquotesingle{}erreur. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__main_8c_ac523aa514c612331fe56cd72e24e6e04}\label{utils__main_8c_ac523aa514c612331fe56cd72e24e6e04}} 
@@ -74,13 +74,13 @@ Vérifie si la chaîne de caractères \textquotesingle{}cle\textquotesingle{} es
 Vérifie la validité d\textquotesingle{}une chaîne de caractères représentant un nom ou un prénom. La fonction contrôle que la chaîne passée en paramètre est valide
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em chaine} & La chaîne de caractères à vérifier. \\
 \hline
 {\em prenom} & 1 si la chaine saisie est un prénom. 0 si c\textquotesingle{}est un nom de famille \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 0 si \textquotesingle{}chaine\textquotesingle{} est valide, 1 en cas d\textquotesingle{}erreur. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__main_8c_a0bf45d38cce5f8cc7e5b5e837bdd5757}\label{utils__main_8c_a0bf45d38cce5f8cc7e5b5e837bdd5757}} 
@@ -94,7 +94,7 @@ Vérifie la validité d\textquotesingle{}une chaîne de caractères représentan
 Fonction permettant de créer un chemin complet à partir d\textquotesingle{}un nom de fichier, d\textquotesingle{}un répertoire et d\textquotesingle{}une extension. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em chemin\+\_\+complet} & Buffer dans lequel on stocke le chemin complet. \\
 \hline
 {\em nom\+Fichier} & Nom du fichier. \\
@@ -113,7 +113,7 @@ Fonction permettant de créer un chemin complet à partir d\textquotesingle{}un 
 Vérifie l\textquotesingle{}existence d\textquotesingle{}un fichier en utilisant un chemin complet.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nom\+Fichier} & Le nom du fichier que l\textquotesingle{}on souhaite vérifier. \\
 \hline
 {\em repertoire} & Le répertoire dans lequel le fichier est censé se trouver. \\
@@ -121,7 +121,7 @@ Vérifie l\textquotesingle{}existence d\textquotesingle{}un fichier en utilisant
 {\em extension} & L\textquotesingle{}extension du fichier à chercher \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 1 si le fichier existe, 0 s\textquotesingle{}il n\textquotesingle{}existe pas ou en cas d\textquotesingle{}erreur d\textquotesingle{}ouverture. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{utils__main_8c_a4cd2dbc31a1bd5d341ee662d02714360}\label{utils__main_8c_a4cd2dbc31a1bd5d341ee662d02714360}} 
@@ -135,7 +135,7 @@ Vérifie l\textquotesingle{}existence d\textquotesingle{}un fichier en utilisant
 Fonction permettant de remplir un fichier log avec les données d\textquotesingle{}une élection. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em log\+\_\+file} & Le fichier log à remplir. \\
 \hline
 {\em data} & Les données de l\textquotesingle{}élection. \\
@@ -156,13 +156,13 @@ Fonction qui vérifie si la chaine est valide Processus pour chaque caractère d
 \item Il ne peut pas y avoir plus d\textquotesingle{}un espace ou d\textquotesingle{}un tiret consécutif
 \item Il ne peut pas y avoir un \textquotesingle{} \textquotesingle{} ou \textquotesingle{}-\/\textquotesingle{} à la fin de la chaîne CAS 3 \+: Autre caractère
 \item Erreur 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em chaine} & la chaine à vérifier \\
 \hline
 {\em prenom} & 1 si c\textquotesingle{}est un prénom, 0 si c\textquotesingle{}est un nom \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int 1 si la chaine est invalide, 0 sinon 
 \end{DoxyReturn}
 

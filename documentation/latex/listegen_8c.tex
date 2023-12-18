@@ -1,4 +1,4 @@
-\hypertarget{listegen_8c}{}\doxysection{src/utils/data\+Structure/listegen.c File Reference}
+\hypertarget{listegen_8c}{}\doxysection{Référence du fichier src/utils/data\+Structure/listegen.c}
 \label{listegen_8c}\index{src/utils/dataStructure/listegen.c@{src/utils/dataStructure/listegen.c}}
 
 
@@ -6,7 +6,7 @@ Structure de donnée correspondant à une liste générique.
 
 
 {\ttfamily \#include \char`\"{}listegen.\+h\char`\"{}}\newline
-Include dependency graph for listegen.\+c\+:
+Graphe des dépendances par inclusion de listegen.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,7 +21,7 @@ struct \mbox{\hyperlink{structsubList}{sub\+List}}
 \begin{DoxyCompactList}\small\item\em Structure de sous-\/liste. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structs__Iterator}{s\+\_\+\+Iterator}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{listegen_8c_ae792a07f10d2532aec42b252b5c9ee89}\label{listegen_8c_ae792a07f10d2532aec42b252b5c9ee89}} 
@@ -30,7 +30,7 @@ typedef struct \mbox{\hyperlink{structsubList}{sub\+List}} \mbox{\hyperlink{list
 \mbox{\Hypertarget{listegen_8c_ae133ea039c49b627f5bb3a308341fd8d}\label{listegen_8c_ae133ea039c49b627f5bb3a308341fd8d}} 
 typedef struct \mbox{\hyperlink{structs__Iterator}{s\+\_\+\+Iterator}} {\bfseries Iterator}
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structs__List}{List}} $\ast$ \mbox{\hyperlink{listegen_8c_a0ae9f0f842f635774a6670ab93809fb2}{list\+\_\+create}} ()
@@ -94,10 +94,10 @@ void \mbox{\hyperlink{listegen_8c_aefbad5393d5da431df7cbab9b0e58f65}{set\+\_\+po
 \begin{DoxyCompactList}\small\item\em Fonction permettant de mettre l\textquotesingle{}itérateur à position donnée. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Structure de donnée correspondant à une liste générique. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Anthony 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -105,7 +105,7 @@ Anthony
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{listegen_8c_aa35372b326c488b4971560575da87544}\label{listegen_8c_aa35372b326c488b4971560575da87544}} 
 \index{listegen.c@{listegen.c}!insert\_sorted@{insert\_sorted}}
 \index{insert\_sorted@{insert\_sorted}!listegen.c@{listegen.c}}
@@ -117,7 +117,7 @@ Anthony
 Insère un nouvel élément dans une liste triée. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list} & La liste dans laquelle insérer l\textquotesingle{}élément. \\
 \hline
 {\em new\+Element} & Un pointeur vers la nouvelle valeur à insérer. \\
@@ -136,11 +136,11 @@ Insère un nouvel élément dans une liste triée.
 Fonction permettant de construire un iterateur. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & Liste que l\textquotesingle{}on souhaite parcourir \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Iterator$\ast$ pointeur vers l\textquotesingle{}iterateur créé 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a9c7cf69e07fe83a90472cb0c8052ca07}\label{listegen_8c_a9c7cf69e07fe83a90472cb0c8052ca07}} 
@@ -154,11 +154,11 @@ Iterator$\ast$ pointeur vers l\textquotesingle{}iterateur créé
 Fonction renvoyant la valeur courrante pointée par l\textquotesingle{}itérateur. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em it} & L\textquotesingle{}itérateur utilisé \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 La valeur courrante 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a062a7b73ac45e14229810c5342794583}\label{listegen_8c_a062a7b73ac45e14229810c5342794583}} 
@@ -172,7 +172,7 @@ La valeur courrante
 Fonction permettant de supprimer un iterateur. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em it} & Iterateur que l\textquotesingle{}on souhaite supprimer \\
 \hline
 \end{DoxyParams}
@@ -187,11 +187,11 @@ Fonction permettant de supprimer un iterateur.
 Fonction indiquant la fin du liste à la prochaine itération. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em it} & L\textquotesingle{}itérateur utilisé \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 true si il y a encore des éléments à parcourir et false sinon 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a0542eb4273494c90688f40ce11621c90}\label{listegen_8c_a0542eb4273494c90688f40ce11621c90}} 
@@ -205,11 +205,11 @@ true si il y a encore des éléments à parcourir et false sinon
 Fonction permettant de récupérer la position courrante de l\textquotesingle{}itérateur. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em it} & L\textquotesingle{}itérateur utilisé \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 La position courrante 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_acbfb8b1d0d67cc5a7f96e472183ab2e5}\label{listegen_8c_acbfb8b1d0d67cc5a7f96e472183ab2e5}} 
@@ -223,7 +223,7 @@ La position courrante
 Fonction permettant de passer à l\textquotesingle{}élément suivant. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em it} & L\textquotesingle{}itérateur utilisé \\
 \hline
 \end{DoxyParams}
@@ -238,7 +238,7 @@ Fonction permettant de passer à l\textquotesingle{}élément suivant.
 Fonction permettant de passer à l\textquotesingle{}élément précédent. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em it} & L\textquotesingle{}itérateur utilisé \\
 \hline
 \end{DoxyParams}
@@ -253,13 +253,13 @@ Fonction permettant de passer à l\textquotesingle{}élément précédent.
 Fonction permettant d\textquotesingle{}accéder à l\textquotesingle{}élément à une position donnée. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & La liste dans laquelle on veut accéder à l\textquotesingle{}élément \\
 \hline
 {\em p} & La position à laquelle on veut accéder à l\textquotesingle{}élément \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 void$\ast$ Le pointeur vers les données de l\textquotesingle{}élément à la position p 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a045221d3f06a5147e2dc5ac40e104924}\label{listegen_8c_a045221d3f06a5147e2dc5ac40e104924}} 
@@ -273,11 +273,11 @@ void$\ast$ Le pointeur vers les données de l\textquotesingle{}élément à la p
 Accède à l\textquotesingle{}élément en fin de liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & \+: liste à laquelle on veut accéder à l\textquotesingle{}élément en fin. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 void$\ast$ \+: pointeur vers les données de l\textquotesingle{}élément en fin de liste. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a0ae9f0f842f635774a6670ab93809fb2}\label{listegen_8c_a0ae9f0f842f635774a6670ab93809fb2}} 
@@ -290,7 +290,7 @@ void$\ast$ \+: pointeur vers les données de l\textquotesingle{}élément en fin
 
 Constructeur de la structure de donnée List. 
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ \+: pointeur vers la liste créée. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a2a3322a7d13a68582c62de5aab97ff33}\label{listegen_8c_a2a3322a7d13a68582c62de5aab97ff33}} 
@@ -304,7 +304,7 @@ List$\ast$ \+: pointeur vers la liste créée.
 Libère la mémoire allouée pour la liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & \+: pointeur vers la liste à libérer. \\
 \hline
 {\em f} & \+: fonction permettant de libérer la mémoire allouée pour les données de la liste. Si vide est utilisé, la fonction ne libère pas la mémoire allouée pour les données. \\
@@ -321,11 +321,11 @@ Libère la mémoire allouée pour la liste.
 Accède à l\textquotesingle{}élément en tête de liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & \+: liste à laquelle on veut accéder à l\textquotesingle{}élément en tête. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 void$\ast$ \+: pointeur vers les données de l\textquotesingle{}élément en tête de liste. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a53ceda64e7b60a5e1bcecebf846411b6}\label{listegen_8c_a53ceda64e7b60a5e1bcecebf846411b6}} 
@@ -339,7 +339,7 @@ void$\ast$ \+: pointeur vers les données de l\textquotesingle{}élément en tê
 Fonction permettant d\textquotesingle{}inserer un élément à une position donnée. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & La liste dans laquelle on veut insérer l\textquotesingle{}élément \\
 \hline
 {\em p} & La position à laquelle on veut insérer l\textquotesingle{}élément \\
@@ -347,7 +347,7 @@ Fonction permettant d\textquotesingle{}inserer un élément à une position donn
 {\em v} & Le pointeur vers les données de l\textquotesingle{}élément à insérer \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ La liste modifiée 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a8bd9279ccb1d373e86fdc29ffd805684}\label{listegen_8c_a8bd9279ccb1d373e86fdc29ffd805684}} 
@@ -361,11 +361,11 @@ List$\ast$ La liste modifiée
 Fonction indiquant si la liste est vide ou non. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & \+: liste à laquelle on veut savoir si elle est vide ou non. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 true \+: si la liste est vide. 
 
 false \+: si la liste n\textquotesingle{}est pas vide. 
@@ -381,13 +381,13 @@ false \+: si la liste n\textquotesingle{}est pas vide.
 Fonction permettant d\textquotesingle{}appliquer une fonction sur tous les éléments d\textquotesingle{}une liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & Liste sur laquelle on veut appliquer la fonction \\
 \hline
 {\em f} & Fonction à appliquer \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ La liste modifiée 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a88e1e56bf2210c9da9177694ff34e253}\label{listegen_8c_a88e1e56bf2210c9da9177694ff34e253}} 
@@ -401,7 +401,7 @@ List$\ast$ La liste modifiée
 Fonction de fusion de deux sous-\/listes triées. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em leftlist} & liste gauche \\
 \hline
 {\em rightlist} & liste droite \\
@@ -409,7 +409,7 @@ Fonction de fusion de deux sous-\/listes triées.
 {\em f} & fonction de comparaison \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 \mbox{\hyperlink{structsubList}{sub\+List}} la liste fusionnée 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a74a963bdb06a8a20ba731e09d91921d7}\label{listegen_8c_a74a963bdb06a8a20ba731e09d91921d7}} 
@@ -419,13 +419,13 @@ Fonction de fusion de deux sous-\/listes triées.
 {\footnotesize\ttfamily \mbox{\hyperlink{structsubList}{sub\+List}} list\+\_\+mergesort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsubList}{sub\+List}}}]{list,  }\item[{Order\+Functor}]{f }\end{DoxyParamCaption})}
 
 Fonction de tri par fusion 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list} & \+: sous-\/liste à trier \\
 \hline
 {\em f} & \+: fonction de comparaison \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 \+: sous-\/liste triée 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a7df27781d3870c1413e5f99a72f05897}\label{listegen_8c_a7df27781d3870c1413e5f99a72f05897}} 
@@ -439,13 +439,13 @@ Fonction de tri par fusion
 Supprime le dernier élément de la liste et libère la mémoire associée. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list} & La liste à modifier. \\
 \hline
 {\em f} & Foncteur simple pour libérer la mémoire du contenu de l\textquotesingle{}élément. Si NULL, la fonction se contente de libérer l\textquotesingle{}élément sans libérer son contenu. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La liste ne doit pas être vide. 
 \end{DoxyPrecond}
 \mbox{\Hypertarget{listegen_8c_a4c8ab4699710fd9a84987b672a0a1658}\label{listegen_8c_a4c8ab4699710fd9a84987b672a0a1658}} 
@@ -459,13 +459,13 @@ La liste ne doit pas être vide.
 Ajoute un élément en fin de liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list} & \+: liste à laquelle on veut ajouter un élément. \\
 \hline
 {\em data} & \+: pointeur vers les données à ajouter. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ \+: pointeur vers la liste modifiée. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_ab82e357f0af652ea3749996672f70362}\label{listegen_8c_ab82e357f0af652ea3749996672f70362}} 
@@ -479,7 +479,7 @@ List$\ast$ \+: pointeur vers la liste modifiée.
 Ajoute un élément en début de liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list} & \+: liste à laquelle on veut ajouter un élément. \\
 \hline
 {\em data} & \+: pointeur vers les données à ajouter. \\
@@ -487,7 +487,7 @@ Ajoute un élément en début de liste.
 {\em data\+\_\+size} & \+: la taille de data \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ \+: pointeur vers la liste modifiée. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a529ad030ae58b02c20e0193f7a2c63dd}\label{listegen_8c_a529ad030ae58b02c20e0193f7a2c63dd}} 
@@ -503,7 +503,7 @@ Fonction de réduction.
 Cette fonction permet d\textquotesingle{}appliquer un traitement à une donnée passée en paramètre pour chaque élément de la liste.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list} & La liste à parcourir \\
 \hline
 {\em f} & La fonction de traitement \\
@@ -511,10 +511,10 @@ Cette fonction permet d\textquotesingle{}appliquer un traitement à une donnée 
 {\em user\+Data} & La donnée à traiter \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ La liste passé en paramètre 
 \end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La fonction f est de type void ({\itshape f)(int, void}) 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -531,7 +531,7 @@ La liste est inchangée
 Supprime l\textquotesingle{}élément à la position spécifiée dans la liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & \+: La liste dont on veut supprimer un élément. \\
 \hline
 {\em p} & \+: La position de l\textquotesingle{}élément à supprimer. \\
@@ -539,7 +539,7 @@ Supprime l\textquotesingle{}élément à la position spécifiée dans la liste.
 {\em f} & \+: Une fonction pour libérer la mémoire allouée pour la valeur de l\textquotesingle{}élément. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ \+: La liste modifiée sans l\textquotesingle{}élément supprimé. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a08762973d73ab293413ac1acfa093283}\label{listegen_8c_a08762973d73ab293413ac1acfa093283}} 
@@ -553,11 +553,11 @@ List$\ast$ \+: La liste modifiée sans l\textquotesingle{}élément supprimé.
 Fonction indiquant la taille de la liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & \+: liste à laquelle on veut connaître la taille. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int \+: taille de la liste. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a8a7f38490319c69844a6f719af489793}\label{listegen_8c_a8a7f38490319c69844a6f719af489793}} 
@@ -571,13 +571,13 @@ int \+: taille de la liste.
 Trie les éléments de la liste dans l\textquotesingle{}ordre croissant. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & \+: La liste à trier. \\
 \hline
 {\em comp} & \+: Une fonction de comparaison qui renvoie vrai si le premier argument doit venir avant le second dans la liste triée. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ \+: La liste triée selon la fonction de comparaison f. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_a186a3b458bd698c21307e16ed5bf0e63}\label{listegen_8c_a186a3b458bd698c21307e16ed5bf0e63}} 
@@ -591,11 +591,11 @@ List$\ast$ \+: La liste triée selon la fonction de comparaison f.
 Fonction de séparation d\textquotesingle{}une liste en deux sous-\/listes. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & liste à séparer \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 \mbox{\hyperlink{structsubList}{sub\+List}} la sous-\/liste 
 \end{DoxyReturn}
 \mbox{\Hypertarget{listegen_8c_aefbad5393d5da431df7cbab9b0e58f65}\label{listegen_8c_aefbad5393d5da431df7cbab9b0e58f65}} 
@@ -609,7 +609,7 @@ Fonction de séparation d\textquotesingle{}une liste en deux sous-\/listes.
 Fonction permettant de mettre l\textquotesingle{}itérateur à position donnée. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em it} & L\textquotesingle{}itérateur utilisé \\
 \hline
 {\em p} & La position souhaitée \\
@@ -626,10 +626,10 @@ Fonction permettant de mettre l\textquotesingle{}itérateur à position donnée.
 Fonction de transformation d\textquotesingle{}une liste en sous-\/liste. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em l} & liste à transformer \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 \mbox{\hyperlink{structsubList}{sub\+List}} la sous-\/liste 
 \end{DoxyReturn}

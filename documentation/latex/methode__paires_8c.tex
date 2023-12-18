@@ -1,4 +1,4 @@
-\hypertarget{methode__paires_8c}{}\doxysection{src/methods/methode\+\_\+paires.c File Reference}
+\hypertarget{methode__paires_8c}{}\doxysection{Référence du fichier src/methods/methode\+\_\+paires.c}
 \label{methode__paires_8c}\index{src/methods/methode\_paires.c@{src/methods/methode\_paires.c}}
 
 
@@ -6,7 +6,7 @@ Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classem
 
 
 {\ttfamily \#include \char`\"{}methode\+\_\+paires.\+h\char`\"{}}\newline
-Include dependency graph for methode\+\_\+paires.\+c\+:
+Graphe des dépendances par inclusion de methode\+\_\+paires.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -14,7 +14,7 @@ Include dependency graph for methode\+\_\+paires.\+c\+:
 \includegraphics[width=350pt]{methode__paires_8c__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{methode__paires_8c_afc9fb94ecaa6fc0394addd6005d3f740}{filtrer\+\_\+larc}} (\mbox{\hyperlink{arc_8h_a6f32f04776591b35c09f7d19c2f8347e}{larc}} $\ast$list\+\_\+arc)
@@ -27,10 +27,10 @@ void \mbox{\hyperlink{methode__paires_8c_a3198687f6ae6bec0242a792a8fe37ea5}{cond
 \begin{DoxyCompactList}\small\item\em Fonction principale de la méthode de Condorcet par le classement des paires. Processus \+: 1) Créer la liste d\textquotesingle{}arc. 2) Filtrer la liste d\textquotesingle{}arc. 3) Déterminer le classement des candidats. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Anthony 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -38,7 +38,7 @@ Anthony
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{methode__paires_8c_a3198687f6ae6bec0242a792a8fe37ea5}\label{methode__paires_8c_a3198687f6ae6bec0242a792a8fe37ea5}} 
 \index{methode\_paires.c@{methode\_paires.c}!condorcet\_paires@{condorcet\_paires}}
 \index{condorcet\_paires@{condorcet\_paires}!methode\_paires.c@{methode\_paires.c}}
@@ -50,7 +50,7 @@ Anthony
 Fonction principale de la méthode de Condorcet par le classement des paires. Processus \+: 1) Créer la liste d\textquotesingle{}arc. 2) Filtrer la liste d\textquotesingle{}arc. 3) Déterminer le classement des candidats. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice\+\_\+duel} & Matrice de duel. \\
 \hline
 {\em candidats\+\_\+nom} & Tableau de nom des candidats. \\
@@ -58,7 +58,7 @@ Fonction principale de la méthode de Condorcet par le classement des paires. Pr
 {\em output} & Le fichier de sortie dans lequel on écrit le résultat. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La matrice de duel est initialisé et remplie. 
 
 Les noms sont rangés dans l\textquotesingle{}ordre de la matrice de duel. 
@@ -74,13 +74,13 @@ Les noms sont rangés dans l\textquotesingle{}ordre de la matrice de duel.
 Fonction permettant de créer un classement des candidats selon la méthode de Condorcet. Processus \+: Application de la fonction determiner\+\_\+vainqueur jusqu\textquotesingle{}à ce qu\textquotesingle{}il ne reste plus de candidats à classer. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & Liste d\textquotesingle{}arc trié par ordre décroissant de différence de voix (score). \\
 \hline
 {\em candidats\+\_\+nom} & Tableau de nom des candidats. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 List$\ast$ Liste de candidat trié par ordre décroissant de score (le premier candidat est le vainqueur). 
 \end{DoxyReturn}
 \mbox{\Hypertarget{methode__paires_8c_a4dfc977e66b0c43cec904e4016e3f477}\label{methode__paires_8c_a4dfc977e66b0c43cec904e4016e3f477}} 
@@ -101,7 +101,7 @@ Fonction utilisé pour déterminer quel candidat est vainqueur parmi les candida
 \end{DoxyItemize}
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & Liste d\textquotesingle{}arc trié par ordre décroissant de différence de voix (score). \\
 \hline
 {\em classement} & Liste de candidat classé \\
@@ -122,14 +122,14 @@ Fonction utilisé pour déterminer quel candidat est vainqueur parmi les candida
 Parcour de la liste d\textquotesingle{}arc pour déterminer les potentiels arcs à supprimer. Les arcs à supprimer sont ceux qui lors de l\textquotesingle{}ajout d\textquotesingle{}un arc dans le graphe, créent un circuit. Processus \+: 1) Pour chaque arc de la liste, on ajoute une succession dans le graphe. 2) On vérifie si il y a un circuit dans le graphe. 3) Si il y a un circuit, on supprime l\textquotesingle{}arc de la liste et on supprime la succession dans le graphe. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & Liste d\textquotesingle{}arc trié par ordre décroissant de différence de voix (score). \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int Le nombre d\textquotesingle{}arc supprimé. 
 \end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La liste d\textquotesingle{}arc est initialisé et trié par ordre décroissant de différence de voix (score). 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}

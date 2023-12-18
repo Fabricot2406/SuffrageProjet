@@ -1,4 +1,4 @@
-\hypertarget{methode__minimax_8c}{}\doxysection{src/methods/methode\+\_\+minimax.c File Reference}
+\hypertarget{methode__minimax_8c}{}\doxysection{Référence du fichier src/methods/methode\+\_\+minimax.c}
 \label{methode__minimax_8c}\index{src/methods/methode\_minimax.c@{src/methods/methode\_minimax.c}}
 
 
@@ -6,7 +6,7 @@ Implémentation de la méthode Minimax.
 
 
 {\ttfamily \#include \char`\"{}methode\+\_\+minimax.\+h\char`\"{}}\newline
-Include dependency graph for methode\+\_\+minimax.\+c\+:
+Graphe des dépendances par inclusion de methode\+\_\+minimax.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -14,7 +14,7 @@ Include dependency graph for methode\+\_\+minimax.\+c\+:
 \includegraphics[width=350pt]{methode__minimax_8c__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{methode__minimax_8c_aedb8c5b1560728aa3168661b95f5ec7b}{remplir\+\_\+tab\+\_\+pire\+\_\+score}} (void $\ast$elem, void $\ast$tab)
@@ -25,10 +25,10 @@ void \mbox{\hyperlink{methode__minimax_8c_a7fac355ecabfbbc1c4efecd370135149}{aff
 \begin{DoxyCompactList}\small\item\em Utilisée pour afficher le tableau du pire score de chaque candidats. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Implémentation de la méthode Minimax. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Marco 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -36,7 +36,7 @@ Marco
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{methode__minimax_8c_a7fac355ecabfbbc1c4efecd370135149}\label{methode__minimax_8c_a7fac355ecabfbbc1c4efecd370135149}} 
 \index{methode\_minimax.c@{methode\_minimax.c}!afficher\_tab@{afficher\_tab}}
 \index{afficher\_tab@{afficher\_tab}!methode\_minimax.c@{methode\_minimax.c}}
@@ -48,7 +48,7 @@ Marco
 Utilisée pour afficher le tableau du pire score de chaque candidats. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab} & Le tableau à afficher. \\
 \hline
 {\em taille} & La taille du tableau. \\
@@ -65,7 +65,7 @@ Utilisée pour afficher le tableau du pire score de chaque candidats.
 Implémente la méthode Minimax. Procédé \+: 1) On initialise la liste d\textquotesingle{}arc résultant de la matrice de duel. 2) On initialise un tableau répertoriant tous les candidats du scrutin à 0. 3) Pour chaque candidat perdant d\textquotesingle{}un duel, le score de l\textquotesingle{}arc ou il est perdant est supérieur à la valeur du tableau à l\textquotesingle{}indice correspondant on remplace la valeur du tableau par le score de l\textquotesingle{}arc. 4) Une fois tous les arcs traités on parcourt le tableau et on récupère l\textquotesingle{}indice du candidat ayant le score le plus faible. 5) On affiche le nom du candidat correspondant à l\textquotesingle{}indice récupéré. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice\+\_\+ballot} & La matrice des bulletins de vote. \\
 \hline
 {\em output} & Fichier de sortie. \\
@@ -84,7 +84,7 @@ Remplit le tableau des pires scores.
 Cette fonction compare le score de l\textquotesingle{}arc avec le score du candidat perdant (initialisé à 0). Si le score de l\textquotesingle{}arc est supérieur au pire score actuel du candidat perdant, il le remplace par le score de l\textquotesingle{}arc.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & L\textquotesingle{}élément à traiter (un arc). \\
 \hline
 {\em tab} & Le tableau à remplir (tableau des pires scores). \\

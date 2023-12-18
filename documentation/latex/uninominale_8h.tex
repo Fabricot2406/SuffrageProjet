@@ -1,4 +1,4 @@
-\hypertarget{uninominale_8h}{}\doxysection{src/methods/uninominale.h File Reference}
+\hypertarget{uninominale_8h}{}\doxysection{Référence du fichier src/methods/uninominale.h}
 \label{uninominale_8h}\index{src/methods/uninominale.h@{src/methods/uninominale.h}}
 
 
@@ -10,7 +10,7 @@ Méthode uninominale à 1 et 2 tours.
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}../utils/utils\+\_\+sd.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../utils/data\+Structure/ballot.\+h\char`\"{}}\newline
-Include dependency graph for uninominale.\+h\+:
+Graphe des dépendances par inclusion de uninominale.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -18,7 +18,7 @@ Include dependency graph for uninominale.\+h\+:
 \includegraphics[width=350pt]{uninominale_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -26,7 +26,7 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=344pt]{uninominale_8h__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{uninominale_8h_aa4ca076b9b595f4105431094de06a0bf}{calculer\+\_\+uninominale\+\_\+un\+\_\+tour}} (\mbox{\hyperlink{structballot__s}{ballot}} $\ast$matrice, FILE $\ast$output)
@@ -35,10 +35,10 @@ void \mbox{\hyperlink{uninominale_8h_abb084f0957af5e78686513014f425692}{calculer
 \begin{DoxyCompactList}\small\item\em Calcule le résultat de la méthode uninominale à deux tour. Processus \+: 1) On initialise un tableau de votes. 2) On cherche dans ce tableau les deux vainqueurs. 3) Si le score du vainqueur un est supérieur à 50\%, alors on l\textquotesingle{}affique comme vainqueur, sinon on continue. 4) On cherche le vainqueur entre les deux (celui qui obtient le plus de voix en ne contant que leurs votes). 5) On affiche le vainqueur dépendant de qui a le plus haut score. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Méthode uninominale à 1 et 2 tours. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Fabio 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -46,7 +46,7 @@ Fabio
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{uninominale_8h_abb084f0957af5e78686513014f425692}\label{uninominale_8h_abb084f0957af5e78686513014f425692}} 
 \index{uninominale.h@{uninominale.h}!calculer\_uninominale\_deux\_tours@{calculer\_uninominale\_deux\_tours}}
 \index{calculer\_uninominale\_deux\_tours@{calculer\_uninominale\_deux\_tours}!uninominale.h@{uninominale.h}}
@@ -58,13 +58,13 @@ Fabio
 Calcule le résultat de la méthode uninominale à deux tour. Processus \+: 1) On initialise un tableau de votes. 2) On cherche dans ce tableau les deux vainqueurs. 3) Si le score du vainqueur un est supérieur à 50\%, alors on l\textquotesingle{}affique comme vainqueur, sinon on continue. 4) On cherche le vainqueur entre les deux (celui qui obtient le plus de voix en ne contant que leurs votes). 5) On affiche le vainqueur dépendant de qui a le plus haut score. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & Une matrice de type ballot. \\
 \hline
 {\em output} & Le fichier de sortie dans lequel on écrit le résultat. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La matrice ballot est initialisée et remplie. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -81,13 +81,13 @@ Le vainqueur du scrutin est affiché.
 Calcule le résultat de la méthode uninominale à un tour. Processus \+: 1) On initialise un tableau de votes. 2) On cherche dans ce tableau le vainqueur. 3) On affiche le vainqueur. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & Une matrice de type ballot. \\
 \hline
 {\em output} & Le fichier de sortie dans lequel on écrit le résultat. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La matrice ballot est initialisée et remplie. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}

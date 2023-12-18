@@ -1,4 +1,4 @@
-\hypertarget{matrice__string__dyn_8c}{}\doxysection{src/utils/data\+Structure/matrice\+\_\+string\+\_\+dyn.c File Reference}
+\hypertarget{matrice__string__dyn_8c}{}\doxysection{Référence du fichier src/utils/data\+Structure/matrice\+\_\+string\+\_\+dyn.c}
 \label{matrice__string__dyn_8c}\index{src/utils/dataStructure/matrice\_string\_dyn.c@{src/utils/dataStructure/matrice\_string\_dyn.c}}
 
 
@@ -6,7 +6,7 @@ Structure de donnée correspondant à la matrice des votes issue d\textquotesing
 
 
 {\ttfamily \#include \char`\"{}matrice\+\_\+string\+\_\+dyn.\+h\char`\"{}}\newline
-Include dependency graph for matrice\+\_\+string\+\_\+dyn.\+c\+:
+Graphe des dépendances par inclusion de matrice\+\_\+string\+\_\+dyn.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -20,7 +20,7 @@ Include dependency graph for matrice\+\_\+string\+\_\+dyn.\+c\+:
 \mbox{\Hypertarget{matrice__string__dyn_8c_ae6ad0540d5109a0200f0dde5dc5b4bf6}\label{matrice__string__dyn_8c_ae6ad0540d5109a0200f0dde5dc5b4bf6}} 
 \#define {\bfseries TAILLE\+\_\+\+MAX}~65
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structt__mat__char__star__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}} $\ast$ \mbox{\hyperlink{matrice__string__dyn_8c_ae5d763f9e3afbe95e98489d18fccb1fd}{mat\+\_\+char\+\_\+create}} ()
@@ -35,10 +35,10 @@ void \mbox{\hyperlink{matrice__string__dyn_8c_adc277c17e7510a0abf1e9ff4197ba2f0}
 \begin{DoxyCompactList}\small\item\em Fonction qui affiche une ligne du fichier CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Structure de donnée correspondant à la matrice des votes issue d\textquotesingle{}un fichier CSV. 
 
-\begin{DoxyAuthor}{Authors}
+\begin{DoxyAuthor}{Auteurs}
 Marco, Anthony 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -46,7 +46,7 @@ Marco, Anthony
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{matrice__string__dyn_8c_ae5d763f9e3afbe95e98489d18fccb1fd}\label{matrice__string__dyn_8c_ae5d763f9e3afbe95e98489d18fccb1fd}} 
 \index{matrice\_string\_dyn.c@{matrice\_string\_dyn.c}!mat\_char\_create@{mat\_char\_create}}
 \index{mat\_char\_create@{mat\_char\_create}!matrice\_string\_dyn.c@{matrice\_string\_dyn.c}}
@@ -57,7 +57,7 @@ Marco, Anthony
 
 Fonction pour initialiser la matrice. 
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Pointeur vers la matrice créée. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{matrice__string__dyn_8c_aeb50f288f22cf39b2094e8b5cdde5e23}\label{matrice__string__dyn_8c_aeb50f288f22cf39b2094e8b5cdde5e23}} 
@@ -71,7 +71,7 @@ Pointeur vers la matrice créée.
 Fonction pour libérer la matrice. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & Pointeur vers la matrice à libérer. \\
 \hline
 \end{DoxyParams}
@@ -86,7 +86,7 @@ Fonction pour libérer la matrice.
 Fonction qui affiche la matrice. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & Pointeur vers la matrice à afficher. \\
 \hline
 \end{DoxyParams}
@@ -101,7 +101,7 @@ Fonction qui affiche la matrice.
 Fonction qui affiche une ligne du fichier CSV. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & Pointeur vers la matrice à afficher. \\
 \hline
 {\em ligne} & Ligne à afficher. \\
@@ -118,7 +118,7 @@ Fonction qui affiche une ligne du fichier CSV.
 Fonction qui trouve la ligne et la colonne d\textquotesingle{}un element dans un fichier CSV. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice} & Pointeur vers la matrice à afficher. \\
 \hline
 {\em elem} & Chaine de caractère à trouver. \\
@@ -128,6 +128,6 @@ Fonction qui trouve la ligne et la colonne d\textquotesingle{}un element dans un
 {\em colonne} & Colonne où se trouve l\textquotesingle{}element. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 1 si element trouvé, 0 sinon. 
 \end{DoxyReturn}

@@ -1,4 +1,4 @@
-\hypertarget{arc_8h}{}\doxysection{src/utils/data\+Structure/arc.h File Reference}
+\hypertarget{arc_8h}{}\doxysection{Référence du fichier src/utils/data\+Structure/arc.h}
 \label{arc_8h}\index{src/utils/dataStructure/arc.h@{src/utils/dataStructure/arc.h}}
 
 
@@ -12,7 +12,7 @@ Structure de données representant un arc et une liste d\textquotesingle{}arcs.
 {\ttfamily \#include $<$assert.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}listegen.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}matrice\+\_\+int\+\_\+dyn.\+h\char`\"{}}\newline
-Include dependency graph for arc.\+h\+:
+Graphe des dépendances par inclusion de arc.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -20,7 +20,7 @@ Include dependency graph for arc.\+h\+:
 \includegraphics[width=350pt]{arc_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -35,14 +35,14 @@ struct \mbox{\hyperlink{structt__arc__p}{t\+\_\+arc\+\_\+p}}
 \begin{DoxyCompactList}\small\item\em Structure de données représentant un arc du graphe. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structs__arc}{s\+\_\+arc}}
 \begin{DoxyCompactList}\small\item\em Liste d\textquotesingle{}arcs. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \mbox{\hyperlink{structt__arc__p}{t\+\_\+arc\+\_\+p}} \mbox{\hyperlink{arc_8h_a890ca7c7ac2da9cf125d1f4fe2826b46}{arc}}
 \begin{DoxyCompactList}\small\item\em Structure de données représentant un arc du graphe. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structs__arc}{s\+\_\+arc}} \mbox{\hyperlink{arc_8h_a6f32f04776591b35c09f7d19c2f8347e}{larc}}
 \begin{DoxyCompactList}\small\item\em Liste d\textquotesingle{}arcs. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{arc_8h_a890ca7c7ac2da9cf125d1f4fe2826b46}{arc}} $\ast$ \mbox{\hyperlink{arc_8h_af278dd61715097a5ebdce545055065c4}{arc\+\_\+create}} (int candidat\+\_\+gagnant, int candidat\+\_\+perdant, int score)
@@ -57,10 +57,10 @@ void \mbox{\hyperlink{arc_8h_adab4ccfa898409f25f28e32a91e53ae7}{candidat\+\_\+de
 \begin{DoxyCompactList}\small\item\em Fonction qui permetettant de supprimer les arcs d\textquotesingle{}un candidat donné. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Structure de données representant un arc et une liste d\textquotesingle{}arcs. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Anthony
 \end{DoxyAuthor}
 Un arc est une structure composée d\textquotesingle{}un candidat gagnant, perdant et du score du duel entre ces deux candidats.
@@ -69,7 +69,7 @@ Un arc est une structure composée d\textquotesingle{}un candidat gagnant, perda
 \item Elle permet de stocker les arcs du graphe et de les trier par ordre croissant ou décroissant de score. 
 \end{DoxyItemize}
 
-\doxysubsection{Typedef Documentation}
+\doxysubsection{Documentation des définitions de type}
 \mbox{\Hypertarget{arc_8h_a890ca7c7ac2da9cf125d1f4fe2826b46}\label{arc_8h_a890ca7c7ac2da9cf125d1f4fe2826b46}} 
 \index{arc.h@{arc.h}!arc@{arc}}
 \index{arc@{arc}!arc.h@{arc.h}}
@@ -92,7 +92,7 @@ Liste d\textquotesingle{}arcs.
 
 Liste d\textquotesingle{}arcs triée par ordre décroissant de score. Utilisation d\textquotesingle{}une liste générique. 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{arc_8h_af278dd61715097a5ebdce545055065c4}\label{arc_8h_af278dd61715097a5ebdce545055065c4}} 
 \index{arc.h@{arc.h}!arc\_create@{arc\_create}}
 \index{arc\_create@{arc\_create}!arc.h@{arc.h}}
@@ -104,7 +104,7 @@ Liste d\textquotesingle{}arcs triée par ordre décroissant de score. Utilisatio
 Constructeur de la structure de donnée arc. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em candidat\+\_\+gagnant} & \\
 \hline
 {\em candidat\+\_\+perdant} & \\
@@ -112,7 +112,7 @@ Constructeur de la structure de donnée arc.
 {\em score} & le score du duel entre les deux candidats \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 arc$\ast$ l\textquotesingle{}arc créé 
 \end{DoxyReturn}
 \mbox{\Hypertarget{arc_8h_adab4ccfa898409f25f28e32a91e53ae7}\label{arc_8h_adab4ccfa898409f25f28e32a91e53ae7}} 
@@ -130,13 +130,13 @@ Fonction qui permetettant de supprimer les arcs d\textquotesingle{}un candidat d
 \item La méthode parcourt la liste des arcs.
 \begin{DoxyItemize}
 \item Si l\textquotesingle{}arc de la liste contient le candidat donné, il est supprimé de la liste. 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & La liste des arcs à parcourir. \\
 \hline
 {\em candidat} & Le candidat à supprimer. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La liste des arcs est non vide, triée par ordre décroissant de score. Le candidat donné est présent dans la liste des arcs. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -155,11 +155,11 @@ La liste des arcs ne contient plus d\textquotesingle{}arc avec le candidat donn�
 Libérer la mémoire allouée à une liste d\textquotesingle{}arcs. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+arc} & Liste des arcs à détruire \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La liste d\textquotesingle{}arc est initialisé. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -176,14 +176,14 @@ La liste d\textquotesingle{}arc est détruite.
 Fonction permettant d\textquotesingle{}initialiser et de completer la liste des arcs à partir d\textquotesingle{}une matrice de duel. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice\+\_\+duel} & La matrice de duel \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 larc$\ast$ La liste des arcs 
 \end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La matrice de duel est initialisé. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -203,7 +203,7 @@ La liste des arcs est initialisé et complété avec les arcs de la matrice de d
 Fonction permettant de remplir un fichier de log avec la description des arcs. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+arc} & La liste d\textquotesingle{}arc à saisir dans le fichier de log. \\
 \hline
 {\em log\+\_\+file} & Le fichier de log. \\

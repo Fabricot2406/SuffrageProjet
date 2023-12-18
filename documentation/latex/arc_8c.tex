@@ -1,4 +1,4 @@
-\hypertarget{arc_8c}{}\doxysection{src/utils/data\+Structure/arc.c File Reference}
+\hypertarget{arc_8c}{}\doxysection{Référence du fichier src/utils/data\+Structure/arc.c}
 \label{arc_8c}\index{src/utils/dataStructure/arc.c@{src/utils/dataStructure/arc.c}}
 
 
@@ -6,7 +6,7 @@ Structure de données pour les arcs du graphe.
 
 
 {\ttfamily \#include \char`\"{}arc.\+h\char`\"{}}\newline
-Include dependency graph for arc.\+c\+:
+Graphe des dépendances par inclusion de arc.\+c\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -14,7 +14,7 @@ Include dependency graph for arc.\+c\+:
 \includegraphics[width=350pt]{arc_8c__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{arc_8h_a890ca7c7ac2da9cf125d1f4fe2826b46}{arc}} $\ast$ \mbox{\hyperlink{arc_8c_af278dd61715097a5ebdce545055065c4}{arc\+\_\+create}} (int candidat\+\_\+gagnant, int candidat\+\_\+perdant, int score)
@@ -37,10 +37,10 @@ void \mbox{\hyperlink{arc_8c_a8e88191a5bfe2eed02ef1799a01e9348}{larc\+\_\+log}} 
 \begin{DoxyCompactList}\small\item\em Fonction permettant de remplir un fichier de log avec la description des arcs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Structure de données pour les arcs du graphe. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Anthony 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -48,7 +48,7 @@ Anthony
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{arc_8c_af278dd61715097a5ebdce545055065c4}\label{arc_8c_af278dd61715097a5ebdce545055065c4}} 
 \index{arc.c@{arc.c}!arc\_create@{arc\_create}}
 \index{arc\_create@{arc\_create}!arc.c@{arc.c}}
@@ -60,7 +60,7 @@ Anthony
 Constructeur de la structure de donnée arc. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em candidat\+\_\+gagnant} & \\
 \hline
 {\em candidat\+\_\+perdant} & \\
@@ -68,7 +68,7 @@ Constructeur de la structure de donnée arc.
 {\em score} & le score du duel entre les deux candidats \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 arc$\ast$ l\textquotesingle{}arc créé 
 \end{DoxyReturn}
 \mbox{\Hypertarget{arc_8c_a71b28d1655fd10e224722efafa5e2763}\label{arc_8c_a71b28d1655fd10e224722efafa5e2763}} 
@@ -82,7 +82,7 @@ arc$\ast$ l\textquotesingle{}arc créé
 Operateur de suppression d\textquotesingle{}un arc. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em elem} & l\textquotesingle{}arc à supprimer \\
 \hline
 \end{DoxyParams}
@@ -97,7 +97,7 @@ Operateur de suppression d\textquotesingle{}un arc.
 Affiche un arc dans le fichier de log. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em input} & l\textquotesingle{}arc à afficher \\
 \hline
 {\em log\+\_\+file} & le fichier de log \\
@@ -118,13 +118,13 @@ Fonction qui permetettant de supprimer les arcs d\textquotesingle{}un candidat d
 \item La méthode parcourt la liste des arcs.
 \begin{DoxyItemize}
 \item Si l\textquotesingle{}arc de la liste contient le candidat donné, il est supprimé de la liste. 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em list\+\_\+arc} & La liste des arcs à parcourir. \\
 \hline
 {\em candidat} & Le candidat à supprimer. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La liste des arcs est non vide, triée par ordre décroissant de score. Le candidat donné est présent dans la liste des arcs. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -143,13 +143,13 @@ La liste des arcs ne contient plus d\textquotesingle{}arc avec le candidat donn�
 Fonction de comparaison de deux arcs. 
 
 Fonction utilisée pour le tri de la liste d\textquotesingle{}arcs. 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em a} & Un arc. \\
 \hline
 {\em b} & Un arc. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 int 1 si a $>$ b, -\/1 si a $<$ b, 0 si a = b. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{arc_8c_a4b2247e60a9cc7f0d63cc62b00904d30}\label{arc_8c_a4b2247e60a9cc7f0d63cc62b00904d30}} 
@@ -163,13 +163,13 @@ int 1 si a $>$ b, -\/1 si a $<$ b, 0 si a = b.
 Complète une liste d\textquotesingle{}arcs avec des pourcentages de victoire entre les candidats. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+arc} & Un tableau d\textquotesingle{}arcs à compléter. \\
 \hline
 {\em matrice\+\_\+duel} & Une matrice représentant les résultats des duels entre candidats. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La liste d\textquotesingle{}arcs est initialisée. 
 
 La matrice de duel est initialisée. La matrice est carrée et de taille nb\+\_\+candidats x nb\+\_\+candidats. La diagonale de la matrice est nulle. 
@@ -188,11 +188,11 @@ La liste d\textquotesingle{}arcs est complétée avec les arcs de la matrice de 
 Libérer la mémoire allouée à une liste d\textquotesingle{}arcs. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+arc} & Liste des arcs à détruire \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La liste d\textquotesingle{}arc est initialisé. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -209,14 +209,14 @@ La liste d\textquotesingle{}arc est détruite.
 Fonction permettant d\textquotesingle{}initialiser et de completer la liste des arcs à partir d\textquotesingle{}une matrice de duel. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice\+\_\+duel} & La matrice de duel \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 larc$\ast$ La liste des arcs 
 \end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La matrice de duel est initialisé. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -236,7 +236,7 @@ La liste des arcs est initialisé et complété avec les arcs de la matrice de d
 Fonction permettant de remplir un fichier de log avec la description des arcs. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em tab\+\_\+arc} & La liste d\textquotesingle{}arc à saisir dans le fichier de log. \\
 \hline
 {\em log\+\_\+file} & Le fichier de log. \\

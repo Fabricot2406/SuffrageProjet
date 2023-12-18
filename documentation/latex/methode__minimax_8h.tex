@@ -1,4 +1,4 @@
-\hypertarget{methode__minimax_8h}{}\doxysection{src/methods/methode\+\_\+minimax.h File Reference}
+\hypertarget{methode__minimax_8h}{}\doxysection{Référence du fichier src/methods/methode\+\_\+minimax.h}
 \label{methode__minimax_8h}\index{src/methods/methode\_minimax.h@{src/methods/methode\_minimax.h}}
 
 
@@ -13,7 +13,7 @@ Implémentation de la méthode Minimax.
 {\ttfamily \#include \char`\"{}../utils/data\+Structure/duel.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../utils/data\+Structure/listegen.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../utils/data\+Structure/arc.\+h\char`\"{}}\newline
-Include dependency graph for methode\+\_\+minimax.\+h\+:
+Graphe des dépendances par inclusion de methode\+\_\+minimax.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,7 +21,7 @@ Include dependency graph for methode\+\_\+minimax.\+h\+:
 \includegraphics[width=350pt]{methode__minimax_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -29,17 +29,17 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=318pt]{methode__minimax_8h__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{methode__minimax_8h_a34059cb8faffe06e761572c4ebbfe109}{condorcet\+\_\+minimax}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice\+\_\+duel, char $\ast$$\ast$candidats\+\_\+nom, FILE $\ast$output)
 \begin{DoxyCompactList}\small\item\em Implémente la méthode Minimax. Procédé \+: 1) On initialise la liste d\textquotesingle{}arc résultant de la matrice de duel. 2) On initialise un tableau répertoriant tous les candidats du scrutin à 0. 3) Pour chaque candidat perdant d\textquotesingle{}un duel, le score de l\textquotesingle{}arc ou il est perdant est supérieur à la valeur du tableau à l\textquotesingle{}indice correspondant on remplace la valeur du tableau par le score de l\textquotesingle{}arc. 4) Une fois tous les arcs traités on parcourt le tableau et on récupère l\textquotesingle{}indice du candidat ayant le score le plus faible. 5) On affiche le nom du candidat correspondant à l\textquotesingle{}indice récupéré. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Implémentation de la méthode Minimax. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Marco 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -47,7 +47,7 @@ Marco
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{methode__minimax_8h_a34059cb8faffe06e761572c4ebbfe109}\label{methode__minimax_8h_a34059cb8faffe06e761572c4ebbfe109}} 
 \index{methode\_minimax.h@{methode\_minimax.h}!condorcet\_minimax@{condorcet\_minimax}}
 \index{condorcet\_minimax@{condorcet\_minimax}!methode\_minimax.h@{methode\_minimax.h}}
@@ -59,7 +59,7 @@ Marco
 Implémente la méthode Minimax. Procédé \+: 1) On initialise la liste d\textquotesingle{}arc résultant de la matrice de duel. 2) On initialise un tableau répertoriant tous les candidats du scrutin à 0. 3) Pour chaque candidat perdant d\textquotesingle{}un duel, le score de l\textquotesingle{}arc ou il est perdant est supérieur à la valeur du tableau à l\textquotesingle{}indice correspondant on remplace la valeur du tableau par le score de l\textquotesingle{}arc. 4) Une fois tous les arcs traités on parcourt le tableau et on récupère l\textquotesingle{}indice du candidat ayant le score le plus faible. 5) On affiche le nom du candidat correspondant à l\textquotesingle{}indice récupéré. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice\+\_\+ballot} & La matrice des bulletins de vote. \\
 \hline
 {\em output} & Fichier de sortie. \\

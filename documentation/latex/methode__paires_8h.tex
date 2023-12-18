@@ -1,4 +1,4 @@
-\hypertarget{methode__paires_8h}{}\doxysection{src/methods/methode\+\_\+paires.h File Reference}
+\hypertarget{methode__paires_8h}{}\doxysection{Référence du fichier src/methods/methode\+\_\+paires.h}
 \label{methode__paires_8h}\index{src/methods/methode\_paires.h@{src/methods/methode\_paires.h}}
 
 
@@ -14,7 +14,7 @@ Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classem
 {\ttfamily \#include \char`\"{}../utils/data\+Structure/listegen.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../utils/data\+Structure/arc.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../utils/data\+Structure/duel.\+h\char`\"{}}\newline
-Include dependency graph for methode\+\_\+paires.\+h\+:
+Graphe des dépendances par inclusion de methode\+\_\+paires.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -22,7 +22,7 @@ Include dependency graph for methode\+\_\+paires.\+h\+:
 \includegraphics[width=350pt]{methode__paires_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -30,17 +30,17 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=318pt]{methode__paires_8h__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Functions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{methode__paires_8h_a3198687f6ae6bec0242a792a8fe37ea5}{condorcet\+\_\+paires}} (\mbox{\hyperlink{structt__mat__int__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn}} $\ast$matrice\+\_\+duel, char $\ast$$\ast$candidats\+\_\+nom, FILE $\ast$output)
 \begin{DoxyCompactList}\small\item\em Fonction principale de la méthode de Condorcet par le classement des paires. Processus \+: 1) Créer la liste d\textquotesingle{}arc. 2) Filtrer la liste d\textquotesingle{}arc. 3) Déterminer le classement des candidats. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Fichier pour le calcul du vainqueur avec la méthode de Condorcet par le classement des paires. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Anthony 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -48,7 +48,7 @@ Anthony
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{methode__paires_8h_a3198687f6ae6bec0242a792a8fe37ea5}\label{methode__paires_8h_a3198687f6ae6bec0242a792a8fe37ea5}} 
 \index{methode\_paires.h@{methode\_paires.h}!condorcet\_paires@{condorcet\_paires}}
 \index{condorcet\_paires@{condorcet\_paires}!methode\_paires.h@{methode\_paires.h}}
@@ -60,7 +60,7 @@ Anthony
 Fonction principale de la méthode de Condorcet par le classement des paires. Processus \+: 1) Créer la liste d\textquotesingle{}arc. 2) Filtrer la liste d\textquotesingle{}arc. 3) Déterminer le classement des candidats. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em matrice\+\_\+duel} & Matrice de duel. \\
 \hline
 {\em candidats\+\_\+nom} & Tableau de nom des candidats. \\
@@ -68,7 +68,7 @@ Fonction principale de la méthode de Condorcet par le classement des paires. Pr
 {\em output} & Le fichier de sortie dans lequel on écrit le résultat. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Precondition}
+\begin{DoxyPrecond}{Précondition}
 La matrice de duel est initialisé et remplie. 
 
 Les noms sont rangés dans l\textquotesingle{}ordre de la matrice de duel. 
